@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1867_healthy_31781_2e3cfc5f",
+  "task_id": "tb_geo_1867",
+  "task_description": "What is the weather in Tokyo and Cairo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 31781,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Tokyo is currently 31\u00b0C with a cloudy condition and humidity at 56%. The wind speed is 31 km/h. In Cairo, the temperature is 16\u00b0C with a cloudy condition and humidity at 66%. The wind speed is 21 km/h. The temperature difference between Tokyo and Cairo is 15\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 17.869,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T03:00:06.272616",
+  "end_time": "2026-10-08T03:00:24.141640",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1867_healthy_31781_2e3cfc5f",
+      "step": 0,
+      "timestamp": 1791428424.1416614,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Tokyo and Cairo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Tokyo and Cairo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1867_healthy_31781_2e3cfc5f",
+      "step": 1,
+      "timestamp": 1791428424.141681,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "26829f24-f762-49ea-8993-841048d76aa6"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "0381f87a-1788-44b1-bcb9-1df7307e5e45"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1867_healthy_31781_2e3cfc5f",
+      "step": 2,
+      "timestamp": 1791428424.1416986,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "26829f24-f762-49ea-8993-841048d76aa6"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1867_healthy_31781_2e3cfc5f",
+      "step": 3,
+      "timestamp": 1791428424.1417167,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "0381f87a-1788-44b1-bcb9-1df7307e5e45"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1867_healthy_31781_2e3cfc5f",
+      "step": 4,
+      "timestamp": 1791428424.141727,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Tokyo is currently 31\u00b0C with a cloudy condition and humidity at 56%. The wind speed is 31 km/h. In Cairo, the temperature is 16\u00b0C with a cloudy condition and humidity at 66%. The wind speed is 21 km/h. The temperature difference between Tokyo and Cairo is 15\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791428411.9332404,
+      "node": "agent",
+      "llm_latency": 5.6587,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791428412.2379315,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791428412.539549,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791428424.1395712,
+      "node": "agent",
+      "llm_latency": 11.5992,
+      "has_tool_calls": false,
+      "response_length": 276,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 671,
+      "output_tokens": 76
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.3023819923400879,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3015308380126953,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

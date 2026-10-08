@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0129_healthy_2235_6d9e0044",
+  "task_id": "tb_geo_0129",
+  "task_description": "What is the weather in London and Amsterdam? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 2235,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in London is sunny with a temperature of 15\u00b0C and humidity of 40%. In Amsterdam, the weather is partly cloudy with a temperature of 23\u00b0C and humidity of 48%. The temperature difference is 8\u00b0C and the humidity difference is 8%.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 21.5877,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T14:08:59.910868",
+  "end_time": "2026-10-07T14:09:21.498546",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0129_healthy_2235_6d9e0044",
+      "step": 0,
+      "timestamp": 1791382161.49857,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in London and Amsterdam? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in London and Amsterdam? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0129_healthy_2235_6d9e0044",
+      "step": 1,
+      "timestamp": 1791382161.4985895,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "London"
+          },
+          "id": "fe0a9049-0233-4639-b15a-6ac394e4471c"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Amsterdam"
+          },
+          "id": "0ae6a3e7-0b72-4a44-999a-6fa4099753ea"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = London_temperature - Amsterdam_temperature; humidity_difference = London_humidity - Amsterdam_humidity"
+          },
+          "id": "b9a421de-8b12-44fb-99a7-ae0a131b2783"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0129_healthy_2235_6d9e0044",
+      "step": 2,
+      "timestamp": 1791382161.49861,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "fe0a9049-0233-4639-b15a-6ac394e4471c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0129_healthy_2235_6d9e0044",
+      "step": 3,
+      "timestamp": 1791382161.4986272,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "0ae6a3e7-0b72-4a44-999a-6fa4099753ea"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0129_healthy_2235_6d9e0044",
+      "step": 4,
+      "timestamp": 1791382161.498638,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = London_temperature - Amsterdam_temperature; humidity_difference = London_humidity - Amsterdam_humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "b9a421de-8b12-44fb-99a7-ae0a131b2783"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0129_healthy_2235_6d9e0044",
+      "step": 5,
+      "timestamp": 1791382161.4986472,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in London is sunny with a temperature of 15\u00b0C and humidity of 40%. In Amsterdam, the weather is partly cloudy with a temperature of 23\u00b0C and humidity of 48%. The temperature difference is 8\u00b0C and the humidity difference is 8%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791382147.5818977,
+      "node": "agent",
+      "llm_latency": 7.6693,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 78
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382147.8860574,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3017,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382148.1885502,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382148.2895422,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = London_temperature - Amsterdam_temperature; humidity_difference = London_humidity - Amsterdam_humidity"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1009,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382161.4963317,
+      "node": "agent",
+      "llm_latency": 13.2054,
+      "has_tool_calls": false,
+      "response_length": 238,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 759,
+      "output_tokens": 60
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.3016998767852783,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.3024165630340576,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = London_temperature - Amsterdam_temperature; humidity_difference = London_humidity - Amsterdam_humidity"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = London_temperature - Amsterdam_temperature; humidity_difference = London_humidity - Amsterdam_humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10092854499816895,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

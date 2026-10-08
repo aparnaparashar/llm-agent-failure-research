@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0769_injected_13115_649b3373",
+  "task_id": "tb_geo_0769",
+  "task_description": "What is the weather in Miami and Paris? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 13115,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In Paris, the weather is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. The temperature difference is 18\u00b0C and the humidity difference is 18%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 19.9537,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T19:42:14.506667",
+  "end_time": "2026-10-07T19:42:34.460395",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0769_injected_13115_649b3373",
+      "step": 0,
+      "timestamp": 1791402154.4604313,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Miami and Paris? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Miami and Paris? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0769_injected_13115_649b3373",
+      "step": 1,
+      "timestamp": 1791402154.4604642,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "5e44baa3-b643-44fc-b011-f0bdb08abed4"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "bfe239fb-bec3-42de-9410-a62889fe25e3"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_miami - temp_paris; humidity_difference = humidity_miami - humidity_paris"
+          },
+          "id": "3f47cf2b-bffc-4291-bae0-7c999f2ad294"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0769_injected_13115_649b3373",
+      "step": 2,
+      "timestamp": 1791402154.460489,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "5e44baa3-b643-44fc-b011-f0bdb08abed4"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0769_injected_13115_649b3373",
+      "step": 3,
+      "timestamp": 1791402154.4605088,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "bfe239fb-bec3-42de-9410-a62889fe25e3"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0769_injected_13115_649b3373",
+      "step": 4,
+      "timestamp": 1791402154.4605207,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_miami - temp_paris; humidity_difference = humidity_miami - humidity_paris\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "3f47cf2b-bffc-4291-bae0-7c999f2ad294"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0769_injected_13115_649b3373",
+      "step": 5,
+      "timestamp": 1791402154.4605312,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In Paris, the weather is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. The temperature difference is 18\u00b0C and the humidity difference is 18%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791402142.5581632,
+      "node": "agent",
+      "llm_latency": 8.0494,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 79
+    },
+    {
+      "step": 1,
+      "timestamp": 1791402142.866646,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3059,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791402143.1686285,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3019,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791402143.273728,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_miami - temp_paris; humidity_difference = humidity_miami - humidity_paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.105,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791402154.4573226,
+      "node": "agent",
+      "llm_latency": 11.1825,
+      "has_tool_calls": false,
+      "response_length": 235,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 760,
+      "output_tokens": 62
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3058779239654541,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.3018951416015625,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_miami - temp_paris; humidity_difference = humidity_miami - humidity_paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_miami - temp_paris; humidity_difference = humidity_miami - humidity_paris\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10501646995544434,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

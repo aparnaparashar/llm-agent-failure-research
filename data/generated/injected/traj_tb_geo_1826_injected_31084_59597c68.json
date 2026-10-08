@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1826_injected_31084_59597c68",
+  "task_id": "tb_geo_1826",
+  "task_description": "What is the weather in Seattle and Vienna? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 31084,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Seattle is 19\u00b0C with a wind speed of 9 km/h and a condition of \"windy\". The humidity is 44%.\n\nThe weather in Vienna is 31\u00b0C with a wind speed of 16 km/h and a condition of \"cloudy\". The humidity is 81%.\n\nThe temperature difference between Seattle and Vienna is 31\u00b0C - 19\u00b0C = 12\u00b0C.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 2,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 19.1773,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T02:46:43.522933",
+  "end_time": "2026-10-08T02:47:02.700251",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1826_injected_31084_59597c68",
+      "step": 0,
+      "timestamp": 1791427622.7002666,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Seattle and Vienna? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Seattle and Vienna? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1826_injected_31084_59597c68",
+      "step": 1,
+      "timestamp": 1791427622.7002811,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seattle"
+          },
+          "id": "1dbc7ee0-994b-4bb0-b31e-6e922eee0e9c"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Vienna"
+          },
+          "id": "8881f368-78f9-4f89-8087-c4117276147f"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1826_injected_31084_59597c68",
+      "step": 2,
+      "timestamp": 1791427622.7002945,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "tool_call_id": "1dbc7ee0-994b-4bb0-b31e-6e922eee0e9c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1826_injected_31084_59597c68",
+      "step": 3,
+      "timestamp": 1791427622.7003074,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "tool_call_id": "8881f368-78f9-4f89-8087-c4117276147f"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1826_injected_31084_59597c68",
+      "step": 4,
+      "timestamp": 1791427622.700314,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Seattle is 19\u00b0C with a wind speed of 9 km/h and a condition of \"windy\". The humidity is 44%.\n\nThe weather in Vienna is 31\u00b0C with a wind speed of 16 km/h and a condition of \"cloudy\". The humidity is 81%.\n\nThe temperature difference between Seattle and Vienna is 31\u00b0C - 19\u00b0C = 12\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791427608.661263,
+      "node": "agent",
+      "llm_latency": 5.1356,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427608.966431,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427609.268066,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427622.6985536,
+      "node": "agent",
+      "llm_latency": 13.4297,
+      "has_tool_calls": false,
+      "response_length": 295,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 668,
+      "output_tokens": 91
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "error": null,
+      "latency": 0.3024287223815918,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "error": null,
+      "latency": 0.30155110359191895,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

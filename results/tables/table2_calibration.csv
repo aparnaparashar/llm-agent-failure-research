@@ -1,0 +1,4 @@
+Method,ECE,Brier Score
+Uncalibrated,0.0303,0.0400
+Platt Scaling,0.0104,0.0387
+Isotonic Regression,0.0112,0.0390

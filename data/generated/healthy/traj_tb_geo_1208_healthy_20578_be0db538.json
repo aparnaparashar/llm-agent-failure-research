@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1208_healthy_20578_be0db538",
+  "task_id": "tb_geo_1208",
+  "task_description": "What is the weather in San Francisco and Sydney? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 20578,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in San Francisco is currently 21\u00b0C with a cloudy condition and humidity at 46%. The wind speed is 21 km/h. In Sydney, the temperature is 33\u00b0C with partly cloudy conditions and humidity at 58%. The wind speed is 13 km/h. The temperature difference between the two cities is 12\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 18.1705,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T22:42:28.216413",
+  "end_time": "2026-10-07T22:42:46.386900",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1208_healthy_20578_be0db538",
+      "step": 0,
+      "timestamp": 1791412966.386926,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in San Francisco and Sydney? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in San Francisco and Sydney? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1208_healthy_20578_be0db538",
+      "step": 1,
+      "timestamp": 1791412966.3869483,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "4b27f93c-f3d5-4e03-b930-0090839c46cf"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Sydney"
+          },
+          "id": "eed6bb10-281e-4c50-b693-d853d57d8426"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1208_healthy_20578_be0db538",
+      "step": 2,
+      "timestamp": 1791412966.3869684,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "4b27f93c-f3d5-4e03-b930-0090839c46cf"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1208_healthy_20578_be0db538",
+      "step": 3,
+      "timestamp": 1791412966.386987,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "eed6bb10-281e-4c50-b693-d853d57d8426"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1208_healthy_20578_be0db538",
+      "step": 4,
+      "timestamp": 1791412966.3869982,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in San Francisco is currently 21\u00b0C with a cloudy condition and humidity at 46%. The wind speed is 21 km/h. In Sydney, the temperature is 33\u00b0C with partly cloudy conditions and humidity at 58%. The wind speed is 13 km/h. The temperature difference between the two cities is 12\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791412953.2250063,
+      "node": "agent",
+      "llm_latency": 5.0059,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791412953.5331829,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.304,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791412953.8357146,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791412966.3846388,
+      "node": "agent",
+      "llm_latency": 12.5477,
+      "has_tool_calls": false,
+      "response_length": 290,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 673,
+      "output_tokens": 77
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3040122985839844,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3024282455444336,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

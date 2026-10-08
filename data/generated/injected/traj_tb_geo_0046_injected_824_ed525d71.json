@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0046_injected_824_ed525d71",
+  "task_id": "tb_geo_0046",
+  "task_description": "What is the weather in Berlin and Sydney? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 824,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Berlin is 26\u00b0C with a cloudy condition and humidity at 76%. In Sydney, the temperature is 33\u00b0C with partly cloudy conditions and humidity at 58%. The temperature difference is 7\u00b0C and the humidity difference is 18%.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 29.5569,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T13:40:42.678689",
+  "end_time": "2026-10-07T13:41:12.235624",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0046_injected_824_ed525d71",
+      "step": 0,
+      "timestamp": 1791380472.2356403,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Berlin and Sydney? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Berlin and Sydney? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0046_injected_824_ed525d71",
+      "step": 1,
+      "timestamp": 1791380472.2356558,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Berlin"
+          },
+          "id": "8b82ec01-ec4c-4d8f-a4de-289f4510b940"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Sydney"
+          },
+          "id": "bc082181-9040-49bc-be39-bb049fd25ef6"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_berlin - temperature_sydney; humidity_difference = humidity_berlin - humidity_sydney"
+          },
+          "id": "08961470-a2e3-477f-8a7a-2622509c2bc7"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0046_injected_824_ed525d71",
+      "step": 2,
+      "timestamp": 1791380472.2356715,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "tool_call_id": "8b82ec01-ec4c-4d8f-a4de-289f4510b940"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0046_injected_824_ed525d71",
+      "step": 3,
+      "timestamp": 1791380472.235686,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "bc082181-9040-49bc-be39-bb049fd25ef6"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0046_injected_824_ed525d71",
+      "step": 4,
+      "timestamp": 1791380472.235694,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_berlin - temperature_sydney; humidity_difference = humidity_berlin - humidity_sydney\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "08961470-a2e3-477f-8a7a-2622509c2bc7"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0046_injected_824_ed525d71",
+      "step": 5,
+      "timestamp": 1791380472.2357016,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Berlin is 26\u00b0C with a cloudy condition and humidity at 76%. In Sydney, the temperature is 33\u00b0C with partly cloudy conditions and humidity at 58%. The temperature difference is 7\u00b0C and the humidity difference is 18%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791380457.8132384,
+      "node": "agent",
+      "llm_latency": 15.1309,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 82
+    },
+    {
+      "step": 1,
+      "timestamp": 1791380458.1188643,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3037,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791380458.4211636,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3022,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791380458.5229716,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_berlin - temperature_sydney; humidity_difference = humidity_berlin - humidity_sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1017,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791380472.2341068,
+      "node": "agent",
+      "llm_latency": 13.7093,
+      "has_tool_calls": false,
+      "response_length": 230,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 763,
+      "output_tokens": 58
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "error": null,
+      "latency": 0.3037288188934326,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.30217695236206055,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_berlin - temperature_sydney; humidity_difference = humidity_berlin - humidity_sydney"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_berlin - temperature_sydney; humidity_difference = humidity_berlin - humidity_sydney\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10170626640319824,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1086_organic_18504_058177bc",
+  "task_id": "tb_geo_1086",
+  "task_description": "What is the weather in Sydney and Tokyo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 18504,
+  "execution_mode": "organic",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Tokyo, the weather is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference between the two cities is 2\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 27.697,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T21:54:41.888782",
+  "end_time": "2026-10-07T21:55:09.585800",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1086_organic_18504_058177bc",
+      "step": 0,
+      "timestamp": 1791410109.5858257,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Sydney and Tokyo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Sydney and Tokyo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1086_organic_18504_058177bc",
+      "step": 1,
+      "timestamp": 1791410109.585851,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Sydney"
+          },
+          "id": "bb4ab018-493a-4cc9-a264-67245b493232"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "d03de316-fcc4-43c7-bc1b-6d28e6a7aa5b"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1086_organic_18504_058177bc",
+      "step": 2,
+      "timestamp": 1791410109.5858705,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "bb4ab018-493a-4cc9-a264-67245b493232"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1086_organic_18504_058177bc",
+      "step": 3,
+      "timestamp": 1791410109.5858898,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "d03de316-fcc4-43c7-bc1b-6d28e6a7aa5b"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1086_organic_18504_058177bc",
+      "step": 4,
+      "timestamp": 1791410109.5859013,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Tokyo, the weather is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference between the two cities is 2\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791410100.0729575,
+      "node": "agent",
+      "llm_latency": 18.1611,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 94
+    },
+    {
+      "step": 1,
+      "timestamp": 1791410100.378313,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.303,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791410100.682002,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3036,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791410109.5834804,
+      "node": "agent",
+      "llm_latency": 8.9008,
+      "has_tool_calls": false,
+      "response_length": 224,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 672,
+      "output_tokens": 57
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3029797077178955,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.30362629890441895,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "cross_task_generalization": {
+    "fin": {
+      "n_train": 7307,
+      "n_test": 2429,
+      "positive_rate_test": 0.296,
+      "metrics": {
+        "roc_auc": 0.7004,
+        "pr_auc": 0.5396,
+        "f1": 0.3711,
+        "precision": 0.5891,
+        "recall": 0.2708,
+        "brier_score": 0.2089,
+        "ece": 0.1796
+      }
+    },
+    "geo": {
+      "n_train": 6952,
+      "n_test": 2784,
+      "positive_rate_test": 0.194,
+      "metrics": {
+        "roc_auc": 0.8415,
+        "pr_auc": 0.4248,
+        "f1": 0.3011,
+        "precision": 0.3818,
+        "recall": 0.2486,
+        "brier_score": 0.1523,
+        "ece": 0.1252
+      }
+    },
+    "info": {
+      "n_train": 7736,
+      "n_test": 2000,
+      "positive_rate_test": 0.028,
+      "metrics": {
+        "roc_auc": 0.7329,
+        "pr_auc": 0.1342,
+        "f1": 0.1116,
+        "precision": 0.0629,
+        "recall": 0.4909,
+        "brier_score": 0.1938,
+        "ece": 0.2415
+      }
+    },
+    "synth": {
+      "n_train": 7231,
+      "n_test": 2505,
+      "positive_rate_test": 0.256,
+      "metrics": {
+        "roc_auc": 0.7477,
+        "pr_auc": 0.4144,
+        "f1": 0.0546,
+        "precision": 1.0,
+        "recall": 0.0281,
+        "brier_score": 0.2283,
+        "ece": 0.2377
+      }
+    }
+  },
+  "held_out_failure_type_generalization": {
+    "tool_execution_error": {
+      "n_train": 7362,
+      "n_test": 6412,
+      "metrics": {
+        "roc_auc": 0.9724,
+        "pr_auc": 0.9257,
+        "f1": 0.8473,
+        "precision": 0.8637,
+        "recall": 0.8315,
+        "brier_score": 0.0441,
+        "ece": 0.0145
+      }
+    },
+    "parameter_error": {
+      "n_train": 7288,
+      "n_test": 6486,
+      "metrics": {
+        "roc_auc": 0.9705,
+        "pr_auc": 0.9189,
+        "f1": 0.8307,
+        "precision": 0.8658,
+        "recall": 0.7983,
+        "brier_score": 0.0461,
+        "ece": 0.0109
+      }
+    }
+  }
+}

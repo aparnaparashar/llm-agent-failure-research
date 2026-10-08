@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1005_healthy_17127_5e4010b4",
+  "task_id": "tb_geo_1005",
+  "task_description": "What is the weather in Seoul and Tokyo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 17127,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Seoul is 17\u00b0C with a condition of rain and humidity at 42%. The weather in Tokyo is 31\u00b0C with a condition of cloudy and humidity at 56%. The temperature difference between Seoul and Tokyo is 14\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.8288,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T21:28:01.789144",
+  "end_time": "2026-10-07T21:28:13.617930",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1005_healthy_17127_5e4010b4",
+      "step": 0,
+      "timestamp": 1791408493.6179411,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Seoul and Tokyo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Seoul and Tokyo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1005_healthy_17127_5e4010b4",
+      "step": 1,
+      "timestamp": 1791408493.617953,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seoul"
+          },
+          "id": "dd984bbe-bc8e-4639-95ee-15a22fb25968"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "2e85a623-a6d7-452d-8914-689808fe5316"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1005_healthy_17127_5e4010b4",
+      "step": 2,
+      "timestamp": 1791408493.6179645,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "tool_call_id": "dd984bbe-bc8e-4639-95ee-15a22fb25968"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1005_healthy_17127_5e4010b4",
+      "step": 3,
+      "timestamp": 1791408493.6179752,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "2e85a623-a6d7-452d-8914-689808fe5316"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1005_healthy_17127_5e4010b4",
+      "step": 4,
+      "timestamp": 1791408493.6179821,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Seoul is 17\u00b0C with a condition of rain and humidity at 42%. The weather in Tokyo is 31\u00b0C with a condition of cloudy and humidity at 56%. The temperature difference between Seoul and Tokyo is 14\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791408485.6900973,
+      "node": "agent",
+      "llm_latency": 3.8993,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408485.994978,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3035,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408486.296134,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3011,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408493.6166892,
+      "node": "agent",
+      "llm_latency": 7.3194,
+      "has_tool_calls": false,
+      "response_length": 211,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 671,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "error": null,
+      "latency": 0.3034842014312744,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.3010742664337158,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0366_injected_6264_79d24973",
+  "task_id": "tb_geo_0366",
+  "task_description": "What is the weather in Singapore and Toronto? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 6264,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Singapore is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The weather in Toronto is windy with a temperature of 29\u00b0C and humidity at 79%. The temperature difference between the two cities is 4\u00b0C.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 13.0468,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T16:45:35.171615",
+  "end_time": "2026-10-07T16:45:48.218452",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0366_injected_6264_79d24973",
+      "step": 0,
+      "timestamp": 1791391548.2184756,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Singapore and Toronto? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Singapore and Toronto? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0366_injected_6264_79d24973",
+      "step": 1,
+      "timestamp": 1791391548.218494,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Singapore"
+          },
+          "id": "1c81baed-6f38-4308-90d0-d7d08319e67c"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "9ead573d-2126-48fa-9e27-a4219e9146a7"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0366_injected_6264_79d24973",
+      "step": 2,
+      "timestamp": 1791391548.2185118,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "1c81baed-6f38-4308-90d0-d7d08319e67c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0366_injected_6264_79d24973",
+      "step": 3,
+      "timestamp": 1791391548.218529,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "tool_call_id": "9ead573d-2126-48fa-9e27-a4219e9146a7"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0366_injected_6264_79d24973",
+      "step": 4,
+      "timestamp": 1791391548.2185395,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Singapore is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The weather in Toronto is windy with a temperature of 29\u00b0C and humidity at 79%. The temperature difference between the two cities is 4\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791391538.9675856,
+      "node": "agent",
+      "llm_latency": 3.794,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391539.2722692,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3022,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391539.575345,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.303,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391548.2164223,
+      "node": "agent",
+      "llm_latency": 8.6402,
+      "has_tool_calls": false,
+      "response_length": 227,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 668,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3022425174713135,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "error": null,
+      "latency": 0.30299997329711914,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

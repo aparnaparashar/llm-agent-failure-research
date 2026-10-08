@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0966_healthy_16464_5563961b",
+  "task_id": "tb_geo_0966",
+  "task_description": "What is the weather in Miami and Cairo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 16464,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In Cairo, the weather is cloudy with a temperature of 16\u00b0C and humidity at 66%. The temperature difference between the two cities is 1\u00b0C, and the wind speed in Miami is 20 km/h, while in Cairo, it is 21 km/h.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 15.7864,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T21:14:16.875192",
+  "end_time": "2026-10-07T21:14:32.661569",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0966_healthy_16464_5563961b",
+      "step": 0,
+      "timestamp": 1791407672.6616292,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Miami and Cairo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Miami and Cairo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0966_healthy_16464_5563961b",
+      "step": 1,
+      "timestamp": 1791407672.6616514,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "b1ac85a8-6172-4493-b794-06beb5f74b64"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "1f904164-6084-494a-a659-70098bfb048b"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0966_healthy_16464_5563961b",
+      "step": 2,
+      "timestamp": 1791407672.6616716,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "b1ac85a8-6172-4493-b794-06beb5f74b64"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0966_healthy_16464_5563961b",
+      "step": 3,
+      "timestamp": 1791407672.6616914,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "1f904164-6084-494a-a659-70098bfb048b"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0966_healthy_16464_5563961b",
+      "step": 4,
+      "timestamp": 1791407672.6617024,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In Cairo, the weather is cloudy with a temperature of 16\u00b0C and humidity at 66%. The temperature difference between the two cities is 1\u00b0C, and the wind speed in Miami is 20 km/h, while in Cairo, it is 21 km/h.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791407661.3488317,
+      "node": "agent",
+      "llm_latency": 4.4719,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791407661.6560874,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3047,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791407661.9594405,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3033,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791407672.6592267,
+      "node": "agent",
+      "llm_latency": 10.699,
+      "has_tool_calls": false,
+      "response_length": 286,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 81
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3046727180480957,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3032851219177246,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

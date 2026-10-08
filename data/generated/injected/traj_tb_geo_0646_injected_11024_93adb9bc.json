@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0646_injected_11024_93adb9bc",
+  "task_id": "tb_geo_0646",
+  "task_description": "What is the weather in Chicago and Tokyo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 11024,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Chicago is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Tokyo, the weather is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference is 2\u00b0C and the humidity difference is 2% between the two cities.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 15.3802,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T18:40:14.982770",
+  "end_time": "2026-10-07T18:40:30.362961",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0646_injected_11024_93adb9bc",
+      "step": 0,
+      "timestamp": 1791398430.362987,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Chicago and Tokyo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Chicago and Tokyo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0646_injected_11024_93adb9bc",
+      "step": 1,
+      "timestamp": 1791398430.363,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Chicago"
+          },
+          "id": "5a0bbdcc-cb7c-4cb9-bcae-dc7e9c047c7e"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "86465e9d-295e-4f59-ae2f-781c062ba9d1"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = chicago_temperature - tokyo_temperature; humidity_difference = chicago_humidity - tokyo_humidity"
+          },
+          "id": "90c3b9fb-cf4e-4d35-ad0c-51339dd67996"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0646_injected_11024_93adb9bc",
+      "step": 2,
+      "timestamp": 1791398430.3630116,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Chicago\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "5a0bbdcc-cb7c-4cb9-bcae-dc7e9c047c7e"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0646_injected_11024_93adb9bc",
+      "step": 3,
+      "timestamp": 1791398430.3630216,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "86465e9d-295e-4f59-ae2f-781c062ba9d1"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0646_injected_11024_93adb9bc",
+      "step": 4,
+      "timestamp": 1791398430.363027,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = chicago_temperature - tokyo_temperature; humidity_difference = chicago_humidity - tokyo_humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "90c3b9fb-cf4e-4d35-ad0c-51339dd67996"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0646_injected_11024_93adb9bc",
+      "step": 5,
+      "timestamp": 1791398430.3630314,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Chicago is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Tokyo, the weather is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference is 2\u00b0C and the humidity difference is 2% between the two cities.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791398421.161897,
+      "node": "agent",
+      "llm_latency": 6.176,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 82
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398421.466012,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Chicago"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3029,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398421.7676282,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398421.8692186,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = chicago_temperature - tokyo_temperature; humidity_difference = chicago_humidity - tokyo_humidity"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398430.3555193,
+      "node": "agent",
+      "llm_latency": 8.4852,
+      "has_tool_calls": false,
+      "response_length": 259,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 767,
+      "output_tokens": 65
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Chicago"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Chicago\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.30286669731140137,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.3015141487121582,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = chicago_temperature - tokyo_temperature; humidity_difference = chicago_humidity - tokyo_humidity"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = chicago_temperature - tokyo_temperature; humidity_difference = chicago_humidity - tokyo_humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.1014862060546875,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

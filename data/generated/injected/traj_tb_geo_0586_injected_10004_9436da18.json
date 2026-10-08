@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0586_injected_10004_9436da18",
+  "task_id": "tb_geo_0586",
+  "task_description": "What is the weather in Seattle and Cairo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 10004,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Seattle is currently windy with a temperature of 19\u00b0C and humidity at 44%. In Cairo, the temperature is 16\u00b0C with a cloudy condition and humidity at 66%. The temperature difference between the two cities is 3\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 12.6242,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T18:18:13.443562",
+  "end_time": "2026-10-07T18:18:26.067852",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0586_injected_10004_9436da18",
+      "step": 0,
+      "timestamp": 1791397106.067881,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Seattle and Cairo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Seattle and Cairo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0586_injected_10004_9436da18",
+      "step": 1,
+      "timestamp": 1791397106.0679033,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seattle"
+          },
+          "id": "9049f643-8038-4cc8-ae26-5112e6cd7a2c"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "71f7d69e-fd2f-4380-b2b3-47731e9d2595"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0586_injected_10004_9436da18",
+      "step": 2,
+      "timestamp": 1791397106.0679247,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "tool_call_id": "9049f643-8038-4cc8-ae26-5112e6cd7a2c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0586_injected_10004_9436da18",
+      "step": 3,
+      "timestamp": 1791397106.0679448,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "71f7d69e-fd2f-4380-b2b3-47731e9d2595"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0586_injected_10004_9436da18",
+      "step": 4,
+      "timestamp": 1791397106.067956,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Seattle is currently windy with a temperature of 19\u00b0C and humidity at 44%. In Cairo, the temperature is 16\u00b0C with a cloudy condition and humidity at 66%. The temperature difference between the two cities is 3\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791397096.909358,
+      "node": "agent",
+      "llm_latency": 3.462,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791397097.2142527,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3032,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791397097.5164225,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.302,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791397106.0650988,
+      "node": "agent",
+      "llm_latency": 8.5468,
+      "has_tool_calls": false,
+      "response_length": 226,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 668,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "error": null,
+      "latency": 0.30321526527404785,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3020193576812744,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

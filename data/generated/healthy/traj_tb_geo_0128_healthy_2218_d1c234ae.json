@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0128_healthy_2218_d1c234ae",
+  "task_id": "tb_geo_0128",
+  "task_description": "What is the weather in Singapore and Madrid? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 2218,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Singapore is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The weather in Madrid is sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference between the two cities is 18\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 17.0394,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T14:08:42.351237",
+  "end_time": "2026-10-07T14:08:59.390646",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0128_healthy_2218_d1c234ae",
+      "step": 0,
+      "timestamp": 1791382139.390659,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Singapore and Madrid? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Singapore and Madrid? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0128_healthy_2218_d1c234ae",
+      "step": 1,
+      "timestamp": 1791382139.39067,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Singapore"
+          },
+          "id": "a4db3ce2-19df-47a3-b1ab-37e10d7081e6"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Madrid"
+          },
+          "id": "1e5de57b-7e6b-48ea-8852-4b6b078f0353"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0128_healthy_2218_d1c234ae",
+      "step": 2,
+      "timestamp": 1791382139.3906825,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "a4db3ce2-19df-47a3-b1ab-37e10d7081e6"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0128_healthy_2218_d1c234ae",
+      "step": 3,
+      "timestamp": 1791382139.3906949,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "tool_call_id": "1e5de57b-7e6b-48ea-8852-4b6b078f0353"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0128_healthy_2218_d1c234ae",
+      "step": 4,
+      "timestamp": 1791382139.390702,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Singapore is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The weather in Madrid is sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference between the two cities is 18\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791382127.9255393,
+      "node": "agent",
+      "llm_latency": 5.5728,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382128.231789,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3036,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382128.5349681,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3031,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382139.3893328,
+      "node": "agent",
+      "llm_latency": 10.8532,
+      "has_tool_calls": false,
+      "response_length": 227,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 670,
+      "output_tokens": 57
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3036210536956787,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "error": null,
+      "latency": 0.3030893802642822,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

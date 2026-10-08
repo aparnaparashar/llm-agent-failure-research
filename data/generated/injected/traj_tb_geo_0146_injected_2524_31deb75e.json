@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0146_injected_2524_31deb75e",
+  "task_id": "tb_geo_0146",
+  "task_description": "What is the weather in Seattle and Tokyo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 2524,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Seattle is 19\u00b0C with a wind speed of 9 km/h and a condition of windy. The humidity is 44%. In Tokyo, the temperature is 31\u00b0C with a wind speed of 31 km/h and a condition of cloudy. The humidity is 56%. The temperature difference is 2\u00b0C and the humidity difference is 12%.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 2,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 28.1284,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T14:13:40.478130",
+  "end_time": "2026-10-07T14:14:08.606582",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0146_injected_2524_31deb75e",
+      "step": 0,
+      "timestamp": 1791382448.6066036,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Seattle and Tokyo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Seattle and Tokyo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0146_injected_2524_31deb75e",
+      "step": 1,
+      "timestamp": 1791382448.6066232,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seattle"
+          },
+          "id": "8ef3169e-4adb-4302-9cda-f4aad8c94ca8"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "4ef876d6-522d-4eae-a92a-aca943f1778d"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_seattle - temperature_tokyo; humidity_difference = humidity_seattle - humidity_tokyo"
+          },
+          "id": "066d09c7-2eb0-40b3-b7b7-8c1925a42ffc"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0146_injected_2524_31deb75e",
+      "step": 2,
+      "timestamp": 1791382448.606645,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "tool_call_id": "8ef3169e-4adb-4302-9cda-f4aad8c94ca8"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0146_injected_2524_31deb75e",
+      "step": 3,
+      "timestamp": 1791382448.6066637,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "4ef876d6-522d-4eae-a92a-aca943f1778d"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0146_injected_2524_31deb75e",
+      "step": 4,
+      "timestamp": 1791382448.6066747,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_seattle - temperature_tokyo; humidity_difference = humidity_seattle - humidity_tokyo\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "066d09c7-2eb0-40b3-b7b7-8c1925a42ffc"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0146_injected_2524_31deb75e",
+      "step": 5,
+      "timestamp": 1791382448.6066847,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Seattle is 19\u00b0C with a wind speed of 9 km/h and a condition of windy. The humidity is 44%. In Tokyo, the temperature is 31\u00b0C with a wind speed of 31 km/h and a condition of cloudy. The humidity is 56%. The temperature difference is 2\u00b0C and the humidity difference is 12%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791382432.1718707,
+      "node": "agent",
+      "llm_latency": 11.6915,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 82
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382432.4782958,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3039,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382432.781591,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.303,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382432.886379,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_seattle - temperature_tokyo; humidity_difference = humidity_seattle - humidity_tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1046,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382448.604448,
+      "node": "agent",
+      "llm_latency": 15.7161,
+      "has_tool_calls": false,
+      "response_length": 286,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 761,
+      "output_tokens": 81
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "error": null,
+      "latency": 0.3039422035217285,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.30304718017578125,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_seattle - temperature_tokyo; humidity_difference = humidity_seattle - humidity_tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_seattle - temperature_tokyo; humidity_difference = humidity_seattle - humidity_tokyo\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10462689399719238,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

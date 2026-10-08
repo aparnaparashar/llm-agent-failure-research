@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1907_injected_32461_6589c10b",
+  "task_id": "tb_geo_1907",
+  "task_description": "What is the weather in Miami and Seoul? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 32461,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In Seoul, it's rainy with a temperature of 17\u00b0C and humidity at 42%. The temperature difference is 2\u00b0C and the humidity difference is 23%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 2,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 20.8508,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T03:16:15.088528",
+  "end_time": "2026-10-08T03:16:35.939314",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1907_injected_32461_6589c10b",
+      "step": 0,
+      "timestamp": 1791429395.9393425,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Miami and Seoul? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Miami and Seoul? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1907_injected_32461_6589c10b",
+      "step": 1,
+      "timestamp": 1791429395.9393685,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "7df05266-bf9e-4a1b-b0e6-b38b9d92a7fd"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seoul"
+          },
+          "id": "e6332b26-f585-4cbf-8db8-03d023dd82ab"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_seoul - temperature_miami; humidity_difference = humidity_seoul - humidity_miami"
+          },
+          "id": "3586e94e-dc2a-4ea8-8298-169b6f5a9dac"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1907_injected_32461_6589c10b",
+      "step": 2,
+      "timestamp": 1791429395.9393942,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "7df05266-bf9e-4a1b-b0e6-b38b9d92a7fd"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1907_injected_32461_6589c10b",
+      "step": 3,
+      "timestamp": 1791429395.9394147,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "tool_call_id": "e6332b26-f585-4cbf-8db8-03d023dd82ab"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1907_injected_32461_6589c10b",
+      "step": 4,
+      "timestamp": 1791429395.9394271,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_seoul - temperature_miami; humidity_difference = humidity_seoul - humidity_miami\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "3586e94e-dc2a-4ea8-8298-169b6f5a9dac"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1907_injected_32461_6589c10b",
+      "step": 5,
+      "timestamp": 1791429395.939438,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In Seoul, it's rainy with a temperature of 17\u00b0C and humidity at 42%. The temperature difference is 2\u00b0C and the humidity difference is 23%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791429383.9366314,
+      "node": "agent",
+      "llm_latency": 8.8465,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 80
+    },
+    {
+      "step": 1,
+      "timestamp": 1791429384.2411325,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3022,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791429384.542527,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3013,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791429384.644021,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_seoul - temperature_miami; humidity_difference = humidity_seoul - humidity_miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791429395.9368916,
+      "node": "agent",
+      "llm_latency": 11.2919,
+      "has_tool_calls": false,
+      "response_length": 216,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 762,
+      "output_tokens": 59
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3021848201751709,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "error": null,
+      "latency": 0.30132198333740234,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_seoul - temperature_miami; humidity_difference = humidity_seoul - humidity_miami"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_seoul - temperature_miami; humidity_difference = humidity_seoul - humidity_miami\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10141944885253906,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

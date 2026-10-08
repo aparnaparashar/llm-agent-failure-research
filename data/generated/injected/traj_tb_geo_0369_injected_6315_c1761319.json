@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0369_injected_6315_c1761319",
+  "task_id": "tb_geo_0369",
+  "task_description": "What is the weather in Madrid and Cairo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 6315,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Madrid is sunny with a temperature of 15\u00b0C and humidity at 65%. In Cairo, the weather is cloudy with a temperature of 16\u00b0C and humidity at 66%. The temperature difference between the two cities is 1\u00b0C.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 2,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.7775,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T16:46:19.485423",
+  "end_time": "2026-10-07T16:46:30.262973",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0369_injected_6315_c1761319",
+      "step": 0,
+      "timestamp": 1791391590.2629852,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Madrid and Cairo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Madrid and Cairo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0369_injected_6315_c1761319",
+      "step": 1,
+      "timestamp": 1791391590.2629957,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Madrid"
+          },
+          "id": "0300d5b8-ba21-4939-be90-e38bda3f8fd7"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "4c2ca406-0d84-445a-8fc3-1bac208468c4"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0369_injected_6315_c1761319",
+      "step": 2,
+      "timestamp": 1791391590.2630062,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "tool_call_id": "0300d5b8-ba21-4939-be90-e38bda3f8fd7"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0369_injected_6315_c1761319",
+      "step": 3,
+      "timestamp": 1791391590.263016,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "4c2ca406-0d84-445a-8fc3-1bac208468c4"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0369_injected_6315_c1761319",
+      "step": 4,
+      "timestamp": 1791391590.2630217,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Madrid is sunny with a temperature of 15\u00b0C and humidity at 65%. In Cairo, the weather is cloudy with a temperature of 16\u00b0C and humidity at 66%. The temperature difference between the two cities is 1\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791391583.3638372,
+      "node": "agent",
+      "llm_latency": 3.8768,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391583.6677804,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3027,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391583.9711597,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3033,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391590.2618625,
+      "node": "agent",
+      "llm_latency": 6.2888,
+      "has_tool_calls": false,
+      "response_length": 216,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 671,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "error": null,
+      "latency": 0.30266451835632324,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.30327486991882324,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

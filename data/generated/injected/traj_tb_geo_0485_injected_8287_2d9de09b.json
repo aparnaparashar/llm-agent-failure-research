@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0485_injected_8287_2d9de09b",
+  "task_id": "tb_geo_0485",
+  "task_description": "What is the weather in Cairo and Paris? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 8287,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Cairo is 16\u00b0C with a cloudy condition and humidity at 66%. In Paris, the temperature is 33\u00b0C with partly cloudy conditions and humidity at 83%. The temperature difference is 17\u00b0C and the humidity difference is 17%.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 14.7539,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T17:16:13.589292",
+  "end_time": "2026-10-07T17:16:28.343175",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0485_injected_8287_2d9de09b",
+      "step": 0,
+      "timestamp": 1791393388.3431854,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Cairo and Paris? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Cairo and Paris? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0485_injected_8287_2d9de09b",
+      "step": 1,
+      "timestamp": 1791393388.343194,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "7e15875f-65db-4fef-b3f9-882758ed3a01"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "42709826-32c4-4aba-b1b4-4cce71ce1a28"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_cairo - temp_paris; humidity_difference = humidity_cairo - humidity_paris"
+          },
+          "id": "9abdba68-e9a2-4a4e-82f3-12a23ce449bd"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0485_injected_8287_2d9de09b",
+      "step": 2,
+      "timestamp": 1791393388.3432035,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "7e15875f-65db-4fef-b3f9-882758ed3a01"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0485_injected_8287_2d9de09b",
+      "step": 3,
+      "timestamp": 1791393388.3432128,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "42709826-32c4-4aba-b1b4-4cce71ce1a28"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0485_injected_8287_2d9de09b",
+      "step": 4,
+      "timestamp": 1791393388.3432183,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_cairo - temp_paris; humidity_difference = humidity_cairo - humidity_paris\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "9abdba68-e9a2-4a4e-82f3-12a23ce449bd"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0485_injected_8287_2d9de09b",
+      "step": 5,
+      "timestamp": 1791393388.3432236,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Cairo is 16\u00b0C with a cloudy condition and humidity at 66%. In Paris, the temperature is 33\u00b0C with partly cloudy conditions and humidity at 83%. The temperature difference is 17\u00b0C and the humidity difference is 17%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791393379.765455,
+      "node": "agent",
+      "llm_latency": 6.1721,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 80
+    },
+    {
+      "step": 1,
+      "timestamp": 1791393380.0681171,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791393380.3705275,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3023,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791393380.4726682,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_cairo - temp_paris; humidity_difference = humidity_cairo - humidity_paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.102,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791393388.3421607,
+      "node": "agent",
+      "llm_latency": 7.8683,
+      "has_tool_calls": false,
+      "response_length": 229,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 762,
+      "output_tokens": 59
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3014523983001709,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.3022940158843994,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_cairo - temp_paris; humidity_difference = humidity_cairo - humidity_paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_cairo - temp_paris; humidity_difference = humidity_cairo - humidity_paris\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10204219818115234,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

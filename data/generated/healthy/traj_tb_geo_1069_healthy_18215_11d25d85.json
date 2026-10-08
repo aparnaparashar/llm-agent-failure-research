@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1069_healthy_18215_11d25d85",
+  "task_id": "tb_geo_1069",
+  "task_description": "What is the weather in Seattle and Seoul? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 18215,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Seattle is 19\u00b0C with a wind speed of 9 km/h and a condition of \"windy\". The humidity is 44%.\n\nThe weather in Seoul is 17\u00b0C with a wind speed of 17 km/h and a condition of \"rainy\". The humidity is 42%.\n\nThe temperature difference between Seattle and Seoul is 2\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 18.0935,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T21:50:52.483021",
+  "end_time": "2026-10-07T21:51:10.576554",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1069_healthy_18215_11d25d85",
+      "step": 0,
+      "timestamp": 1791409870.5765972,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Seattle and Seoul? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Seattle and Seoul? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1069_healthy_18215_11d25d85",
+      "step": 1,
+      "timestamp": 1791409870.5766327,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seattle"
+          },
+          "id": "10249a10-29fe-431f-92f8-0dc88a78bbce"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seoul"
+          },
+          "id": "fa6628a7-b1b6-4e2e-95c3-a68fdf87267d"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1069_healthy_18215_11d25d85",
+      "step": 2,
+      "timestamp": 1791409870.5766587,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "tool_call_id": "10249a10-29fe-431f-92f8-0dc88a78bbce"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1069_healthy_18215_11d25d85",
+      "step": 3,
+      "timestamp": 1791409870.576679,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "tool_call_id": "fa6628a7-b1b6-4e2e-95c3-a68fdf87267d"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1069_healthy_18215_11d25d85",
+      "step": 4,
+      "timestamp": 1791409870.5766904,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Seattle is 19\u00b0C with a wind speed of 9 km/h and a condition of \"windy\". The humidity is 44%.\n\nThe weather in Seoul is 17\u00b0C with a wind speed of 17 km/h and a condition of \"rainy\". The humidity is 42%.\n\nThe temperature difference between Seattle and Seoul is 2\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791409858.564938,
+      "node": "agent",
+      "llm_latency": 6.0798,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791409858.8737042,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3054,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791409859.1760654,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3023,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791409870.5740597,
+      "node": "agent",
+      "llm_latency": 11.3968,
+      "has_tool_calls": false,
+      "response_length": 277,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 668,
+      "output_tokens": 80
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "error": null,
+      "latency": 0.30542683601379395,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "error": null,
+      "latency": 0.30226683616638184,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

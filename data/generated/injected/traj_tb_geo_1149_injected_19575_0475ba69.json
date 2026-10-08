@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1149_injected_19575_0475ba69",
+  "task_id": "tb_geo_1149",
+  "task_description": "What is the weather in Stockholm and Toronto? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 19575,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Stockholm is sunny with a temperature of 20\u00b0C and humidity at 70%. In Toronto, the weather is windy with a temperature of 29\u00b0C and humidity at 79%. The temperature difference is 9\u00b0C and the humidity difference is 9%.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 24.473,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T22:19:17.457972",
+  "end_time": "2026-10-07T22:19:41.930969",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1149_injected_19575_0475ba69",
+      "step": 0,
+      "timestamp": 1791411581.9309976,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Stockholm and Toronto? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Stockholm and Toronto? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1149_injected_19575_0475ba69",
+      "step": 1,
+      "timestamp": 1791411581.9310215,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Stockholm"
+          },
+          "id": "bc940ce5-7b1a-4fc7-9ecc-5bba774f8502"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "5e0b2872-0940-4fad-b09f-84debdb0fcac"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = (temperature_in_stockholm - temperature_in_tooronto); humidity_difference = (humidity_in_stockholm - humidity_in_tooronto)"
+          },
+          "id": "daadbd92-a6c8-4348-8740-5398961fe2fd"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1149_injected_19575_0475ba69",
+      "step": 2,
+      "timestamp": 1791411581.9310448,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Stockholm\", \"temperature_celsius\": 20, \"condition\": \"sunny\", \"humidity\": 70, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "bc940ce5-7b1a-4fc7-9ecc-5bba774f8502"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1149_injected_19575_0475ba69",
+      "step": 3,
+      "timestamp": 1791411581.931065,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "tool_call_id": "5e0b2872-0940-4fad-b09f-84debdb0fcac"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1149_injected_19575_0475ba69",
+      "step": 4,
+      "timestamp": 1791411581.931077,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = (temperature_in_stockholm - temperature_in_tooronto); humidity_difference = (humidity_in_stockholm - humidity_in_tooronto)\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "daadbd92-a6c8-4348-8740-5398961fe2fd"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1149_injected_19575_0475ba69",
+      "step": 5,
+      "timestamp": 1791411581.9310963,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Stockholm is sunny with a temperature of 20\u00b0C and humidity at 70%. In Toronto, the weather is windy with a temperature of 29\u00b0C and humidity at 79%. The temperature difference is 9\u00b0C and the humidity difference is 9%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791411568.5373542,
+      "node": "agent",
+      "llm_latency": 11.0775,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 89
+    },
+    {
+      "step": 1,
+      "timestamp": 1791411568.842284,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Stockholm"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3023,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791411569.1441815,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3018,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791411569.2459583,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = (temperature_in_stockholm - temperature_in_tooronto); humidity_difference = (humidity_in_stockholm - humidity_in_tooronto)"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791411581.9282572,
+      "node": "agent",
+      "llm_latency": 12.6805,
+      "has_tool_calls": false,
+      "response_length": 231,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 779,
+      "output_tokens": 59
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Stockholm"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Stockholm\", \"temperature_celsius\": 20, \"condition\": \"sunny\", \"humidity\": 70, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.3023054599761963,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "error": null,
+      "latency": 0.3018040657043457,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = (temperature_in_stockholm - temperature_in_tooronto); humidity_difference = (humidity_in_stockholm - humidity_in_tooronto)"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = (temperature_in_stockholm - temperature_in_tooronto); humidity_difference = (humidity_in_stockholm - humidity_in_tooronto)\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10164642333984375,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

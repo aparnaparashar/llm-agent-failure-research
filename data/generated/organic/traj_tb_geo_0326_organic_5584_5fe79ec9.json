@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0326_organic_5584_5fe79ec9",
+  "task_id": "tb_geo_0326",
+  "task_description": "What is the weather in Miami and San Francisco? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 5584,
+  "execution_mode": "organic",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In San Francisco, the weather is cloudy with a temperature of 21\u00b0C and humidity at 46%. The temperature difference is 6\u00b0C and the humidity difference is 19%.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 22.5388,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T16:16:07.158481",
+  "end_time": "2026-10-07T16:16:29.697285",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0326_organic_5584_5fe79ec9",
+      "step": 0,
+      "timestamp": 1791389789.6973066,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Miami and San Francisco? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Miami and San Francisco? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0326_organic_5584_5fe79ec9",
+      "step": 1,
+      "timestamp": 1791389789.6973257,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "cfbdf0ed-75eb-4cf8-b453-e1dae080b32a"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "9845f263-0428-45dd-8faa-d8881b1f453f"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_miami - temperature_san_francisco; humidity_difference = humidity_miami - humidity_san_francisco"
+          },
+          "id": "a9558ae5-16d5-4ecd-b73f-62a727655487"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0326_organic_5584_5fe79ec9",
+      "step": 2,
+      "timestamp": 1791389789.6973462,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "cfbdf0ed-75eb-4cf8-b453-e1dae080b32a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0326_organic_5584_5fe79ec9",
+      "step": 3,
+      "timestamp": 1791389789.6973646,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "9845f263-0428-45dd-8faa-d8881b1f453f"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0326_organic_5584_5fe79ec9",
+      "step": 4,
+      "timestamp": 1791389789.6973753,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_miami - temperature_san_francisco; humidity_difference = humidity_miami - humidity_san_francisco\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "a9558ae5-16d5-4ecd-b73f-62a727655487"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0326_organic_5584_5fe79ec9",
+      "step": 5,
+      "timestamp": 1791389789.6973855,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In San Francisco, the weather is cloudy with a temperature of 21\u00b0C and humidity at 46%. The temperature difference is 6\u00b0C and the humidity difference is 19%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791389776.753896,
+      "node": "agent",
+      "llm_latency": 9.5938,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 86
+    },
+    {
+      "step": 1,
+      "timestamp": 1791389777.0579913,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.302,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791389777.362293,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3042,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791389777.4641268,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_miami - temperature_san_francisco; humidity_difference = humidity_miami - humidity_san_francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1018,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791389789.6952167,
+      "node": "agent",
+      "llm_latency": 12.2302,
+      "has_tool_calls": false,
+      "response_length": 235,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 771,
+      "output_tokens": 61
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3019595146179199,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.30422067642211914,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_miami - temperature_san_francisco; humidity_difference = humidity_miami - humidity_san_francisco"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_miami - temperature_san_francisco; humidity_difference = humidity_miami - humidity_san_francisco\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.1017608642578125,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

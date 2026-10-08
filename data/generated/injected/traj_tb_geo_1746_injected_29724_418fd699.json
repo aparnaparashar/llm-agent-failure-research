@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1746_injected_29724_418fd699",
+  "task_id": "tb_geo_1746",
+  "task_description": "What is the weather in Boston and Madrid? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 29724,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "I encountered an error while trying to get the weather data for Boston and Madrid. It seems there was an issue with the tool call. Let me try again with a different approach. I will first get the weather data for Boston and then calculate the temperature difference and humidity difference for both cities.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 13.0225,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T02:21:29.613029",
+  "end_time": "2026-10-08T02:21:42.635496",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1746_injected_29724_418fd699",
+      "step": 0,
+      "timestamp": 1791426102.6355078,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Boston and Madrid? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Boston and Madrid? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1746_injected_29724_418fd699",
+      "step": 1,
+      "timestamp": 1791426102.6355166,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Boston"
+          },
+          "id": "2a2f4bc5-cf9e-4152-8097-ff618f2fbb22"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Madrid"
+          },
+          "id": "2ab99270-eec0-431f-91ab-ab2c831387de"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_boston - temp_madrid; humidity_difference = humidity_boston - humidity_madrid"
+          },
+          "id": "79ead1f5-90ce-45b8-b847-7557a3cc7b93"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1746_injected_29724_418fd699",
+      "step": 2,
+      "timestamp": 1791426102.6355255,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "2a2f4bc5-cf9e-4152-8097-ff618f2fbb22"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1746_injected_29724_418fd699",
+      "step": 3,
+      "timestamp": 1791426102.6355338,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "2ab99270-eec0-431f-91ab-ab2c831387de"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1746_injected_29724_418fd699",
+      "step": 4,
+      "timestamp": 1791426102.635539,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "79ead1f5-90ce-45b8-b847-7557a3cc7b93"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1746_injected_29724_418fd699",
+      "step": 5,
+      "timestamp": 1791426102.635543,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I encountered an error while trying to get the weather data for Boston and Madrid. It seems there was an issue with the tool call. Let me try again with a different approach. I will first get the weather data for Boston and then calculate the temperature difference and humidity difference for both cities.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791426095.5797217,
+      "node": "agent",
+      "llm_latency": 5.9636,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 82
+    },
+    {
+      "step": 1,
+      "timestamp": 1791426095.8821096,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Boston"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3011,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791426096.1836753,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3013,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791426096.2852678,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_boston - temp_madrid; humidity_difference = humidity_boston - humidity_madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1014,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791426102.634496,
+      "node": "agent",
+      "llm_latency": 6.3486,
+      "has_tool_calls": false,
+      "response_length": 306,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 702,
+      "output_tokens": 59
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Boston"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.3010742664337158,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.3012526035308838,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_boston - temp_madrid; humidity_difference = humidity_boston - humidity_madrid"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.10140228271484375,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

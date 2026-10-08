@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0567_injected_9681_f84aa168",
+  "task_id": "tb_geo_0567",
+  "task_description": "What is the weather in Paris and San Francisco? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 9681,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In San Francisco, the temperature is 21\u00b0C and the humidity is 46%. The temperature difference between the two cities is 12\u00b0C, and the humidity difference is 38%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 15.3294,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T18:13:34.566819",
+  "end_time": "2026-10-07T18:13:49.896202",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0567_injected_9681_f84aa168",
+      "step": 0,
+      "timestamp": 1791396829.8962169,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Paris and San Francisco? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Paris and San Francisco? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0567_injected_9681_f84aa168",
+      "step": 1,
+      "timestamp": 1791396829.8962286,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "01562a3f-3dd8-4931-a47f-c4055ba55503"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "f3953e34-c781-4cef-ae4e-bc3203c9326b"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = ParisTemperature - SanFranciscoTemperature; humidity = SanFranciscoHumidity - ParisHumidity"
+          },
+          "id": "12db0f07-6118-411a-a9b7-2071a1371985"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0567_injected_9681_f84aa168",
+      "step": 2,
+      "timestamp": 1791396829.8962414,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "01562a3f-3dd8-4931-a47f-c4055ba55503"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0567_injected_9681_f84aa168",
+      "step": 3,
+      "timestamp": 1791396829.8962526,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "f3953e34-c781-4cef-ae4e-bc3203c9326b"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0567_injected_9681_f84aa168",
+      "step": 4,
+      "timestamp": 1791396829.8962595,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = ParisTemperature - SanFranciscoTemperature; humidity = SanFranciscoHumidity - ParisHumidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "12db0f07-6118-411a-a9b7-2071a1371985"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0567_injected_9681_f84aa168",
+      "step": 5,
+      "timestamp": 1791396829.8962655,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In San Francisco, the temperature is 21\u00b0C and the humidity is 46%. The temperature difference between the two cities is 12\u00b0C, and the humidity difference is 38%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791396820.7201724,
+      "node": "agent",
+      "llm_latency": 6.1514,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 81
+    },
+    {
+      "step": 1,
+      "timestamp": 1791396821.0248427,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3031,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791396821.326991,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3021,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791396821.4304645,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = ParisTemperature - SanFranciscoTemperature; humidity = SanFranciscoHumidity - ParisHumidity"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1034,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791396829.8948133,
+      "node": "agent",
+      "llm_latency": 8.4634,
+      "has_tool_calls": false,
+      "response_length": 247,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 765,
+      "output_tokens": 64
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.3031196594238281,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.30205512046813965,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = ParisTemperature - SanFranciscoTemperature; humidity = SanFranciscoHumidity - ParisHumidity"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = ParisTemperature - SanFranciscoTemperature; humidity = SanFranciscoHumidity - ParisHumidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10338521003723145,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

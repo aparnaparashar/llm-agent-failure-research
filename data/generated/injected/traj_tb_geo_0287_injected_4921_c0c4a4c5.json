@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0287_injected_4921_c0c4a4c5",
+  "task_id": "tb_geo_0287",
+  "task_description": "What is the weather in Berlin and Chicago? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 4921,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "I encountered an error while trying to get the weather data for Berlin and Chicago. It seems there might be an issue with the tool I'm using. Could you please try again or provide the city names directly?",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 22.0692,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T15:48:31.049343",
+  "end_time": "2026-10-07T15:48:53.118572",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0287_injected_4921_c0c4a4c5",
+      "step": 0,
+      "timestamp": 1791388133.1185997,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Berlin and Chicago? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Berlin and Chicago? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0287_injected_4921_c0c4a4c5",
+      "step": 1,
+      "timestamp": 1791388133.1186242,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Berlin"
+          },
+          "id": "0435ed54-51f9-4cea-8d25-5daefcea7f4a"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Chicago"
+          },
+          "id": "247014c7-19b0-4003-a55d-241d032fb310"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_in_berlin - temperature_in_chicago; humidity = calculate_humidity(temperature_in_berlin, temperature_in_chicago)"
+          },
+          "id": "7bc2bfb2-88cb-46b6-a846-a173ea916cc1"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0287_injected_4921_c0c4a4c5",
+      "step": 2,
+      "timestamp": 1791388133.1186483,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "0435ed54-51f9-4cea-8d25-5daefcea7f4a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0287_injected_4921_c0c4a4c5",
+      "step": 3,
+      "timestamp": 1791388133.1186678,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "247014c7-19b0-4003-a55d-241d032fb310"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0287_injected_4921_c0c4a4c5",
+      "step": 4,
+      "timestamp": 1791388133.1186786,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "7bc2bfb2-88cb-46b6-a846-a173ea916cc1"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0287_injected_4921_c0c4a4c5",
+      "step": 5,
+      "timestamp": 1791388133.118689,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I encountered an error while trying to get the weather data for Berlin and Chicago. It seems there might be an issue with the tool I'm using. Could you please try again or provide the city names directly?",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791388121.62933,
+      "node": "agent",
+      "llm_latency": 10.5776,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 87
+    },
+    {
+      "step": 1,
+      "timestamp": 1791388121.9343634,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3021,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791388122.2362218,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Chicago"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3015,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791388122.338496,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_in_berlin - temperature_in_chicago; humidity = calculate_humidity(temperature_in_berlin, temperature_in_chicago)"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1017,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791388133.1163704,
+      "node": "agent",
+      "llm_latency": 10.7766,
+      "has_tool_calls": false,
+      "response_length": 204,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 707,
+      "output_tokens": 43
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.30207324028015137,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Chicago"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.3014998435974121,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_in_berlin - temperature_in_chicago; humidity = calculate_humidity(temperature_in_berlin, temperature_in_chicago)"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.1016547679901123,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

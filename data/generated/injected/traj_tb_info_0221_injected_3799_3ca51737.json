@@ -1,0 +1,141 @@
+{
+  "trajectory_id": "traj_tb_info_0221_injected_3799_3ca51737",
+  "task_id": "tb_info_0221",
+  "task_description": "Search the web for 'autonomous driving safety benchmarks'. Summarize the key findings and evaluate numerical trends.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 3799,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The search for \"autonomous driving safety benchmarks\" returned one result. The snippet indicates that this is a search result containing relevant data. You can access the full information by visiting the provided URL: [https://example.com/result/28cf1932](https://example.com/result/28cf1932).",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 4,
+  "total_latency": 17.9158,
+  "total_tool_calls": 1,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T15:10:04.997081",
+  "end_time": "2026-10-07T15:10:22.912910",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_info_0221_injected_3799_3ca51737",
+      "step": 0,
+      "timestamp": 1791385822.912939,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Search the web for 'autonomous driving safety benchmarks'. Summarize the key findings and evaluate numerical trends.",
+      "task_text": "Search the web for 'autonomous driving safety benchmarks'. Summarize the key findings and evaluate numerical trends."
+    },
+    {
+      "trajectory_id": "traj_tb_info_0221_injected_3799_3ca51737",
+      "step": 1,
+      "timestamp": 1791385822.9129627,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "autonomous driving safety benchmarks"
+          },
+          "id": "b1721a64-5633-4ebf-8a00-f9afea2c891b"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_info_0221_injected_3799_3ca51737",
+      "step": 2,
+      "timestamp": 1791385822.9129794,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "web_search",
+      "content": "{\"status\": \"success\", \"query\": \"autonomous driving safety benchmarks\", \"results\": [{\"title\": \"Result for: autonomous driving safety benchmarks\", \"snippet\": \"Information about autonomous driving safety benchmarks. This is a search result containing relevant data.\", \"url\": \"https://example.com/result/28cf1932\"}], \"total_results\": 1}",
+      "tool_call_id": "b1721a64-5633-4ebf-8a00-f9afea2c891b"
+    },
+    {
+      "trajectory_id": "traj_tb_info_0221_injected_3799_3ca51737",
+      "step": 3,
+      "timestamp": 1791385822.912998,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The search for \"autonomous driving safety benchmarks\" returned one result. The snippet indicates that this is a search result containing relevant data. You can access the full information by visiting the provided URL: [https://example.com/result/28cf1932](https://example.com/result/28cf1932).",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791385809.470795,
+      "node": "agent",
+      "llm_latency": 4.4719,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 518,
+      "output_tokens": 24
+    },
+    {
+      "step": 1,
+      "timestamp": 1791385809.977377,
+      "node": "tool",
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "autonomous driving safety benchmarks"
+      },
+      "tool_success": true,
+      "tool_latency": 0.5039,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791385822.9106815,
+      "node": "agent",
+      "llm_latency": 12.9324,
+      "has_tool_calls": false,
+      "response_length": 293,
+      "state_hash": "3114b54fc978",
+      "input_tokens": 635,
+      "output_tokens": 69
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "autonomous driving safety benchmarks"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"query\": \"autonomous driving safety benchmarks\", \"results\": [{\"title\": \"Result for: autonomous driving safety benchmarks\", \"snippet\": \"Information about autonomous driving safety benchmarks. This is a search result containing relevant data.\", \"url\": \"https://example.com/result/28cf1932\"}], \"total_results\": 1}",
+      "error": null,
+      "latency": 0.5039498805999756,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1547_injected_26341_e12d1b5c",
+  "task_id": "tb_geo_1547",
+  "task_description": "What is the weather in Toronto and Cairo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 26341,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "I encountered an error while trying to fetch the weather data for Toronto and Cairo. Please try again or check the spelling of the cities.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 7.5231,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:31:48.029424",
+  "end_time": "2026-10-08T00:31:55.552491",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1547_injected_26341_e12d1b5c",
+      "step": 0,
+      "timestamp": 1791419515.552503,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Toronto and Cairo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Toronto and Cairo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1547_injected_26341_e12d1b5c",
+      "step": 1,
+      "timestamp": 1791419515.5525134,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "11eb9f8a-e24f-460d-955f-9aab39da1c6a"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "403ba9fb-c31f-4269-8bbf-20ef227640b3"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1547_injected_26341_e12d1b5c",
+      "step": 2,
+      "timestamp": 1791419515.552523,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "11eb9f8a-e24f-460d-955f-9aab39da1c6a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1547_injected_26341_e12d1b5c",
+      "step": 3,
+      "timestamp": 1791419515.5525324,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "403ba9fb-c31f-4269-8bbf-20ef227640b3"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1547_injected_26341_e12d1b5c",
+      "step": 4,
+      "timestamp": 1791419515.5525382,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I encountered an error while trying to fetch the weather data for Toronto and Cairo. Please try again or check the spelling of the cities.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791419511.4007373,
+      "node": "agent",
+      "llm_latency": 3.3681,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419511.7038555,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3014,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419512.0059922,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3018,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419515.5513456,
+      "node": "agent",
+      "llm_latency": 3.5444,
+      "has_tool_calls": false,
+      "response_length": 138,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 628,
+      "output_tokens": 28
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.3013606071472168,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.3017842769622803,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

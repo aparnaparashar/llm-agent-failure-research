@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0486_organic_8304_e190aa60",
+  "task_id": "tb_geo_0486",
+  "task_description": "What is the weather in Tokyo and San Francisco? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 8304,
+  "execution_mode": "organic",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Tokyo is currently 31\u00b0C with a cloudy condition and humidity at 56%. The temperature in San Francisco is 21\u00b0C with a cloudy condition and humidity at 46%. The temperature difference between the two cities is 10\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.0751,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T17:16:28.863824",
+  "end_time": "2026-10-07T17:16:38.938909",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0486_organic_8304_e190aa60",
+      "step": 0,
+      "timestamp": 1791393398.9389207,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Tokyo and San Francisco? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Tokyo and San Francisco? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0486_organic_8304_e190aa60",
+      "step": 1,
+      "timestamp": 1791393398.9389312,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "f3fda25e-849d-4a2c-82c5-c07e878d37b6"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "bdb5a4b6-08a4-4114-8960-b3a70525d7f1"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0486_organic_8304_e190aa60",
+      "step": 2,
+      "timestamp": 1791393398.938942,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "f3fda25e-849d-4a2c-82c5-c07e878d37b6"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0486_organic_8304_e190aa60",
+      "step": 3,
+      "timestamp": 1791393398.9389513,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "bdb5a4b6-08a4-4114-8960-b3a70525d7f1"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0486_organic_8304_e190aa60",
+      "step": 4,
+      "timestamp": 1791393398.9389572,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Tokyo is currently 31\u00b0C with a cloudy condition and humidity at 56%. The temperature in San Francisco is 21\u00b0C with a cloudy condition and humidity at 46%. The temperature difference between the two cities is 10\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791393392.1265666,
+      "node": "agent",
+      "llm_latency": 3.2608,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791393392.4291759,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3013,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791393392.731593,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3022,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791393398.9377832,
+      "node": "agent",
+      "llm_latency": 6.2055,
+      "has_tool_calls": false,
+      "response_length": 228,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 672,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.30125999450683594,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3022167682647705,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

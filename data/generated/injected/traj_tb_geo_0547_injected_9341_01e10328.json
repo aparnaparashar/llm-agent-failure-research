@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0547_injected_9341_01e10328",
+  "task_id": "tb_geo_0547",
+  "task_description": "What is the weather in Sydney and Madrid? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 9341,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Madrid, the temperature is 15\u00b0C and the condition is sunny with humidity at 65%. The temperature difference is 18\u00b0C and the humidity difference is 7 percentage points.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 19.1464,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T18:08:51.612588",
+  "end_time": "2026-10-07T18:09:10.758965",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0547_injected_9341_01e10328",
+      "step": 0,
+      "timestamp": 1791396550.7589777,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Sydney and Madrid? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Sydney and Madrid? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0547_injected_9341_01e10328",
+      "step": 1,
+      "timestamp": 1791396550.7589893,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Sydney"
+          },
+          "id": "4b8ffb09-41c6-4a5d-93c0-44b466dd75a8"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Madrid"
+          },
+          "id": "751d31d3-5033-40c7-bb93-6713c79675c3"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_in_Sydney - temp_in_Madrid; humidity_difference = humidity_in_Sydney - humidity_in_Madrid"
+          },
+          "id": "2d68da1a-86e2-4e8a-b52b-9936db4695ba"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0547_injected_9341_01e10328",
+      "step": 2,
+      "timestamp": 1791396550.7590003,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "4b8ffb09-41c6-4a5d-93c0-44b466dd75a8"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0547_injected_9341_01e10328",
+      "step": 3,
+      "timestamp": 1791396550.7590103,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "tool_call_id": "751d31d3-5033-40c7-bb93-6713c79675c3"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0547_injected_9341_01e10328",
+      "step": 4,
+      "timestamp": 1791396550.759016,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_in_Sydney - temp_in_Madrid; humidity_difference = humidity_in_Sydney - humidity_in_Madrid\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "2d68da1a-86e2-4e8a-b52b-9936db4695ba"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0547_injected_9341_01e10328",
+      "step": 5,
+      "timestamp": 1791396550.7590213,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Madrid, the temperature is 15\u00b0C and the condition is sunny with humidity at 65%. The temperature difference is 18\u00b0C and the humidity difference is 7 percentage points.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791396539.843294,
+      "node": "agent",
+      "llm_latency": 8.2292,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 89
+    },
+    {
+      "step": 1,
+      "timestamp": 1791396540.1494682,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3027,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791396540.4528985,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3033,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791396540.5570006,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_in_Sydney - temp_in_Madrid; humidity_difference = humidity_in_Sydney - humidity_in_Madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.104,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791396550.7577422,
+      "node": "agent",
+      "llm_latency": 10.1996,
+      "has_tool_calls": false,
+      "response_length": 257,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 781,
+      "output_tokens": 63
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3027338981628418,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "error": null,
+      "latency": 0.30333638191223145,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_in_Sydney - temp_in_Madrid; humidity_difference = humidity_in_Sydney - humidity_in_Madrid"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_in_Sydney - temp_in_Madrid; humidity_difference = humidity_in_Sydney - humidity_in_Madrid\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10396671295166016,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

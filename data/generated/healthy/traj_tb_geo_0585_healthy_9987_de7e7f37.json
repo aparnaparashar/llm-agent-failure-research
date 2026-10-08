@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0585_healthy_9987_de7e7f37",
+  "task_id": "tb_geo_0585",
+  "task_description": "What is the weather in San Francisco and Cairo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 9987,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in San Francisco is currently cloudy with a temperature of 21\u00b0C and humidity at 46%. The weather in Cairo is also cloudy with a temperature of 16\u00b0C and humidity at 66%. The temperature difference between the two cities is 5\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.0796,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T18:18:01.839219",
+  "end_time": "2026-10-07T18:18:12.918813",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0585_healthy_9987_de7e7f37",
+      "step": 0,
+      "timestamp": 1791397092.918825,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in San Francisco and Cairo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in San Francisco and Cairo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0585_healthy_9987_de7e7f37",
+      "step": 1,
+      "timestamp": 1791397092.918836,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "a9f3ab70-60e8-4b51-b21d-322b255903d9"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "c71f59b9-98d4-49d7-b000-0abc5d1af0d8"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0585_healthy_9987_de7e7f37",
+      "step": 2,
+      "timestamp": 1791397092.918847,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "a9f3ab70-60e8-4b51-b21d-322b255903d9"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0585_healthy_9987_de7e7f37",
+      "step": 3,
+      "timestamp": 1791397092.918858,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "c71f59b9-98d4-49d7-b000-0abc5d1af0d8"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0585_healthy_9987_de7e7f37",
+      "step": 4,
+      "timestamp": 1791397092.918864,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in San Francisco is currently cloudy with a temperature of 21\u00b0C and humidity at 46%. The weather in Cairo is also cloudy with a temperature of 16\u00b0C and humidity at 66%. The temperature difference between the two cities is 5\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791397085.424119,
+      "node": "agent",
+      "llm_latency": 3.5822,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791397085.7275639,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3018,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791397086.0316193,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.304,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791397092.917585,
+      "node": "agent",
+      "llm_latency": 6.8849,
+      "has_tool_calls": false,
+      "response_length": 238,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 672,
+      "output_tokens": 58
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3018479347229004,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.30397701263427734,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

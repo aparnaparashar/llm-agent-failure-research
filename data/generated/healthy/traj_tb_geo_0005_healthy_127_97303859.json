@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0005_healthy_127_97303859",
+  "task_id": "tb_geo_0005",
+  "task_description": "What is the weather in Tokyo and Miami? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 127,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Tokyo is currently cloudy with a temperature of 31\u00b0C and humidity at 56%. The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference between the two cities is 16\u00b0C. The wind speed in Tokyo is 31 km/h and in Miami is 20 km/h.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 14.1475,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T13:28:21.566968",
+  "end_time": "2026-10-07T13:28:35.714419",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0005_healthy_127_97303859",
+      "step": 0,
+      "timestamp": 1791379715.714434,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Tokyo and Miami? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Tokyo and Miami? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0005_healthy_127_97303859",
+      "step": 1,
+      "timestamp": 1791379715.7144463,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "5b054d7f-1234-4656-b914-0d3a4740dfe0"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "ddd2b4e4-3292-482d-882a-148e147e9328"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0005_healthy_127_97303859",
+      "step": 2,
+      "timestamp": 1791379715.714457,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "5b054d7f-1234-4656-b914-0d3a4740dfe0"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0005_healthy_127_97303859",
+      "step": 3,
+      "timestamp": 1791379715.714467,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "ddd2b4e4-3292-482d-882a-148e147e9328"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0005_healthy_127_97303859",
+      "step": 4,
+      "timestamp": 1791379715.714473,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Tokyo is currently cloudy with a temperature of 31\u00b0C and humidity at 56%. The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference between the two cities is 16\u00b0C. The wind speed in Tokyo is 31 km/h and in Miami is 20 km/h.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791379705.7826316,
+      "node": "agent",
+      "llm_latency": 4.2133,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791379706.0870605,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791379706.388202,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3011,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791379715.7131,
+      "node": "agent",
+      "llm_latency": 9.324,
+      "has_tool_calls": false,
+      "response_length": 285,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 78
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.3023998737335205,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.30107784271240234,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

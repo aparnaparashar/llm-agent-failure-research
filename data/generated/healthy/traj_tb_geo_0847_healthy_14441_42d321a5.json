@@ -1,0 +1,276 @@
+{
+  "trajectory_id": "traj_tb_geo_0847_healthy_14441_42d321a5",
+  "task_id": "tb_geo_0847",
+  "task_description": "What is the weather in Singapore and Rome? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 14441,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Singapore is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The weather in Rome is sunny with a temperature of 25\u00b0C and humidity at 75%. There is a temperature difference of 8\u00b0C and a humidity difference of 17% between the two cities.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 7,
+  "total_latency": 30.9617,
+  "total_tool_calls": 4,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T20:20:52.987710",
+  "end_time": "2026-10-07T20:21:23.949462",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0847_healthy_14441_42d321a5",
+      "step": 0,
+      "timestamp": 1791404483.9495013,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Singapore and Rome? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Singapore and Rome? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0847_healthy_14441_42d321a5",
+      "step": 1,
+      "timestamp": 1791404483.9495413,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Singapore"
+          },
+          "id": "57787b12-a28a-4914-9793-5ff0411c5b2a"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Rome"
+          },
+          "id": "c80218a5-17f6-48b2-80dd-b3d9b2aa7f41"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = Singapore temperature - Rome temperature"
+          },
+          "id": "31b8753b-72e6-4506-ae59-4ae9d4f74c9c"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "humidity_difference = Singapore humidity - Rome humidity"
+          },
+          "id": "673530e1-1205-4de0-b4d2-0ccccd613fe2"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0847_healthy_14441_42d321a5",
+      "step": 2,
+      "timestamp": 1791404483.9495745,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "57787b12-a28a-4914-9793-5ff0411c5b2a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0847_healthy_14441_42d321a5",
+      "step": 3,
+      "timestamp": 1791404483.9495988,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "c80218a5-17f6-48b2-80dd-b3d9b2aa7f41"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0847_healthy_14441_42d321a5",
+      "step": 4,
+      "timestamp": 1791404483.9496117,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = Singapore temperature - Rome temperature\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "31b8753b-72e6-4506-ae59-4ae9d4f74c9c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0847_healthy_14441_42d321a5",
+      "step": 5,
+      "timestamp": 1791404483.949624,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"humidity_difference = Singapore humidity - Rome humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "673530e1-1205-4de0-b4d2-0ccccd613fe2"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0847_healthy_14441_42d321a5",
+      "step": 6,
+      "timestamp": 1791404483.9496372,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Singapore is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The weather in Rome is sunny with a temperature of 25\u00b0C and humidity at 75%. There is a temperature difference of 8\u00b0C and a humidity difference of 17% between the two cities.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791404465.5903258,
+      "node": "agent",
+      "llm_latency": 12.5995,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 93
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404465.8969474,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.304,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404466.199589,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3025,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404466.3021662,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Singapore temperature - Rome temperature"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1025,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404466.4074526,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "humidity_difference = Singapore humidity - Rome humidity"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1052,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404483.9021943,
+      "node": "agent",
+      "llm_latency": 17.4934,
+      "has_tool_calls": false,
+      "response_length": 264,
+      "state_hash": "4bc5fbae1d34",
+      "input_tokens": 804,
+      "output_tokens": 67
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.30399584770202637,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3025074005126953,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Singapore temperature - Rome temperature"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = Singapore temperature - Rome temperature\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10247516632080078,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "humidity_difference = Singapore humidity - Rome humidity"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"humidity_difference = Singapore humidity - Rome humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10519766807556152,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

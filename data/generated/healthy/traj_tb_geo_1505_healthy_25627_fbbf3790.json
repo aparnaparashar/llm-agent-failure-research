@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1505_healthy_25627_fbbf3790",
+  "task_id": "tb_geo_1505",
+  "task_description": "What is the weather in Sydney and Rome? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 25627,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Rome, the weather is sunny with a temperature of 25\u00b0C and humidity at 75%. The temperature difference is 8\u00b0C and the humidity difference is 17%.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 14.7547,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:22:54.550913",
+  "end_time": "2026-10-08T00:23:09.305635",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1505_healthy_25627_fbbf3790",
+      "step": 0,
+      "timestamp": 1791418989.305647,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Sydney and Rome? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Sydney and Rome? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1505_healthy_25627_fbbf3790",
+      "step": 1,
+      "timestamp": 1791418989.305657,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Sydney"
+          },
+          "id": "401f4470-301d-4899-bc21-ecb397c55341"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Rome"
+          },
+          "id": "62327af8-dea8-4c48-b2c8-b415832e3ddd"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_rome - temp_sydney; humidity_difference = humidity_rome - humidity_sydney"
+          },
+          "id": "bb87a1d5-a647-468c-80d5-09866629fd9c"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1505_healthy_25627_fbbf3790",
+      "step": 2,
+      "timestamp": 1791418989.3056662,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "401f4470-301d-4899-bc21-ecb397c55341"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1505_healthy_25627_fbbf3790",
+      "step": 3,
+      "timestamp": 1791418989.30568,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "62327af8-dea8-4c48-b2c8-b415832e3ddd"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1505_healthy_25627_fbbf3790",
+      "step": 4,
+      "timestamp": 1791418989.3056862,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_rome - temp_sydney; humidity_difference = humidity_rome - humidity_sydney\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "bb87a1d5-a647-468c-80d5-09866629fd9c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1505_healthy_25627_fbbf3790",
+      "step": 5,
+      "timestamp": 1791418989.3056915,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Rome, the weather is sunny with a temperature of 25\u00b0C and humidity at 75%. The temperature difference is 8\u00b0C and the humidity difference is 17%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791418980.7842286,
+      "node": "agent",
+      "llm_latency": 6.2318,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 81
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418981.086234,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.301,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418981.388221,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3018,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418981.4915743,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_rome - temp_sydney; humidity_difference = humidity_rome - humidity_sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1032,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418989.3044167,
+      "node": "agent",
+      "llm_latency": 7.8118,
+      "has_tool_calls": false,
+      "response_length": 234,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 765,
+      "output_tokens": 61
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3009953498840332,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3017756938934326,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_rome - temp_sydney; humidity_difference = humidity_rome - humidity_sydney"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_rome - temp_sydney; humidity_difference = humidity_rome - humidity_sydney\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10324549674987793,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

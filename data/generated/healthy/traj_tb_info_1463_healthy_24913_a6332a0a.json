@@ -1,0 +1,141 @@
+{
+  "trajectory_id": "traj_tb_info_1463_healthy_24913_a6332a0a",
+  "task_id": "tb_info_1463",
+  "task_description": "Search the web for 'semiconductor manufacturing lithography'. Summarize the key findings and evaluate numerical trends.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 24913,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The search for \"semiconductor manufacturing lithography\" returned one result. The snippet provided is:\n\nInformation about semiconductor manufacturing lithography. This is a search result containing relevant data.\n\nThe total number of results is 1.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 4,
+  "total_latency": 7.4343,
+  "total_tool_calls": 1,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:11:56.900218",
+  "end_time": "2026-10-08T00:12:04.334519",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_info_1463_healthy_24913_a6332a0a",
+      "step": 0,
+      "timestamp": 1791418324.3345287,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Search the web for 'semiconductor manufacturing lithography'. Summarize the key findings and evaluate numerical trends.",
+      "task_text": "Search the web for 'semiconductor manufacturing lithography'. Summarize the key findings and evaluate numerical trends."
+    },
+    {
+      "trajectory_id": "traj_tb_info_1463_healthy_24913_a6332a0a",
+      "step": 1,
+      "timestamp": 1791418324.3345375,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "semiconductor manufacturing lithography"
+          },
+          "id": "d3e4a482-9063-4caa-9309-300681c2c193"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_info_1463_healthy_24913_a6332a0a",
+      "step": 2,
+      "timestamp": 1791418324.3345454,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "web_search",
+      "content": "{\"status\": \"success\", \"query\": \"semiconductor manufacturing lithography\", \"results\": [{\"title\": \"Result for: semiconductor manufacturing lithography\", \"snippet\": \"Information about semiconductor manufacturing lithography. This is a search result containing relevant data.\", \"url\": \"https://example.com/result/9eed84ed\"}], \"total_results\": 1}",
+      "tool_call_id": "d3e4a482-9063-4caa-9309-300681c2c193"
+    },
+    {
+      "trajectory_id": "traj_tb_info_1463_healthy_24913_a6332a0a",
+      "step": 3,
+      "timestamp": 1791418324.3345575,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The search for \"semiconductor manufacturing lithography\" returned one result. The snippet provided is:\n\nInformation about semiconductor manufacturing lithography. This is a search result containing relevant data.\n\nThe total number of results is 1.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791418319.096547,
+      "node": "agent",
+      "llm_latency": 2.1929,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 518,
+      "output_tokens": 24
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418319.599935,
+      "node": "tool",
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "semiconductor manufacturing lithography"
+      },
+      "tool_success": true,
+      "tool_latency": 0.502,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418324.3335133,
+      "node": "agent",
+      "llm_latency": 4.7326,
+      "has_tool_calls": false,
+      "response_length": 247,
+      "state_hash": "3114b54fc978",
+      "input_tokens": 633,
+      "output_tokens": 45
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "semiconductor manufacturing lithography"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"query\": \"semiconductor manufacturing lithography\", \"results\": [{\"title\": \"Result for: semiconductor manufacturing lithography\", \"snippet\": \"Information about semiconductor manufacturing lithography. This is a search result containing relevant data.\", \"url\": \"https://example.com/result/9eed84ed\"}], \"total_results\": 1}",
+      "error": null,
+      "latency": 0.5020360946655273,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

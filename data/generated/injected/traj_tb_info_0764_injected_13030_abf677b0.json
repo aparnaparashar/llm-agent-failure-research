@@ -1,0 +1,141 @@
+{
+  "trajectory_id": "traj_tb_info_0764_injected_13030_abf677b0",
+  "task_id": "tb_info_0764",
+  "task_description": "Search the web for 'biotech CRISPR therapeutics'. Summarize the key findings and evaluate numerical trends.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 13030,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "It seems there was an issue with the tool call. Let me try again with a different query.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 4,
+  "total_latency": 7.0145,
+  "total_tool_calls": 1,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T19:36:14.401821",
+  "end_time": "2026-10-07T19:36:21.416335",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_info_0764_injected_13030_abf677b0",
+      "step": 0,
+      "timestamp": 1791401781.4163597,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Search the web for 'biotech CRISPR therapeutics'. Summarize the key findings and evaluate numerical trends.",
+      "task_text": "Search the web for 'biotech CRISPR therapeutics'. Summarize the key findings and evaluate numerical trends."
+    },
+    {
+      "trajectory_id": "traj_tb_info_0764_injected_13030_abf677b0",
+      "step": 1,
+      "timestamp": 1791401781.4163823,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "biotech CRISPR therapeutics"
+          },
+          "id": "54ea8ec6-52d5-4f14-8677-6923c69dd41c"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_info_0764_injected_13030_abf677b0",
+      "step": 2,
+      "timestamp": 1791401781.416401,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "web_search",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "54ea8ec6-52d5-4f14-8677-6923c69dd41c"
+    },
+    {
+      "trajectory_id": "traj_tb_info_0764_injected_13030_abf677b0",
+      "step": 3,
+      "timestamp": 1791401781.4164193,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "It seems there was an issue with the tool call. Let me try again with a different query.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791401777.326007,
+      "node": "agent",
+      "llm_latency": 2.9227,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 520,
+      "output_tokens": 26
+    },
+    {
+      "step": 1,
+      "timestamp": 1791401777.8308372,
+      "node": "tool",
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "biotech CRISPR therapeutics"
+      },
+      "tool_success": true,
+      "tool_latency": 0.5021,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791401781.4141502,
+      "node": "agent",
+      "llm_latency": 3.5824,
+      "has_tool_calls": false,
+      "response_length": 88,
+      "state_hash": "3114b54fc978",
+      "input_tokens": 587,
+      "output_tokens": 21
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "biotech CRISPR therapeutics"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.5021061897277832,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

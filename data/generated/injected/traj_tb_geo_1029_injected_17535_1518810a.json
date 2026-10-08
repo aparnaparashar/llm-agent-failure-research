@@ -1,0 +1,276 @@
+{
+  "trajectory_id": "traj_tb_geo_1029_injected_17535_1518810a",
+  "task_id": "tb_geo_1029",
+  "task_description": "What is the weather in Tokyo and Amsterdam? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 17535,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Tokyo is 31\u00b0C with a cloudy condition and humidity at 56%. The wind speed is 31 km/h. In Amsterdam, the temperature is 23\u00b0C with partly cloudy conditions and humidity at 48%. The temperature difference between the two cities is 8\u00b0C, and the humidity difference is 2%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 7,
+  "total_latency": 25.0756,
+  "total_tool_calls": 4,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T21:34:14.228907",
+  "end_time": "2026-10-07T21:34:39.304482",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1029_injected_17535_1518810a",
+      "step": 0,
+      "timestamp": 1791408879.3045034,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Tokyo and Amsterdam? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Tokyo and Amsterdam? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1029_injected_17535_1518810a",
+      "step": 1,
+      "timestamp": 1791408879.3045232,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "d940ab66-2c7d-4b69-bc3a-62d788832fff"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Amsterdam"
+          },
+          "id": "54ce8f64-1968-42ac-b260-6d74af2234ca"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "10 + 20 * 3 - 4 / 2"
+          },
+          "id": "aadfe317-ba94-4bcd-9126-24b8fb19f6a9"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "0.5 * 70 - 0.3 * 80"
+          },
+          "id": "6dff9f7a-37c6-4c3d-8f3b-967cc8ee9e10"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1029_injected_17535_1518810a",
+      "step": 2,
+      "timestamp": 1791408879.3045447,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "d940ab66-2c7d-4b69-bc3a-62d788832fff"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1029_injected_17535_1518810a",
+      "step": 3,
+      "timestamp": 1791408879.3045638,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "54ce8f64-1968-42ac-b260-6d74af2234ca"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1029_injected_17535_1518810a",
+      "step": 4,
+      "timestamp": 1791408879.304575,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"10 + 20 * 3 - 4 / 2\", \"result\": 68.0}",
+      "tool_call_id": "aadfe317-ba94-4bcd-9126-24b8fb19f6a9"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1029_injected_17535_1518810a",
+      "step": 5,
+      "timestamp": 1791408879.3045845,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"0.5 * 70 - 0.3 * 80\", \"result\": 11.0}",
+      "tool_call_id": "6dff9f7a-37c6-4c3d-8f3b-967cc8ee9e10"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1029_injected_17535_1518810a",
+      "step": 6,
+      "timestamp": 1791408879.3045943,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Tokyo is 31\u00b0C with a cloudy condition and humidity at 56%. The wind speed is 31 km/h. In Amsterdam, the temperature is 23\u00b0C with partly cloudy conditions and humidity at 48%. The temperature difference between the two cities is 8\u00b0C, and the humidity difference is 2%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791408865.9705267,
+      "node": "agent",
+      "llm_latency": 11.7402,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 109
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408866.2752774,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.302,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408866.5780656,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3027,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408866.6795871,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "10 + 20 * 3 - 4 / 2"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408866.7810936,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "0.5 * 70 - 0.3 * 80"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408879.3023705,
+      "node": "agent",
+      "llm_latency": 12.5199,
+      "has_tool_calls": false,
+      "response_length": 282,
+      "state_hash": "4bc5fbae1d34",
+      "input_tokens": 826,
+      "output_tokens": 72
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.3020467758178711,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.3027074337005615,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "10 + 20 * 3 - 4 / 2"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"10 + 20 * 3 - 4 / 2\", \"result\": 68.0}",
+      "error": null,
+      "latency": 0.10144639015197754,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "0.5 * 70 - 0.3 * 80"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"0.5 * 70 - 0.3 * 80\", \"result\": 11.0}",
+      "error": null,
+      "latency": 0.1014103889465332,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

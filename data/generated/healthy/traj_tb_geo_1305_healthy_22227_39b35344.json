@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1305_healthy_22227_39b35344",
+  "task_id": "tb_geo_1305",
+  "task_description": "What is the weather in Sydney and Toronto? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 22227,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Toronto, the weather is windy with a temperature of 29\u00b0C and humidity at 79%. The temperature difference between the two cities is 4\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 21.1734,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T23:24:27.054785",
+  "end_time": "2026-10-07T23:24:48.228206",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1305_healthy_22227_39b35344",
+      "step": 0,
+      "timestamp": 1791415488.2282538,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Sydney and Toronto? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Sydney and Toronto? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1305_healthy_22227_39b35344",
+      "step": 1,
+      "timestamp": 1791415488.2282946,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Sydney"
+          },
+          "id": "f922524d-a3e9-4fdb-9fc3-3440789245cb"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "b4dd7507-f57d-4088-a0ac-15a8f87743b4"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1305_healthy_22227_39b35344",
+      "step": 2,
+      "timestamp": 1791415488.2283208,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "f922524d-a3e9-4fdb-9fc3-3440789245cb"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1305_healthy_22227_39b35344",
+      "step": 3,
+      "timestamp": 1791415488.2283428,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "tool_call_id": "b4dd7507-f57d-4088-a0ac-15a8f87743b4"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1305_healthy_22227_39b35344",
+      "step": 4,
+      "timestamp": 1791415488.2283566,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Toronto, the weather is windy with a temperature of 29\u00b0C and humidity at 79%. The temperature difference between the two cities is 4\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791415475.9674022,
+      "node": "agent",
+      "llm_latency": 8.9089,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791415476.2741556,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3029,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791415476.5778265,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3035,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791415488.2254648,
+      "node": "agent",
+      "llm_latency": 11.6456,
+      "has_tool_calls": false,
+      "response_length": 225,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 670,
+      "output_tokens": 57
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3028552532196045,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "error": null,
+      "latency": 0.30351805686950684,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

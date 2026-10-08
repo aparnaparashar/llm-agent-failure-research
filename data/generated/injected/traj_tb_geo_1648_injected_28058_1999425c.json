@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1648_injected_28058_1999425c",
+  "task_id": "tb_geo_1648",
+  "task_description": "What is the weather in Rome and Tokyo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 28058,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Rome is sunny with a temperature of 25\u00b0C and humidity at 75%. In Tokyo, the weather is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference is 6\u00b0C and the humidity difference is 19%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 14.8736,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T01:00:03.425224",
+  "end_time": "2026-10-08T01:00:18.298840",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1648_injected_28058_1999425c",
+      "step": 0,
+      "timestamp": 1791421218.2988517,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Rome and Tokyo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Rome and Tokyo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1648_injected_28058_1999425c",
+      "step": 1,
+      "timestamp": 1791421218.2988656,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Rome"
+          },
+          "id": "3e502fdd-4dbc-48c9-9971-a88a685be9d2"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "e939d11b-2168-4036-9202-67c0f6b96b50"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_Rome - temperature_Tokyo; humidity_difference = humidity_Tokyo - humidity_Rome"
+          },
+          "id": "4c76a9e6-355e-4c92-abd3-4a6c7cd74e27"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1648_injected_28058_1999425c",
+      "step": 2,
+      "timestamp": 1791421218.2988794,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "3e502fdd-4dbc-48c9-9971-a88a685be9d2"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1648_injected_28058_1999425c",
+      "step": 3,
+      "timestamp": 1791421218.2988915,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "e939d11b-2168-4036-9202-67c0f6b96b50"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1648_injected_28058_1999425c",
+      "step": 4,
+      "timestamp": 1791421218.2988992,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_Rome - temperature_Tokyo; humidity_difference = humidity_Tokyo - humidity_Rome\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "4c76a9e6-355e-4c92-abd3-4a6c7cd74e27"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1648_injected_28058_1999425c",
+      "step": 5,
+      "timestamp": 1791421218.298906,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Rome is sunny with a temperature of 25\u00b0C and humidity at 75%. In Tokyo, the weather is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference is 6\u00b0C and the humidity difference is 19%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791421209.7904112,
+      "node": "agent",
+      "llm_latency": 6.3626,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 83
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421210.0953093,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3025,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421210.3979945,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421210.5010793,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_Rome - temperature_Tokyo; humidity_difference = humidity_Tokyo - humidity_Rome"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421218.2974446,
+      "node": "agent",
+      "llm_latency": 7.7952,
+      "has_tool_calls": false,
+      "response_length": 226,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 768,
+      "output_tokens": 60
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3025357723236084,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.3024256229400635,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_Rome - temperature_Tokyo; humidity_difference = humidity_Tokyo - humidity_Rome"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_Rome - temperature_Tokyo; humidity_difference = humidity_Tokyo - humidity_Rome\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10164093971252441,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

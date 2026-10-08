@@ -1,0 +1,255 @@
+{
+  "trajectory_id": "traj_inject_001_injected_42_d39171f8",
+  "task_id": "inject_001",
+  "task_description": "What is the current weather in Tokyo? Also search for the population of Tokyo and calculate what 15% of that population would be.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": "65ec06548149",
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 42,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": false,
+  "final_answer": "I'm sorry, but I encountered an issue while trying to fetch the weather data for Tokyo and the population of Tokyo. The response data appears to be incomplete. Could you please provide the population of Tokyo directly?",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": true,
+  "fault_exposed": true,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 17.7685,
+  "total_tool_calls": 3,
+  "error_count": 3,
+  "retry_count": 0,
+  "start_time": "2026-10-07T11:43:11.964347",
+  "end_time": "2026-10-07T11:43:29.732884",
+  "steps": [
+    {
+      "trajectory_id": "traj_inject_001_injected_42_d39171f8",
+      "step": 0,
+      "timestamp": 1791373409.7329183,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the current weather in Tokyo? Also search for the population of Tokyo and calculate what 15% of that population would be.",
+      "task_text": "What is the current weather in Tokyo? Also search for the population of Tokyo and calculate what 15% of that population would be."
+    },
+    {
+      "trajectory_id": "traj_inject_001_injected_42_d39171f8",
+      "step": 1,
+      "timestamp": 1791373409.732945,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "efb588ee-bcd9-4076-bfac-e4de66850cdc"
+        },
+        {
+          "name": "web_search",
+          "args": {
+            "query": "population of Tokyo"
+          },
+          "id": "f4110bff-1b8c-47ef-ada0-3da31ee5e1a2"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "0.15 * (population of Tokyo)"
+          },
+          "id": "7b6820a8-925f-49fb-a73c-d5534c401aa0"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_inject_001_injected_42_d39171f8",
+      "step": 2,
+      "timestamp": 1791373409.7329855,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": null, \"_warning\": \"Response data may be incomplete\", \"data\": {\"error\": \"malformed_response\", \"raw\": \"\"}}",
+      "tool_call_id": "efb588ee-bcd9-4076-bfac-e4de66850cdc"
+    },
+    {
+      "trajectory_id": "traj_inject_001_injected_42_d39171f8",
+      "step": 3,
+      "timestamp": 1791373409.7329984,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "web_search",
+      "content": "{\"status\": \"success\", \"query\": null, \"_warning\": \"Response data may be incomplete\", \"data\": {\"error\": \"malformed_response\", \"raw\": \"\"}}",
+      "tool_call_id": "f4110bff-1b8c-47ef-ada0-3da31ee5e1a2"
+    },
+    {
+      "trajectory_id": "traj_inject_001_injected_42_d39171f8",
+      "step": 4,
+      "timestamp": 1791373409.733008,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": null, \"_warning\": \"Response data may be incomplete\", \"data\": {\"error\": \"malformed_response\", \"raw\": \"\"}}",
+      "tool_call_id": "7b6820a8-925f-49fb-a73c-d5534c401aa0"
+    },
+    {
+      "trajectory_id": "traj_inject_001_injected_42_d39171f8",
+      "step": 5,
+      "timestamp": 1791373409.7330148,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I'm sorry, but I encountered an issue while trying to fetch the weather data for Tokyo and the population of Tokyo. The response data appears to be incomplete. Could you please provide the population of Tokyo directly?",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791373400.9191647,
+      "node": "agent",
+      "llm_latency": 8.9498,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 524,
+      "output_tokens": 71
+    },
+    {
+      "step": 1,
+      "timestamp": 1791373401.2234056,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": false,
+      "tool_latency": 0.3017,
+      "tool_error": "Tool 'get_weather' returned malformed response",
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "malformed_response",
+        "severity": "medium",
+        "original_result_length": 126
+      }
+    },
+    {
+      "step": 1,
+      "timestamp": 1791373401.7253585,
+      "node": "tool",
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "population of Tokyo"
+      },
+      "tool_success": false,
+      "tool_latency": 0.5015,
+      "tool_error": "Tool 'web_search' returned malformed response",
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "malformed_response",
+        "severity": "medium",
+        "original_result_length": 281
+      }
+    },
+    {
+      "step": 1,
+      "timestamp": 1791373401.827225,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "0.15 * (population of Tokyo)"
+      },
+      "tool_success": false,
+      "tool_latency": 0.1015,
+      "tool_error": "Tool 'calculate' returned malformed response",
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "malformed_response",
+        "severity": "medium",
+        "original_result_length": 140
+      }
+    },
+    {
+      "step": 1,
+      "timestamp": 1791373409.7313876,
+      "node": "agent",
+      "llm_latency": 7.9032,
+      "has_tool_calls": false,
+      "response_length": 218,
+      "state_hash": "c4c4c084fb50",
+      "input_tokens": 738,
+      "output_tokens": 43
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"success\", \"city\": null, \"_warning\": \"Response data may be incomplete\", \"data\": {\"error\": \"malformed_response\", \"raw\": \"\"}}",
+      "error": "Tool 'get_weather' returned malformed response",
+      "latency": 0.30170726776123047,
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "malformed_response",
+        "severity": "medium",
+        "original_result_length": 126
+      }
+    },
+    {
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "population of Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"success\", \"query\": null, \"_warning\": \"Response data may be incomplete\", \"data\": {\"error\": \"malformed_response\", \"raw\": \"\"}}",
+      "error": "Tool 'web_search' returned malformed response",
+      "latency": 0.5014722347259521,
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "malformed_response",
+        "severity": "medium",
+        "original_result_length": 281
+      }
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "0.15 * (population of Tokyo)"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"success\", \"expression\": null, \"_warning\": \"Response data may be incomplete\", \"data\": {\"error\": \"malformed_response\", \"raw\": \"\"}}",
+      "error": "Tool 'calculate' returned malformed response",
+      "latency": 0.10147666931152344,
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "malformed_response",
+        "severity": "medium",
+        "original_result_length": 140
+      }
+    }
+  ]
+}

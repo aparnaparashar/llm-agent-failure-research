@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1687_healthy_28721_bfde0396",
+  "task_id": "tb_geo_1687",
+  "task_description": "What is the weather in Rome and Miami? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 28721,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Rome is currently sunny with a temperature of 25\u00b0C and humidity at 75%. The weather in Miami is also sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference between the two cities is 10\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 8.7866,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T02:07:42.829058",
+  "end_time": "2026-10-08T02:07:51.615703",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1687_healthy_28721_bfde0396",
+      "step": 0,
+      "timestamp": 1791425271.6157095,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Rome and Miami? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Rome and Miami? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1687_healthy_28721_bfde0396",
+      "step": 1,
+      "timestamp": 1791425271.615715,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Rome"
+          },
+          "id": "3f4d31b9-7623-4ef7-a7b3-d25e9248e347"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "3d2a8ea1-ac9e-4710-912b-55cdcd36af53"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1687_healthy_28721_bfde0396",
+      "step": 2,
+      "timestamp": 1791425271.6157207,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "3f4d31b9-7623-4ef7-a7b3-d25e9248e347"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1687_healthy_28721_bfde0396",
+      "step": 3,
+      "timestamp": 1791425271.6157262,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "3d2a8ea1-ac9e-4710-912b-55cdcd36af53"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1687_healthy_28721_bfde0396",
+      "step": 4,
+      "timestamp": 1791425271.6157293,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Rome is currently sunny with a temperature of 25\u00b0C and humidity at 75%. The weather in Miami is also sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference between the two cities is 10\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791425265.7883382,
+      "node": "agent",
+      "llm_latency": 2.9577,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791425266.0904677,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3011,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791425266.3920121,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791425271.6149569,
+      "node": "agent",
+      "llm_latency": 5.2219,
+      "has_tool_calls": false,
+      "response_length": 228,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 58
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.30106353759765625,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3014664649963379,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

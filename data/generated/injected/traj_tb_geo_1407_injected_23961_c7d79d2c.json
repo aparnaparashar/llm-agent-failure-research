@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1407_injected_23961_c7d79d2c",
+  "task_id": "tb_geo_1407",
+  "task_description": "What is the weather in Cairo and Chicago? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 23961,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Cairo is currently 16\u00b0C with a cloudy condition and humidity at 66%. The wind speed is 21 km/h. In Chicago, the temperature is 33\u00b0C with partly cloudy conditions and humidity at 58%. The wind speed is 33 km/h. The temperature difference between Cairo and Chicago is 17\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.6252,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:01:10.306327",
+  "end_time": "2026-10-08T00:01:21.931553",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1407_injected_23961_c7d79d2c",
+      "step": 0,
+      "timestamp": 1791417681.9315617,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Cairo and Chicago? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Cairo and Chicago? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1407_injected_23961_c7d79d2c",
+      "step": 1,
+      "timestamp": 1791417681.931571,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "c2853592-60f9-461e-9eb6-4bc7ef1ea134"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Chicago"
+          },
+          "id": "049c8159-da8a-4448-b812-6dd310b4edc5"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1407_injected_23961_c7d79d2c",
+      "step": 2,
+      "timestamp": 1791417681.9315794,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "c2853592-60f9-461e-9eb6-4bc7ef1ea134"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1407_injected_23961_c7d79d2c",
+      "step": 3,
+      "timestamp": 1791417681.9315886,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Chicago\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "049c8159-da8a-4448-b812-6dd310b4edc5"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1407_injected_23961_c7d79d2c",
+      "step": 4,
+      "timestamp": 1791417681.9315932,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Cairo is currently 16\u00b0C with a cloudy condition and humidity at 66%. The wind speed is 21 km/h. In Chicago, the temperature is 33\u00b0C with partly cloudy conditions and humidity at 58%. The wind speed is 33 km/h. The temperature difference between Cairo and Chicago is 17\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791417673.7488723,
+      "node": "agent",
+      "llm_latency": 3.4407,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417674.0519702,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417674.3530326,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Chicago"
+      },
+      "tool_success": true,
+      "tool_latency": 0.301,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417681.9306922,
+      "node": "agent",
+      "llm_latency": 7.5767,
+      "has_tool_calls": false,
+      "response_length": 286,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 670,
+      "output_tokens": 76
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.30155324935913086,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Chicago"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Chicago\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.3009774684906006,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

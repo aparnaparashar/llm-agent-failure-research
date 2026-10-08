@@ -1,0 +1,276 @@
+{
+  "trajectory_id": "traj_tb_geo_1727_injected_29401_097e5bde",
+  "task_id": "tb_geo_1727",
+  "task_description": "What is the weather in Stockholm and San Francisco? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 29401,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Stockholm is sunny with a temperature of 20\u00b0C and humidity at 70%. The weather in San Francisco is cloudy with a temperature of 21\u00b0C and humidity at 46%. The temperature difference between the two cities is 1\u00b0C. The humidity difference between the two cities is 24 percentage points.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 7,
+  "total_latency": 16.7983,
+  "total_tool_calls": 4,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T02:17:51.635966",
+  "end_time": "2026-10-08T02:18:08.434256",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1727_injected_29401_097e5bde",
+      "step": 0,
+      "timestamp": 1791425888.434267,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Stockholm and San Francisco? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Stockholm and San Francisco? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1727_injected_29401_097e5bde",
+      "step": 1,
+      "timestamp": 1791425888.4342763,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Stockholm"
+          },
+          "id": "a3617bf1-aa07-425b-ab01-f35f83ba0a5a"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "38aceeef-3354-41fa-a80e-e464ae7c93b4"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "10 + 20"
+          },
+          "id": "00052359-e296-44a0-83cc-a2c014ad1fbe"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "0.5 * 100 - 0.3 * 100"
+          },
+          "id": "abf13dcf-d89a-4d4f-bc51-08444eab18ec"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1727_injected_29401_097e5bde",
+      "step": 2,
+      "timestamp": 1791425888.4342866,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Stockholm\", \"temperature_celsius\": 20, \"condition\": \"sunny\", \"humidity\": 70, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "a3617bf1-aa07-425b-ab01-f35f83ba0a5a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1727_injected_29401_097e5bde",
+      "step": 3,
+      "timestamp": 1791425888.4342952,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "38aceeef-3354-41fa-a80e-e464ae7c93b4"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1727_injected_29401_097e5bde",
+      "step": 4,
+      "timestamp": 1791425888.4343004,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"10 + 20\", \"result\": 30}",
+      "tool_call_id": "00052359-e296-44a0-83cc-a2c014ad1fbe"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1727_injected_29401_097e5bde",
+      "step": 5,
+      "timestamp": 1791425888.434305,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"0.5 * 100 - 0.3 * 100\", \"result\": 20.0}",
+      "tool_call_id": "abf13dcf-d89a-4d4f-bc51-08444eab18ec"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1727_injected_29401_097e5bde",
+      "step": 6,
+      "timestamp": 1791425888.434309,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Stockholm is sunny with a temperature of 20\u00b0C and humidity at 70%. The weather in San Francisco is cloudy with a temperature of 21\u00b0C and humidity at 46%. The temperature difference between the two cities is 1\u00b0C. The humidity difference between the two cities is 24 percentage points.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791425879.0269976,
+      "node": "agent",
+      "llm_latency": 7.3893,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 102
+    },
+    {
+      "step": 1,
+      "timestamp": 1791425879.330858,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Stockholm"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3027,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791425879.6332905,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791425879.7348378,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "10 + 20"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791425879.8372958,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "0.5 * 100 - 0.3 * 100"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791425888.4332356,
+      "node": "agent",
+      "llm_latency": 8.595,
+      "has_tool_calls": false,
+      "response_length": 298,
+      "state_hash": "4bc5fbae1d34",
+      "input_tokens": 810,
+      "output_tokens": 70
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Stockholm"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Stockholm\", \"temperature_celsius\": 20, \"condition\": \"sunny\", \"humidity\": 70, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.30267763137817383,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3023662567138672,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "10 + 20"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"10 + 20\", \"result\": 30}",
+      "error": null,
+      "latency": 0.10142326354980469,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "0.5 * 100 - 0.3 * 100"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"0.5 * 100 - 0.3 * 100\", \"result\": 20.0}",
+      "error": null,
+      "latency": 0.10236644744873047,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

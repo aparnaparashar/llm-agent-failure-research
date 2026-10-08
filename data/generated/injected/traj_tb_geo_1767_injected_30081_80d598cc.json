@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1767_injected_30081_80d598cc",
+  "task_id": "tb_geo_1767",
+  "task_description": "What is the weather in Boston and Paris? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 30081,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Boston is 26\u00b0C with a cloudy condition and humidity at 51%. In Paris, the temperature is 33\u00b0C with partly cloudy conditions and humidity at 83%. The temperature difference is 7\u00b0C and the humidity difference is 31%.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 13.7175,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T02:27:44.765203",
+  "end_time": "2026-10-08T02:27:58.482683",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1767_injected_30081_80d598cc",
+      "step": 0,
+      "timestamp": 1791426478.4826915,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Boston and Paris? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Boston and Paris? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1767_injected_30081_80d598cc",
+      "step": 1,
+      "timestamp": 1791426478.4826992,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Boston"
+          },
+          "id": "acf650c8-c77f-4f6d-bd97-d2b02014bd00"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "0cff2b99-90e0-4c64-bc0e-e7b3044e566a"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_boston - temp_paris; humidity_difference = humidity_boston - humidity_paris"
+          },
+          "id": "62c4be6a-4f59-46fa-8e20-5a5a398fc668"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1767_injected_30081_80d598cc",
+      "step": 2,
+      "timestamp": 1791426478.482707,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Boston\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 51, \"wind_speed_kmh\": 6}",
+      "tool_call_id": "acf650c8-c77f-4f6d-bd97-d2b02014bd00"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1767_injected_30081_80d598cc",
+      "step": 3,
+      "timestamp": 1791426478.4827147,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "0cff2b99-90e0-4c64-bc0e-e7b3044e566a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1767_injected_30081_80d598cc",
+      "step": 4,
+      "timestamp": 1791426478.482719,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_boston - temp_paris; humidity_difference = humidity_boston - humidity_paris\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "62c4be6a-4f59-46fa-8e20-5a5a398fc668"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1767_injected_30081_80d598cc",
+      "step": 5,
+      "timestamp": 1791426478.4827235,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Boston is 26\u00b0C with a cloudy condition and humidity at 51%. In Paris, the temperature is 33\u00b0C with partly cloudy conditions and humidity at 83%. The temperature difference is 7\u00b0C and the humidity difference is 31%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791426470.5481973,
+      "node": "agent",
+      "llm_latency": 5.7815,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 79
+    },
+    {
+      "step": 1,
+      "timestamp": 1791426470.8504233,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Boston"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3012,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791426471.1515946,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3011,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791426471.2528284,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_boston - temp_paris; humidity_difference = humidity_boston - humidity_paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1012,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791426478.4817808,
+      "node": "agent",
+      "llm_latency": 7.2283,
+      "has_tool_calls": false,
+      "response_length": 229,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 759,
+      "output_tokens": 58
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Boston"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Boston\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 51, \"wind_speed_kmh\": 6}",
+      "error": null,
+      "latency": 0.30123257637023926,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.30109691619873047,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_boston - temp_paris; humidity_difference = humidity_boston - humidity_paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_boston - temp_paris; humidity_difference = humidity_boston - humidity_paris\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10116887092590332,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0107_injected_1861_f48e6e10",
+  "task_id": "tb_geo_0107",
+  "task_description": "What is the weather in Seoul and Stockholm? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 1861,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Seoul is currently rainy with a temperature of 17\u00b0C and humidity at 42%. The weather in Stockholm is sunny with a temperature of 20\u00b0C and humidity at 70%. The temperature difference between the two cities is 3\u00b0C, and the humidity difference is 28 percentage points.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 12.5992,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T14:04:38.077686",
+  "end_time": "2026-10-07T14:04:50.676859",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0107_injected_1861_f48e6e10",
+      "step": 0,
+      "timestamp": 1791381890.6768775,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Seoul and Stockholm? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Seoul and Stockholm? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0107_injected_1861_f48e6e10",
+      "step": 1,
+      "timestamp": 1791381890.6768987,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seoul"
+          },
+          "id": "b24b6dff-e200-408c-9cce-4ef2a428ff7d"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Stockholm"
+          },
+          "id": "77bbc7b6-ed28-42ab-b6be-805672e4776c"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0107_injected_1861_f48e6e10",
+      "step": 2,
+      "timestamp": 1791381890.6769116,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "tool_call_id": "b24b6dff-e200-408c-9cce-4ef2a428ff7d"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0107_injected_1861_f48e6e10",
+      "step": 3,
+      "timestamp": 1791381890.676924,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Stockholm\", \"temperature_celsius\": 20, \"condition\": \"sunny\", \"humidity\": 70, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "77bbc7b6-ed28-42ab-b6be-805672e4776c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0107_injected_1861_f48e6e10",
+      "step": 4,
+      "timestamp": 1791381890.6769295,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Seoul is currently rainy with a temperature of 17\u00b0C and humidity at 42%. The weather in Stockholm is sunny with a temperature of 20\u00b0C and humidity at 70%. The temperature difference between the two cities is 3\u00b0C, and the humidity difference is 28 percentage points.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791381881.2903278,
+      "node": "agent",
+      "llm_latency": 3.2107,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791381881.5949445,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3033,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791381881.896092,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Stockholm"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3011,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791381890.6756437,
+      "node": "agent",
+      "llm_latency": 8.7787,
+      "has_tool_calls": false,
+      "response_length": 280,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 671,
+      "output_tokens": 67
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "error": null,
+      "latency": 0.3033328056335449,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Stockholm"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Stockholm\", \"temperature_celsius\": 20, \"condition\": \"sunny\", \"humidity\": 70, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.301067590713501,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

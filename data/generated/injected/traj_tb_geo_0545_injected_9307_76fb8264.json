@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0545_injected_9307_76fb8264",
+  "task_id": "tb_geo_0545",
+  "task_description": "What is the weather in Dubai and Vienna? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 9307,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Dubai is currently rainy with a temperature of 32\u00b0C and humidity at 57%. The weather in Vienna is cloudy with a temperature of 31\u00b0C and humidity at 81%. The temperature difference between the two cities is 1\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.7353,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T18:08:24.851411",
+  "end_time": "2026-10-07T18:08:35.586677",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0545_injected_9307_76fb8264",
+      "step": 0,
+      "timestamp": 1791396515.5866902,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Dubai and Vienna? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Dubai and Vienna? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0545_injected_9307_76fb8264",
+      "step": 1,
+      "timestamp": 1791396515.5867,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Dubai"
+          },
+          "id": "8efc4ef0-c282-4e87-8a18-50686dbfb3bc"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Vienna"
+          },
+          "id": "38cfd63c-5ab2-4bdb-9dcd-0866d6629392"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0545_injected_9307_76fb8264",
+      "step": 2,
+      "timestamp": 1791396515.58671,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Dubai\", \"temperature_celsius\": 32, \"condition\": \"rainy\", \"humidity\": 57, \"wind_speed_kmh\": 12}",
+      "tool_call_id": "8efc4ef0-c282-4e87-8a18-50686dbfb3bc"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0545_injected_9307_76fb8264",
+      "step": 3,
+      "timestamp": 1791396515.5867186,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "tool_call_id": "38cfd63c-5ab2-4bdb-9dcd-0866d6629392"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0545_injected_9307_76fb8264",
+      "step": 4,
+      "timestamp": 1791396515.5867233,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Dubai is currently rainy with a temperature of 32\u00b0C and humidity at 57%. The weather in Vienna is cloudy with a temperature of 31\u00b0C and humidity at 81%. The temperature difference between the two cities is 1\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791396508.3445458,
+      "node": "agent",
+      "llm_latency": 3.4905,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791396508.64918,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Dubai"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3036,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791396508.9525695,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3032,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791396515.5854986,
+      "node": "agent",
+      "llm_latency": 6.631,
+      "has_tool_calls": false,
+      "response_length": 225,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 671,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Dubai"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Dubai\", \"temperature_celsius\": 32, \"condition\": \"rainy\", \"humidity\": 57, \"wind_speed_kmh\": 12}",
+      "error": null,
+      "latency": 0.30356836318969727,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "error": null,
+      "latency": 0.3032369613647461,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

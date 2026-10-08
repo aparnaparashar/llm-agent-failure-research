@@ -1,0 +1,48 @@
+# Failure Detector Model Configuration
+
+model:
+  # Primary model
+  primary: xgboost
+  
+  # XGBoost hyperparameters (tuned on validation set)
+  xgboost:
+    n_estimators: 200
+    max_depth: 6
+    learning_rate: 0.1
+    subsample: 0.8
+    colsample_bytree: 0.8
+    min_child_weight: 5
+    scale_pos_weight: 1.0  # Will be adjusted based on class imbalance
+    eval_metric: "logloss"
+    early_stopping_rounds: 20
+    random_state: 42
+
+  # Baseline models
+  baselines:
+    - majority
+    - logistic_regression
+    - random_forest
+    - extra_trees
+    - gradient_boosting
+    - recent_error_heuristic
+    - tool_repetition_heuristic
+
+  # Prediction horizons
+  horizons:
+    - 1
+    - 2
+    - 3
+    - 5
+    - 10
+
+  # Calibration methods
+  calibration:
+    methods:
+      - platt
+      - isotonic
+    # Calibration is done on validation data
+    eval_metrics:
+      - brier_score
+      - ece
+      - calibration_slope
+      - calibration_intercept

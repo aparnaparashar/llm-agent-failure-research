@@ -1,0 +1,38 @@
+{
+  "Policy 0 (Passive)": {
+    "mean_regret": 0.9829,
+    "regret": 0.9829,
+    "total_interventions": 0,
+    "interventions": 0,
+    "false_alarms": 0,
+    "intervention_rate": 0.0,
+    "success_rate": 0.8034
+  },
+  "Policy 1 (Static Threshold)": {
+    "mean_regret": 0.1767,
+    "regret": 0.1767,
+    "total_interventions": 269,
+    "interventions": 269,
+    "false_alarms": 28,
+    "intervention_rate": 0.1842,
+    "success_rate": 0.9647
+  },
+  "Policy 2 (Calibrated)": {
+    "mean_regret": 0.137,
+    "regret": 0.137,
+    "total_interventions": 313,
+    "interventions": 313,
+    "false_alarms": 55,
+    "intervention_rate": 0.2144,
+    "success_rate": 0.9726
+  },
+  "Policy 3 (Adaptive Regret)": {
+    "mean_regret": 0.1445,
+    "regret": 0.1445,
+    "total_interventions": 324,
+    "interventions": 324,
+    "false_alarms": 66,
+    "intervention_rate": 0.2219,
+    "success_rate": 0.9711
+  }
+}

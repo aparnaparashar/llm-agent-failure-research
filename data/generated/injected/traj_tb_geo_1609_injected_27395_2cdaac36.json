@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1609_injected_27395_2cdaac36",
+  "task_id": "tb_geo_1609",
+  "task_description": "What is the weather in Seoul and Rome? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 27395,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Seoul is 17\u00b0C with a condition of rainy and humidity at 42%. In Rome, the temperature is 25\u00b0C with a condition of sunny and humidity at 75%. The temperature difference is 8\u00b0C and the humidity difference is 33%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 14.8164,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:43:38.998792",
+  "end_time": "2026-10-08T00:43:53.815228",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1609_injected_27395_2cdaac36",
+      "step": 0,
+      "timestamp": 1791420233.8152492,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Seoul and Rome? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Seoul and Rome? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1609_injected_27395_2cdaac36",
+      "step": 1,
+      "timestamp": 1791420233.8152668,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seoul"
+          },
+          "id": "8ce27cf4-b7cc-4a4d-910d-3250be98a6ad"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Rome"
+          },
+          "id": "1e08dbfa-f670-4a63-81a2-0b04315c2236"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_seoul - temperature_rome; humidity_difference = humidity_seoul - humidity_rome"
+          },
+          "id": "a50c54dd-6351-405f-a33d-c91f86e679fd"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1609_injected_27395_2cdaac36",
+      "step": 2,
+      "timestamp": 1791420233.815285,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "tool_call_id": "8ce27cf4-b7cc-4a4d-910d-3250be98a6ad"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1609_injected_27395_2cdaac36",
+      "step": 3,
+      "timestamp": 1791420233.8153017,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "1e08dbfa-f670-4a63-81a2-0b04315c2236"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1609_injected_27395_2cdaac36",
+      "step": 4,
+      "timestamp": 1791420233.8153114,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_seoul - temperature_rome; humidity_difference = humidity_seoul - humidity_rome\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "a50c54dd-6351-405f-a33d-c91f86e679fd"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1609_injected_27395_2cdaac36",
+      "step": 5,
+      "timestamp": 1791420233.8153203,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Seoul is 17\u00b0C with a condition of rainy and humidity at 42%. In Rome, the temperature is 25\u00b0C with a condition of sunny and humidity at 75%. The temperature difference is 8\u00b0C and the humidity difference is 33%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791420225.245265,
+      "node": "agent",
+      "llm_latency": 6.2436,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 81
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420225.5480108,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420225.8509896,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3028,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420225.9552214,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_seoul - temperature_rome; humidity_difference = humidity_seoul - humidity_rome"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1041,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420233.8133836,
+      "node": "agent",
+      "llm_latency": 7.8564,
+      "has_tool_calls": false,
+      "response_length": 225,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 764,
+      "output_tokens": 60
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "error": null,
+      "latency": 0.3014228343963623,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.30283284187316895,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_seoul - temperature_rome; humidity_difference = humidity_seoul - humidity_rome"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_seoul - temperature_rome; humidity_difference = humidity_seoul - humidity_rome\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10410261154174805,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

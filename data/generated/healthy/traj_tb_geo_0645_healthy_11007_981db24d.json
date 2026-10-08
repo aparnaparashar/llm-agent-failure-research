@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0645_healthy_11007_981db24d",
+  "task_id": "tb_geo_0645",
+  "task_description": "What is the weather in Sydney and San Francisco? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 11007,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In San Francisco, the weather is cloudy with a temperature of 21\u00b0C and humidity at 46%. The temperature difference is 12\u00b0C and the humidity difference is 2%.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 15.3426,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T18:39:59.114286",
+  "end_time": "2026-10-07T18:40:14.456899",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0645_healthy_11007_981db24d",
+      "step": 0,
+      "timestamp": 1791398414.4569077,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Sydney and San Francisco? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Sydney and San Francisco? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0645_healthy_11007_981db24d",
+      "step": 1,
+      "timestamp": 1791398414.4569159,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Sydney"
+          },
+          "id": "1c2b4ed5-c0be-47b7-b655-b5bd9881d386"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "5f062d39-b9b4-47f4-8154-927a6ba449ef"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_sydney - temp_san_francisco; humidity_difference = humidity_sydney - humidity_san_francisco"
+          },
+          "id": "3c6a92f7-c4cb-486a-9e4f-890face2637e"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0645_healthy_11007_981db24d",
+      "step": 2,
+      "timestamp": 1791398414.456924,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "1c2b4ed5-c0be-47b7-b655-b5bd9881d386"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0645_healthy_11007_981db24d",
+      "step": 3,
+      "timestamp": 1791398414.4569309,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "5f062d39-b9b4-47f4-8154-927a6ba449ef"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0645_healthy_11007_981db24d",
+      "step": 4,
+      "timestamp": 1791398414.4569354,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_sydney - temp_san_francisco; humidity_difference = humidity_sydney - humidity_san_francisco\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "3c6a92f7-c4cb-486a-9e4f-890face2637e"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0645_healthy_11007_981db24d",
+      "step": 5,
+      "timestamp": 1791398414.4569392,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In San Francisco, the weather is cloudy with a temperature of 21\u00b0C and humidity at 46%. The temperature difference is 12\u00b0C and the humidity difference is 2%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791398405.811275,
+      "node": "agent",
+      "llm_latency": 6.6946,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 87
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398406.114521,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.302,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398406.4162529,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3017,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398406.5188382,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_sydney - temp_san_francisco; humidity_difference = humidity_sydney - humidity_san_francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1025,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398414.4558632,
+      "node": "agent",
+      "llm_latency": 7.9359,
+      "has_tool_calls": false,
+      "response_length": 244,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 774,
+      "output_tokens": 62
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3020038604736328,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3016510009765625,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_sydney - temp_san_francisco; humidity_difference = humidity_sydney - humidity_san_francisco"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_sydney - temp_san_francisco; humidity_difference = humidity_sydney - humidity_san_francisco\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10250115394592285,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

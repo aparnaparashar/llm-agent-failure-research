@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-10-07T11:44:39.742720",
+  "results": [
+    {
+      "task_id": "organic_001",
+      "trajectory_id": "traj_organic_001_organic_42_b6f424f2",
+      "status": "completed",
+      "num_steps": 6,
+      "total_latency": 26.7941,
+      "task_success": true,
+      "error_count": 0
+    }
+  ]
+}

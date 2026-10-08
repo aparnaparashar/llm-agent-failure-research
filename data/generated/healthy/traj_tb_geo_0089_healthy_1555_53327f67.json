@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0089_healthy_1555_53327f67",
+  "task_id": "tb_geo_0089",
+  "task_description": "What is the weather in Berlin and Seattle? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 1555,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Berlin is currently cloudy with a temperature of 26\u00b0C and humidity at 76%. The wind speed is 11 km/h. In Seattle, the temperature is 19\u00b0C with a wind speed of 9 km/h and a condition of being windy. The temperature difference between the two cities is 7\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.6302,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T14:00:56.314552",
+  "end_time": "2026-10-07T14:01:06.944787",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0089_healthy_1555_53327f67",
+      "step": 0,
+      "timestamp": 1791381666.9448,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Berlin and Seattle? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Berlin and Seattle? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0089_healthy_1555_53327f67",
+      "step": 1,
+      "timestamp": 1791381666.9448104,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Berlin"
+          },
+          "id": "d9d86b26-0ff8-4275-b9ef-de3e083e10d9"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seattle"
+          },
+          "id": "5ad6252b-e00c-4f15-915b-40538705ad63"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0089_healthy_1555_53327f67",
+      "step": 2,
+      "timestamp": 1791381666.9448206,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "tool_call_id": "d9d86b26-0ff8-4275-b9ef-de3e083e10d9"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0089_healthy_1555_53327f67",
+      "step": 3,
+      "timestamp": 1791381666.944831,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "tool_call_id": "5ad6252b-e00c-4f15-915b-40538705ad63"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0089_healthy_1555_53327f67",
+      "step": 4,
+      "timestamp": 1791381666.9448366,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Berlin is currently cloudy with a temperature of 26\u00b0C and humidity at 76%. The wind speed is 11 km/h. In Seattle, the temperature is 19\u00b0C with a wind speed of 9 km/h and a condition of being windy. The temperature difference between the two cities is 7\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791381659.346553,
+      "node": "agent",
+      "llm_latency": 3.0294,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791381659.6495802,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791381659.9541953,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3045,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791381666.943631,
+      "node": "agent",
+      "llm_latency": 6.9884,
+      "has_tool_calls": false,
+      "response_length": 270,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 666,
+      "output_tokens": 71
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "error": null,
+      "latency": 0.3016026020050049,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "error": null,
+      "latency": 0.3045186996459961,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "trajectory_id": "traj_tb_info_0122_injected_2116_2d804013",
+  "task_id": "tb_info_0122",
+  "task_description": "Search the web for 'space exploration Mars rovers'. Summarize the key findings and evaluate numerical trends.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 2116,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The search for \"space exploration Mars rovers\" returned one result. The snippet provided is:\n\n\"Information about space exploration Mars rovers. This is a search result containing relevant data.\"\n\nYou can click on the provided URL to access more detailed information.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 2,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 4,
+  "total_latency": 8.2582,
+  "total_tool_calls": 1,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T14:07:35.778314",
+  "end_time": "2026-10-07T14:07:44.036509",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_info_0122_injected_2116_2d804013",
+      "step": 0,
+      "timestamp": 1791382064.0365198,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Search the web for 'space exploration Mars rovers'. Summarize the key findings and evaluate numerical trends.",
+      "task_text": "Search the web for 'space exploration Mars rovers'. Summarize the key findings and evaluate numerical trends."
+    },
+    {
+      "trajectory_id": "traj_tb_info_0122_injected_2116_2d804013",
+      "step": 1,
+      "timestamp": 1791382064.0365288,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "space exploration Mars rovers"
+          },
+          "id": "ea170428-af1a-4279-a79f-523eeb28c08f"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_info_0122_injected_2116_2d804013",
+      "step": 2,
+      "timestamp": 1791382064.0365381,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "web_search",
+      "content": "{\"status\": \"success\", \"query\": \"space exploration Mars rovers\", \"results\": [{\"title\": \"Result for: space exploration Mars rovers\", \"snippet\": \"Information about space exploration Mars rovers. This is a search result containing relevant data.\", \"url\": \"https://example.com/result/524c00f8\"}], \"total_results\": 1}",
+      "tool_call_id": "ea170428-af1a-4279-a79f-523eeb28c08f"
+    },
+    {
+      "trajectory_id": "traj_tb_info_0122_injected_2116_2d804013",
+      "step": 3,
+      "timestamp": 1791382064.0365489,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The search for \"space exploration Mars rovers\" returned one result. The snippet provided is:\n\n\"Information about space exploration Mars rovers. This is a search result containing relevant data.\"\n\nYou can click on the provided URL to access more detailed information.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791382057.846297,
+      "node": "agent",
+      "llm_latency": 2.0656,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 518,
+      "output_tokens": 24
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382058.3515234,
+      "node": "tool",
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "space exploration Mars rovers"
+      },
+      "tool_success": true,
+      "tool_latency": 0.5041,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382064.03547,
+      "node": "agent",
+      "llm_latency": 5.6827,
+      "has_tool_calls": false,
+      "response_length": 266,
+      "state_hash": "3114b54fc978",
+      "input_tokens": 638,
+      "output_tokens": 51
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "space exploration Mars rovers"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"query\": \"space exploration Mars rovers\", \"results\": [{\"title\": \"Result for: space exploration Mars rovers\", \"snippet\": \"Information about space exploration Mars rovers. This is a search result containing relevant data.\", \"url\": \"https://example.com/result/524c00f8\"}], \"total_results\": 1}",
+      "error": null,
+      "latency": 0.5041110515594482,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

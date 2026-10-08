@@ -1,0 +1,206 @@
+{
+  "trajectory_id": "traj_tb_geo_1806_injected_30744_761fdd80",
+  "task_id": "tb_geo_1806",
+  "task_description": "What is the weather in Seattle and London? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 30744,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": false,
+  "final_answer": "I'm sorry, but I encountered an internal server error while trying to get the weather in Seattle and London. The backend service is currently unavailable, so I was unable to retrieve the weather data. Please try again later.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": true,
+  "fault_exposed": true,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 17.0535,
+  "total_tool_calls": 2,
+  "error_count": 2,
+  "retry_count": 0,
+  "start_time": "2026-10-08T02:39:35.136321",
+  "end_time": "2026-10-08T02:39:52.189803",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1806_injected_30744_761fdd80",
+      "step": 0,
+      "timestamp": 1791427192.189829,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Seattle and London? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Seattle and London? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1806_injected_30744_761fdd80",
+      "step": 1,
+      "timestamp": 1791427192.1898553,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seattle"
+          },
+          "id": "81e4c12c-35ae-4cd8-bf9f-ec46d203f56b"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "London"
+          },
+          "id": "c3b53ca2-3299-4142-acdd-f67a893eeb28"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1806_injected_30744_761fdd80",
+      "step": 2,
+      "timestamp": 1791427192.1898756,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"error\", \"error\": \"Internal Server Error\", \"error_code\": 500, \"tool\": \"get_weather\", \"message\": \"The get_weather service encountered an internal error. The request could not be processed. Error: Connection refused - the backend service is unavailable.\", \"retry_after\": null, \"data\": null}",
+      "tool_call_id": "81e4c12c-35ae-4cd8-bf9f-ec46d203f56b"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1806_injected_30744_761fdd80",
+      "step": 3,
+      "timestamp": 1791427192.1898944,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"error\", \"error\": \"Internal Server Error\", \"error_code\": 500, \"tool\": \"get_weather\", \"message\": \"The get_weather service encountered an internal error. The request could not be processed. Error: Connection refused - the backend service is unavailable.\", \"retry_after\": null, \"data\": null}",
+      "tool_call_id": "c3b53ca2-3299-4142-acdd-f67a893eeb28"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1806_injected_30744_761fdd80",
+      "step": 4,
+      "timestamp": 1791427192.1899052,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I'm sorry, but I encountered an internal server error while trying to get the weather in Seattle and London. The backend service is currently unavailable, so I was unable to retrieve the weather data. Please try again later.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791427180.642501,
+      "node": "agent",
+      "llm_latency": 5.5042,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427180.9478104,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "tool_success": false,
+      "tool_latency": 0.302,
+      "tool_error": "Tool 'get_weather' failed with Internal Server Error (500)",
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "complete_failure",
+        "severity": "high",
+        "http_status": 500,
+        "original_result_length": 126
+      }
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427181.2506485,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "tool_success": false,
+      "tool_latency": 0.3024,
+      "tool_error": "Tool 'get_weather' failed with Internal Server Error (500)",
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "complete_failure",
+        "severity": "high",
+        "http_status": 500,
+        "original_result_length": 126
+      }
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427192.1875684,
+      "node": "agent",
+      "llm_latency": 10.9357,
+      "has_tool_calls": false,
+      "response_length": 224,
+      "state_hash": "8d5f3c725c6b",
+      "input_tokens": 721,
+      "output_tokens": 45
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"error\", \"error\": \"Internal Server Error\", \"error_code\": 500, \"tool\": \"get_weather\", \"message\": \"The get_weather service encountered an internal error. The request could not be processed. Error: Connection refused - the backend service is unavailable.\", \"retry_after\": null, \"data\": null}",
+      "error": "Tool 'get_weather' failed with Internal Server Error (500)",
+      "latency": 0.30202817916870117,
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "complete_failure",
+        "severity": "high",
+        "http_status": 500,
+        "original_result_length": 126
+      }
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"error\", \"error\": \"Internal Server Error\", \"error_code\": 500, \"tool\": \"get_weather\", \"message\": \"The get_weather service encountered an internal error. The request could not be processed. Error: Connection refused - the backend service is unavailable.\", \"retry_after\": null, \"data\": null}",
+      "error": "Tool 'get_weather' failed with Internal Server Error (500)",
+      "latency": 0.3023550510406494,
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "complete_failure",
+        "severity": "high",
+        "http_status": 500,
+        "original_result_length": 126
+      }
+    }
+  ]
+}

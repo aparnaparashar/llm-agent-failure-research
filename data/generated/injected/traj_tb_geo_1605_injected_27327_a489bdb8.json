@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1605_injected_27327_a489bdb8",
+  "task_id": "tb_geo_1605",
+  "task_description": "What is the weather in Tokyo and Toronto? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 27327,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Tokyo is currently cloudy with a temperature of 31\u00b0C and humidity at 56%. The weather in Toronto is windy with a temperature of 29\u00b0C and humidity at 79%. The temperature difference between the two cities is 2\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.2829,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:42:45.503516",
+  "end_time": "2026-10-08T00:42:55.786396",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1605_injected_27327_a489bdb8",
+      "step": 0,
+      "timestamp": 1791420175.7864046,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Tokyo and Toronto? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Tokyo and Toronto? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1605_injected_27327_a489bdb8",
+      "step": 1,
+      "timestamp": 1791420175.7864137,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "8e95c95d-e2ab-4c57-aaf1-414619beaac6"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "2c2cefce-0059-460c-9009-1eed5a8e7901"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1605_injected_27327_a489bdb8",
+      "step": 2,
+      "timestamp": 1791420175.7864215,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "8e95c95d-e2ab-4c57-aaf1-414619beaac6"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1605_injected_27327_a489bdb8",
+      "step": 3,
+      "timestamp": 1791420175.7864323,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "tool_call_id": "2c2cefce-0059-460c-9009-1eed5a8e7901"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1605_injected_27327_a489bdb8",
+      "step": 4,
+      "timestamp": 1791420175.7864366,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Tokyo is currently cloudy with a temperature of 31\u00b0C and humidity at 56%. The weather in Toronto is windy with a temperature of 29\u00b0C and humidity at 79%. The temperature difference between the two cities is 2\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791420168.9492517,
+      "node": "agent",
+      "llm_latency": 3.4418,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420169.252209,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420169.554803,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3025,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420175.7853951,
+      "node": "agent",
+      "llm_latency": 6.2294,
+      "has_tool_calls": false,
+      "response_length": 226,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.3014404773712158,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "error": null,
+      "latency": 0.3024764060974121,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

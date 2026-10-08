@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0266_injected_4564_98d06900",
+  "task_id": "tb_geo_0266",
+  "task_description": "What is the weather in Seoul and Tokyo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 4564,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Seoul is currently rainy with a temperature of 17\u00b0C and humidity at 42%. The weather in Tokyo is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference between the two cities is 4\u00b0C.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 20.9238,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T15:41:00.397648",
+  "end_time": "2026-10-07T15:41:21.321468",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0266_injected_4564_98d06900",
+      "step": 0,
+      "timestamp": 1791387681.321496,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Seoul and Tokyo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Seoul and Tokyo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0266_injected_4564_98d06900",
+      "step": 1,
+      "timestamp": 1791387681.3215196,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seoul"
+          },
+          "id": "cab52b9e-4c2f-4ebc-b988-5b0c69fe9443"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "8e7672dd-f56e-46e5-bc76-683bd1ab43b0"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0266_injected_4564_98d06900",
+      "step": 2,
+      "timestamp": 1791387681.3215404,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "tool_call_id": "cab52b9e-4c2f-4ebc-b988-5b0c69fe9443"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0266_injected_4564_98d06900",
+      "step": 3,
+      "timestamp": 1791387681.3215609,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "8e7672dd-f56e-46e5-bc76-683bd1ab43b0"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0266_injected_4564_98d06900",
+      "step": 4,
+      "timestamp": 1791387681.321572,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Seoul is currently rainy with a temperature of 17\u00b0C and humidity at 42%. The weather in Tokyo is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference between the two cities is 4\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791387668.5188982,
+      "node": "agent",
+      "llm_latency": 8.1171,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791387668.8263967,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3046,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791387669.131077,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3046,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791387681.3192353,
+      "node": "agent",
+      "llm_latency": 12.1872,
+      "has_tool_calls": false,
+      "response_length": 224,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 671,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "error": null,
+      "latency": 0.3045990467071533,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.30457496643066406,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

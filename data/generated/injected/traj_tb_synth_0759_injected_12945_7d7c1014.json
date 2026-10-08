@@ -1,0 +1,189 @@
+{
+  "trajectory_id": "traj_tb_synth_0759_injected_12945_7d7c1014",
+  "task_id": "tb_synth_0759",
+  "task_description": "Query endpoint 'products' and perform text analysis to identify key topics. Calculate average length.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 12945,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The text analysis of the provided text has identified the following key topics: \"products\" and \"data\".\n\nThe average length of the text is calculated as follows:\n- The text contains 13 characters.\n- The number of words is 2.\n\nTherefore, the average length of the text is 13 characters.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 20.0732,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T19:35:08.783792",
+  "end_time": "2026-10-07T19:35:28.856996",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_synth_0759_injected_12945_7d7c1014",
+      "step": 0,
+      "timestamp": 1791401728.857017,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Query endpoint 'products' and perform text analysis to identify key topics. Calculate average length.",
+      "task_text": "Query endpoint 'products' and perform text analysis to identify key topics. Calculate average length."
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0759_injected_12945_7d7c1014",
+      "step": 1,
+      "timestamp": 1791401728.8570359,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_data",
+          "args": {
+            "endpoint": "products"
+          },
+          "id": "68e02f35-b563-42a3-97e4-f5e502050f2b"
+        },
+        {
+          "name": "text_analysis",
+          "args": {
+            "text": "products data",
+            "analysis_type": "key_phrases"
+          },
+          "id": "fd80ddb0-c917-4a69-87a8-e8f4bd90dbeb"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0759_injected_12945_7d7c1014",
+      "step": 2,
+      "timestamp": 1791401728.8570874,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_data",
+      "content": "{\"status\": \"success\", \"endpoint\": \"products\", \"data\": {\"id\": \"86024cad\", \"name\": \"Item from products\", \"description\": \"Data retrieved from the products endpoint\", \"timestamp\": \"2026-10-08T01:05:16Z\"}}",
+      "tool_call_id": "68e02f35-b563-42a3-97e4-f5e502050f2b"
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0759_injected_12945_7d7c1014",
+      "step": 3,
+      "timestamp": 1791401728.8571076,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "text_analysis",
+      "content": "{\"status\": \"success\", \"analysis_type\": \"key_phrases\", \"word_count\": 2, \"char_count\": 13, \"key_phrases\": [\"products\", \"data\"]}",
+      "tool_call_id": "fd80ddb0-c917-4a69-87a8-e8f4bd90dbeb"
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0759_injected_12945_7d7c1014",
+      "step": 4,
+      "timestamp": 1791401728.8571184,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The text analysis of the provided text has identified the following key topics: \"products\" and \"data\".\n\nThe average length of the text is calculated as follows:\n- The text contains 13 characters.\n- The number of words is 2.\n\nTherefore, the average length of the text is 13 characters.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791401715.9080114,
+      "node": "agent",
+      "llm_latency": 7.1202,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 50
+    },
+    {
+      "step": 1,
+      "timestamp": 1791401716.3128872,
+      "node": "tool",
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "products"
+      },
+      "tool_success": true,
+      "tool_latency": 0.4024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791401716.614528,
+      "node": "tool",
+      "tool_name": "text_analysis",
+      "tool_args": {
+        "text": "products data",
+        "analysis_type": "key_phrases"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791401728.8548863,
+      "node": "agent",
+      "llm_latency": 12.2386,
+      "has_tool_calls": false,
+      "response_length": 284,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 697,
+      "output_tokens": 65
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "products"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"endpoint\": \"products\", \"data\": {\"id\": \"86024cad\", \"name\": \"Item from products\", \"description\": \"Data retrieved from the products endpoint\", \"timestamp\": \"2026-10-08T01:05:16Z\"}}",
+      "error": null,
+      "latency": 0.4024088382720947,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "text_analysis",
+      "tool_args": {
+        "text": "products data",
+        "analysis_type": "key_phrases"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"analysis_type\": \"key_phrases\", \"word_count\": 2, \"char_count\": 13, \"key_phrases\": [\"products\", \"data\"]}",
+      "error": null,
+      "latency": 0.30152249336242676,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1807_healthy_30761_cfe70be1",
+  "task_id": "tb_geo_1807",
+  "task_description": "What is the weather in Toronto and London? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 30761,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Toronto is 29\u00b0C with a wind speed of 14 km/h and a condition of \"windy\". The humidity is 79%. The weather in London is 15\u00b0C with a wind speed of 25 km/h and a condition of \"sunny\". The humidity is 40%. The temperature difference between London and Toronto is 14\u00b0C, and the humidity difference is 30%.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 39.0713,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T02:39:52.806960",
+  "end_time": "2026-10-08T02:40:31.878281",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1807_healthy_30761_cfe70be1",
+      "step": 0,
+      "timestamp": 1791427231.878305,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Toronto and London? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Toronto and London? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1807_healthy_30761_cfe70be1",
+      "step": 1,
+      "timestamp": 1791427231.8783262,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "bc3a56d5-73a2-4451-81a8-1b743f3c782f"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "London"
+          },
+          "id": "ce4c3217-8188-4ebe-824c-a8fcda9bbcc5"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_London - temperature_Toronto; humidity_difference = humidity_London - humidity_Toronto"
+          },
+          "id": "00f6781b-c0fe-4140-bbca-4a7d72b2b947"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1807_healthy_30761_cfe70be1",
+      "step": 2,
+      "timestamp": 1791427231.8783484,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "tool_call_id": "bc3a56d5-73a2-4451-81a8-1b743f3c782f"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1807_healthy_30761_cfe70be1",
+      "step": 3,
+      "timestamp": 1791427231.8783674,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "ce4c3217-8188-4ebe-824c-a8fcda9bbcc5"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1807_healthy_30761_cfe70be1",
+      "step": 4,
+      "timestamp": 1791427231.8783784,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_London - temperature_Toronto; humidity_difference = humidity_London - humidity_Toronto\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "00f6781b-c0fe-4140-bbca-4a7d72b2b947"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1807_healthy_30761_cfe70be1",
+      "step": 5,
+      "timestamp": 1791427231.878389,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Toronto is 29\u00b0C with a wind speed of 14 km/h and a condition of \"windy\". The humidity is 79%. The weather in London is 15\u00b0C with a wind speed of 25 km/h and a condition of \"sunny\". The humidity is 40%. The temperature difference between London and Toronto is 14\u00b0C, and the humidity difference is 30%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791427206.3770392,
+      "node": "agent",
+      "llm_latency": 13.5679,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 81
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427206.682922,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3033,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427206.98471,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3017,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427207.0862923,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_London - temperature_Toronto; humidity_difference = humidity_London - humidity_Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427231.8759527,
+      "node": "agent",
+      "llm_latency": 24.7886,
+      "has_tool_calls": false,
+      "response_length": 315,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 764,
+      "output_tokens": 91
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "error": null,
+      "latency": 0.303297758102417,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.3016819953918457,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_London - temperature_Toronto; humidity_difference = humidity_London - humidity_Toronto"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_London - temperature_Toronto; humidity_difference = humidity_London - humidity_Toronto\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10149502754211426,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0049_injected_875_253aa891",
+  "task_id": "tb_geo_0049",
+  "task_description": "What is the weather in Berlin and Rome? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 875,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Berlin is currently 26\u00b0C with a cloudy condition and humidity at 76%. The weather in Rome is 25\u00b0C with a sunny condition and humidity at 75%. The temperature difference between the two cities is 1\u00b0C. The wind speed in Berlin is 11 km/h, while in Rome it is 20 km/h.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 15.2868,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T13:41:55.891650",
+  "end_time": "2026-10-07T13:42:11.178484",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0049_injected_875_253aa891",
+      "step": 0,
+      "timestamp": 1791380531.178498,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Berlin and Rome? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Berlin and Rome? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0049_injected_875_253aa891",
+      "step": 1,
+      "timestamp": 1791380531.1785123,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Berlin"
+          },
+          "id": "e715c310-52d5-4e0c-816a-8e6857fe7875"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Rome"
+          },
+          "id": "fe82da29-1149-4fad-b012-71e31f33677d"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0049_injected_875_253aa891",
+      "step": 2,
+      "timestamp": 1791380531.178526,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "tool_call_id": "e715c310-52d5-4e0c-816a-8e6857fe7875"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0049_injected_875_253aa891",
+      "step": 3,
+      "timestamp": 1791380531.1785395,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "fe82da29-1149-4fad-b012-71e31f33677d"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0049_injected_875_253aa891",
+      "step": 4,
+      "timestamp": 1791380531.1785471,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Berlin is currently 26\u00b0C with a cloudy condition and humidity at 76%. The weather in Rome is 25\u00b0C with a sunny condition and humidity at 75%. The temperature difference between the two cities is 1\u00b0C. The wind speed in Berlin is 11 km/h, while in Rome it is 20 km/h.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791380520.024946,
+      "node": "agent",
+      "llm_latency": 4.1308,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791380520.328868,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3021,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791380520.6347551,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3058,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791380531.1767423,
+      "node": "agent",
+      "llm_latency": 10.5398,
+      "has_tool_calls": false,
+      "response_length": 280,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 77
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "error": null,
+      "latency": 0.3021211624145508,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3057668209075928,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

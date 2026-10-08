@@ -1,0 +1,151 @@
+{
+  "trajectory_id": "traj_tb_info_0781_injected_13319_2961c250",
+  "task_id": "tb_info_0781",
+  "task_description": "Search the web for 'quantum computing breakthroughs'. Summarize the key findings and evaluate numerical trends.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 13319,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": false,
+  "final_answer": "I encountered an issue while trying to search for 'quantum computing breakthroughs'. The web_search service reported an internal server error. The request could not be processed. The backend service is currently unavailable. I'm unable to provide a summary or evaluate numerical trends at this time.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": true,
+  "fault_exposed": true,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 4,
+  "total_latency": 10.9995,
+  "total_tool_calls": 1,
+  "error_count": 1,
+  "retry_count": 0,
+  "start_time": "2026-10-07T19:49:40.271169",
+  "end_time": "2026-10-07T19:49:51.270720",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_info_0781_injected_13319_2961c250",
+      "step": 0,
+      "timestamp": 1791402591.2707438,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Search the web for 'quantum computing breakthroughs'. Summarize the key findings and evaluate numerical trends.",
+      "task_text": "Search the web for 'quantum computing breakthroughs'. Summarize the key findings and evaluate numerical trends."
+    },
+    {
+      "trajectory_id": "traj_tb_info_0781_injected_13319_2961c250",
+      "step": 1,
+      "timestamp": 1791402591.2707658,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "quantum computing breakthroughs"
+          },
+          "id": "18745207-6c31-499c-a48e-911367bb0c16"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_info_0781_injected_13319_2961c250",
+      "step": 2,
+      "timestamp": 1791402591.270784,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "web_search",
+      "content": "{\"status\": \"error\", \"error\": \"Internal Server Error\", \"error_code\": 500, \"tool\": \"web_search\", \"message\": \"The web_search service encountered an internal error. The request could not be processed. Error: Connection refused - the backend service is unavailable.\", \"retry_after\": null, \"data\": null}",
+      "tool_call_id": "18745207-6c31-499c-a48e-911367bb0c16"
+    },
+    {
+      "trajectory_id": "traj_tb_info_0781_injected_13319_2961c250",
+      "step": 3,
+      "timestamp": 1791402591.2708025,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I encountered an issue while trying to search for 'quantum computing breakthroughs'. The web_search service reported an internal server error. The request could not be processed. The backend service is currently unavailable. I'm unable to provide a summary or evaluate numerical trends at this time.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791402583.0577655,
+      "node": "agent",
+      "llm_latency": 2.7849,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 518,
+      "output_tokens": 24
+    },
+    {
+      "step": 1,
+      "timestamp": 1791402583.5649536,
+      "node": "tool",
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "quantum computing breakthroughs"
+      },
+      "tool_success": false,
+      "tool_latency": 0.504,
+      "tool_error": "Tool 'web_search' failed with Internal Server Error (500)",
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "complete_failure",
+        "severity": "high",
+        "http_status": 500,
+        "original_result_length": 317
+      }
+    },
+    {
+      "step": 1,
+      "timestamp": 1791402591.268448,
+      "node": "agent",
+      "llm_latency": 7.7027,
+      "has_tool_calls": false,
+      "response_length": 299,
+      "state_hash": "84471cc81603",
+      "input_tokens": 630,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "quantum computing breakthroughs"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"error\", \"error\": \"Internal Server Error\", \"error_code\": 500, \"tool\": \"web_search\", \"message\": \"The web_search service encountered an internal error. The request could not be processed. Error: Connection refused - the backend service is unavailable.\", \"retry_after\": null, \"data\": null}",
+      "error": "Tool 'web_search' failed with Internal Server Error (500)",
+      "latency": 0.50400710105896,
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "complete_failure",
+        "severity": "high",
+        "http_status": 500,
+        "original_result_length": 317
+      }
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0365_injected_6247_bd481e20",
+  "task_id": "tb_geo_0365",
+  "task_description": "What is the weather in Vienna and San Francisco? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 6247,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Vienna is 31\u00b0C with a cloudy condition and humidity at 81%. In San Francisco, the temperature is 21\u00b0C with a cloudy condition and humidity at 46%. The temperature difference is 10\u00b0C and the humidity difference is 35%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 20.1602,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T16:45:14.473827",
+  "end_time": "2026-10-07T16:45:34.634057",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0365_injected_6247_bd481e20",
+      "step": 0,
+      "timestamp": 1791391534.6340823,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Vienna and San Francisco? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Vienna and San Francisco? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0365_injected_6247_bd481e20",
+      "step": 1,
+      "timestamp": 1791391534.6341045,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Vienna"
+          },
+          "id": "8fb64a9d-04cd-4b7f-9686-2c2751b8afc9"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "af4b29a9-b0de-4708-b591-ff8b589e0d1d"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = Vienna temperature - San Francisco temperature; humidity = Vienna humidity - San Francisco humidity"
+          },
+          "id": "b1ecb25d-aaf1-41b6-91ff-c38a6b2b0164"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0365_injected_6247_bd481e20",
+      "step": 2,
+      "timestamp": 1791391534.6341257,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "tool_call_id": "8fb64a9d-04cd-4b7f-9686-2c2751b8afc9"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0365_injected_6247_bd481e20",
+      "step": 3,
+      "timestamp": 1791391534.6341455,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "af4b29a9-b0de-4708-b591-ff8b589e0d1d"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0365_injected_6247_bd481e20",
+      "step": 4,
+      "timestamp": 1791391534.634156,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = Vienna temperature - San Francisco temperature; humidity = Vienna humidity - San Francisco humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "b1ecb25d-aaf1-41b6-91ff-c38a6b2b0164"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0365_injected_6247_bd481e20",
+      "step": 5,
+      "timestamp": 1791391534.634166,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Vienna is 31\u00b0C with a cloudy condition and humidity at 81%. In San Francisco, the temperature is 21\u00b0C with a cloudy condition and humidity at 46%. The temperature difference is 10\u00b0C and the humidity difference is 35%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791391523.3834548,
+      "node": "agent",
+      "llm_latency": 8.9079,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 78
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391523.6880412,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3022,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391523.991062,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3029,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391524.0958583,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Vienna temperature - San Francisco temperature; humidity = Vienna humidity - San Francisco humidity"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1046,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391534.6318314,
+      "node": "agent",
+      "llm_latency": 10.5338,
+      "has_tool_calls": false,
+      "response_length": 232,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 759,
+      "output_tokens": 60
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "error": null,
+      "latency": 0.3021523952484131,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.30287694931030273,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Vienna temperature - San Francisco temperature; humidity = Vienna humidity - San Francisco humidity"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = Vienna temperature - San Francisco temperature; humidity = Vienna humidity - San Francisco humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10461091995239258,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

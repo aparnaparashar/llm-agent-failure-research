@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1529_injected_26035_9a08a28d",
+  "task_id": "tb_geo_1529",
+  "task_description": "What is the weather in Seoul and Paris? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 26035,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Seoul is 17\u00b0C with a condition of rainy and humidity at 42%. The weather in Paris is 33\u00b0C with a condition of partly cloudy and humidity at 83%. The temperature difference between the two cities is 16\u00b0C.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 2,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.1324,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:28:19.073038",
+  "end_time": "2026-10-08T00:28:29.205441",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1529_injected_26035_9a08a28d",
+      "step": 0,
+      "timestamp": 1791419309.2054524,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Seoul and Paris? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Seoul and Paris? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1529_injected_26035_9a08a28d",
+      "step": 1,
+      "timestamp": 1791419309.2054634,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seoul"
+          },
+          "id": "27c9a8fc-30e4-469f-b6ee-4caf38f226d1"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "a84f6023-a200-411d-9f3f-def249fc2f91"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1529_injected_26035_9a08a28d",
+      "step": 2,
+      "timestamp": 1791419309.2054794,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "tool_call_id": "27c9a8fc-30e4-469f-b6ee-4caf38f226d1"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1529_injected_26035_9a08a28d",
+      "step": 3,
+      "timestamp": 1791419309.2054904,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "a84f6023-a200-411d-9f3f-def249fc2f91"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1529_injected_26035_9a08a28d",
+      "step": 4,
+      "timestamp": 1791419309.205496,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Seoul is 17\u00b0C with a condition of rainy and humidity at 42%. The weather in Paris is 33\u00b0C with a condition of partly cloudy and humidity at 83%. The temperature difference between the two cities is 16\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791419302.4053752,
+      "node": "agent",
+      "llm_latency": 3.3306,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419302.709365,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3029,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419303.0122683,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3028,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419309.2044423,
+      "node": "agent",
+      "llm_latency": 6.1913,
+      "has_tool_calls": false,
+      "response_length": 218,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 57
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "error": null,
+      "latency": 0.3028602600097656,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.3028240203857422,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

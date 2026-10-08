@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1089_injected_18555_fe2c4f9d",
+  "task_id": "tb_geo_1089",
+  "task_description": "What is the weather in Stockholm and Berlin? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 18555,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Stockholm is sunny with a temperature of 20\u00b0C and humidity at 70%. In Berlin, the weather is cloudy with a temperature of 26\u00b0C and humidity at 76%. The temperature difference is 6\u00b0C and the humidity difference is 6%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 2,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 19.9057,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T21:55:54.665601",
+  "end_time": "2026-10-07T21:56:14.571345",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1089_injected_18555_fe2c4f9d",
+      "step": 0,
+      "timestamp": 1791410174.5713718,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Stockholm and Berlin? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Stockholm and Berlin? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1089_injected_18555_fe2c4f9d",
+      "step": 1,
+      "timestamp": 1791410174.5713959,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Stockholm"
+          },
+          "id": "765b01b9-5476-41c2-bece-d6a178012f99"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Berlin"
+          },
+          "id": "e5f77c26-657a-4fd9-917f-db5d8ae4fe75"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_Stockholm - temperature_Berlin; humidity_difference = humidity_Stockholm - humidity_Berlin"
+          },
+          "id": "cc469160-b6fd-4806-a6ce-07b895c1920d"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1089_injected_18555_fe2c4f9d",
+      "step": 2,
+      "timestamp": 1791410174.5714173,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Stockholm\", \"temperature_celsius\": 20, \"condition\": \"sunny\", \"humidity\": 70, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "765b01b9-5476-41c2-bece-d6a178012f99"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1089_injected_18555_fe2c4f9d",
+      "step": 3,
+      "timestamp": 1791410174.5714374,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "tool_call_id": "e5f77c26-657a-4fd9-917f-db5d8ae4fe75"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1089_injected_18555_fe2c4f9d",
+      "step": 4,
+      "timestamp": 1791410174.571448,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_Stockholm - temperature_Berlin; humidity_difference = humidity_Stockholm - humidity_Berlin\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "cc469160-b6fd-4806-a6ce-07b895c1920d"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1089_injected_18555_fe2c4f9d",
+      "step": 5,
+      "timestamp": 1791410174.5714576,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Stockholm is sunny with a temperature of 20\u00b0C and humidity at 70%. In Berlin, the weather is cloudy with a temperature of 26\u00b0C and humidity at 76%. The temperature difference is 6\u00b0C and the humidity difference is 6%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791410163.4616156,
+      "node": "agent",
+      "llm_latency": 8.7946,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 84
+    },
+    {
+      "step": 1,
+      "timestamp": 1791410163.7661242,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Stockholm"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3022,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791410164.0693855,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3031,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791410164.174201,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_Stockholm - temperature_Berlin; humidity_difference = humidity_Stockholm - humidity_Berlin"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1047,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791410174.5688238,
+      "node": "agent",
+      "llm_latency": 10.3938,
+      "has_tool_calls": false,
+      "response_length": 231,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 770,
+      "output_tokens": 59
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Stockholm"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Stockholm\", \"temperature_celsius\": 20, \"condition\": \"sunny\", \"humidity\": 70, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.30216097831726074,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "error": null,
+      "latency": 0.3031196594238281,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_Stockholm - temperature_Berlin; humidity_difference = humidity_Stockholm - humidity_Berlin"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_Stockholm - temperature_Berlin; humidity_difference = humidity_Stockholm - humidity_Berlin\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10472774505615234,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

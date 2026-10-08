@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1066_healthy_18164_70a40abe",
+  "task_id": "tb_geo_1066",
+  "task_description": "What is the weather in Madrid and Boston? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 18164,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Madrid is currently sunny with a temperature of 15\u00b0C and humidity at 65%. The weather in Boston is cloudy with a temperature of 26\u00b0C and humidity at 51%. The temperature difference between the two cities is 11\u00b0C, and the humidity difference is 14 percentage points.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 21.1946,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T21:49:36.658139",
+  "end_time": "2026-10-07T21:49:57.852747",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1066_healthy_18164_70a40abe",
+      "step": 0,
+      "timestamp": 1791409797.8527708,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Madrid and Boston? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Madrid and Boston? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1066_healthy_18164_70a40abe",
+      "step": 1,
+      "timestamp": 1791409797.8527958,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Madrid"
+          },
+          "id": "40893520-ab64-47bd-b942-71d5cd4adc8f"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Boston"
+          },
+          "id": "1b6690d1-a315-4e60-9871-1e2d4df1dfd3"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1066_healthy_18164_70a40abe",
+      "step": 2,
+      "timestamp": 1791409797.8528163,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "tool_call_id": "40893520-ab64-47bd-b942-71d5cd4adc8f"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1066_healthy_18164_70a40abe",
+      "step": 3,
+      "timestamp": 1791409797.8528347,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Boston\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 51, \"wind_speed_kmh\": 6}",
+      "tool_call_id": "1b6690d1-a315-4e60-9871-1e2d4df1dfd3"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1066_healthy_18164_70a40abe",
+      "step": 4,
+      "timestamp": 1791409797.8528464,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Madrid is currently sunny with a temperature of 15\u00b0C and humidity at 65%. The weather in Boston is cloudy with a temperature of 26\u00b0C and humidity at 51%. The temperature difference between the two cities is 11\u00b0C, and the humidity difference is 14 percentage points.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791409782.6575298,
+      "node": "agent",
+      "llm_latency": 5.9951,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791409782.962197,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3021,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791409783.2651794,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Boston"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3028,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791409797.8503325,
+      "node": "agent",
+      "llm_latency": 14.5831,
+      "has_tool_calls": false,
+      "response_length": 280,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 668,
+      "output_tokens": 68
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "error": null,
+      "latency": 0.302121639251709,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Boston"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Boston\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 51, \"wind_speed_kmh\": 6}",
+      "error": null,
+      "latency": 0.302844762802124,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

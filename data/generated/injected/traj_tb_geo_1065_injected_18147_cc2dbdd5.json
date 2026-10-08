@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1065_injected_18147_cc2dbdd5",
+  "task_id": "tb_geo_1065",
+  "task_description": "What is the weather in Seoul and London? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 18147,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Seoul is 17\u00b0C with a condition of rainy and humidity at 42%. The weather in London is 15\u00b0C with a condition of sunny and humidity at 40%. The temperature difference between the two cities is 2\u00b0C.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 2,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 23.6722,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T21:49:12.389742",
+  "end_time": "2026-10-07T21:49:36.061918",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1065_injected_18147_cc2dbdd5",
+      "step": 0,
+      "timestamp": 1791409776.0619428,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Seoul and London? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Seoul and London? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1065_injected_18147_cc2dbdd5",
+      "step": 1,
+      "timestamp": 1791409776.0619643,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seoul"
+          },
+          "id": "454679b6-f361-4a76-a2c9-324c1ba9a1e0"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "London"
+          },
+          "id": "b50b9f8b-8201-48e5-91bc-162edac3a790"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1065_injected_18147_cc2dbdd5",
+      "step": 2,
+      "timestamp": 1791409776.0619836,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "tool_call_id": "454679b6-f361-4a76-a2c9-324c1ba9a1e0"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1065_injected_18147_cc2dbdd5",
+      "step": 3,
+      "timestamp": 1791409776.062002,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "b50b9f8b-8201-48e5-91bc-162edac3a790"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1065_injected_18147_cc2dbdd5",
+      "step": 4,
+      "timestamp": 1791409776.0620127,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Seoul is 17\u00b0C with a condition of rainy and humidity at 42%. The weather in London is 15\u00b0C with a condition of sunny and humidity at 40%. The temperature difference between the two cities is 2\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791409761.9692874,
+      "node": "agent",
+      "llm_latency": 9.5739,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791409762.2833815,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "tool_success": true,
+      "tool_latency": 0.306,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791409762.59467,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3111,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791409776.0598047,
+      "node": "agent",
+      "llm_latency": 13.4625,
+      "has_tool_calls": false,
+      "response_length": 210,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 55
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "error": null,
+      "latency": 0.3060131072998047,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.31110548973083496,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

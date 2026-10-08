@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_fin_0130_healthy_2252_77e0e0aa",
+  "task_id": "tb_fin_0130",
+  "task_description": "Retrieve data from endpoint 'products'. Calculate the growth return if initial balance was 14632 and final was 22977.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 2252,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The growth return from an initial balance of 14,632 to a final balance of 22,977 is 37,609.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 14.9473,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T14:09:22.016850",
+  "end_time": "2026-10-07T14:09:36.964201",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_fin_0130_healthy_2252_77e0e0aa",
+      "step": 0,
+      "timestamp": 1791382176.9642222,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Retrieve data from endpoint 'products'. Calculate the growth return if initial balance was 14632 and final was 22977.",
+      "task_text": "Retrieve data from endpoint 'products'. Calculate the growth return if initial balance was 14632 and final was 22977."
+    },
+    {
+      "trajectory_id": "traj_tb_fin_0130_healthy_2252_77e0e0aa",
+      "step": 1,
+      "timestamp": 1791382176.9642394,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_data",
+          "args": {
+            "endpoint": "products"
+          },
+          "id": "4cbfbe6f-db3f-4849-9a56-80879f09c00a"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "14632 + 22977"
+          },
+          "id": "a51ce6d6-228c-4135-888f-6cb6a44176f8"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_fin_0130_healthy_2252_77e0e0aa",
+      "step": 2,
+      "timestamp": 1791382176.9642568,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_data",
+      "content": "{\"status\": \"success\", \"endpoint\": \"products\", \"data\": {\"id\": \"86024cad\", \"name\": \"Item from products\", \"description\": \"Data retrieved from the products endpoint\", \"timestamp\": \"2026-10-07T19:39:28Z\"}}",
+      "tool_call_id": "4cbfbe6f-db3f-4849-9a56-80879f09c00a"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_0130_healthy_2252_77e0e0aa",
+      "step": 3,
+      "timestamp": 1791382176.9642725,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"14632 + 22977\", \"result\": 37609}",
+      "tool_call_id": "a51ce6d6-228c-4135-888f-6cb6a44176f8"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_0130_healthy_2252_77e0e0aa",
+      "step": 4,
+      "timestamp": 1791382176.964282,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The growth return from an initial balance of 14,632 to a final balance of 22,977 is 37,609.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791382168.3122551,
+      "node": "agent",
+      "llm_latency": 6.2936,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 527,
+      "output_tokens": 50
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382168.7192063,
+      "node": "tool",
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "products"
+      },
+      "tool_success": true,
+      "tool_latency": 0.4044,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382168.820675,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "14632 + 22977"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791382176.9620929,
+      "node": "agent",
+      "llm_latency": 8.1405,
+      "has_tool_calls": false,
+      "response_length": 91,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 704,
+      "output_tokens": 37
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "products"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"endpoint\": \"products\", \"data\": {\"id\": \"86024cad\", \"name\": \"Item from products\", \"description\": \"Data retrieved from the products endpoint\", \"timestamp\": \"2026-10-07T19:39:28Z\"}}",
+      "error": null,
+      "latency": 0.4043705463409424,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "14632 + 22977"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"14632 + 22977\", \"result\": 37609}",
+      "error": null,
+      "latency": 0.10140252113342285,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

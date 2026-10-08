@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0629_injected_10735_c1199bb6",
+  "task_id": "tb_geo_0629",
+  "task_description": "What is the weather in London and San Francisco? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 10735,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in London is sunny with a temperature of 15\u00b0C and humidity at 40%. In San Francisco, the weather is cloudy with a temperature of 21\u00b0C and humidity at 46%. The temperature difference is 6\u00b0C and the humidity difference is 6%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 2,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 14.9188,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T18:34:25.475620",
+  "end_time": "2026-10-07T18:34:40.394380",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0629_injected_10735_c1199bb6",
+      "step": 0,
+      "timestamp": 1791398080.3943918,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in London and San Francisco? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in London and San Francisco? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0629_injected_10735_c1199bb6",
+      "step": 1,
+      "timestamp": 1791398080.3944018,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "London"
+          },
+          "id": "4516db61-991d-4899-b95d-7cdd5ec19389"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "90b4c391-4e50-403c-a3c7-a82444701af5"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = london_temperature - san_francisco_temperature; humidity_difference = london_humidity - san_francisco_humidity"
+          },
+          "id": "eb1dfe13-73c7-46e3-a46e-80295a92e617"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0629_injected_10735_c1199bb6",
+      "step": 2,
+      "timestamp": 1791398080.3944125,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "4516db61-991d-4899-b95d-7cdd5ec19389"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0629_injected_10735_c1199bb6",
+      "step": 3,
+      "timestamp": 1791398080.3944223,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "90b4c391-4e50-403c-a3c7-a82444701af5"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0629_injected_10735_c1199bb6",
+      "step": 4,
+      "timestamp": 1791398080.3944275,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = london_temperature - san_francisco_temperature; humidity_difference = london_humidity - san_francisco_humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "eb1dfe13-73c7-46e3-a46e-80295a92e617"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0629_injected_10735_c1199bb6",
+      "step": 5,
+      "timestamp": 1791398080.3944328,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in London is sunny with a temperature of 15\u00b0C and humidity at 40%. In San Francisco, the weather is cloudy with a temperature of 21\u00b0C and humidity at 46%. The temperature difference is 6\u00b0C and the humidity difference is 6%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791398071.8218138,
+      "node": "agent",
+      "llm_latency": 6.3445,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 84
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398072.1267004,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3033,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398072.4473011,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3204,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398072.549899,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = london_temperature - san_francisco_temperature; humidity_difference = london_humidity - san_francisco_humidity"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1025,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398080.3931394,
+      "node": "agent",
+      "llm_latency": 7.8421,
+      "has_tool_calls": false,
+      "response_length": 235,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 771,
+      "output_tokens": 60
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.3033313751220703,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3204174041748047,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = london_temperature - san_francisco_temperature; humidity_difference = london_humidity - san_francisco_humidity"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = london_temperature - san_francisco_temperature; humidity_difference = london_humidity - san_francisco_humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10248327255249023,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0247_healthy_4241_bd7abd5e",
+  "task_id": "tb_geo_0247",
+  "task_description": "What is the weather in Madrid and San Francisco? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 4241,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Madrid is sunny with a temperature of 15\u00b0C and humidity at 65%. In San Francisco, the weather is cloudy with a temperature of 21\u00b0C and humidity at 46%. The temperature difference is 6\u00b0C and the humidity difference is 19%.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 41.7666,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T15:25:16.099694",
+  "end_time": "2026-10-07T15:25:57.866279",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0247_healthy_4241_bd7abd5e",
+      "step": 0,
+      "timestamp": 1791386757.8663082,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Madrid and San Francisco? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Madrid and San Francisco? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0247_healthy_4241_bd7abd5e",
+      "step": 1,
+      "timestamp": 1791386757.866331,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Madrid"
+          },
+          "id": "497f1466-3f9f-4e1c-8e19-dd97833d013d"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "a8788274-5296-4bfe-8211-68c12cba5ac8"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_madrid - temp_san_francisco; humidity_difference = humidity_madrid - humidity_san_francisco"
+          },
+          "id": "672f737c-ee0e-45e6-a6f1-e17d3ed7a6c1"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0247_healthy_4241_bd7abd5e",
+      "step": 2,
+      "timestamp": 1791386757.8663557,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "tool_call_id": "497f1466-3f9f-4e1c-8e19-dd97833d013d"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0247_healthy_4241_bd7abd5e",
+      "step": 3,
+      "timestamp": 1791386757.8663769,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "a8788274-5296-4bfe-8211-68c12cba5ac8"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0247_healthy_4241_bd7abd5e",
+      "step": 4,
+      "timestamp": 1791386757.8663895,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_madrid - temp_san_francisco; humidity_difference = humidity_madrid - humidity_san_francisco\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "672f737c-ee0e-45e6-a6f1-e17d3ed7a6c1"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0247_healthy_4241_bd7abd5e",
+      "step": 5,
+      "timestamp": 1791386757.866401,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Madrid is sunny with a temperature of 15\u00b0C and humidity at 65%. In San Francisco, the weather is cloudy with a temperature of 21\u00b0C and humidity at 46%. The temperature difference is 6\u00b0C and the humidity difference is 19%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791386736.528811,
+      "node": "agent",
+      "llm_latency": 20.4254,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 87
+    },
+    {
+      "step": 1,
+      "timestamp": 1791386736.8345106,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.303,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791386737.1371734,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3025,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791386737.2392707,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_madrid - temp_san_francisco; humidity_difference = humidity_madrid - humidity_san_francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.102,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791386757.8637056,
+      "node": "agent",
+      "llm_latency": 20.623,
+      "has_tool_calls": false,
+      "response_length": 236,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 777,
+      "output_tokens": 61
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "error": null,
+      "latency": 0.30303144454956055,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.30252981185913086,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_madrid - temp_san_francisco; humidity_difference = humidity_madrid - humidity_san_francisco"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_madrid - temp_san_francisco; humidity_difference = humidity_madrid - humidity_san_francisco\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10198855400085449,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

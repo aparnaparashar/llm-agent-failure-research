@@ -1,0 +1,27 @@
+# Dataset Configuration
+
+datasets:
+  toolbench:
+    # Primary source for realistic tool-use tasks
+    source: "github"
+    repository: "https://github.com/OpenBMB/ToolBench"
+    # If using a HuggingFace mirror, record here:
+    hf_repository: null
+    hf_revision: null
+    raw_dir: "data/raw/toolbench"
+    normalized_dir: "data/normalized/toolbench"
+    role: "task_source"  # NOT a failure dataset
+
+  agenterrorbench:
+    # Used for taxonomy, failure grounding, injection design, external eval
+    source: "huggingface"
+    repository: "davide221/agenterrorbench"
+    revision: null  # Will be recorded after download
+    raw_dir: "data/raw/agenterrorbench"
+    normalized_dir: "data/normalized/agenterrorbench"
+    role: "taxonomy_and_grounding"  # NOT the main training corpus
+
+# IMPORTANT: These datasets are NEVER concatenated.
+# AgentErrorBench -> taxonomy / failure grounding / injection design / external eval
+# ToolBench -> actual task execution -> healthy + injected trajectories
+# Organic runs -> natural failures for validation

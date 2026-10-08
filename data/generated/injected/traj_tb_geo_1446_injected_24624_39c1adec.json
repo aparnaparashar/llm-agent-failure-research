@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1446_injected_24624_39c1adec",
+  "task_id": "tb_geo_1446",
+  "task_description": "What is the weather in Berlin and Toronto? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 24624,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Berlin is 26\u00b0C with a cloudy condition and humidity at 76%. In Toronto, the temperature is 29\u00b0C with a windy condition and humidity at 79%. The temperature difference is 3\u00b0C and the humidity difference is 3% in Toronto compared to Berlin.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 15.1031,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:08:47.679868",
+  "end_time": "2026-10-08T00:09:02.783003",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1446_injected_24624_39c1adec",
+      "step": 0,
+      "timestamp": 1791418142.783013,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Berlin and Toronto? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Berlin and Toronto? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1446_injected_24624_39c1adec",
+      "step": 1,
+      "timestamp": 1791418142.7830222,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Berlin"
+          },
+          "id": "1afa89eb-4270-4673-adb1-cd9ecee1c5d5"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "f31e2021-bbc6-4df2-8985-cff4830b6e7c"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_berlin - temperature_toronto; humidity_difference = humidity_berlin - humidity_toronto"
+          },
+          "id": "b8fab7c4-db56-406e-9139-05c9e5c55856"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1446_injected_24624_39c1adec",
+      "step": 2,
+      "timestamp": 1791418142.7830315,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "tool_call_id": "1afa89eb-4270-4673-adb1-cd9ecee1c5d5"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1446_injected_24624_39c1adec",
+      "step": 3,
+      "timestamp": 1791418142.7830396,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "tool_call_id": "f31e2021-bbc6-4df2-8985-cff4830b6e7c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1446_injected_24624_39c1adec",
+      "step": 4,
+      "timestamp": 1791418142.7830443,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_berlin - temperature_toronto; humidity_difference = humidity_berlin - humidity_toronto\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "b8fab7c4-db56-406e-9139-05c9e5c55856"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1446_injected_24624_39c1adec",
+      "step": 5,
+      "timestamp": 1791418142.7830486,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Berlin is 26\u00b0C with a cloudy condition and humidity at 76%. In Toronto, the temperature is 29\u00b0C with a windy condition and humidity at 79%. The temperature difference is 3\u00b0C and the humidity difference is 3% in Toronto compared to Berlin.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791418134.097087,
+      "node": "agent",
+      "llm_latency": 6.4153,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 83
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418134.399393,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3012,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418134.7007368,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3013,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418134.8024523,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_berlin - temperature_toronto; humidity_difference = humidity_berlin - humidity_toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418142.7819726,
+      "node": "agent",
+      "llm_latency": 7.9784,
+      "has_tool_calls": false,
+      "response_length": 253,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 764,
+      "output_tokens": 63
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "error": null,
+      "latency": 0.3012230396270752,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "error": null,
+      "latency": 0.3012688159942627,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_berlin - temperature_toronto; humidity_difference = humidity_berlin - humidity_toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_berlin - temperature_toronto; humidity_difference = humidity_berlin - humidity_toronto\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10162830352783203,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

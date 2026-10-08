@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1345_healthy_22907_d2385a4b",
+  "task_id": "tb_geo_1345",
+  "task_description": "What is the weather in Paris and Miami? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 22907,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In Miami, the weather is sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference between the two cities is 18\u00b0C, and the humidity difference is 18 percentage points.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.9831,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T23:43:38.132854",
+  "end_time": "2026-10-07T23:43:49.115966",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1345_healthy_22907_d2385a4b",
+      "step": 0,
+      "timestamp": 1791416629.1159737,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Paris and Miami? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Paris and Miami? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1345_healthy_22907_d2385a4b",
+      "step": 1,
+      "timestamp": 1791416629.1159813,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "2d2d654f-d0da-4e5c-980d-1878e32e59f7"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "36d4acc2-f33d-4fe0-9719-cadecc9cf9c1"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1345_healthy_22907_d2385a4b",
+      "step": 2,
+      "timestamp": 1791416629.1159887,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "2d2d654f-d0da-4e5c-980d-1878e32e59f7"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1345_healthy_22907_d2385a4b",
+      "step": 3,
+      "timestamp": 1791416629.1159964,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "36d4acc2-f33d-4fe0-9719-cadecc9cf9c1"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1345_healthy_22907_d2385a4b",
+      "step": 4,
+      "timestamp": 1791416629.1160002,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In Miami, the weather is sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference between the two cities is 18\u00b0C, and the humidity difference is 18 percentage points.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791416621.4900937,
+      "node": "agent",
+      "llm_latency": 3.3538,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416621.7930002,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3018,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416622.0965247,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3034,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416629.1151483,
+      "node": "agent",
+      "llm_latency": 7.0177,
+      "has_tool_calls": false,
+      "response_length": 276,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 667,
+      "output_tokens": 69
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.30184507369995117,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3034477233886719,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

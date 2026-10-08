@@ -1,0 +1,14 @@
+{
+  "uncalibrated": {
+    "brier_score": 0.04,
+    "ece": 0.0303
+  },
+  "platt_scaling": {
+    "brier_score": 0.0387,
+    "ece": 0.0104
+  },
+  "isotonic_regression": {
+    "brier_score": 0.039,
+    "ece": 0.0112
+  }
+}

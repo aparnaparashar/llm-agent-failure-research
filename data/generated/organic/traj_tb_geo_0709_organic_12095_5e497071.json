@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0709_organic_12095_5e497071",
+  "task_id": "tb_geo_0709",
+  "task_description": "What is the weather in San Francisco and Toronto? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 12095,
+  "execution_mode": "organic",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in San Francisco is currently cloudy with a temperature of 21\u00b0C and humidity at 46%. The wind speed is 21 km/h. In Toronto, the temperature is 29\u00b0C, with a wind speed of 14 km/h and a condition of being windy. The temperature difference between the two cities is 8\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 17.2647,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T19:11:13.134862",
+  "end_time": "2026-10-07T19:11:30.399565",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0709_organic_12095_5e497071",
+      "step": 0,
+      "timestamp": 1791400290.3995893,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in San Francisco and Toronto? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in San Francisco and Toronto? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0709_organic_12095_5e497071",
+      "step": 1,
+      "timestamp": 1791400290.399621,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "2e4efb84-2b49-4b6a-84b3-d823a6bca7af"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "144304a5-3b57-481b-b74f-3c6a6d19ec37"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0709_organic_12095_5e497071",
+      "step": 2,
+      "timestamp": 1791400290.3996422,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "2e4efb84-2b49-4b6a-84b3-d823a6bca7af"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0709_organic_12095_5e497071",
+      "step": 3,
+      "timestamp": 1791400290.399661,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "tool_call_id": "144304a5-3b57-481b-b74f-3c6a6d19ec37"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0709_organic_12095_5e497071",
+      "step": 4,
+      "timestamp": 1791400290.3996723,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in San Francisco is currently cloudy with a temperature of 21\u00b0C and humidity at 46%. The wind speed is 21 km/h. In Toronto, the temperature is 29\u00b0C, with a wind speed of 14 km/h and a condition of being windy. The temperature difference between the two cities is 8\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791400278.2561078,
+      "node": "agent",
+      "llm_latency": 5.1198,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791400278.5615854,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3025,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791400278.8633196,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3017,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791400290.3972828,
+      "node": "agent",
+      "llm_latency": 11.5332,
+      "has_tool_calls": false,
+      "response_length": 279,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 670,
+      "output_tokens": 74
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3024873733520508,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "error": null,
+      "latency": 0.3016631603240967,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

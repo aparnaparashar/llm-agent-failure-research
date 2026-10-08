@@ -1,0 +1,206 @@
+{
+  "trajectory_id": "traj_tb_fin_1392_injected_23706_eda0963f",
+  "task_id": "tb_fin_1392",
+  "task_description": "Retrieve data from endpoint 'products'. Calculate the growth return if initial balance was 45477 and final was 57878.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 23706,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": false,
+  "final_answer": "I encountered an internal server error while trying to retrieve data from the 'products' endpoint and calculate the growth return. The backend services are currently unavailable, so I'm unable to provide the requested information at this time. Please try again later.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": true,
+  "fault_exposed": true,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.3396,
+  "total_tool_calls": 2,
+  "error_count": 2,
+  "retry_count": 0,
+  "start_time": "2026-10-07T23:52:44.393032",
+  "end_time": "2026-10-07T23:52:55.732647",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_fin_1392_injected_23706_eda0963f",
+      "step": 0,
+      "timestamp": 1791417175.732657,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Retrieve data from endpoint 'products'. Calculate the growth return if initial balance was 45477 and final was 57878.",
+      "task_text": "Retrieve data from endpoint 'products'. Calculate the growth return if initial balance was 45477 and final was 57878."
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1392_injected_23706_eda0963f",
+      "step": 1,
+      "timestamp": 1791417175.7326663,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_data",
+          "args": {
+            "endpoint": "products"
+          },
+          "id": "c50ad82c-5da9-4359-a9a7-d5ca0aea29bd"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "45477 + 57878"
+          },
+          "id": "2aaf4a5f-53f8-48ec-afed-df5e93363510"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1392_injected_23706_eda0963f",
+      "step": 2,
+      "timestamp": 1791417175.7326756,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_data",
+      "content": "{\"status\": \"error\", \"error\": \"Internal Server Error\", \"error_code\": 500, \"tool\": \"get_data\", \"message\": \"The get_data service encountered an internal error. The request could not be processed. Error: Connection refused - the backend service is unavailable.\", \"retry_after\": null, \"data\": null}",
+      "tool_call_id": "c50ad82c-5da9-4359-a9a7-d5ca0aea29bd"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1392_injected_23706_eda0963f",
+      "step": 3,
+      "timestamp": 1791417175.7326853,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"error\": \"Internal Server Error\", \"error_code\": 500, \"tool\": \"calculate\", \"message\": \"The calculate service encountered an internal error. The request could not be processed. Error: Connection refused - the backend service is unavailable.\", \"retry_after\": null, \"data\": null}",
+      "tool_call_id": "2aaf4a5f-53f8-48ec-afed-df5e93363510"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1392_injected_23706_eda0963f",
+      "step": 4,
+      "timestamp": 1791417175.7326906,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I encountered an internal server error while trying to retrieve data from the 'products' endpoint and calculate the growth return. The backend services are currently unavailable, so I'm unable to provide the requested information at this time. Please try again later.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791417168.7219272,
+      "node": "agent",
+      "llm_latency": 4.3264,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 527,
+      "output_tokens": 50
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417169.1251783,
+      "node": "tool",
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "products"
+      },
+      "tool_success": false,
+      "tool_latency": 0.4015,
+      "tool_error": "Tool 'get_data' failed with Internal Server Error (500)",
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "complete_failure",
+        "severity": "high",
+        "http_status": 500,
+        "original_result_length": 200
+      }
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417169.2283106,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "45477 + 57878"
+      },
+      "tool_success": false,
+      "tool_latency": 0.1028,
+      "tool_error": "Tool 'calculate' failed with Internal Server Error (500)",
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "complete_failure",
+        "severity": "high",
+        "http_status": 500,
+        "original_result_length": 70
+      }
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417175.7314997,
+      "node": "agent",
+      "llm_latency": 6.5017,
+      "has_tool_calls": false,
+      "response_length": 267,
+      "state_hash": "8d5f3c725c6b",
+      "input_tokens": 743,
+      "output_tokens": 49
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "products"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"error\", \"error\": \"Internal Server Error\", \"error_code\": 500, \"tool\": \"get_data\", \"message\": \"The get_data service encountered an internal error. The request could not be processed. Error: Connection refused - the backend service is unavailable.\", \"retry_after\": null, \"data\": null}",
+      "error": "Tool 'get_data' failed with Internal Server Error (500)",
+      "latency": 0.4014921188354492,
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "complete_failure",
+        "severity": "high",
+        "http_status": 500,
+        "original_result_length": 200
+      }
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "45477 + 57878"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"error\", \"error\": \"Internal Server Error\", \"error_code\": 500, \"tool\": \"calculate\", \"message\": \"The calculate service encountered an internal error. The request could not be processed. Error: Connection refused - the backend service is unavailable.\", \"retry_after\": null, \"data\": null}",
+      "error": "Tool 'calculate' failed with Internal Server Error (500)",
+      "latency": 0.10275816917419434,
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "complete_failure",
+        "severity": "high",
+        "http_status": 500,
+        "original_result_length": 70
+      }
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1845_injected_31407_adf539c2",
+  "task_id": "tb_geo_1845",
+  "task_description": "What is the weather in Paris and Amsterdam? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 31407,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity of 83%. The weather in Amsterdam is partly cloudy with a temperature of 23\u00b0C and humidity of 48%. The temperature difference between the two cities is 10\u00b0C, and the humidity is calculated as 48% for Paris and 83% for Amsterdam.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 25.0186,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T02:52:57.238943",
+  "end_time": "2026-10-08T02:53:22.257513",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1845_injected_31407_adf539c2",
+      "step": 0,
+      "timestamp": 1791428002.257538,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Paris and Amsterdam? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Paris and Amsterdam? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1845_injected_31407_adf539c2",
+      "step": 1,
+      "timestamp": 1791428002.2575588,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "72ae59a3-f526-4b2e-aaa8-91aa155f48d6"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Amsterdam"
+          },
+          "id": "183412d2-87ef-452b-b7b9-1eb8be32c791"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = Paris_temperature - Amsterdam_temperature; humidity = calculate_humidity(Paris_humidity, Amsterdam_humidity)"
+          },
+          "id": "599ea8cc-8f8d-4724-8627-f069eccba2bc"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1845_injected_31407_adf539c2",
+      "step": 2,
+      "timestamp": 1791428002.2575798,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "72ae59a3-f526-4b2e-aaa8-91aa155f48d6"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1845_injected_31407_adf539c2",
+      "step": 3,
+      "timestamp": 1791428002.2575982,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "183412d2-87ef-452b-b7b9-1eb8be32c791"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1845_injected_31407_adf539c2",
+      "step": 4,
+      "timestamp": 1791428002.2576087,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = Paris_temperature - Amsterdam_temperature; humidity = calculate_humidity(Paris_humidity, Amsterdam_humidity)\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "599ea8cc-8f8d-4724-8627-f069eccba2bc"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1845_injected_31407_adf539c2",
+      "step": 5,
+      "timestamp": 1791428002.2576182,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity of 83%. The weather in Amsterdam is partly cloudy with a temperature of 23\u00b0C and humidity of 48%. The temperature difference between the two cities is 10\u00b0C, and the humidity is calculated as 48% for Paris and 83% for Amsterdam.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791427986.9740386,
+      "node": "agent",
+      "llm_latency": 9.7329,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 82
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427987.2787957,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3023,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427987.5807197,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3018,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427987.6826944,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Paris_temperature - Amsterdam_temperature; humidity = calculate_humidity(Paris_humidity, Amsterdam_humidity)"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1019,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791428002.255317,
+      "node": "agent",
+      "llm_latency": 14.5715,
+      "has_tool_calls": false,
+      "response_length": 305,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 766,
+      "output_tokens": 78
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.30228233337402344,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.30182790756225586,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Paris_temperature - Amsterdam_temperature; humidity = calculate_humidity(Paris_humidity, Amsterdam_humidity)"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = Paris_temperature - Amsterdam_temperature; humidity = calculate_humidity(Paris_humidity, Amsterdam_humidity)\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10187792778015137,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

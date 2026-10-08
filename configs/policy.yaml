@@ -1,0 +1,37 @@
+# Adaptive Intervention Policy Configuration
+
+policy:
+  # Action space
+  actions:
+    - CONTINUE
+    - VERIFY
+    - REPLAN
+    - ABORT
+
+  # Policy models
+  primary: cost_sensitive_xgboost
+  
+  # Baseline policies
+  baselines:
+    policy_a:
+      name: "Always Continue"
+      description: "Never intervene"
+    policy_b:
+      name: "Fixed Threshold"
+      description: "P(failure) > τ → VERIFY"
+      threshold: 0.5
+    policy_c:
+      name: "Multi-Threshold"
+      description: "Tiered risk response"
+      thresholds:
+        low: 0.3      # -> CONTINUE
+        medium: 0.5    # -> VERIFY
+        high: 0.7      # -> REPLAN
+        extreme: 0.9   # -> ABORT
+
+  # Cost-sensitive XGBoost settings
+  xgboost:
+    n_estimators: 150
+    max_depth: 5
+    learning_rate: 0.1
+    random_state: 42

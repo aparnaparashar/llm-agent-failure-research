@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_fin_1511_injected_25729_4c8206b5",
+  "task_id": "tb_fin_1511",
+  "task_description": "Retrieve data from endpoint 'catalog'. Calculate the growth return if initial balance was 45545 and final was 71961.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 25729,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The growth return from an initial balance of 45,545 to a final balance of 71,961 is 26,416.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 9.609,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:24:19.136465",
+  "end_time": "2026-10-08T00:24:28.745445",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_fin_1511_injected_25729_4c8206b5",
+      "step": 0,
+      "timestamp": 1791419068.7454586,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Retrieve data from endpoint 'catalog'. Calculate the growth return if initial balance was 45545 and final was 71961.",
+      "task_text": "Retrieve data from endpoint 'catalog'. Calculate the growth return if initial balance was 45545 and final was 71961."
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1511_injected_25729_4c8206b5",
+      "step": 1,
+      "timestamp": 1791419068.7454715,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_data",
+          "args": {
+            "endpoint": "catalog"
+          },
+          "id": "0eabb21e-f883-4f06-8b89-70c4964de0af"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "71961 - 45545"
+          },
+          "id": "e5bef428-709c-4182-b80e-7d90fb436318"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1511_injected_25729_4c8206b5",
+      "step": 2,
+      "timestamp": 1791419068.7454822,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_data",
+      "content": "{\"status\": \"success\", \"endpoint\": \"catalog\", \"data\": {\"id\": \"46f22f2a\", \"name\": \"Item from catalog\", \"description\": \"Data retrieved from the catalog endpoint\", \"timestamp\": \"2026-10-08T05:54:23Z\"}}",
+      "tool_call_id": "0eabb21e-f883-4f06-8b89-70c4964de0af"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1511_injected_25729_4c8206b5",
+      "step": 3,
+      "timestamp": 1791419068.7454927,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"71961 - 45545\", \"result\": 26416}",
+      "tool_call_id": "e5bef428-709c-4182-b80e-7d90fb436318"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1511_injected_25729_4c8206b5",
+      "step": 4,
+      "timestamp": 1791419068.7454984,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The growth return from an initial balance of 45,545 to a final balance of 71,961 is 26,416.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791419063.1119075,
+      "node": "agent",
+      "llm_latency": 3.973,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 527,
+      "output_tokens": 50
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419063.5148346,
+      "node": "tool",
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "catalog"
+      },
+      "tool_success": true,
+      "tool_latency": 0.4016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419063.618328,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "71961 - 45545"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1034,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419068.744275,
+      "node": "agent",
+      "llm_latency": 5.1251,
+      "has_tool_calls": false,
+      "response_length": 91,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 706,
+      "output_tokens": 37
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "catalog"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"endpoint\": \"catalog\", \"data\": {\"id\": \"46f22f2a\", \"name\": \"Item from catalog\", \"description\": \"Data retrieved from the catalog endpoint\", \"timestamp\": \"2026-10-08T05:54:23Z\"}}",
+      "error": null,
+      "latency": 0.4015946388244629,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "71961 - 45545"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"71961 - 45545\", \"result\": 26416}",
+      "error": null,
+      "latency": 0.10342240333557129,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

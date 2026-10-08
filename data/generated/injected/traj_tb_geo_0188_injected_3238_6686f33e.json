@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0188_injected_3238_6686f33e",
+  "task_id": "tb_geo_0188",
+  "task_description": "What is the weather in Paris and Madrid? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 3238,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In Madrid, the weather is sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference is 18\u00b0C and the humidity difference is 18%.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 19.7155,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T14:52:24.627304",
+  "end_time": "2026-10-07T14:52:44.342843",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0188_injected_3238_6686f33e",
+      "step": 0,
+      "timestamp": 1791384764.3428638,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Paris and Madrid? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Paris and Madrid? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0188_injected_3238_6686f33e",
+      "step": 1,
+      "timestamp": 1791384764.3428824,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "2e9946ef-0790-42e8-9977-0d82bea17a25"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Madrid"
+          },
+          "id": "78cf648d-2eb6-48a0-9c79-e6b80d2802bb"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_paris - temp_madrid; humidity_difference = humidity_paris - humidity_madrid"
+          },
+          "id": "8627dbc5-c5b8-45e0-95cb-316e7d2573b5"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0188_injected_3238_6686f33e",
+      "step": 2,
+      "timestamp": 1791384764.3429015,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "2e9946ef-0790-42e8-9977-0d82bea17a25"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0188_injected_3238_6686f33e",
+      "step": 3,
+      "timestamp": 1791384764.3429182,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "tool_call_id": "78cf648d-2eb6-48a0-9c79-e6b80d2802bb"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0188_injected_3238_6686f33e",
+      "step": 4,
+      "timestamp": 1791384764.3429284,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_paris - temp_madrid; humidity_difference = humidity_paris - humidity_madrid\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "8627dbc5-c5b8-45e0-95cb-316e7d2573b5"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0188_injected_3238_6686f33e",
+      "step": 5,
+      "timestamp": 1791384764.342937,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In Madrid, the weather is sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference is 18\u00b0C and the humidity difference is 18%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791384752.396848,
+      "node": "agent",
+      "llm_latency": 7.7672,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 82
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384752.7014651,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3022,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384753.0040436,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3025,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384753.1060557,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_paris - temp_madrid; humidity_difference = humidity_paris - humidity_madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1019,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384764.3407562,
+      "node": "agent",
+      "llm_latency": 11.2338,
+      "has_tool_calls": false,
+      "response_length": 236,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 766,
+      "output_tokens": 62
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.30216383934020996,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "error": null,
+      "latency": 0.3024778366088867,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_paris - temp_madrid; humidity_difference = humidity_paris - humidity_madrid"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_paris - temp_madrid; humidity_difference = humidity_paris - humidity_madrid\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10193085670471191,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

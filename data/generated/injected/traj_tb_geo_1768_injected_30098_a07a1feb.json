@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1768_injected_30098_a07a1feb",
+  "task_id": "tb_geo_1768",
+  "task_description": "What is the weather in Toronto and Cairo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 30098,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Toronto is 29\u00b0C with a wind speed of 14 km/h and a condition of \"windy\". The humidity is 79%.\n\nThe weather in Cairo is 16\u00b0C with a wind speed of 21 km/h and a condition of \"cloudy\". The humidity is 66%.\n\nThe temperature difference between Toronto and Cairo is 13\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.5555,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T02:27:59.025116",
+  "end_time": "2026-10-08T02:28:10.580598",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1768_injected_30098_a07a1feb",
+      "step": 0,
+      "timestamp": 1791426490.5806098,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Toronto and Cairo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Toronto and Cairo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1768_injected_30098_a07a1feb",
+      "step": 1,
+      "timestamp": 1791426490.580619,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "f4b38b1a-86f4-48a5-ad47-0141d75d05bd"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "a71e0ae3-0748-477e-9e85-c545ccad6f6d"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1768_injected_30098_a07a1feb",
+      "step": 2,
+      "timestamp": 1791426490.5806282,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "tool_call_id": "f4b38b1a-86f4-48a5-ad47-0141d75d05bd"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1768_injected_30098_a07a1feb",
+      "step": 3,
+      "timestamp": 1791426490.5806375,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "a71e0ae3-0748-477e-9e85-c545ccad6f6d"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1768_injected_30098_a07a1feb",
+      "step": 4,
+      "timestamp": 1791426490.5806432,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Toronto is 29\u00b0C with a wind speed of 14 km/h and a condition of \"windy\". The humidity is 79%.\n\nThe weather in Cairo is 16\u00b0C with a wind speed of 21 km/h and a condition of \"cloudy\". The humidity is 66%.\n\nThe temperature difference between Toronto and Cairo is 13\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791426482.2027082,
+      "node": "agent",
+      "llm_latency": 3.1758,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791426482.5054715,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3013,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791426482.8068485,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3012,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791426490.5795386,
+      "node": "agent",
+      "llm_latency": 7.7716,
+      "has_tool_calls": false,
+      "response_length": 280,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 82
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "error": null,
+      "latency": 0.30126047134399414,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3012199401855469,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

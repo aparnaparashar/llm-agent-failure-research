@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0687_injected_11721_b69baf17",
+  "task_id": "tb_geo_0687",
+  "task_description": "What is the weather in Miami and Singapore? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 11721,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "I'm sorry, but I encountered an error while trying to fetch the weather data for Miami and Singapore. Could you please try again?",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 17.4634,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T19:03:50.563062",
+  "end_time": "2026-10-07T19:04:08.026462",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0687_injected_11721_b69baf17",
+      "step": 0,
+      "timestamp": 1791399848.026491,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Miami and Singapore? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Miami and Singapore? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0687_injected_11721_b69baf17",
+      "step": 1,
+      "timestamp": 1791399848.0265157,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "ab90bfb4-b65f-4040-81db-f3432bcbdaf9"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Singapore"
+          },
+          "id": "42d38e64-7e34-481f-b58f-bca302347946"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0687_injected_11721_b69baf17",
+      "step": 2,
+      "timestamp": 1791399848.026537,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "ab90bfb4-b65f-4040-81db-f3432bcbdaf9"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0687_injected_11721_b69baf17",
+      "step": 3,
+      "timestamp": 1791399848.0265567,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "42d38e64-7e34-481f-b58f-bca302347946"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0687_injected_11721_b69baf17",
+      "step": 4,
+      "timestamp": 1791399848.0265677,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I'm sorry, but I encountered an error while trying to fetch the weather data for Miami and Singapore. Could you please try again?",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791399838.6571207,
+      "node": "agent",
+      "llm_latency": 8.0896,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791399838.9630926,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3027,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791399839.2660758,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3023,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791399848.0233426,
+      "node": "agent",
+      "llm_latency": 8.7553,
+      "has_tool_calls": false,
+      "response_length": 129,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 627,
+      "output_tokens": 28
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.3026924133300781,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.30228114128112793,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

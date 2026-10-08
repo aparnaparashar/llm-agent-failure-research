@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1427_healthy_24301_828e6ee3",
+  "task_id": "tb_geo_1427",
+  "task_description": "What is the weather in Rome and Cairo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 24301,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Rome is sunny with a temperature of 25\u00b0C and humidity at 75%. In Cairo, the weather is cloudy with a temperature of 16\u00b0C and humidity at 66%. The temperature difference between Rome and Cairo is 9\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.1747,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:04:54.826938",
+  "end_time": "2026-10-08T00:05:05.001637",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1427_healthy_24301_828e6ee3",
+      "step": 0,
+      "timestamp": 1791417905.00165,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Rome and Cairo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Rome and Cairo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1427_healthy_24301_828e6ee3",
+      "step": 1,
+      "timestamp": 1791417905.0016603,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Rome"
+          },
+          "id": "3c102a35-19e7-4750-a829-f6da01bb1f31"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "e5846808-b691-4b6a-9b7f-cea0dc58b52a"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1427_healthy_24301_828e6ee3",
+      "step": 2,
+      "timestamp": 1791417905.0016704,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "3c102a35-19e7-4750-a829-f6da01bb1f31"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1427_healthy_24301_828e6ee3",
+      "step": 3,
+      "timestamp": 1791417905.0016797,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "e5846808-b691-4b6a-9b7f-cea0dc58b52a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1427_healthy_24301_828e6ee3",
+      "step": 4,
+      "timestamp": 1791417905.0016851,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Rome is sunny with a temperature of 25\u00b0C and humidity at 75%. In Cairo, the weather is cloudy with a temperature of 16\u00b0C and humidity at 66%. The temperature difference between Rome and Cairo is 9\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791417898.2602682,
+      "node": "agent",
+      "llm_latency": 3.431,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417898.5631962,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417898.864581,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3013,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417905.000512,
+      "node": "agent",
+      "llm_latency": 6.1351,
+      "has_tool_calls": false,
+      "response_length": 214,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 671,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3016049861907959,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.30131077766418457,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

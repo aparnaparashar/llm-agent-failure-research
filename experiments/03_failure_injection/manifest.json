@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-10-08T09:11:58.661358+00:00",
+  "git_commit": "local-dev",
+  "python_version": "3.13.7",
+  "os": "Windows 11 (64bit)",
+  "hardware": {
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+    "system": "Windows",
+    "release": "11",
+    "python_build": "tags/v3.13.7:bcee1c3"
+  },
+  "ollama_version": "ollama version is 0.40.0",
+  "llm_model": "qwen3:8b",
+  "benchmark_version": "ToolBench-Synthetic-v1.0",
+  "dataset_revision": "6db9446f8a6a5a57",
+  "agent_version": "LangGraph-ReactiveAgent-1.0",
+  "config_hash": "96e8730c65c6f2ed",
+  "feature_version": "79220d0d385ac740",
+  "random_seed": 42,
+  "cost_regime": "balanced",
+  "experiment_id": "03_failure_injection",
+  "description": "Live causal injection of 6 failure modes (990 trajectories)"
+}

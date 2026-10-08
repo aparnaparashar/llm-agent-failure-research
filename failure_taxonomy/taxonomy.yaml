@@ -1,0 +1,251 @@
+# Unified Failure Taxonomy
+# Sources: AgentErrorTaxonomy + Dubey temporal mechanisms
+# Each entry specifies: module, failure_type, temporal_mechanism, injectability
+
+taxonomy:
+  # =====================================================
+  # REFLECTION MODULE
+  # =====================================================
+  reflection:
+    hallucination:
+      description: "Agent generates information not grounded in observations"
+      injectability: partially_injectable
+      temporal_mechanisms:
+        - grounding_loss
+        - context_corruption
+      expected_telemetry:
+        - observation_action_inconsistency
+        - semantic_drift
+        - state_inconsistency
+
+    causal_misattribution:
+      description: "Agent incorrectly attributes cause-effect relationships"
+      injectability: organic_only
+      temporal_mechanisms: []
+      expected_telemetry:
+        - tool_selection_anomaly
+        - progress_inconsistency
+
+    outcome_misinterpretation:
+      description: "Agent misinterprets tool results or observations"
+      injectability: partially_injectable
+      temporal_mechanisms:
+        - context_corruption
+      expected_telemetry:
+        - semantic_drift
+        - action_inconsistency
+
+    progress_misassessment:
+      description: "Agent incorrectly assesses task completion progress"
+      injectability: organic_only
+      temporal_mechanisms: []
+      expected_telemetry:
+        - premature_termination
+        - progress_inconsistency
+
+  # =====================================================
+  # ACTION MODULE
+  # =====================================================
+  action:
+    parameter_error:
+      description: "Agent provides incorrect parameters to tools"
+      injectability: injectable
+      temporal_mechanisms:
+        - abrupt
+        - context_corruption
+      expected_telemetry:
+        - tool_failure
+        - error_flag
+        - argument_anomaly
+
+    format_error:
+      description: "Agent produces incorrectly formatted tool calls or outputs"
+      injectability: injectable
+      temporal_mechanisms:
+        - abrupt
+        - context_corruption
+      expected_telemetry:
+        - tool_failure
+        - error_flag
+        - format_violation
+
+    planning_action_disconnect:
+      description: "Agent's actions contradict its stated plan"
+      injectability: injectable
+      temporal_mechanisms:
+        - goal_drift
+        - context_corruption
+      expected_telemetry:
+        - plan_action_inconsistency
+        - semantic_drift
+        - goal_similarity_decrease
+
+  # =====================================================
+  # PLANNING MODULE
+  # =====================================================
+  planning:
+    constraint_ignorance:
+      description: "Agent ignores task constraints or requirements"
+      injectability: injectable
+      temporal_mechanisms:
+        - context_corruption
+        - goal_drift
+      expected_telemetry:
+        - constraint_violation
+        - semantic_drift
+
+    impossible_action:
+      description: "Agent attempts actions that cannot succeed"
+      injectability: organic_only
+      temporal_mechanisms: []
+      expected_telemetry:
+        - repeated_failures
+        - tool_failure_rate_increase
+
+    inefficient_planning:
+      description: "Agent uses unnecessarily complex or redundant plans"
+      injectability: injectable
+      temporal_mechanisms:
+        - looping
+        - goal_drift
+      expected_telemetry:
+        - step_count_increase
+        - tool_repetition
+        - low_action_diversity
+
+  # =====================================================
+  # MEMORY MODULE
+  # =====================================================
+  memory:
+    incomplete_summary:
+      description: "Agent's working memory loses critical information"
+      injectability: partially_injectable
+      temporal_mechanisms:
+        - context_corruption
+      expected_telemetry:
+        - information_loss
+        - repeated_queries
+
+    false_memory_hallucination:
+      description: "Agent recalls information that was never observed"
+      injectability: partially_injectable
+      temporal_mechanisms:
+        - context_corruption
+        - grounding_loss
+      expected_telemetry:
+        - state_inconsistency
+        - ungrounded_claims
+
+    retrieval_failure:
+      description: "Agent fails to retrieve relevant prior observations"
+      injectability: partially_injectable
+      temporal_mechanisms:
+        - context_corruption
+      expected_telemetry:
+        - repeated_tool_calls
+        - information_redundancy
+
+  # =====================================================
+  # SYSTEM MODULE
+  # =====================================================
+  system:
+    environment_error:
+      description: "External system/API failures"
+      injectability: injectable
+      temporal_mechanisms:
+        - abrupt
+        - tool_cascade
+      expected_telemetry:
+        - error_flag
+        - tool_failure
+        - latency_spike
+
+    tool_execution_error:
+      description: "Tool fails during execution (timeout, malformed, server error)"
+      injectability: injectable
+      temporal_mechanisms:
+        - abrupt
+        - tool_cascade
+      expected_telemetry:
+        - error_flag
+        - tool_failure
+        - retry_count_increase
+        - latency_spike
+
+    llm_limit:
+      description: "LLM context window or capability limitations"
+      injectability: organic_only
+      temporal_mechanisms: []
+      expected_telemetry:
+        - context_length_growth
+        - output_degradation
+
+    step_limit_exhaustion:
+      description: "Agent exhausts maximum allowed steps without completion"
+      injectability: injectable
+      temporal_mechanisms:
+        - looping
+        - goal_drift
+      expected_telemetry:
+        - step_count_at_limit
+        - low_progress
+        - tool_repetition
+
+  # =====================================================
+  # TEMPORAL MECHANISMS (Dubey-inspired)
+  # =====================================================
+  temporal_mechanisms:
+    goal_drift:
+      description: "Active goal gradually shifts away from original task"
+      applicable_modules:
+        - action
+        - planning
+      applicable_failure_types:
+        - planning_action_disconnect
+        - constraint_ignorance
+        - inefficient_planning
+        - step_limit_exhaustion
+
+    looping:
+      description: "Controlled repetition of actions/states/tool calls"
+      applicable_modules:
+        - planning
+        - system
+      applicable_failure_types:
+        - inefficient_planning
+        - step_limit_exhaustion
+
+    tool_cascade:
+      description: "Chain of tool failures leading to cascading errors"
+      applicable_modules:
+        - system
+      applicable_failure_types:
+        - tool_execution_error
+        - environment_error
+
+    grounding_loss:
+      description: "Agent actions become ungrounded from actual observations"
+      applicable_modules:
+        - reflection
+        - memory
+      applicable_failure_types:
+        - hallucination
+        - false_memory_hallucination
+
+    context_corruption:
+      description: "Controlled corruption of information available to the agent"
+      applicable_modules:
+        - reflection
+        - action
+        - planning
+        - memory
+      applicable_failure_types:
+        - hallucination
+        - outcome_misinterpretation
+        - parameter_error
+        - format_error
+        - planning_action_disconnect
+        - constraint_ignorance
+        - incomplete_summary
+        - false_memory_hallucination
+        - retrieval_failure

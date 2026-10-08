@@ -1,0 +1,202 @@
+{
+  "trajectory_id": "traj_tb_geo_1587_injected_27021_3def3543",
+  "task_id": "tb_geo_1587",
+  "task_description": "What is the weather in Toronto and Paris? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 27021,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": false,
+  "final_answer": "I'm sorry, but I encountered an issue while trying to fetch the weather data for Toronto and Paris. The request timed out, and the service may be temporarily unavailable. Could you please try again later or provide the weather data manually?",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": true,
+  "fault_exposed": true,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 9.8746,
+  "total_tool_calls": 2,
+  "error_count": 2,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:39:33.050784",
+  "end_time": "2026-10-08T00:39:42.925354",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1587_injected_27021_3def3543",
+      "step": 0,
+      "timestamp": 1791419982.9253652,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Toronto and Paris? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Toronto and Paris? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1587_injected_27021_3def3543",
+      "step": 1,
+      "timestamp": 1791419982.9253752,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "3d04bb7c-8a15-468f-ab6b-a372a62f380e"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "f3b02fe6-9217-4a50-acdf-2f86a9d6a1fd"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1587_injected_27021_3def3543",
+      "step": 2,
+      "timestamp": 1791419982.925385,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"error\", \"error\": \"Request timed out after 30 seconds\", \"error_code\": \"TIMEOUT\", \"tool\": \"get_weather\", \"partial_data\": null, \"message\": \"The call to get_weather timed out. The service may be temporarily unavailable.\"}",
+      "tool_call_id": "3d04bb7c-8a15-468f-ab6b-a372a62f380e"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1587_injected_27021_3def3543",
+      "step": 3,
+      "timestamp": 1791419982.9253948,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"error\", \"error\": \"Request timed out after 30 seconds\", \"error_code\": \"TIMEOUT\", \"tool\": \"get_weather\", \"partial_data\": null, \"message\": \"The call to get_weather timed out. The service may be temporarily unavailable.\"}",
+      "tool_call_id": "f3b02fe6-9217-4a50-acdf-2f86a9d6a1fd"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1587_injected_27021_3def3543",
+      "step": 4,
+      "timestamp": 1791419982.9254003,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I'm sorry, but I encountered an issue while trying to fetch the weather data for Toronto and Paris. The request timed out, and the service may be temporarily unavailable. Could you please try again later or provide the weather data manually?",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791419976.3329556,
+      "node": "agent",
+      "llm_latency": 3.2799,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419976.6354856,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": false,
+      "tool_latency": 0.3011,
+      "tool_error": "Tool 'get_weather' timed out after 30 seconds",
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "timeout",
+        "severity": "low",
+        "original_result_length": 127
+      }
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419976.937258,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": false,
+      "tool_latency": 0.3014,
+      "tool_error": "Tool 'get_weather' timed out after 30 seconds",
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "timeout",
+        "severity": "low",
+        "original_result_length": 132
+      }
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419982.9242945,
+      "node": "agent",
+      "llm_latency": 5.9862,
+      "has_tool_calls": false,
+      "response_length": 241,
+      "state_hash": "8d5f3c725c6b",
+      "input_tokens": 697,
+      "output_tokens": 48
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"error\", \"error\": \"Request timed out after 30 seconds\", \"error_code\": \"TIMEOUT\", \"tool\": \"get_weather\", \"partial_data\": null, \"message\": \"The call to get_weather timed out. The service may be temporarily unavailable.\"}",
+      "error": "Tool 'get_weather' timed out after 30 seconds",
+      "latency": 0.301119327545166,
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "timeout",
+        "severity": "low",
+        "original_result_length": 127
+      }
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"error\", \"error\": \"Request timed out after 30 seconds\", \"error_code\": \"TIMEOUT\", \"tool\": \"get_weather\", \"partial_data\": null, \"message\": \"The call to get_weather timed out. The service may be temporarily unavailable.\"}",
+      "error": "Tool 'get_weather' timed out after 30 seconds",
+      "latency": 0.30141472816467285,
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "timeout",
+        "severity": "low",
+        "original_result_length": 132
+      }
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "trajectory_id": "traj_tb_synth_0276_injected_4734_6ef9f26a",
+  "task_id": "tb_synth_0276",
+  "task_description": "Query endpoint 'products' and perform text analysis to identify key topics. Calculate average length.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 4734,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "I encountered an error while trying to fetch data from the 'products' endpoint. It seems there might be an issue with the endpoint or the parameters provided. Could you please provide the correct endpoint name and any additional parameters needed for the 'get_data' function?",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 14.5164,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T15:44:50.541297",
+  "end_time": "2026-10-07T15:45:05.057739",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_synth_0276_injected_4734_6ef9f26a",
+      "step": 0,
+      "timestamp": 1791387905.057762,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Query endpoint 'products' and perform text analysis to identify key topics. Calculate average length.",
+      "task_text": "Query endpoint 'products' and perform text analysis to identify key topics. Calculate average length."
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0276_injected_4734_6ef9f26a",
+      "step": 1,
+      "timestamp": 1791387905.0577805,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_data",
+          "args": {
+            "endpoint": "products"
+          },
+          "id": "ffae9905-722b-493e-9a6d-d288bd20ce35"
+        },
+        {
+          "name": "text_analysis",
+          "args": {
+            "text": "products data",
+            "analysis_type": "key_phrases"
+          },
+          "id": "c48c16c8-0291-416c-a81c-74f08f48de8b"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0276_injected_4734_6ef9f26a",
+      "step": 2,
+      "timestamp": 1791387905.0577993,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_data",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "ffae9905-722b-493e-9a6d-d288bd20ce35"
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0276_injected_4734_6ef9f26a",
+      "step": 3,
+      "timestamp": 1791387905.057817,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "text_analysis",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "c48c16c8-0291-416c-a81c-74f08f48de8b"
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0276_injected_4734_6ef9f26a",
+      "step": 4,
+      "timestamp": 1791387905.0578282,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I encountered an error while trying to fetch data from the 'products' endpoint. It seems there might be an issue with the endpoint or the parameters provided. Could you please provide the correct endpoint name and any additional parameters needed for the 'get_data' function?",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791387896.5674164,
+      "node": "agent",
+      "llm_latency": 6.024,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 50
+    },
+    {
+      "step": 1,
+      "timestamp": 1791387896.9765372,
+      "node": "tool",
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "products"
+      },
+      "tool_success": true,
+      "tool_latency": 0.406,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791387897.279392,
+      "node": "tool",
+      "tool_name": "text_analysis",
+      "tool_args": {
+        "text": "products data",
+        "analysis_type": "key_phrases"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3025,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791387905.0556064,
+      "node": "agent",
+      "llm_latency": 7.7752,
+      "has_tool_calls": false,
+      "response_length": 275,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 636,
+      "output_tokens": 53
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "products"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.4060385227203369,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "text_analysis",
+      "tool_args": {
+        "text": "products data",
+        "analysis_type": "key_phrases"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.30245494842529297,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "aeb_001",
+    "task": "Retrieve financial stock quotes and compute quarterly variance.",
+    "failure_module": "action",
+    "failure_type": "parameter_error",
+    "grounding_error_step": 2,
+    "error_manifestation": "Passed ticker symbol as integer instead of string ticker.",
+    "recovering_agent": false
+  },
+  {
+    "id": "aeb_002",
+    "task": "Plan itinerary for conference and check weather at destination.",
+    "failure_module": "planning",
+    "failure_type": "goal_drift",
+    "grounding_error_step": 3,
+    "error_manifestation": "Agent began researching tourism spots in wrong city after intermediate search distraction.",
+    "recovering_agent": false
+  },
+  {
+    "id": "aeb_003",
+    "task": "Query product inventory API and calculate discount prices.",
+    "failure_module": "system",
+    "failure_type": "tool_execution_error",
+    "grounding_error_step": 1,
+    "error_manifestation": "Mock API service returned 500 Internal Server Error malformed JSON.",
+    "recovering_agent": false
+  },
+  {
+    "id": "aeb_004",
+    "task": "Extract customer sentiment from reviews and summarize common complaints.",
+    "failure_module": "memory",
+    "failure_type": "context_corruption",
+    "grounding_error_step": 4,
+    "error_manifestation": "Irrelevant tokens filled context window causing hallucinations in sentiment score.",
+    "recovering_agent": false
+  },
+  {
+    "id": "aeb_005",
+    "task": "Search scientific papers and calculate h-index citation impact.",
+    "failure_module": "reflection",
+    "failure_type": "hallucination",
+    "grounding_error_step": 2,
+    "error_manifestation": "Agent asserted citation counts not present in tool output.",
+    "recovering_agent": false
+  }
+]

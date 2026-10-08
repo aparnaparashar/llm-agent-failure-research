@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1566_injected_26664_1186c09a",
+  "task_id": "tb_geo_1566",
+  "task_description": "What is the weather in London and Tokyo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 26664,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in London is currently sunny with a temperature of 15\u00b0C and humidity at 40%. The weather in Tokyo is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference between the two cities is 16\u00b0C, and the wind speed in London is 25 km/h, while in Tokyo it is 31 km/h.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.9136,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:35:06.067806",
+  "end_time": "2026-10-08T00:35:17.981368",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1566_injected_26664_1186c09a",
+      "step": 0,
+      "timestamp": 1791419717.9813797,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in London and Tokyo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in London and Tokyo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1566_injected_26664_1186c09a",
+      "step": 1,
+      "timestamp": 1791419717.9813895,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "London"
+          },
+          "id": "1f241198-ca49-453e-9276-c4b27d36db3d"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "4c19ce6b-7a2e-479a-b712-0bb692094e0c"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1566_injected_26664_1186c09a",
+      "step": 2,
+      "timestamp": 1791419717.9813998,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "1f241198-ca49-453e-9276-c4b27d36db3d"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1566_injected_26664_1186c09a",
+      "step": 3,
+      "timestamp": 1791419717.9814103,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "4c19ce6b-7a2e-479a-b712-0bb692094e0c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1566_injected_26664_1186c09a",
+      "step": 4,
+      "timestamp": 1791419717.981416,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in London is currently sunny with a temperature of 15\u00b0C and humidity at 40%. The weather in Tokyo is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference between the two cities is 16\u00b0C, and the wind speed in London is 25 km/h, while in Tokyo it is 31 km/h.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791419709.4134517,
+      "node": "agent",
+      "llm_latency": 3.3438,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419709.7156718,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3012,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419710.0185568,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3028,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419717.9802322,
+      "node": "agent",
+      "llm_latency": 7.9603,
+      "has_tool_calls": false,
+      "response_length": 297,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 81
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.3011624813079834,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.3027796745300293,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

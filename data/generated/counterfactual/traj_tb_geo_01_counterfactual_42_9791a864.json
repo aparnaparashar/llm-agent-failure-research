@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_01_counterfactual_42_9791a864",
+  "task_id": "tb_geo_01",
+  "task_description": "What is the weather in Seattle and Miami? Calculate the difference.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 42,
+  "execution_mode": "counterfactual",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Seattle is 19\u00b0C with a wind speed of 9 km/h and a condition of \"windy\". The weather in Miami is 15\u00b0C with a wind speed of 20 km/h and a condition of \"sunny\". The difference in temperature between the two cities is 4\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.3025,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T09:01:04.809021",
+  "end_time": "2026-10-08T09:01:16.111550",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_01_counterfactual_42_9791a864",
+      "step": 0,
+      "timestamp": 1791450076.111566,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Seattle and Miami? Calculate the difference.",
+      "task_text": "What is the weather in Seattle and Miami? Calculate the difference."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_01_counterfactual_42_9791a864",
+      "step": 1,
+      "timestamp": 1791450076.1115754,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seattle"
+          },
+          "id": "036b8656-1562-43e6-ba17-5b354eebbd1d"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "52052c4a-9a20-494a-bfe1-213923d58b94"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_01_counterfactual_42_9791a864",
+      "step": 2,
+      "timestamp": 1791450076.1115859,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "tool_call_id": "036b8656-1562-43e6-ba17-5b354eebbd1d"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_01_counterfactual_42_9791a864",
+      "step": 3,
+      "timestamp": 1791450076.111595,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "52052c4a-9a20-494a-bfe1-213923d58b94"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_01_counterfactual_42_9791a864",
+      "step": 4,
+      "timestamp": 1791450076.1116004,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Seattle is 19\u00b0C with a wind speed of 9 km/h and a condition of \"windy\". The weather in Miami is 15\u00b0C with a wind speed of 20 km/h and a condition of \"sunny\". The difference in temperature between the two cities is 4\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791450067.922833,
+      "node": "agent",
+      "llm_latency": 3.1116,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 509,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791450068.2262764,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791450068.527439,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.301,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791450076.110406,
+      "node": "agent",
+      "llm_latency": 7.5804,
+      "has_tool_calls": false,
+      "response_length": 233,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 662,
+      "output_tokens": 67
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "step": 1,
+      "execution_mode": "counterfactual",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "error": null,
+      "latency": 0.30139589309692383,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "counterfactual",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3010246753692627,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

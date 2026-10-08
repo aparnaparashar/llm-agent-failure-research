@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1905_healthy_32427_13168d8d",
+  "task_id": "tb_geo_1905",
+  "task_description": "What is the weather in Amsterdam and Miami? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 32427,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Amsterdam is partly cloudy with a temperature of 23\u00b0C and humidity at 48%. The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference between the two cities is 8\u00b0C, and the humidity difference is 17 percentage points.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 17.23,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T03:15:38.400042",
+  "end_time": "2026-10-08T03:15:55.630036",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1905_healthy_32427_13168d8d",
+      "step": 0,
+      "timestamp": 1791429355.630049,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Amsterdam and Miami? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Amsterdam and Miami? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1905_healthy_32427_13168d8d",
+      "step": 1,
+      "timestamp": 1791429355.63006,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Amsterdam"
+          },
+          "id": "a454925e-824d-4c56-b638-bfaf530e1143"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "42f4013c-d370-48ac-abad-032bfdd22324"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1905_healthy_32427_13168d8d",
+      "step": 2,
+      "timestamp": 1791429355.6300724,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "a454925e-824d-4c56-b638-bfaf530e1143"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1905_healthy_32427_13168d8d",
+      "step": 3,
+      "timestamp": 1791429355.6300836,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "42f4013c-d370-48ac-abad-032bfdd22324"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1905_healthy_32427_13168d8d",
+      "step": 4,
+      "timestamp": 1791429355.6300898,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Amsterdam is partly cloudy with a temperature of 23\u00b0C and humidity at 48%. The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference between the two cities is 8\u00b0C, and the humidity difference is 17 percentage points.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791429343.9697464,
+      "node": "agent",
+      "llm_latency": 5.5678,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791429344.274961,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3026,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791429344.5766869,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791429355.628733,
+      "node": "agent",
+      "llm_latency": 11.0512,
+      "has_tool_calls": false,
+      "response_length": 278,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 670,
+      "output_tokens": 67
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.3026278018951416,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3016319274902344,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

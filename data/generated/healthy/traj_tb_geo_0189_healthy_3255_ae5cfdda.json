@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0189_healthy_3255_ae5cfdda",
+  "task_id": "tb_geo_0189",
+  "task_description": "What is the weather in Miami and Tokyo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 3255,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In Tokyo, the weather is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference is 16\u00b0C and the humidity difference is 9%.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 23.5658,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T14:52:44.867243",
+  "end_time": "2026-10-07T14:53:08.433028",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0189_healthy_3255_ae5cfdda",
+      "step": 0,
+      "timestamp": 1791384788.4330409,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Miami and Tokyo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Miami and Tokyo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0189_healthy_3255_ae5cfdda",
+      "step": 1,
+      "timestamp": 1791384788.4330542,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "596a5076-0523-4944-bdd4-fa7f2e6dfffc"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "41bfdd3e-caa0-41a0-8c6f-ceaf61eafa51"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_miami - temperature_tokyo; humidity_difference = humidity_tokyo - humidity_miami"
+          },
+          "id": "c52e69d4-f245-4858-9037-555938459598"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0189_healthy_3255_ae5cfdda",
+      "step": 2,
+      "timestamp": 1791384788.4330678,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "596a5076-0523-4944-bdd4-fa7f2e6dfffc"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0189_healthy_3255_ae5cfdda",
+      "step": 3,
+      "timestamp": 1791384788.4330788,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "41bfdd3e-caa0-41a0-8c6f-ceaf61eafa51"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0189_healthy_3255_ae5cfdda",
+      "step": 4,
+      "timestamp": 1791384788.4330857,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_miami - temperature_tokyo; humidity_difference = humidity_tokyo - humidity_miami\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "c52e69d4-f245-4858-9037-555938459598"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0189_healthy_3255_ae5cfdda",
+      "step": 5,
+      "timestamp": 1791384788.4330919,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In Tokyo, the weather is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference is 16\u00b0C and the humidity difference is 9%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791384777.1613133,
+      "node": "agent",
+      "llm_latency": 12.2915,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 82
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384777.4663763,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384777.7692993,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3028,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384777.8742843,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_miami - temperature_tokyo; humidity_difference = humidity_tokyo - humidity_miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1049,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384788.4318917,
+      "node": "agent",
+      "llm_latency": 10.5558,
+      "has_tool_calls": false,
+      "response_length": 227,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 762,
+      "output_tokens": 60
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.30235719680786133,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.3028113842010498,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_miami - temperature_tokyo; humidity_difference = humidity_tokyo - humidity_miami"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_miami - temperature_tokyo; humidity_difference = humidity_tokyo - humidity_miami\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10485243797302246,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

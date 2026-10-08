@@ -1,0 +1,276 @@
+{
+  "trajectory_id": "traj_tb_geo_1645_injected_28007_bd6fdc7c",
+  "task_id": "tb_geo_1645",
+  "task_description": "What is the weather in Rome and Singapore? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 28007,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Rome is sunny with a temperature of 25\u00b0C and humidity at 75%. The weather in Singapore is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The temperature difference between the two cities is 8\u00b0C, and the humidity difference is 17 percentage points.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 7,
+  "total_latency": 18.3264,
+  "total_tool_calls": 4,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:59:15.033355",
+  "end_time": "2026-10-08T00:59:33.359711",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1645_injected_28007_bd6fdc7c",
+      "step": 0,
+      "timestamp": 1791421173.3597276,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Rome and Singapore? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Rome and Singapore? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1645_injected_28007_bd6fdc7c",
+      "step": 1,
+      "timestamp": 1791421173.3597453,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Rome"
+          },
+          "id": "1a44c7e0-5aeb-42db-9c86-bbeffcd030d7"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Singapore"
+          },
+          "id": "1401febe-96bb-4453-b545-988a29c6bec3"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "10 + 20 * 3 - 4 / 2"
+          },
+          "id": "8ce4ac5f-0ca6-4e36-83b0-95f45e78a15b"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "0.5 * 70 - 0.3 * 80"
+          },
+          "id": "3207066f-3028-49ab-99b5-21133977ad6e"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1645_injected_28007_bd6fdc7c",
+      "step": 2,
+      "timestamp": 1791421173.359766,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "1a44c7e0-5aeb-42db-9c86-bbeffcd030d7"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1645_injected_28007_bd6fdc7c",
+      "step": 3,
+      "timestamp": 1791421173.3597865,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "1401febe-96bb-4453-b545-988a29c6bec3"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1645_injected_28007_bd6fdc7c",
+      "step": 4,
+      "timestamp": 1791421173.3597984,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"10 + 20 * 3 - 4 / 2\", \"result\": 68.0}",
+      "tool_call_id": "8ce4ac5f-0ca6-4e36-83b0-95f45e78a15b"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1645_injected_28007_bd6fdc7c",
+      "step": 5,
+      "timestamp": 1791421173.3598075,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"0.5 * 70 - 0.3 * 80\", \"result\": 11.0}",
+      "tool_call_id": "3207066f-3028-49ab-99b5-21133977ad6e"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1645_injected_28007_bd6fdc7c",
+      "step": 6,
+      "timestamp": 1791421173.359856,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Rome is sunny with a temperature of 25\u00b0C and humidity at 75%. The weather in Singapore is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The temperature difference between the two cities is 8\u00b0C, and the humidity difference is 17 percentage points.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791421163.2630305,
+      "node": "agent",
+      "llm_latency": 8.2265,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 108
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421163.567165,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "tool_success": true,
+      "tool_latency": 0.302,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421163.8692284,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.302,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421163.971384,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "10 + 20 * 3 - 4 / 2"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1021,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421164.0734663,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "0.5 * 70 - 0.3 * 80"
+      },
+      "tool_success": true,
+      "tool_latency": 0.102,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421173.3577275,
+      "node": "agent",
+      "llm_latency": 9.283,
+      "has_tool_calls": false,
+      "response_length": 277,
+      "state_hash": "4bc5fbae1d34",
+      "input_tokens": 824,
+      "output_tokens": 67
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3020467758178711,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.30196309089660645,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "10 + 20 * 3 - 4 / 2"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"10 + 20 * 3 - 4 / 2\", \"result\": 68.0}",
+      "error": null,
+      "latency": 0.10206031799316406,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "0.5 * 70 - 0.3 * 80"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"0.5 * 70 - 0.3 * 80\", \"result\": 11.0}",
+      "error": null,
+      "latency": 0.10197567939758301,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

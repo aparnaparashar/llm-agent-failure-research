@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1629_injected_27735_64b164d9",
+  "task_id": "tb_geo_1629",
+  "task_description": "What is the weather in Sydney and Amsterdam? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 27735,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Amsterdam, the temperature is 23\u00b0C and the humidity is 48%. There was an error in the calculation of the temperature difference and humidity difference. Let's correct the calculation:\n\nThe temperature difference is: 33\u00b0C - 23\u00b0C = 10\u00b0C\nThe humidity difference is: 48% - 58% = -10%\n\nThe final answer is: The temperature difference between Sydney and Amsterdam is 10\u00b0C, and the humidity difference is -10%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 2,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 20.2171,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:53:04.881871",
+  "end_time": "2026-10-08T00:53:25.098976",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1629_injected_27735_64b164d9",
+      "step": 0,
+      "timestamp": 1791420805.0989847,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Sydney and Amsterdam? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Sydney and Amsterdam? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1629_injected_27735_64b164d9",
+      "step": 1,
+      "timestamp": 1791420805.0989926,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Sydney"
+          },
+          "id": "3756e1d3-f79f-4fb2-8b78-de459efa4e88"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Amsterdam"
+          },
+          "id": "2fbdacfe-17de-4a55-9fa1-448ca9b60e59"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_Amsterdam - temperature_Sydney; humidity_difference = humidity_Amsterdam - humidity_Sydney"
+          },
+          "id": "750affff-6b11-45b8-ab28-489f2f82f7cf"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1629_injected_27735_64b164d9",
+      "step": 2,
+      "timestamp": 1791420805.0990016,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "3756e1d3-f79f-4fb2-8b78-de459efa4e88"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1629_injected_27735_64b164d9",
+      "step": 3,
+      "timestamp": 1791420805.09901,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "2fbdacfe-17de-4a55-9fa1-448ca9b60e59"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1629_injected_27735_64b164d9",
+      "step": 4,
+      "timestamp": 1791420805.099015,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_Amsterdam - temperature_Sydney; humidity_difference = humidity_Amsterdam - humidity_Sydney\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "750affff-6b11-45b8-ab28-489f2f82f7cf"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1629_injected_27735_64b164d9",
+      "step": 5,
+      "timestamp": 1791420805.0990198,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Amsterdam, the temperature is 23\u00b0C and the humidity is 48%. There was an error in the calculation of the temperature difference and humidity difference. Let's correct the calculation:\n\nThe temperature difference is: 33\u00b0C - 23\u00b0C = 10\u00b0C\nThe humidity difference is: 48% - 58% = -10%\n\nThe final answer is: The temperature difference between Sydney and Amsterdam is 10\u00b0C, and the humidity difference is -10%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791420791.373925,
+      "node": "agent",
+      "llm_latency": 6.4891,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 85
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420791.6768656,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420791.9802294,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3032,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420792.082851,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_Amsterdam - temperature_Sydney; humidity_difference = humidity_Amsterdam - humidity_Sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1025,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420805.0979981,
+      "node": "agent",
+      "llm_latency": 13.0132,
+      "has_tool_calls": false,
+      "response_length": 493,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 774,
+      "output_tokens": 128
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.30161619186401367,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.303203821182251,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_Amsterdam - temperature_Sydney; humidity_difference = humidity_Amsterdam - humidity_Sydney"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_Amsterdam - temperature_Sydney; humidity_difference = humidity_Amsterdam - humidity_Sydney\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10246396064758301,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

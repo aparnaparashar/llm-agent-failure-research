@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1487_healthy_25321_f5b4b86c",
+  "task_id": "tb_geo_1487",
+  "task_description": "What is the weather in Vienna and Berlin? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 25321,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Vienna is 31\u00b0C with a cloudy condition and humidity at 81%. In Berlin, the temperature is 26\u00b0C with a cloudy condition and humidity at 76%. The temperature difference between Vienna and Berlin is 5\u00b0C, and the humidity is not calculated due to an invalid syntax in the expression.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 15.6515,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:19:30.641311",
+  "end_time": "2026-10-08T00:19:46.292848",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1487_healthy_25321_f5b4b86c",
+      "step": 0,
+      "timestamp": 1791418786.2928593,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Vienna and Berlin? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Vienna and Berlin? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1487_healthy_25321_f5b4b86c",
+      "step": 1,
+      "timestamp": 1791418786.2928724,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Vienna"
+          },
+          "id": "38540b9f-8c43-42d7-841e-dc7d0f59a8c4"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Berlin"
+          },
+          "id": "9c3194a1-9c42-460f-a798-ab934d14fba2"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_vienna - temp_berlin; humidity = calculate_humidity(temp_vienna, temp_berlin)"
+          },
+          "id": "398c5783-f27a-4e7a-8361-68eb99fcf58a"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1487_healthy_25321_f5b4b86c",
+      "step": 2,
+      "timestamp": 1791418786.2928836,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "tool_call_id": "38540b9f-8c43-42d7-841e-dc7d0f59a8c4"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1487_healthy_25321_f5b4b86c",
+      "step": 3,
+      "timestamp": 1791418786.292893,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "tool_call_id": "9c3194a1-9c42-460f-a798-ab934d14fba2"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1487_healthy_25321_f5b4b86c",
+      "step": 4,
+      "timestamp": 1791418786.2928984,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_vienna - temp_berlin; humidity = calculate_humidity(temp_vienna, temp_berlin)\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "398c5783-f27a-4e7a-8361-68eb99fcf58a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1487_healthy_25321_f5b4b86c",
+      "step": 5,
+      "timestamp": 1791418786.2929034,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Vienna is 31\u00b0C with a cloudy condition and humidity at 81%. In Berlin, the temperature is 26\u00b0C with a cloudy condition and humidity at 76%. The temperature difference between Vienna and Berlin is 5\u00b0C, and the humidity is not calculated due to an invalid syntax in the expression.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791418777.0917654,
+      "node": "agent",
+      "llm_latency": 6.449,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 85
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418777.3941793,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3012,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418777.695104,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3009,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418777.7974281,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_vienna - temp_berlin; humidity = calculate_humidity(temp_vienna, temp_berlin)"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1022,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418786.2917554,
+      "node": "agent",
+      "llm_latency": 8.4934,
+      "has_tool_calls": false,
+      "response_length": 294,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 767,
+      "output_tokens": 69
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "error": null,
+      "latency": 0.30121326446533203,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "error": null,
+      "latency": 0.30085158348083496,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_vienna - temp_berlin; humidity = calculate_humidity(temp_vienna, temp_berlin)"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_vienna - temp_berlin; humidity = calculate_humidity(temp_vienna, temp_berlin)\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.1022484302520752,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

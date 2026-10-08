@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0425_injected_7267_8aa57fa9",
+  "task_id": "tb_geo_0425",
+  "task_description": "What is the weather in San Francisco and Seattle? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 7267,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in San Francisco is currently cloudy with a temperature of 21\u00b0C and humidity at 46%. The wind speed is 21 km/h. In Seattle, the weather is windy with a temperature of 19\u00b0C and humidity at 44%. The temperature difference between the two cities is 2\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 2,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.2816,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T16:58:37.868073",
+  "end_time": "2026-10-07T16:58:48.149644",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0425_injected_7267_8aa57fa9",
+      "step": 0,
+      "timestamp": 1791392328.1496558,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in San Francisco and Seattle? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in San Francisco and Seattle? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0425_injected_7267_8aa57fa9",
+      "step": 1,
+      "timestamp": 1791392328.149666,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "5952951a-c034-4446-aebf-6c8b878e4ddb"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seattle"
+          },
+          "id": "a1320830-56ec-4cf4-8c3a-6ced626bb1de"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0425_injected_7267_8aa57fa9",
+      "step": 2,
+      "timestamp": 1791392328.1496756,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "5952951a-c034-4446-aebf-6c8b878e4ddb"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0425_injected_7267_8aa57fa9",
+      "step": 3,
+      "timestamp": 1791392328.149685,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "tool_call_id": "a1320830-56ec-4cf4-8c3a-6ced626bb1de"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0425_injected_7267_8aa57fa9",
+      "step": 4,
+      "timestamp": 1791392328.1496906,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in San Francisco is currently cloudy with a temperature of 21\u00b0C and humidity at 46%. The wind speed is 21 km/h. In Seattle, the weather is windy with a temperature of 19\u00b0C and humidity at 44%. The temperature difference between the two cities is 2\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791392320.9766316,
+      "node": "agent",
+      "llm_latency": 3.1069,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392321.2817798,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3038,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392321.5841517,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3023,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392328.1485453,
+      "node": "agent",
+      "llm_latency": 6.5633,
+      "has_tool_calls": false,
+      "response_length": 262,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 68
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3038477897644043,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "error": null,
+      "latency": 0.3022730350494385,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

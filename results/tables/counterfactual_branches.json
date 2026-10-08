@@ -1,0 +1,18 @@
+{
+  "none": {
+    "success": true,
+    "steps": 5
+  },
+  "warning_injection": {
+    "success": true,
+    "steps": 5
+  },
+  "replan_directive": {
+    "success": true,
+    "steps": 5
+  },
+  "tool_arg_repair": {
+    "success": true,
+    "steps": 5
+  }
+}

@@ -1,0 +1,321 @@
+{
+  "trajectory_id": "traj_tb_geo_0987_healthy_16821_25de0836",
+  "task_id": "tb_geo_0987",
+  "task_description": "What is the weather in Paris and Seattle? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 16821,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In Seattle, the temperature is 19\u00b0C with a wind speed of 9 km/h and humidity at 44%. The temperature difference between the two cities is 14\u00b0C. The humidity in Seattle is 32% lower than in Paris.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 8,
+  "total_latency": 28.7003,
+  "total_tool_calls": 5,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T21:23:03.326350",
+  "end_time": "2026-10-07T21:23:32.026695",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0987_healthy_16821_25de0836",
+      "step": 0,
+      "timestamp": 1791408212.0267184,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Paris and Seattle? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Paris and Seattle? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0987_healthy_16821_25de0836",
+      "step": 1,
+      "timestamp": 1791408212.0267382,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "3baa91be-23a8-4be2-8c3b-ffc08c2ddc54"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seattle"
+          },
+          "id": "12380b1c-150a-429f-b3c9-89fac24cd10f"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "20 + 30"
+          },
+          "id": "1f09b01a-9843-4b07-8792-f9b8c35c19d4"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "40 - 30"
+          },
+          "id": "dfacc773-ca5b-4a74-b2e2-262b6da8a893"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "70 / 100"
+          },
+          "id": "41b967f1-ed86-4d62-a478-2a3ec091eaa6"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0987_healthy_16821_25de0836",
+      "step": 2,
+      "timestamp": 1791408212.0267627,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "3baa91be-23a8-4be2-8c3b-ffc08c2ddc54"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0987_healthy_16821_25de0836",
+      "step": 3,
+      "timestamp": 1791408212.026781,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "tool_call_id": "12380b1c-150a-429f-b3c9-89fac24cd10f"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0987_healthy_16821_25de0836",
+      "step": 4,
+      "timestamp": 1791408212.026792,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"20 + 30\", \"result\": 50}",
+      "tool_call_id": "1f09b01a-9843-4b07-8792-f9b8c35c19d4"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0987_healthy_16821_25de0836",
+      "step": 5,
+      "timestamp": 1791408212.026802,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"40 - 30\", \"result\": 10}",
+      "tool_call_id": "dfacc773-ca5b-4a74-b2e2-262b6da8a893"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0987_healthy_16821_25de0836",
+      "step": 6,
+      "timestamp": 1791408212.0268118,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"70 / 100\", \"result\": 0.7}",
+      "tool_call_id": "41b967f1-ed86-4d62-a478-2a3ec091eaa6"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0987_healthy_16821_25de0836",
+      "step": 7,
+      "timestamp": 1791408212.026821,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In Seattle, the temperature is 19\u00b0C with a wind speed of 9 km/h and humidity at 44%. The temperature difference between the two cities is 14\u00b0C. The humidity in Seattle is 32% lower than in Paris.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791408195.4182608,
+      "node": "agent",
+      "llm_latency": 12.0905,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 113
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408195.7219508,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3017,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408196.0234783,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408196.1249897,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "20 + 30"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408196.2261176,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "40 - 30"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1011,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408196.3272212,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "70 / 100"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1011,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408212.0245626,
+      "node": "agent",
+      "llm_latency": 15.6968,
+      "has_tool_calls": false,
+      "response_length": 281,
+      "state_hash": "eb1b50d5f7da",
+      "input_tokens": 837,
+      "output_tokens": 76
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.3017253875732422,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "error": null,
+      "latency": 0.3014545440673828,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "20 + 30"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"20 + 30\", \"result\": 50}",
+      "error": null,
+      "latency": 0.10145330429077148,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "40 - 30"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"40 - 30\", \"result\": 10}",
+      "error": null,
+      "latency": 0.10107421875,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "70 / 100"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"70 / 100\", \"result\": 0.7}",
+      "error": null,
+      "latency": 0.10105466842651367,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

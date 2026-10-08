@@ -1,0 +1,253 @@
+{
+  "trajectory_id": "traj_tb_synth_1075_injected_18317_5e5081f1",
+  "task_id": "tb_synth_1075",
+  "task_description": "Query endpoint 'products' and perform text analysis to identify key topics. Calculate average length.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 18317,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "It seems there was an error with the tool call. Let me try again with a different approach.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 7,
+  "total_latency": 25.8705,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T21:52:01.266362",
+  "end_time": "2026-10-07T21:52:27.136876",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_synth_1075_injected_18317_5e5081f1",
+      "step": 0,
+      "timestamp": 1791409947.1368902,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Query endpoint 'products' and perform text analysis to identify key topics. Calculate average length.",
+      "task_text": "Query endpoint 'products' and perform text analysis to identify key topics. Calculate average length."
+    },
+    {
+      "trajectory_id": "traj_tb_synth_1075_injected_18317_5e5081f1",
+      "step": 1,
+      "timestamp": 1791409947.1369035,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_data",
+          "args": {
+            "endpoint": "products"
+          },
+          "id": "ea04a8e6-4973-4f6b-bf28-08e511dc0406"
+        },
+        {
+          "name": "text_analysis",
+          "args": {
+            "text": "The 'products' endpoint fetches data related to products. It can be used to retrieve information about products, their prices, availability, and more. The data is typically structured in a JSON format, making it easy to parse and analyze. The analysis can be performed using various techniques such as sentiment analysis, key phrase extraction, and entity recognition. This can provide valuable insights into the market trends, customer preferences, and product performance. The average length of the text can be calculated by summing up the lengths of all the sentences and dividing by the number of sentences. This can give an idea of the average sentence length in the text. The result will be a JSON object with the analysis results and the average sentence length."
+          },
+          "id": "3077717c-a7ef-413d-9511-dad40ed3371a"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_synth_1075_injected_18317_5e5081f1",
+      "step": 2,
+      "timestamp": 1791409947.1369162,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_data",
+      "content": "{\"status\": \"success\", \"endpoint\": \"products\", \"data\": {\"id\": \"86024cad\", \"name\": \"Item from products\", \"description\": \"Data retrieved from the products endpoint\", \"timestamp\": \"2026-10-08T03:22:15Z\"}}",
+      "tool_call_id": "ea04a8e6-4973-4f6b-bf28-08e511dc0406"
+    },
+    {
+      "trajectory_id": "traj_tb_synth_1075_injected_18317_5e5081f1",
+      "step": 3,
+      "timestamp": 1791409947.136928,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "text_analysis",
+      "content": "{\"status\": \"success\", \"analysis_type\": \"summary\", \"word_count\": 124, \"char_count\": 769, \"summary\": \"The 'products' endpoint fetches data related to products. It can be used to retrieve information about products, their prices, availability, and more. The data is typically structured in a JSON format...\"}",
+      "tool_call_id": "3077717c-a7ef-413d-9511-dad40ed3371a"
+    },
+    {
+      "trajectory_id": "traj_tb_synth_1075_injected_18317_5e5081f1",
+      "step": 4,
+      "timestamp": 1791409947.1369355,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "sum(range(1, 101)) / 100"
+          },
+          "id": "2b1e5b2e-671b-41e0-8fa2-32860e213b1d"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_synth_1075_injected_18317_5e5081f1",
+      "step": 5,
+      "timestamp": 1791409947.1369424,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "2b1e5b2e-671b-41e0-8fa2-32860e213b1d"
+    },
+    {
+      "trajectory_id": "traj_tb_synth_1075_injected_18317_5e5081f1",
+      "step": 6,
+      "timestamp": 1791409947.136977,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "It seems there was an error with the tool call. Let me try again with a different approach.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791409935.268086,
+      "node": "agent",
+      "llm_latency": 13.9992,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 183
+    },
+    {
+      "step": 1,
+      "timestamp": 1791409935.6735826,
+      "node": "tool",
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "products"
+      },
+      "tool_success": true,
+      "tool_latency": 0.4039,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791409935.9774537,
+      "node": "tool",
+      "tool_name": "text_analysis",
+      "tool_args": {
+        "text": "The 'products' endpoint fetches data related to products. It can be used to retrieve information about products, their prices, availability, and more. The data is typically structured in a JSON format, making it easy to parse and analyze. The analysis can be performed using various techniques such as sentiment analysis, key phrase extraction, and entity recognition. This can provide valuable insights into the market trends, customer preferences, and product performance. The average length of the text can be calculated by summing up the lengths of all the sentences and dividing by the number of sentences. This can give an idea of the average sentence length in the text. The result will be a JSON object with the analysis results and the average sentence length."
+      },
+      "tool_success": true,
+      "tool_latency": 0.3038,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791409943.9078221,
+      "node": "agent",
+      "llm_latency": 7.9297,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 867,
+      "output_tokens": 33
+    },
+    {
+      "step": 2,
+      "timestamp": 1791409944.0133128,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "sum(range(1, 101)) / 100"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1037,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 2,
+      "timestamp": 1791409947.1354442,
+      "node": "agent",
+      "llm_latency": 3.1209,
+      "has_tool_calls": false,
+      "response_length": 91,
+      "state_hash": "923c79ec038b",
+      "input_tokens": 941,
+      "output_tokens": 21
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "products"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"endpoint\": \"products\", \"data\": {\"id\": \"86024cad\", \"name\": \"Item from products\", \"description\": \"Data retrieved from the products endpoint\", \"timestamp\": \"2026-10-08T03:22:15Z\"}}",
+      "error": null,
+      "latency": 0.4038827419281006,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "text_analysis",
+      "tool_args": {
+        "text": "The 'products' endpoint fetches data related to products. It can be used to retrieve information about products, their prices, availability, and more. The data is typically structured in a JSON format, making it easy to parse and analyze. The analysis can be performed using various techniques such as sentiment analysis, key phrase extraction, and entity recognition. This can provide valuable insights into the market trends, customer preferences, and product performance. The average length of the text can be calculated by summing up the lengths of all the sentences and dividing by the number of sentences. This can give an idea of the average sentence length in the text. The result will be a JSON object with the analysis results and the average sentence length."
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"analysis_type\": \"summary\", \"word_count\": 124, \"char_count\": 769, \"summary\": \"The 'products' endpoint fetches data related to products. It can be used to retrieve information about products, their prices, availability, and more. The data is typically structured in a JSON format...\"}",
+      "error": null,
+      "latency": 0.3038036823272705,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "sum(range(1, 101)) / 100"
+      },
+      "step": 2,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.1036689281463623,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

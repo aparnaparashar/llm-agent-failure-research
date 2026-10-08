@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0426_healthy_7284_a93980b9",
+  "task_id": "tb_geo_0426",
+  "task_description": "What is the weather in Miami and Amsterdam? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 7284,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In Amsterdam, the temperature is 23\u00b0C and the humidity is 48%. The temperature difference is 8\u00b0C and the humidity difference is 17%.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 13.5281,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T16:58:48.669053",
+  "end_time": "2026-10-07T16:59:02.197178",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0426_healthy_7284_a93980b9",
+      "step": 0,
+      "timestamp": 1791392342.1971855,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Miami and Amsterdam? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Miami and Amsterdam? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0426_healthy_7284_a93980b9",
+      "step": 1,
+      "timestamp": 1791392342.1971927,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "2c6524e9-3159-4573-9783-5ce788471049"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Amsterdam"
+          },
+          "id": "f829e9d6-5aaf-4044-9f07-8aff2913858b"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_amsterdam - temp_miami; humidity_difference = humidity_amsterdam - humidity_miami"
+          },
+          "id": "12ba4209-0c20-4aa3-a561-5b6a7387d8f9"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0426_healthy_7284_a93980b9",
+      "step": 2,
+      "timestamp": 1791392342.1972027,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "2c6524e9-3159-4573-9783-5ce788471049"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0426_healthy_7284_a93980b9",
+      "step": 3,
+      "timestamp": 1791392342.1972108,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "f829e9d6-5aaf-4044-9f07-8aff2913858b"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0426_healthy_7284_a93980b9",
+      "step": 4,
+      "timestamp": 1791392342.1972156,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_amsterdam - temp_miami; humidity_difference = humidity_amsterdam - humidity_miami\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "12ba4209-0c20-4aa3-a561-5b6a7387d8f9"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0426_healthy_7284_a93980b9",
+      "step": 5,
+      "timestamp": 1791392342.19722,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In Amsterdam, the temperature is 23\u00b0C and the humidity is 48%. The temperature difference is 8\u00b0C and the humidity difference is 17%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791392334.4120452,
+      "node": "agent",
+      "llm_latency": 5.7408,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 80
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392334.7147295,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3013,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392335.0162685,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392335.1199956,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_amsterdam - temp_miami; humidity_difference = humidity_amsterdam - humidity_miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1036,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392342.1963038,
+      "node": "agent",
+      "llm_latency": 7.0751,
+      "has_tool_calls": false,
+      "response_length": 210,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 763,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.30133581161499023,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.30144810676574707,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_amsterdam - temp_miami; humidity_difference = humidity_amsterdam - humidity_miami"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_amsterdam - temp_miami; humidity_difference = humidity_amsterdam - humidity_miami\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10363459587097168,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

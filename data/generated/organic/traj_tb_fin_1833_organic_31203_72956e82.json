@@ -1,0 +1,189 @@
+{
+  "trajectory_id": "traj_tb_fin_1833_organic_31203_72956e82",
+  "task_id": "tb_fin_1833",
+  "task_description": "Retrieve data from endpoint 'system_logs'. Calculate the growth return if initial balance was 20149 and final was 27479.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 31203,
+  "execution_mode": "organic",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The data retrieval from the 'system_logs' endpoint was unsuccessful. The initial balance was 20149 and the final balance was 27479. The calculation for growth return is as follows:\n\n20149 + (27479 - 20149) = 27479\n\nTherefore, the growth return is 27479.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 21.7557,
+  "total_tool_calls": 2,
+  "error_count": 1,
+  "retry_count": 0,
+  "start_time": "2026-10-08T02:48:45.679279",
+  "end_time": "2026-10-08T02:49:07.434976",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_fin_1833_organic_31203_72956e82",
+      "step": 0,
+      "timestamp": 1791427747.4349961,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Retrieve data from endpoint 'system_logs'. Calculate the growth return if initial balance was 20149 and final was 27479.",
+      "task_text": "Retrieve data from endpoint 'system_logs'. Calculate the growth return if initial balance was 20149 and final was 27479."
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1833_organic_31203_72956e82",
+      "step": 1,
+      "timestamp": 1791427747.4350164,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_data",
+          "args": {
+            "endpoint": "system_logs",
+            "params": {}
+          },
+          "id": "0a69263f-190f-4935-89d7-77ea6c4a5979"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "20149 + (final - initial)"
+          },
+          "id": "4e3ae717-e30f-496a-8c5d-a60c1f6fb94e"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1833_organic_31203_72956e82",
+      "step": 2,
+      "timestamp": 1791427747.4350364,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_data",
+      "content": "{\"status\": \"error\", \"error\": \"1 validation error for get_data\\nparams\\n  Input should be a valid string [type=string_type, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type\"}",
+      "tool_call_id": "0a69263f-190f-4935-89d7-77ea6c4a5979"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1833_organic_31203_72956e82",
+      "step": 3,
+      "timestamp": 1791427747.4350562,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"20149 + (final - initial)\", \"error\": \"name 'final' is not defined\"}",
+      "tool_call_id": "4e3ae717-e30f-496a-8c5d-a60c1f6fb94e"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1833_organic_31203_72956e82",
+      "step": 4,
+      "timestamp": 1791427747.435068,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The data retrieval from the 'system_logs' endpoint was unsuccessful. The initial balance was 20149 and the final balance was 27479. The calculation for growth return is as follows:\n\n20149 + (27479 - 20149) = 27479\n\nTherefore, the growth return is 27479.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791427732.985685,
+      "node": "agent",
+      "llm_latency": 7.3049,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 528,
+      "output_tokens": 56
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427732.9900017,
+      "node": "tool",
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "system_logs",
+        "params": {}
+      },
+      "tool_success": false,
+      "tool_latency": 0.0009,
+      "tool_error": "1 validation error for get_data\nparams\n  Input should be a valid string [type=string_type, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427733.092792,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "20149 + (final - initial)"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1027,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791427747.4332323,
+      "node": "agent",
+      "llm_latency": 14.3383,
+      "has_tool_calls": false,
+      "response_length": 253,
+      "state_hash": "79a9d1216d00",
+      "input_tokens": 701,
+      "output_tokens": 86
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "system_logs",
+        "params": {}
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": false,
+      "result": "{\"status\": \"error\", \"error\": \"1 validation error for get_data\\nparams\\n  Input should be a valid string [type=string_type, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type\"}",
+      "error": "1 validation error for get_data\nparams\n  Input should be a valid string [type=string_type, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type",
+      "latency": 0.0008573532104492188,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "20149 + (final - initial)"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"20149 + (final - initial)\", \"error\": \"name 'final' is not defined\"}",
+      "error": null,
+      "latency": 0.10265350341796875,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

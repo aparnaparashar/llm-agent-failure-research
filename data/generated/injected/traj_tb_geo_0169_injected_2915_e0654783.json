@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0169_injected_2915_e0654783",
+  "task_id": "tb_geo_0169",
+  "task_description": "What is the weather in Rome and London? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 2915,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Rome is 25\u00b0C with a sunny condition and humidity at 75%. In London, the temperature is 15\u00b0C with a sunny condition and humidity at 40%. The temperature difference is 10\u00b0C and the humidity difference is 35%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 44.7076,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T14:41:26.289709",
+  "end_time": "2026-10-07T14:42:10.997303",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0169_injected_2915_e0654783",
+      "step": 0,
+      "timestamp": 1791384130.9973338,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Rome and London? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Rome and London? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0169_injected_2915_e0654783",
+      "step": 1,
+      "timestamp": 1791384130.9973595,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Rome"
+          },
+          "id": "5e04ec84-7a9c-40c2-9bf6-7631e9eb6a33"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "London"
+          },
+          "id": "e06321ff-3ce0-428a-bdcb-62d847f2a336"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_Rome - temperature_London; humidity_difference = humidity_Rome - humidity_London"
+          },
+          "id": "cdde9d88-0c73-459a-8396-105ca424e3f0"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0169_injected_2915_e0654783",
+      "step": 2,
+      "timestamp": 1791384130.997382,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "5e04ec84-7a9c-40c2-9bf6-7631e9eb6a33"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0169_injected_2915_e0654783",
+      "step": 3,
+      "timestamp": 1791384130.997404,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "e06321ff-3ce0-428a-bdcb-62d847f2a336"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0169_injected_2915_e0654783",
+      "step": 4,
+      "timestamp": 1791384130.9974158,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_Rome - temperature_London; humidity_difference = humidity_Rome - humidity_London\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "cdde9d88-0c73-459a-8396-105ca424e3f0"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0169_injected_2915_e0654783",
+      "step": 5,
+      "timestamp": 1791384130.9974253,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Rome is 25\u00b0C with a sunny condition and humidity at 75%. In London, the temperature is 15\u00b0C with a sunny condition and humidity at 40%. The temperature difference is 10\u00b0C and the humidity difference is 35%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791384106.4237838,
+      "node": "agent",
+      "llm_latency": 20.129,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 80
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384106.729473,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3033,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384107.0321527,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3025,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384107.1353848,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_Rome - temperature_London; humidity_difference = humidity_Rome - humidity_London"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1031,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384130.9948957,
+      "node": "agent",
+      "llm_latency": 23.8575,
+      "has_tool_calls": false,
+      "response_length": 221,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 762,
+      "output_tokens": 59
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3033168315887451,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.30250120162963867,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_Rome - temperature_London; humidity_difference = humidity_Rome - humidity_London"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_Rome - temperature_London; humidity_difference = humidity_Rome - humidity_London\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10306262969970703,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

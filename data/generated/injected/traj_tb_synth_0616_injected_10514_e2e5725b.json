@@ -1,0 +1,189 @@
+{
+  "trajectory_id": "traj_tb_synth_0616_injected_10514_e2e5725b",
+  "task_id": "tb_synth_0616",
+  "task_description": "Query endpoint 'financials' and perform text analysis to identify key topics. Calculate average length.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 10514,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "I encountered an error while trying to fetch data from the 'financials' endpoint. It seems there might be an issue with the endpoint or the parameters provided. Could you please check the endpoint name and the parameters you're using?",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.077,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T18:32:05.053664",
+  "end_time": "2026-10-07T18:32:16.130639",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_synth_0616_injected_10514_e2e5725b",
+      "step": 0,
+      "timestamp": 1791397936.130651,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Query endpoint 'financials' and perform text analysis to identify key topics. Calculate average length.",
+      "task_text": "Query endpoint 'financials' and perform text analysis to identify key topics. Calculate average length."
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0616_injected_10514_e2e5725b",
+      "step": 1,
+      "timestamp": 1791397936.1306605,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_data",
+          "args": {
+            "endpoint": "financials"
+          },
+          "id": "4fe2fcf9-5446-46a7-90b2-c8ea7122bfe7"
+        },
+        {
+          "name": "text_analysis",
+          "args": {
+            "analysis_type": "key_phrases",
+            "text": "financials data"
+          },
+          "id": "b6127f67-a551-46e2-b1f4-b5dd8062573a"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0616_injected_10514_e2e5725b",
+      "step": 2,
+      "timestamp": 1791397936.13067,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_data",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "4fe2fcf9-5446-46a7-90b2-c8ea7122bfe7"
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0616_injected_10514_e2e5725b",
+      "step": 3,
+      "timestamp": 1791397936.1306798,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "text_analysis",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "b6127f67-a551-46e2-b1f4-b5dd8062573a"
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0616_injected_10514_e2e5725b",
+      "step": 4,
+      "timestamp": 1791397936.1306853,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I encountered an error while trying to fetch data from the 'financials' endpoint. It seems there might be an issue with the endpoint or the parameters provided. Could you please check the endpoint name and the parameters you're using?",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791397929.1878946,
+      "node": "agent",
+      "llm_latency": 4.1325,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 515,
+      "output_tokens": 52
+    },
+    {
+      "step": 1,
+      "timestamp": 1791397929.5919795,
+      "node": "tool",
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "financials"
+      },
+      "tool_success": true,
+      "tool_latency": 0.4024,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791397929.8966126,
+      "node": "tool",
+      "tool_name": "text_analysis",
+      "tool_args": {
+        "analysis_type": "key_phrases",
+        "text": "financials data"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3042,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791397936.1294851,
+      "node": "agent",
+      "llm_latency": 6.2317,
+      "has_tool_calls": false,
+      "response_length": 234,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 639,
+      "output_tokens": 47
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "financials"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.4023873805999756,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "text_analysis",
+      "tool_args": {
+        "analysis_type": "key_phrases",
+        "text": "financials data"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.30420565605163574,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

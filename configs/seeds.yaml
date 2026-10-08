@@ -1,0 +1,14 @@
+# Random Seeds Configuration
+# Every experiment must record which seed was used.
+# Do NOT report only the best seed.
+
+seeds:
+  values:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  
+  # Default seed for single-run experiments
+  default: 42

@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0328_injected_5618_6403da50",
+  "task_id": "tb_geo_0328",
+  "task_description": "What is the weather in Seattle and Rome? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 5618,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Seattle is 19\u00b0C with a wind speed of 9 km/h and a condition of \"windy\". The humidity is 44%. In Rome, the temperature is 25\u00b0C with a wind speed of 20 km/h and a condition of \"sunny\". The humidity is 75%. The temperature difference between the two cities is 1\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 18.0916,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T16:17:00.964374",
+  "end_time": "2026-10-07T16:17:19.055985",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0328_injected_5618_6403da50",
+      "step": 0,
+      "timestamp": 1791389839.0560067,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Seattle and Rome? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Seattle and Rome? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0328_injected_5618_6403da50",
+      "step": 1,
+      "timestamp": 1791389839.0560617,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seattle"
+          },
+          "id": "9ad3f12e-aa39-48df-9d35-3f1ed7f7cf66"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Rome"
+          },
+          "id": "de6a12cb-0800-47f6-838c-3d3e8c2ac83f"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0328_injected_5618_6403da50",
+      "step": 2,
+      "timestamp": 1791389839.0560813,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "tool_call_id": "9ad3f12e-aa39-48df-9d35-3f1ed7f7cf66"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0328_injected_5618_6403da50",
+      "step": 3,
+      "timestamp": 1791389839.0560994,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "de6a12cb-0800-47f6-838c-3d3e8c2ac83f"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0328_injected_5618_6403da50",
+      "step": 4,
+      "timestamp": 1791389839.0561104,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Seattle is 19\u00b0C with a wind speed of 9 km/h and a condition of \"windy\". The humidity is 44%. In Rome, the temperature is 25\u00b0C with a wind speed of 20 km/h and a condition of \"sunny\". The humidity is 75%. The temperature difference between the two cities is 1\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791389825.5727446,
+      "node": "agent",
+      "llm_latency": 4.6068,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791389825.8803515,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3049,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791389826.1859555,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3055,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791389839.053909,
+      "node": "agent",
+      "llm_latency": 12.8662,
+      "has_tool_calls": false,
+      "response_length": 276,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 668,
+      "output_tokens": 81
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "error": null,
+      "latency": 0.30494022369384766,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3054635524749756,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

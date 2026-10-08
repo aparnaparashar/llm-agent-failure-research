@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1328_injected_22618_45643ca7",
+  "task_id": "tb_geo_1328",
+  "task_description": "What is the weather in Amsterdam and Seoul? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 22618,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Amsterdam is partly cloudy with a temperature of 23\u00b0C and humidity at 48%. In Seoul, the weather is rainy with a temperature of 17\u00b0C and humidity at 42%. The temperature difference is 6\u00b0C and the humidity difference is 6%.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 21.2621,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T23:37:17.463609",
+  "end_time": "2026-10-07T23:37:38.725678",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1328_injected_22618_45643ca7",
+      "step": 0,
+      "timestamp": 1791416258.725703,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Amsterdam and Seoul? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Amsterdam and Seoul? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1328_injected_22618_45643ca7",
+      "step": 1,
+      "timestamp": 1791416258.725725,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Amsterdam"
+          },
+          "id": "bc290fe5-a2c9-4787-9a37-723b63e5cf4b"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seoul"
+          },
+          "id": "26966c09-7a68-41e1-ad5d-9ca4bff5073b"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_amsterdam - temperature_seoul; humidity_difference = humidity_seoul - humidity_amsterdam"
+          },
+          "id": "feb43216-a8f8-4958-a4fc-c74226c7d8b2"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1328_injected_22618_45643ca7",
+      "step": 2,
+      "timestamp": 1791416258.725746,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "bc290fe5-a2c9-4787-9a37-723b63e5cf4b"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1328_injected_22618_45643ca7",
+      "step": 3,
+      "timestamp": 1791416258.725819,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "tool_call_id": "26966c09-7a68-41e1-ad5d-9ca4bff5073b"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1328_injected_22618_45643ca7",
+      "step": 4,
+      "timestamp": 1791416258.7258313,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_amsterdam - temperature_seoul; humidity_difference = humidity_seoul - humidity_amsterdam\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "feb43216-a8f8-4958-a4fc-c74226c7d8b2"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1328_injected_22618_45643ca7",
+      "step": 5,
+      "timestamp": 1791416258.725842,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Amsterdam is partly cloudy with a temperature of 23\u00b0C and humidity at 48%. In Seoul, the weather is rainy with a temperature of 17\u00b0C and humidity at 42%. The temperature difference is 6\u00b0C and the humidity difference is 6%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791416244.658208,
+      "node": "agent",
+      "llm_latency": 7.1928,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 81
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416244.9614024,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3018,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416245.2641299,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3026,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416245.3688312,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_amsterdam - temperature_seoul; humidity_difference = humidity_seoul - humidity_amsterdam"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1046,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416258.723412,
+      "node": "agent",
+      "llm_latency": 13.3529,
+      "has_tool_calls": false,
+      "response_length": 237,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 765,
+      "output_tokens": 60
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.3017745018005371,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seoul"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seoul\", \"temperature_celsius\": 17, \"condition\": \"rainy\", \"humidity\": 42, \"wind_speed_kmh\": 17}",
+      "error": null,
+      "latency": 0.30260467529296875,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_amsterdam - temperature_seoul; humidity_difference = humidity_seoul - humidity_amsterdam"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_amsterdam - temperature_seoul; humidity_difference = humidity_seoul - humidity_amsterdam\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10456275939941406,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

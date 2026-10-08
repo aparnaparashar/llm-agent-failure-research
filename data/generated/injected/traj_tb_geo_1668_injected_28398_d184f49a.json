@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1668_injected_28398_d184f49a",
+  "task_id": "tb_geo_1668",
+  "task_description": "What is the weather in San Francisco and Singapore? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 28398,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in San Francisco is currently 21\u00b0C with a cloudy condition and 46% humidity. The wind speed is 21 km/h.\nThe weather in Singapore is 33\u00b0C with partly cloudy conditions and 58% humidity. The wind speed is 13 km/h.\nThe temperature difference between San Francisco and Singapore is 12\u00b0C.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.716,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T01:04:01.183496",
+  "end_time": "2026-10-08T01:04:12.899522",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1668_injected_28398_d184f49a",
+      "step": 0,
+      "timestamp": 1791421452.8995316,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in San Francisco and Singapore? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in San Francisco and Singapore? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1668_injected_28398_d184f49a",
+      "step": 1,
+      "timestamp": 1791421452.8995402,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "679191c9-50f6-4b53-8acb-d38821a39bd5"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Singapore"
+          },
+          "id": "5d0bb3ce-b5ab-45a1-9843-d69521c9e55b"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1668_injected_28398_d184f49a",
+      "step": 2,
+      "timestamp": 1791421452.8995478,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "679191c9-50f6-4b53-8acb-d38821a39bd5"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1668_injected_28398_d184f49a",
+      "step": 3,
+      "timestamp": 1791421452.8995562,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "5d0bb3ce-b5ab-45a1-9843-d69521c9e55b"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1668_injected_28398_d184f49a",
+      "step": 4,
+      "timestamp": 1791421452.899561,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in San Francisco is currently 21\u00b0C with a cloudy condition and 46% humidity. The wind speed is 21 km/h.\nThe weather in Singapore is 33\u00b0C with partly cloudy conditions and 58% humidity. The wind speed is 13 km/h.\nThe temperature difference between San Francisco and Singapore is 12\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791421444.5912979,
+      "node": "agent",
+      "llm_latency": 3.4045,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421444.8952549,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3018,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421445.1978579,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421452.8984814,
+      "node": "agent",
+      "llm_latency": 7.6987,
+      "has_tool_calls": false,
+      "response_length": 295,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 671,
+      "output_tokens": 77
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3017899990081787,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3024430274963379,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

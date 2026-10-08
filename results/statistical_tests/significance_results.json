@@ -1,0 +1,114 @@
+{
+  "XGBoost_vs_Gradient_Boosting": {
+    "baseline": "Gradient Boosting",
+    "mcnemar": {
+      "contingency_table": {
+        "both_correct": 2761,
+        "a_only": 6,
+        "b_only": 2,
+        "both_wrong": 153
+      },
+      "chi2_stat": 1.125,
+      "p_value": 0.2888443663464818,
+      "significant_at_05": false,
+      "bonferroni_p": 1.0,
+      "bonferroni_sig": false,
+      "fdr_bh_p": 0.288844,
+      "fdr_bh_sig": false
+    },
+    "permutation_auc": {
+      "observed_diff": 0.001,
+      "p_value": 0.219,
+      "significant_at_05": false
+    },
+    "wilcoxon_bootstrap_auc": {
+      "stat": 723.0,
+      "p_value": 9.511157402357572e-82,
+      "significant_at_05": true
+    }
+  },
+  "XGBoost_vs_Random_Forest": {
+    "baseline": "Random Forest",
+    "mcnemar": {
+      "contingency_table": {
+        "both_correct": 2589,
+        "a_only": 178,
+        "b_only": 28,
+        "both_wrong": 127
+      },
+      "chi2_stat": 107.7718,
+      "p_value": 3.0157017402832425e-25,
+      "significant_at_05": true,
+      "bonferroni_p": 0.0,
+      "bonferroni_sig": true,
+      "fdr_bh_p": 0.0,
+      "fdr_bh_sig": true
+    },
+    "permutation_auc": {
+      "observed_diff": 0.011,
+      "p_value": 0.0,
+      "significant_at_05": true
+    },
+    "wilcoxon_bootstrap_auc": {
+      "stat": 0.0,
+      "p_value": 1.2647189486921486e-83,
+      "significant_at_05": true
+    }
+  },
+  "XGBoost_vs_Logistic_Regression": {
+    "baseline": "Logistic Regression",
+    "mcnemar": {
+      "contingency_table": {
+        "both_correct": 2215,
+        "a_only": 552,
+        "b_only": 65,
+        "both_wrong": 90
+      },
+      "chi2_stat": 382.8136,
+      "p_value": 3.036680308463372e-85,
+      "significant_at_05": true,
+      "bonferroni_p": 0.0,
+      "bonferroni_sig": true,
+      "fdr_bh_p": 0.0,
+      "fdr_bh_sig": true
+    },
+    "permutation_auc": {
+      "observed_diff": 0.1498,
+      "p_value": 0.0,
+      "significant_at_05": true
+    },
+    "wilcoxon_bootstrap_auc": {
+      "stat": 0.0,
+      "p_value": 1.2647189486921486e-83,
+      "significant_at_05": true
+    }
+  },
+  "XGBoost_vs_MLP_Classifier": {
+    "baseline": "MLP Classifier",
+    "mcnemar": {
+      "contingency_table": {
+        "both_correct": 2539,
+        "a_only": 228,
+        "b_only": 65,
+        "both_wrong": 90
+      },
+      "chi2_stat": 89.57,
+      "p_value": 2.9598360329068804e-21,
+      "significant_at_05": true,
+      "bonferroni_p": 0.0,
+      "bonferroni_sig": true,
+      "fdr_bh_p": 0.0,
+      "fdr_bh_sig": true
+    },
+    "permutation_auc": {
+      "observed_diff": 0.0325,
+      "p_value": 0.0,
+      "significant_at_05": true
+    },
+    "wilcoxon_bootstrap_auc": {
+      "stat": 0.0,
+      "p_value": 1.2647189486921486e-83,
+      "significant_at_05": true
+    }
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1485_injected_25287_563a1688",
+  "task_id": "tb_geo_1485",
+  "task_description": "What is the weather in Toronto and London? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 25287,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Toronto is 29\u00b0C with a wind speed of 14 km/h and a condition of \"windy\". The humidity is 79%. In London, the temperature is 15\u00b0C with a wind speed of 25 km/h and a condition of \"sunny\". The humidity is 40%. The temperature difference between Toronto and London is 14\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 12.0422,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:18:58.754199",
+  "end_time": "2026-10-08T00:19:10.796371",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1485_injected_25287_563a1688",
+      "step": 0,
+      "timestamp": 1791418750.7963789,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Toronto and London? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Toronto and London? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1485_injected_25287_563a1688",
+      "step": 1,
+      "timestamp": 1791418750.7963874,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "0bd8fd20-b6ba-4734-81e1-c39d85785939"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "London"
+          },
+          "id": "cc692a53-7977-4e22-857a-2f1a10b3fee2"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1485_injected_25287_563a1688",
+      "step": 2,
+      "timestamp": 1791418750.7963955,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "tool_call_id": "0bd8fd20-b6ba-4734-81e1-c39d85785939"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1485_injected_25287_563a1688",
+      "step": 3,
+      "timestamp": 1791418750.7964041,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "cc692a53-7977-4e22-857a-2f1a10b3fee2"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1485_injected_25287_563a1688",
+      "step": 4,
+      "timestamp": 1791418750.7964091,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Toronto is 29\u00b0C with a wind speed of 14 km/h and a condition of \"windy\". The humidity is 79%. In London, the temperature is 15\u00b0C with a wind speed of 25 km/h and a condition of \"sunny\". The humidity is 40%. The temperature difference between Toronto and London is 14\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791418742.0992982,
+      "node": "agent",
+      "llm_latency": 3.3435,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418742.40355,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3026,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418742.7049756,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3013,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418750.7954252,
+      "node": "agent",
+      "llm_latency": 8.0895,
+      "has_tool_calls": false,
+      "response_length": 284,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 667,
+      "output_tokens": 83
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "error": null,
+      "latency": 0.3025975227355957,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.30133938789367676,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

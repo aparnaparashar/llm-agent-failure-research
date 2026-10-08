@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1906_injected_32444_ce3ab0b1",
+  "task_id": "tb_geo_1906",
+  "task_description": "What is the weather in Dubai and Cairo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 32444,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Dubai is currently rainy with a temperature of 32\u00b0C and humidity at 57%. In Cairo, the weather is cloudy with a temperature of 16\u00b0C and humidity at 66%. The temperature difference between the two cities is 16\u00b0C - 32\u00b0C = -16\u00b0C. The humidity difference is 66% - 57% = 9%.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 18.2438,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T03:15:56.229154",
+  "end_time": "2026-10-08T03:16:14.472959",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1906_injected_32444_ce3ab0b1",
+      "step": 0,
+      "timestamp": 1791429374.4729812,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Dubai and Cairo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Dubai and Cairo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1906_injected_32444_ce3ab0b1",
+      "step": 1,
+      "timestamp": 1791429374.4730015,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Dubai"
+          },
+          "id": "5d714883-e764-4706-b1ab-b36cb2ca9b1d"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "6188b65d-7114-46fc-a834-8be9dfd8e836"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1906_injected_32444_ce3ab0b1",
+      "step": 2,
+      "timestamp": 1791429374.47302,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Dubai\", \"temperature_celsius\": 32, \"condition\": \"rainy\", \"humidity\": 57, \"wind_speed_kmh\": 12}",
+      "tool_call_id": "5d714883-e764-4706-b1ab-b36cb2ca9b1d"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1906_injected_32444_ce3ab0b1",
+      "step": 3,
+      "timestamp": 1791429374.4730377,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "6188b65d-7114-46fc-a834-8be9dfd8e836"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1906_injected_32444_ce3ab0b1",
+      "step": 4,
+      "timestamp": 1791429374.4730477,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Dubai is currently rainy with a temperature of 32\u00b0C and humidity at 57%. In Cairo, the weather is cloudy with a temperature of 16\u00b0C and humidity at 66%. The temperature difference between the two cities is 16\u00b0C - 32\u00b0C = -16\u00b0C. The humidity difference is 66% - 57% = 9%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791429361.1592865,
+      "node": "agent",
+      "llm_latency": 4.9273,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791429361.46392,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Dubai"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3023,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791429361.7657127,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3017,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791429374.4708397,
+      "node": "agent",
+      "llm_latency": 12.7039,
+      "has_tool_calls": false,
+      "response_length": 284,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 671,
+      "output_tokens": 85
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Dubai"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Dubai\", \"temperature_celsius\": 32, \"condition\": \"rainy\", \"humidity\": 57, \"wind_speed_kmh\": 12}",
+      "error": null,
+      "latency": 0.302288293838501,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.30170488357543945,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0488_injected_8338_8beef4a5",
+  "task_id": "tb_geo_0488",
+  "task_description": "What is the weather in Rome and Seattle? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 8338,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Rome is sunny with a temperature of 25\u00b0C and humidity at 75%. The weather in Seattle is windy with a temperature of 19\u00b0C and humidity at 44%. The temperature difference between the two cities is 6\u00b0C.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.3495,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T17:16:51.778650",
+  "end_time": "2026-10-07T17:17:03.128158",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0488_injected_8338_8beef4a5",
+      "step": 0,
+      "timestamp": 1791393423.1281726,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Rome and Seattle? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Rome and Seattle? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0488_injected_8338_8beef4a5",
+      "step": 1,
+      "timestamp": 1791393423.1281853,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Rome"
+          },
+          "id": "3aa25200-815a-4c0c-a4ed-8f975b63813c"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seattle"
+          },
+          "id": "ccd79107-5e5f-4232-b164-87ad08582ce1"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0488_injected_8338_8beef4a5",
+      "step": 2,
+      "timestamp": 1791393423.1281984,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "3aa25200-815a-4c0c-a4ed-8f975b63813c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0488_injected_8338_8beef4a5",
+      "step": 3,
+      "timestamp": 1791393423.1282105,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "tool_call_id": "ccd79107-5e5f-4232-b164-87ad08582ce1"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0488_injected_8338_8beef4a5",
+      "step": 4,
+      "timestamp": 1791393423.128218,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Rome is sunny with a temperature of 25\u00b0C and humidity at 75%. The weather in Seattle is windy with a temperature of 19\u00b0C and humidity at 44%. The temperature difference between the two cities is 6\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791393415.4001777,
+      "node": "agent",
+      "llm_latency": 3.6196,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791393415.7046099,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3021,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791393416.006664,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "tool_success": true,
+      "tool_latency": 0.302,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791393423.1267776,
+      "node": "agent",
+      "llm_latency": 7.1191,
+      "has_tool_calls": false,
+      "response_length": 214,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 668,
+      "output_tokens": 55
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.30211353302001953,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "error": null,
+      "latency": 0.3019554615020752,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

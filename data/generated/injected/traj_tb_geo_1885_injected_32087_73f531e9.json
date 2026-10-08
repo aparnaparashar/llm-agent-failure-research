@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1885_injected_32087_73f531e9",
+  "task_id": "tb_geo_1885",
+  "task_description": "What is the weather in Boston and Tokyo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 32087,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Boston is 26\u00b0C with a cloudy condition and humidity at 51%. In Tokyo, it's 31\u00b0C with a cloudy condition and humidity at 56%. The temperature difference is 5\u00b0C and the humidity difference is 5%.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 20.2678,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T03:05:21.985219",
+  "end_time": "2026-10-08T03:05:42.253018",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1885_injected_32087_73f531e9",
+      "step": 0,
+      "timestamp": 1791428742.2530456,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Boston and Tokyo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Boston and Tokyo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1885_injected_32087_73f531e9",
+      "step": 1,
+      "timestamp": 1791428742.2530696,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Boston"
+          },
+          "id": "2d24b7ee-6047-401a-839c-7c7477f4192f"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "0a772acf-5d08-4f2f-9828-ce960a2a5915"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_boston - temperature_tokyo; humidity_difference = humidity_boston - humidity_tokyo"
+          },
+          "id": "ca908685-68a5-478b-bf8e-a752d905c4d1"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1885_injected_32087_73f531e9",
+      "step": 2,
+      "timestamp": 1791428742.2530909,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Boston\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 51, \"wind_speed_kmh\": 6}",
+      "tool_call_id": "2d24b7ee-6047-401a-839c-7c7477f4192f"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1885_injected_32087_73f531e9",
+      "step": 3,
+      "timestamp": 1791428742.2531114,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "0a772acf-5d08-4f2f-9828-ce960a2a5915"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1885_injected_32087_73f531e9",
+      "step": 4,
+      "timestamp": 1791428742.2531223,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_boston - temperature_tokyo; humidity_difference = humidity_boston - humidity_tokyo\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "ca908685-68a5-478b-bf8e-a752d905c4d1"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1885_injected_32087_73f531e9",
+      "step": 5,
+      "timestamp": 1791428742.2531328,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Boston is 26\u00b0C with a cloudy condition and humidity at 51%. In Tokyo, it's 31\u00b0C with a cloudy condition and humidity at 56%. The temperature difference is 5\u00b0C and the humidity difference is 5%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791428730.4478114,
+      "node": "agent",
+      "llm_latency": 8.4606,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 82
+    },
+    {
+      "step": 1,
+      "timestamp": 1791428730.7508106,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Boston"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791428731.0525258,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791428731.154005,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_boston - temperature_tokyo; humidity_difference = humidity_boston - humidity_tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791428742.2507043,
+      "node": "agent",
+      "llm_latency": 11.0959,
+      "has_tool_calls": false,
+      "response_length": 208,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 761,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Boston"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Boston\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 51, \"wind_speed_kmh\": 6}",
+      "error": null,
+      "latency": 0.3014791011810303,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.3016183376312256,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_boston - temperature_tokyo; humidity_difference = humidity_boston - humidity_tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_boston - temperature_tokyo; humidity_difference = humidity_boston - humidity_tokyo\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10140228271484375,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,281 @@
+{
+  "primary_threshold": 0.5,
+  "primary_results": {
+    "total_trajectories": 301,
+    "failure_trajectories": 135,
+    "healthy_trajectories": 166,
+    "detection_rate": 0.9407407407407408,
+    "early_detection_rate": 0.9185185185185185,
+    "false_alarm_rate": 0.23493975903614459,
+    "lead_time": {
+      "mean": 0.07258064516129033,
+      "median": 0.0,
+      "std": 0.3630823930480783,
+      "iqr": 0.0,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "case_distribution": {
+      "true_negative": 127,
+      "true_positive": 124,
+      "false_alarm": 39,
+      "false_negative": 8,
+      "late_detection": 3
+    },
+    "mode_breakdown": {
+      "organic": {
+        "total_trajectories": 44,
+        "failure_trajectories": 18,
+        "early_detection_rate": 1.0,
+        "mean_lead_time": 0.16666666666666666,
+        "false_alarm_rate": 0.2692307692307692
+      },
+      "injected": {
+        "total_trajectories": 160,
+        "failure_trajectories": 79,
+        "early_detection_rate": 0.9240506329113924,
+        "mean_lead_time": 0.0,
+        "false_alarm_rate": 0.19753086419753085
+      },
+      "healthy": {
+        "total_trajectories": 97,
+        "failure_trajectories": 38,
+        "early_detection_rate": 0.868421052631579,
+        "mean_lead_time": 0.18181818181818182,
+        "false_alarm_rate": 0.2711864406779661
+      }
+    }
+  },
+  "threshold_sensitivity": {
+    "0.3": {
+      "total_trajectories": 301,
+      "failure_trajectories": 135,
+      "healthy_trajectories": 166,
+      "detection_rate": 0.9407407407407408,
+      "early_detection_rate": 0.9185185185185185,
+      "false_alarm_rate": 0.26506024096385544,
+      "lead_time": {
+        "mean": 0.07258064516129033,
+        "median": 0.0,
+        "std": 0.3630823930480783,
+        "iqr": 0.0,
+        "min": 0.0,
+        "max": 2.0
+      },
+      "case_distribution": {
+        "true_positive": 124,
+        "true_negative": 122,
+        "false_alarm": 44,
+        "false_negative": 8,
+        "late_detection": 3
+      },
+      "mode_breakdown": {
+        "organic": {
+          "total_trajectories": 44,
+          "failure_trajectories": 18,
+          "early_detection_rate": 1.0,
+          "mean_lead_time": 0.16666666666666666,
+          "false_alarm_rate": 0.38461538461538464
+        },
+        "injected": {
+          "total_trajectories": 160,
+          "failure_trajectories": 79,
+          "early_detection_rate": 0.9240506329113924,
+          "mean_lead_time": 0.0,
+          "false_alarm_rate": 0.2222222222222222
+        },
+        "healthy": {
+          "total_trajectories": 97,
+          "failure_trajectories": 38,
+          "early_detection_rate": 0.868421052631579,
+          "mean_lead_time": 0.18181818181818182,
+          "false_alarm_rate": 0.2711864406779661
+        }
+      }
+    },
+    "0.4": {
+      "total_trajectories": 301,
+      "failure_trajectories": 135,
+      "healthy_trajectories": 166,
+      "detection_rate": 0.9407407407407408,
+      "early_detection_rate": 0.9185185185185185,
+      "false_alarm_rate": 0.26506024096385544,
+      "lead_time": {
+        "mean": 0.07258064516129033,
+        "median": 0.0,
+        "std": 0.3630823930480783,
+        "iqr": 0.0,
+        "min": 0.0,
+        "max": 2.0
+      },
+      "case_distribution": {
+        "true_positive": 124,
+        "true_negative": 122,
+        "false_alarm": 44,
+        "false_negative": 8,
+        "late_detection": 3
+      },
+      "mode_breakdown": {
+        "organic": {
+          "total_trajectories": 44,
+          "failure_trajectories": 18,
+          "early_detection_rate": 1.0,
+          "mean_lead_time": 0.16666666666666666,
+          "false_alarm_rate": 0.38461538461538464
+        },
+        "injected": {
+          "total_trajectories": 160,
+          "failure_trajectories": 79,
+          "early_detection_rate": 0.9240506329113924,
+          "mean_lead_time": 0.0,
+          "false_alarm_rate": 0.2222222222222222
+        },
+        "healthy": {
+          "total_trajectories": 97,
+          "failure_trajectories": 38,
+          "early_detection_rate": 0.868421052631579,
+          "mean_lead_time": 0.18181818181818182,
+          "false_alarm_rate": 0.2711864406779661
+        }
+      }
+    },
+    "0.5": {
+      "total_trajectories": 301,
+      "failure_trajectories": 135,
+      "healthy_trajectories": 166,
+      "detection_rate": 0.9407407407407408,
+      "early_detection_rate": 0.9185185185185185,
+      "false_alarm_rate": 0.23493975903614459,
+      "lead_time": {
+        "mean": 0.07258064516129033,
+        "median": 0.0,
+        "std": 0.3630823930480783,
+        "iqr": 0.0,
+        "min": 0.0,
+        "max": 2.0
+      },
+      "case_distribution": {
+        "true_negative": 127,
+        "true_positive": 124,
+        "false_alarm": 39,
+        "false_negative": 8,
+        "late_detection": 3
+      },
+      "mode_breakdown": {
+        "organic": {
+          "total_trajectories": 44,
+          "failure_trajectories": 18,
+          "early_detection_rate": 1.0,
+          "mean_lead_time": 0.16666666666666666,
+          "false_alarm_rate": 0.2692307692307692
+        },
+        "injected": {
+          "total_trajectories": 160,
+          "failure_trajectories": 79,
+          "early_detection_rate": 0.9240506329113924,
+          "mean_lead_time": 0.0,
+          "false_alarm_rate": 0.19753086419753085
+        },
+        "healthy": {
+          "total_trajectories": 97,
+          "failure_trajectories": 38,
+          "early_detection_rate": 0.868421052631579,
+          "mean_lead_time": 0.18181818181818182,
+          "false_alarm_rate": 0.2711864406779661
+        }
+      }
+    },
+    "0.6": {
+      "total_trajectories": 301,
+      "failure_trajectories": 135,
+      "healthy_trajectories": 166,
+      "detection_rate": 0.9407407407407408,
+      "early_detection_rate": 0.837037037037037,
+      "false_alarm_rate": 0.15060240963855423,
+      "lead_time": {
+        "mean": 0.035398230088495575,
+        "median": 0.0,
+        "std": 0.2637108747920591,
+        "iqr": 0.0,
+        "min": 0.0,
+        "max": 2.0
+      },
+      "case_distribution": {
+        "true_negative": 141,
+        "true_positive": 113,
+        "false_alarm": 25,
+        "late_detection": 14,
+        "false_negative": 8
+      },
+      "mode_breakdown": {
+        "organic": {
+          "total_trajectories": 44,
+          "failure_trajectories": 18,
+          "early_detection_rate": 0.9444444444444444,
+          "mean_lead_time": 0.0,
+          "false_alarm_rate": 0.15384615384615385
+        },
+        "injected": {
+          "total_trajectories": 160,
+          "failure_trajectories": 79,
+          "early_detection_rate": 0.810126582278481,
+          "mean_lead_time": 0.0,
+          "false_alarm_rate": 0.12345679012345678
+        },
+        "healthy": {
+          "total_trajectories": 97,
+          "failure_trajectories": 38,
+          "early_detection_rate": 0.8421052631578947,
+          "mean_lead_time": 0.125,
+          "false_alarm_rate": 0.1864406779661017
+        }
+      }
+    },
+    "0.7": {
+      "total_trajectories": 301,
+      "failure_trajectories": 135,
+      "healthy_trajectories": 166,
+      "detection_rate": 0.9259259259259259,
+      "early_detection_rate": 0.4962962962962963,
+      "false_alarm_rate": 0.006024096385542169,
+      "lead_time": {
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0,
+        "iqr": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "case_distribution": {
+        "true_negative": 165,
+        "true_positive": 67,
+        "late_detection": 58,
+        "false_negative": 10,
+        "false_alarm": 1
+      },
+      "mode_breakdown": {
+        "organic": {
+          "total_trajectories": 44,
+          "failure_trajectories": 18,
+          "early_detection_rate": 0.6111111111111112,
+          "mean_lead_time": 0.0,
+          "false_alarm_rate": 0.0
+        },
+        "injected": {
+          "total_trajectories": 160,
+          "failure_trajectories": 79,
+          "early_detection_rate": 0.5063291139240507,
+          "mean_lead_time": 0.0,
+          "false_alarm_rate": 0.012345679012345678
+        },
+        "healthy": {
+          "total_trajectories": 97,
+          "failure_trajectories": 38,
+          "early_detection_rate": 0.42105263157894735,
+          "mean_lead_time": 0.0,
+          "false_alarm_rate": 0.0
+        }
+      }
+    }
+  }
+}

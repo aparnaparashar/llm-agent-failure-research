@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0745_injected_12707_44ce5990",
+  "task_id": "tb_geo_0745",
+  "task_description": "What is the weather in Paris and Tokyo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 12707,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. The weather in Tokyo is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference between the two cities is 2\u00b0C, and the wind speed in Paris is 8 km/h, while in Tokyo it is 31 km/h.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 15.557,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T19:26:42.560612",
+  "end_time": "2026-10-07T19:26:58.117664",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0745_injected_12707_44ce5990",
+      "step": 0,
+      "timestamp": 1791401218.117686,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Paris and Tokyo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Paris and Tokyo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0745_injected_12707_44ce5990",
+      "step": 1,
+      "timestamp": 1791401218.117705,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "684fdc67-2668-4a34-b2d6-6024f4a19d73"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "957bbc0f-bd4a-484f-b616-e5e907106311"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0745_injected_12707_44ce5990",
+      "step": 2,
+      "timestamp": 1791401218.117724,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "684fdc67-2668-4a34-b2d6-6024f4a19d73"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0745_injected_12707_44ce5990",
+      "step": 3,
+      "timestamp": 1791401218.1177416,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "957bbc0f-bd4a-484f-b616-e5e907106311"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0745_injected_12707_44ce5990",
+      "step": 4,
+      "timestamp": 1791401218.1177523,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. The weather in Tokyo is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference between the two cities is 2\u00b0C, and the wind speed in Paris is 8 km/h, while in Tokyo it is 31 km/h.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791401206.8290842,
+      "node": "agent",
+      "llm_latency": 4.266,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791401207.1354957,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3039,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791401207.439446,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3039,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791401218.1156032,
+      "node": "agent",
+      "llm_latency": 10.675,
+      "has_tool_calls": false,
+      "response_length": 291,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 79
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.3039076328277588,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.30385398864746094,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

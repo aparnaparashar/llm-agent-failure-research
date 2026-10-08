@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0509_injected_8695_5242fb56",
+  "task_id": "tb_geo_0509",
+  "task_description": "What is the weather in Cairo and Boston? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 8695,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Cairo is 16\u00b0C with a cloudy condition and humidity at 66%. In Boston, the temperature is 26\u00b0C with a cloudy condition and humidity at 51%. The temperature difference is 10\u00b0C and the humidity difference is 15%.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 22.9847,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T17:22:46.163421",
+  "end_time": "2026-10-07T17:23:09.148150",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0509_injected_8695_5242fb56",
+      "step": 0,
+      "timestamp": 1791393789.148185,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Cairo and Boston? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Cairo and Boston? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0509_injected_8695_5242fb56",
+      "step": 1,
+      "timestamp": 1791393789.1482105,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "63790e69-df4a-4f5a-933c-6ac981fabc23"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Boston"
+          },
+          "id": "f3725896-41e1-4d95-8c5d-33af8d00f85e"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_cairo - temp_boston; humidity_difference = humidity_cairo - humidity_boston"
+          },
+          "id": "1ea8dbab-5a7a-46f2-92e3-67cf5d9d45fe"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0509_injected_8695_5242fb56",
+      "step": 2,
+      "timestamp": 1791393789.1482327,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "63790e69-df4a-4f5a-933c-6ac981fabc23"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0509_injected_8695_5242fb56",
+      "step": 3,
+      "timestamp": 1791393789.1482525,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Boston\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 51, \"wind_speed_kmh\": 6}",
+      "tool_call_id": "f3725896-41e1-4d95-8c5d-33af8d00f85e"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0509_injected_8695_5242fb56",
+      "step": 4,
+      "timestamp": 1791393789.148264,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_cairo - temp_boston; humidity_difference = humidity_cairo - humidity_boston\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "1ea8dbab-5a7a-46f2-92e3-67cf5d9d45fe"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0509_injected_8695_5242fb56",
+      "step": 5,
+      "timestamp": 1791393789.1482735,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Cairo is 16\u00b0C with a cloudy condition and humidity at 66%. In Boston, the temperature is 26\u00b0C with a cloudy condition and humidity at 51%. The temperature difference is 10\u00b0C and the humidity difference is 15%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791393776.9588661,
+      "node": "agent",
+      "llm_latency": 10.7937,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 80
+    },
+    {
+      "step": 1,
+      "timestamp": 1791393777.2637851,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3025,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791393777.5652492,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Boston"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791393777.667018,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_cairo - temp_boston; humidity_difference = humidity_cairo - humidity_boston"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1017,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791393789.145805,
+      "node": "agent",
+      "llm_latency": 11.4778,
+      "has_tool_calls": false,
+      "response_length": 224,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 761,
+      "output_tokens": 59
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3025245666503906,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Boston"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Boston\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 51, \"wind_speed_kmh\": 6}",
+      "error": null,
+      "latency": 0.30138635635375977,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_cairo - temp_boston; humidity_difference = humidity_cairo - humidity_boston"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_cairo - temp_boston; humidity_difference = humidity_cairo - humidity_boston\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10169339179992676,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

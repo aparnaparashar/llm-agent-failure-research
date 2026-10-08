@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0665_injected_11347_595bde2f",
+  "task_id": "tb_geo_0665",
+  "task_description": "What is the weather in Amsterdam and Toronto? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 11347,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Amsterdam is partly cloudy with a temperature of 23\u00b0C and humidity at 48%. The weather in Toronto is windy with a temperature of 29\u00b0C and humidity at 79%. The temperature difference between the two cities is 6\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.8458,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T18:54:48.466112",
+  "end_time": "2026-10-07T18:54:59.311933",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0665_injected_11347_595bde2f",
+      "step": 0,
+      "timestamp": 1791399299.3119555,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Amsterdam and Toronto? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Amsterdam and Toronto? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0665_injected_11347_595bde2f",
+      "step": 1,
+      "timestamp": 1791399299.3119648,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Amsterdam"
+          },
+          "id": "33a8f7cb-0740-4a0b-96d3-076f9d8bbc91"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "ace9ece9-6e35-4086-a8a6-e2f558b26d4f"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0665_injected_11347_595bde2f",
+      "step": 2,
+      "timestamp": 1791399299.3119748,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "33a8f7cb-0740-4a0b-96d3-076f9d8bbc91"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0665_injected_11347_595bde2f",
+      "step": 3,
+      "timestamp": 1791399299.3119826,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "tool_call_id": "ace9ece9-6e35-4086-a8a6-e2f558b26d4f"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0665_injected_11347_595bde2f",
+      "step": 4,
+      "timestamp": 1791399299.3119886,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Amsterdam is partly cloudy with a temperature of 23\u00b0C and humidity at 48%. The weather in Toronto is windy with a temperature of 29\u00b0C and humidity at 79%. The temperature difference between the two cities is 6\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791399292.103787,
+      "node": "agent",
+      "llm_latency": 3.636,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791399292.4078252,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3022,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791399292.7090566,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3012,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791399299.3108313,
+      "node": "agent",
+      "llm_latency": 6.6007,
+      "has_tool_calls": false,
+      "response_length": 227,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 670,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.3022148609161377,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "error": null,
+      "latency": 0.3011751174926758,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

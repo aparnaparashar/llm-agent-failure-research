@@ -1,0 +1,30 @@
+# Agent Configuration
+
+agent:
+  name: "failure-research-agent"
+  version: "0.1.0"
+  
+  # LangGraph settings
+  langgraph:
+    # Maximum number of steps before forced termination
+    max_steps: 30
+    # Recursion limit for the graph
+    recursion_limit: 50
+    
+  # Tool execution settings  
+  tools:
+    # Timeout per tool call in seconds
+    timeout: 60
+    # Max retries per tool call
+    max_retries: 2
+    # Whether to allow parallel tool calls
+    parallel: false
+
+  # Execution settings
+  execution:
+    # Number of tasks to run (use --limit to override)
+    default_limit: 1
+    # Whether to save intermediate states
+    save_intermediate: true
+    # Output directory for generated trajectories
+    output_dir: "data/generated"

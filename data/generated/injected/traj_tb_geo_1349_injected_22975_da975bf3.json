@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1349_injected_22975_da975bf3",
+  "task_id": "tb_geo_1349",
+  "task_description": "What is the weather in Vienna and Madrid? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 22975,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Vienna is 31\u00b0C with a cloudy condition and humidity at 81%. In Madrid, the temperature is 15\u00b0C with a sunny condition and humidity at 65%. The temperature difference is 16\u00b0C and the humidity difference is 16%.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 2,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 14.9902,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T23:44:28.233713",
+  "end_time": "2026-10-07T23:44:43.223909",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1349_injected_22975_da975bf3",
+      "step": 0,
+      "timestamp": 1791416683.223924,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Vienna and Madrid? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Vienna and Madrid? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1349_injected_22975_da975bf3",
+      "step": 1,
+      "timestamp": 1791416683.2239382,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Vienna"
+          },
+          "id": "99a0b3cd-0261-4fd6-af98-69c973016d26"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Madrid"
+          },
+          "id": "3ccaf906-d2a9-4a4e-b632-ccc3e621647d"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_vienna - temp_madrid; humidity_difference = humidity_vienna - humidity_madrid"
+          },
+          "id": "6e13f590-cc75-49f7-92c8-b6eeb5e406b6"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1349_injected_22975_da975bf3",
+      "step": 2,
+      "timestamp": 1791416683.2239518,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "tool_call_id": "99a0b3cd-0261-4fd6-af98-69c973016d26"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1349_injected_22975_da975bf3",
+      "step": 3,
+      "timestamp": 1791416683.223963,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "tool_call_id": "3ccaf906-d2a9-4a4e-b632-ccc3e621647d"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1349_injected_22975_da975bf3",
+      "step": 4,
+      "timestamp": 1791416683.223969,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_vienna - temp_madrid; humidity_difference = humidity_vienna - humidity_madrid\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "6e13f590-cc75-49f7-92c8-b6eeb5e406b6"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1349_injected_22975_da975bf3",
+      "step": 5,
+      "timestamp": 1791416683.2239747,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Vienna is 31\u00b0C with a cloudy condition and humidity at 81%. In Madrid, the temperature is 15\u00b0C with a sunny condition and humidity at 65%. The temperature difference is 16\u00b0C and the humidity difference is 16%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791416674.699836,
+      "node": "agent",
+      "llm_latency": 6.4645,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 85
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416675.0031202,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3013,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416675.3047829,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416675.4066596,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_vienna - temp_madrid; humidity_difference = humidity_vienna - humidity_madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1018,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416683.222764,
+      "node": "agent",
+      "llm_latency": 7.8151,
+      "has_tool_calls": false,
+      "response_length": 224,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 768,
+      "output_tokens": 59
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "error": null,
+      "latency": 0.3013124465942383,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "error": null,
+      "latency": 0.30158257484436035,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_vienna - temp_madrid; humidity_difference = humidity_vienna - humidity_madrid"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_vienna - temp_madrid; humidity_difference = humidity_vienna - humidity_madrid\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10179781913757324,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

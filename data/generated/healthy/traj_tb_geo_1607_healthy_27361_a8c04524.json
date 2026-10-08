@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1607_healthy_27361_a8c04524",
+  "task_id": "tb_geo_1607",
+  "task_description": "What is the weather in Singapore and London? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 27361,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Singapore is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In London, the temperature is 15\u00b0C and the condition is sunny with humidity at 40%. The temperature difference is 18\u00b0C and the humidity difference is 18% in London compared to Singapore.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 15.322,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:43:12.142551",
+  "end_time": "2026-10-08T00:43:27.464510",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1607_healthy_27361_a8c04524",
+      "step": 0,
+      "timestamp": 1791420207.4645166,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Singapore and London? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Singapore and London? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1607_healthy_27361_a8c04524",
+      "step": 1,
+      "timestamp": 1791420207.4645238,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Singapore"
+          },
+          "id": "a20714b0-6228-420b-91d8-fc6733e204a8"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "London"
+          },
+          "id": "861d48e9-ad1b-4e7b-994d-29ec53fd87a4"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_London - temperature_Singapore; humidity_difference = humidity_London - humidity_Singapore"
+          },
+          "id": "e472a669-fedc-4cc6-85a8-c9e9ceacad01"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1607_healthy_27361_a8c04524",
+      "step": 2,
+      "timestamp": 1791420207.464532,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "a20714b0-6228-420b-91d8-fc6733e204a8"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1607_healthy_27361_a8c04524",
+      "step": 3,
+      "timestamp": 1791420207.4645383,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "861d48e9-ad1b-4e7b-994d-29ec53fd87a4"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1607_healthy_27361_a8c04524",
+      "step": 4,
+      "timestamp": 1791420207.4645422,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_London - temperature_Singapore; humidity_difference = humidity_London - humidity_Singapore\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "e472a669-fedc-4cc6-85a8-c9e9ceacad01"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1607_healthy_27361_a8c04524",
+      "step": 5,
+      "timestamp": 1791420207.4645457,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Singapore is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In London, the temperature is 15\u00b0C and the condition is sunny with humidity at 40%. The temperature difference is 18\u00b0C and the humidity difference is 18% in London compared to Singapore.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791420198.401646,
+      "node": "agent",
+      "llm_latency": 6.2541,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 81
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420198.7048306,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3017,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420199.006482,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420199.1082299,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_London - temperature_Singapore; humidity_difference = humidity_London - humidity_Singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420207.4636848,
+      "node": "agent",
+      "llm_latency": 8.3525,
+      "has_tool_calls": false,
+      "response_length": 276,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 765,
+      "output_tokens": 68
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.30172109603881836,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.30155205726623535,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_London - temperature_Singapore; humidity_difference = humidity_London - humidity_Singapore"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_London - temperature_Singapore; humidity_difference = humidity_London - humidity_Singapore\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10160684585571289,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

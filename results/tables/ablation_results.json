@@ -1,0 +1,223 @@
+{
+  "full_model": {
+    "n_features": 14,
+    "features": [
+      "step",
+      "step_ratio",
+      "step_latency",
+      "cum_latency",
+      "tool_calls_count",
+      "tool_error_count",
+      "tool_error_rate",
+      "consecutive_tool_errors",
+      "repeat_tool_ratio",
+      "latest_message_len",
+      "avg_message_len",
+      "token_expansion_ratio",
+      "observation_error_flag",
+      "lexical_diversity"
+    ],
+    "roc_auc": 0.980102539425102,
+    "pr_auc": 0.9413554069346004,
+    "f1": 0.8669064748201439
+  },
+  "without_temporal": {
+    "n_features": 10,
+    "features": [
+      "tool_calls_count",
+      "tool_error_count",
+      "tool_error_rate",
+      "consecutive_tool_errors",
+      "repeat_tool_ratio",
+      "latest_message_len",
+      "avg_message_len",
+      "token_expansion_ratio",
+      "observation_error_flag",
+      "lexical_diversity"
+    ],
+    "roc_auc": 0.9792604210294935,
+    "pr_auc": 0.9399615009595331,
+    "f1": 0.8607594936708861,
+    "removed_group": "temporal",
+    "removed_features": [
+      "step",
+      "step_ratio",
+      "step_latency",
+      "cum_latency"
+    ],
+    "roc_auc_delta": 0.0008421183956084377,
+    "pr_auc_delta": 0.0013939059750672778,
+    "f1_delta": 0.006146981149257824
+  },
+  "without_tool": {
+    "n_features": 12,
+    "features": [
+      "step",
+      "step_ratio",
+      "step_latency",
+      "cum_latency",
+      "tool_error_count",
+      "tool_error_rate",
+      "consecutive_tool_errors",
+      "latest_message_len",
+      "avg_message_len",
+      "token_expansion_ratio",
+      "observation_error_flag",
+      "lexical_diversity"
+    ],
+    "roc_auc": 0.9408096218338873,
+    "pr_auc": 0.7993723123961292,
+    "f1": 0.7153024911032029,
+    "removed_group": "tool",
+    "removed_features": [
+      "tool_calls_count",
+      "repeat_tool_ratio"
+    ],
+    "roc_auc_delta": 0.03929291759121467,
+    "pr_auc_delta": 0.14198309453847124,
+    "f1_delta": 0.15160398371694106
+  },
+  "without_error": {
+    "n_features": 10,
+    "features": [
+      "step",
+      "step_ratio",
+      "step_latency",
+      "cum_latency",
+      "tool_calls_count",
+      "repeat_tool_ratio",
+      "latest_message_len",
+      "avg_message_len",
+      "token_expansion_ratio",
+      "lexical_diversity"
+    ],
+    "roc_auc": 0.9786499965839994,
+    "pr_auc": 0.9387735546719086,
+    "f1": 0.8633093525179856,
+    "removed_group": "error",
+    "removed_features": [
+      "tool_error_count",
+      "tool_error_rate",
+      "consecutive_tool_errors",
+      "observation_error_flag"
+    ],
+    "roc_auc_delta": 0.001452542841102522,
+    "pr_auc_delta": 0.0025818522626918083,
+    "f1_delta": 0.003597122302158362
+  },
+  "without_context": {
+    "n_features": 11,
+    "features": [
+      "step",
+      "step_ratio",
+      "step_latency",
+      "cum_latency",
+      "tool_calls_count",
+      "tool_error_count",
+      "tool_error_rate",
+      "consecutive_tool_errors",
+      "repeat_tool_ratio",
+      "observation_error_flag",
+      "lexical_diversity"
+    ],
+    "roc_auc": 0.93136957858435,
+    "pr_auc": 0.7558525459067846,
+    "f1": 0.6653543307086615,
+    "removed_group": "context",
+    "removed_features": [
+      "latest_message_len",
+      "avg_message_len",
+      "token_expansion_ratio"
+    ],
+    "roc_auc_delta": 0.04873296084075196,
+    "pr_auc_delta": 0.18550286102781577,
+    "f1_delta": 0.20155214411148248
+  },
+  "without_semantic": {
+    "n_features": 13,
+    "features": [
+      "step",
+      "step_ratio",
+      "step_latency",
+      "cum_latency",
+      "tool_calls_count",
+      "tool_error_count",
+      "tool_error_rate",
+      "consecutive_tool_errors",
+      "repeat_tool_ratio",
+      "latest_message_len",
+      "avg_message_len",
+      "token_expansion_ratio",
+      "observation_error_flag"
+    ],
+    "roc_auc": 0.9790331827322658,
+    "pr_auc": 0.9403391315484654,
+    "f1": 0.8653500897666068,
+    "removed_group": "semantic",
+    "removed_features": [
+      "lexical_diversity"
+    ],
+    "roc_auc_delta": 0.001069356692836143,
+    "pr_auc_delta": 0.0010162753861350238,
+    "f1_delta": 0.0015563850535371682
+  },
+  "only_temporal": {
+    "n_features": 4,
+    "features": [
+      "step",
+      "step_ratio",
+      "step_latency",
+      "cum_latency"
+    ],
+    "roc_auc": 0.7082839498471711,
+    "pr_auc": 0.3125779942908432,
+    "f1": 0.006825938566552901,
+    "used_group": "temporal"
+  },
+  "only_tool": {
+    "n_features": 2,
+    "features": [
+      "tool_calls_count",
+      "repeat_tool_ratio"
+    ],
+    "roc_auc": 0.711437066873409,
+    "pr_auc": 0.321106910362962,
+    "f1": 0.0,
+    "used_group": "tool"
+  },
+  "only_error": {
+    "n_features": 4,
+    "features": [
+      "tool_error_count",
+      "tool_error_rate",
+      "consecutive_tool_errors",
+      "observation_error_flag"
+    ],
+    "roc_auc": 0.6494396273886013,
+    "pr_auc": 0.2816006801455183,
+    "f1": 0.08,
+    "used_group": "error"
+  },
+  "only_context": {
+    "n_features": 3,
+    "features": [
+      "latest_message_len",
+      "avg_message_len",
+      "token_expansion_ratio"
+    ],
+    "roc_auc": 0.9365886333324422,
+    "pr_auc": 0.7946159843217983,
+    "f1": 0.7094474153297683,
+    "used_group": "context"
+  },
+  "only_semantic": {
+    "n_features": 1,
+    "features": [
+      "lexical_diversity"
+    ],
+    "roc_auc": 0.6257459505541347,
+    "pr_auc": 0.2463519313304721,
+    "f1": 0.0,
+    "used_group": "semantic"
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0387_healthy_6621_20266d86",
+  "task_id": "tb_geo_0387",
+  "task_description": "What is the weather in London and Miami? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 6621,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in London is currently sunny with a temperature of 15\u00b0C and humidity at 40%. The wind speed is 25 km/h. In Miami, the weather is also sunny with a temperature of 15\u00b0C and humidity at 65%. The wind speed is 20 km/h. The temperature difference between the two cities is 0\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 15.8317,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T16:50:02.450831",
+  "end_time": "2026-10-07T16:50:18.282573",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0387_healthy_6621_20266d86",
+      "step": 0,
+      "timestamp": 1791391818.2825956,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in London and Miami? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in London and Miami? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0387_healthy_6621_20266d86",
+      "step": 1,
+      "timestamp": 1791391818.2826152,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "London"
+          },
+          "id": "b07798af-3664-4b9a-b852-482d0bed79d3"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "9174cc52-3827-4d4e-bcd8-8ab3d04cdf90"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0387_healthy_6621_20266d86",
+      "step": 2,
+      "timestamp": 1791391818.282635,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "b07798af-3664-4b9a-b852-482d0bed79d3"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0387_healthy_6621_20266d86",
+      "step": 3,
+      "timestamp": 1791391818.2826533,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "9174cc52-3827-4d4e-bcd8-8ab3d04cdf90"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0387_healthy_6621_20266d86",
+      "step": 4,
+      "timestamp": 1791391818.2826648,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in London is currently sunny with a temperature of 15\u00b0C and humidity at 40%. The wind speed is 25 km/h. In Miami, the weather is also sunny with a temperature of 15\u00b0C and humidity at 65%. The wind speed is 20 km/h. The temperature difference between the two cities is 0\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791391806.6773968,
+      "node": "agent",
+      "llm_latency": 4.2249,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391806.9837754,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3039,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391807.2856731,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3018,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391818.2804587,
+      "node": "agent",
+      "llm_latency": 10.9937,
+      "has_tool_calls": false,
+      "response_length": 284,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 667,
+      "output_tokens": 78
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.30390095710754395,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.30180811882019043,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

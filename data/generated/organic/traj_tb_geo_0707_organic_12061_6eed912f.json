@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0707_organic_12061_6eed912f",
+  "task_id": "tb_geo_0707",
+  "task_description": "What is the weather in San Francisco and Miami? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 12061,
+  "execution_mode": "organic",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in San Francisco is currently cloudy with a temperature of 21\u00b0C and humidity at 46%. The wind speed is 21 km/h. In Miami, the temperature is 15\u00b0C and the condition is sunny with humidity at 65%. The temperature difference between the two cities is 6\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 15.4128,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T19:10:38.567970",
+  "end_time": "2026-10-07T19:10:53.980826",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0707_organic_12061_6eed912f",
+      "step": 0,
+      "timestamp": 1791400253.9808483,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in San Francisco and Miami? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in San Francisco and Miami? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0707_organic_12061_6eed912f",
+      "step": 1,
+      "timestamp": 1791400253.9808671,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "4bd12220-13cc-4cf8-b45b-d88b619c1a77"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "55e4a33b-4f06-4e23-8c1b-0f1e01b43bc8"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0707_organic_12061_6eed912f",
+      "step": 2,
+      "timestamp": 1791400253.9808855,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "4bd12220-13cc-4cf8-b45b-d88b619c1a77"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0707_organic_12061_6eed912f",
+      "step": 3,
+      "timestamp": 1791400253.980903,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "55e4a33b-4f06-4e23-8c1b-0f1e01b43bc8"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0707_organic_12061_6eed912f",
+      "step": 4,
+      "timestamp": 1791400253.9809134,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in San Francisco is currently cloudy with a temperature of 21\u00b0C and humidity at 46%. The wind speed is 21 km/h. In Miami, the temperature is 15\u00b0C and the condition is sunny with humidity at 65%. The temperature difference between the two cities is 6\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791400243.92154,
+      "node": "agent",
+      "llm_latency": 5.3516,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791400244.228696,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3047,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791400244.5324337,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3037,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791400253.978793,
+      "node": "agent",
+      "llm_latency": 9.4454,
+      "has_tool_calls": false,
+      "response_length": 264,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 670,
+      "output_tokens": 68
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3046610355377197,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.30365681648254395,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

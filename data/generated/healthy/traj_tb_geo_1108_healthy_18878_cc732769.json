@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1108_healthy_18878_cc732769",
+  "task_id": "tb_geo_1108",
+  "task_description": "What is the weather in Madrid and Tokyo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 18878,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Madrid is sunny with a temperature of 15\u00b0C and humidity at 65%. The weather in Tokyo is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference between the two cities is 16\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.9982,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T22:01:06.616779",
+  "end_time": "2026-10-07T22:01:18.614965",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1108_healthy_18878_cc732769",
+      "step": 0,
+      "timestamp": 1791410478.6149745,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Madrid and Tokyo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Madrid and Tokyo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1108_healthy_18878_cc732769",
+      "step": 1,
+      "timestamp": 1791410478.614983,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Madrid"
+          },
+          "id": "c29165a8-48b5-49d7-9a4c-21853d46f72a"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "18995fd3-7920-44a8-b952-97bede40c069"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1108_healthy_18878_cc732769",
+      "step": 2,
+      "timestamp": 1791410478.614993,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "tool_call_id": "c29165a8-48b5-49d7-9a4c-21853d46f72a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1108_healthy_18878_cc732769",
+      "step": 3,
+      "timestamp": 1791410478.6150026,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "18995fd3-7920-44a8-b952-97bede40c069"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1108_healthy_18878_cc732769",
+      "step": 4,
+      "timestamp": 1791410478.6150076,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Madrid is sunny with a temperature of 15\u00b0C and humidity at 65%. The weather in Tokyo is cloudy with a temperature of 31\u00b0C and humidity at 56%. The temperature difference between the two cities is 16\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791410470.5734243,
+      "node": "agent",
+      "llm_latency": 3.9553,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791410470.8766792,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3017,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791410471.1783025,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791410478.6139224,
+      "node": "agent",
+      "llm_latency": 7.4347,
+      "has_tool_calls": false,
+      "response_length": 216,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 671,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "error": null,
+      "latency": 0.30170178413391113,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.3015477657318115,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

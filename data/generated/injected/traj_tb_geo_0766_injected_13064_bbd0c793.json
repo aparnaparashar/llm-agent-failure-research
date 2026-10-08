@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0766_injected_13064_bbd0c793",
+  "task_id": "tb_geo_0766",
+  "task_description": "What is the weather in Paris and London? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 13064,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In London, the temperature is 15\u00b0C and the condition is sunny with humidity at 40%. The temperature difference between the two cities is 18\u00b0C, and the humidity difference is 43%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 22.7506,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T19:36:44.354672",
+  "end_time": "2026-10-07T19:37:07.105277",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0766_injected_13064_bbd0c793",
+      "step": 0,
+      "timestamp": 1791401827.105301,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Paris and London? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Paris and London? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0766_injected_13064_bbd0c793",
+      "step": 1,
+      "timestamp": 1791401827.1053214,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "4ddc7e43-783b-4279-8200-6a369af69dcc"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "London"
+          },
+          "id": "7f4ac239-d0d2-449b-8d6a-4e44af73b544"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_london - temp_paris; humidity_difference = humidity_london - humidity_paris"
+          },
+          "id": "addd309d-baa0-4faf-bd5b-4a57c9867d1b"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0766_injected_13064_bbd0c793",
+      "step": 2,
+      "timestamp": 1791401827.1053436,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "4ddc7e43-783b-4279-8200-6a369af69dcc"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0766_injected_13064_bbd0c793",
+      "step": 3,
+      "timestamp": 1791401827.105362,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "7f4ac239-d0d2-449b-8d6a-4e44af73b544"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0766_injected_13064_bbd0c793",
+      "step": 4,
+      "timestamp": 1791401827.1053734,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_london - temp_paris; humidity_difference = humidity_london - humidity_paris\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "addd309d-baa0-4faf-bd5b-4a57c9867d1b"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0766_injected_13064_bbd0c793",
+      "step": 5,
+      "timestamp": 1791401827.1053839,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In London, the temperature is 15\u00b0C and the condition is sunny with humidity at 40%. The temperature difference between the two cities is 18\u00b0C, and the humidity difference is 43%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791401813.3510287,
+      "node": "agent",
+      "llm_latency": 8.994,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 79
+    },
+    {
+      "step": 1,
+      "timestamp": 1791401813.6561615,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3027,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791401813.9598792,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3036,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791401814.064422,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_london - temp_paris; humidity_difference = humidity_london - humidity_paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1044,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791401827.1031363,
+      "node": "agent",
+      "llm_latency": 13.0371,
+      "has_tool_calls": false,
+      "response_length": 264,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 760,
+      "output_tokens": 67
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.30268430709838867,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.3036208152770996,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_london - temp_paris; humidity_difference = humidity_london - humidity_paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_london - temp_paris; humidity_difference = humidity_london - humidity_paris\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10442280769348145,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

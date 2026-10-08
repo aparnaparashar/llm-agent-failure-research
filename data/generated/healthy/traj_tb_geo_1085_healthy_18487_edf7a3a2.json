@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1085_healthy_18487_edf7a3a2",
+  "task_id": "tb_geo_1085",
+  "task_description": "What is the weather in Paris and Seattle? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 18487,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In Seattle, the temperature is 19\u00b0C, with a wind speed of 9 km/h and a condition of being windy with humidity at 44%. The temperature difference between the two cities is 14\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 19.4917,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T21:54:21.606727",
+  "end_time": "2026-10-07T21:54:41.098424",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1085_healthy_18487_edf7a3a2",
+      "step": 0,
+      "timestamp": 1791410081.0984519,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Paris and Seattle? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Paris and Seattle? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1085_healthy_18487_edf7a3a2",
+      "step": 1,
+      "timestamp": 1791410081.098477,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "f34b9713-dc3f-471e-a872-96bfca78604c"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seattle"
+          },
+          "id": "a7b711a8-d0dc-4e5c-aef1-cd20fc034173"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1085_healthy_18487_edf7a3a2",
+      "step": 2,
+      "timestamp": 1791410081.0984988,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "f34b9713-dc3f-471e-a872-96bfca78604c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1085_healthy_18487_edf7a3a2",
+      "step": 3,
+      "timestamp": 1791410081.0985208,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "tool_call_id": "a7b711a8-d0dc-4e5c-aef1-cd20fc034173"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1085_healthy_18487_edf7a3a2",
+      "step": 4,
+      "timestamp": 1791410081.0985322,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In Seattle, the temperature is 19\u00b0C, with a wind speed of 9 km/h and a condition of being windy with humidity at 44%. The temperature difference between the two cities is 14\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791410066.5711784,
+      "node": "agent",
+      "llm_latency": 4.9624,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791410066.8784904,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3041,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791410067.1831415,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3046,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791410081.0960104,
+      "node": "agent",
+      "llm_latency": 13.9118,
+      "has_tool_calls": false,
+      "response_length": 262,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 666,
+      "output_tokens": 69
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.30414605140686035,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "error": null,
+      "latency": 0.30455493927001953,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

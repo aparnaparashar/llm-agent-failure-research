@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1408_injected_23978_8a900935",
+  "task_id": "tb_geo_1408",
+  "task_description": "What is the weather in Dubai and Madrid? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 23978,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Dubai is currently rainy with a temperature of 32\u00b0C and humidity at 57%. The weather in Madrid is sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference between the two cities is 17\u00b0C.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.2337,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:01:22.471602",
+  "end_time": "2026-10-08T00:01:32.705291",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1408_injected_23978_8a900935",
+      "step": 0,
+      "timestamp": 1791417692.7053032,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Dubai and Madrid? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Dubai and Madrid? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1408_injected_23978_8a900935",
+      "step": 1,
+      "timestamp": 1791417692.7053132,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Dubai"
+          },
+          "id": "f610c652-25fd-4033-8926-41b0f81fcc2b"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Madrid"
+          },
+          "id": "c1603482-4c2c-4898-9ad8-9a5408d55846"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1408_injected_23978_8a900935",
+      "step": 2,
+      "timestamp": 1791417692.705323,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Dubai\", \"temperature_celsius\": 32, \"condition\": \"rainy\", \"humidity\": 57, \"wind_speed_kmh\": 12}",
+      "tool_call_id": "f610c652-25fd-4033-8926-41b0f81fcc2b"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1408_injected_23978_8a900935",
+      "step": 3,
+      "timestamp": 1791417692.7053325,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "tool_call_id": "c1603482-4c2c-4898-9ad8-9a5408d55846"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1408_injected_23978_8a900935",
+      "step": 4,
+      "timestamp": 1791417692.705338,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Dubai is currently rainy with a temperature of 32\u00b0C and humidity at 57%. The weather in Madrid is sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference between the two cities is 17\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791417685.8926098,
+      "node": "agent",
+      "llm_latency": 3.4182,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417686.1955543,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Dubai"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417686.4966667,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.301,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417692.704128,
+      "node": "agent",
+      "llm_latency": 6.2067,
+      "has_tool_calls": false,
+      "response_length": 225,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 671,
+      "output_tokens": 57
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Dubai"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Dubai\", \"temperature_celsius\": 32, \"condition\": \"rainy\", \"humidity\": 57, \"wind_speed_kmh\": 12}",
+      "error": null,
+      "latency": 0.30163145065307617,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "error": null,
+      "latency": 0.30103230476379395,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

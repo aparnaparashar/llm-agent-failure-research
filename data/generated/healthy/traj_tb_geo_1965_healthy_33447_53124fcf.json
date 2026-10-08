@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1965_healthy_33447_53124fcf",
+  "task_id": "tb_geo_1965",
+  "task_description": "What is the weather in Vienna and Paris? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 33447,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Vienna is 31\u00b0C with a cloudy condition and 81% humidity. The weather in Paris is 33\u00b0C with partly cloudy condition and 83% humidity. The temperature difference is 2\u00b0C and the humidity difference is 2% in Vienna compared to Paris.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 23.9396,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T03:45:44.685371",
+  "end_time": "2026-10-08T03:46:08.624992",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1965_healthy_33447_53124fcf",
+      "step": 0,
+      "timestamp": 1791431168.6250172,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Vienna and Paris? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Vienna and Paris? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1965_healthy_33447_53124fcf",
+      "step": 1,
+      "timestamp": 1791431168.6250398,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Vienna"
+          },
+          "id": "ca6bedc5-fb63-41d6-b59d-7a4493bf26bc"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "466ac313-a6db-4f17-84a1-8522c897dba3"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = Vienna temperature - Paris temperature; humidity = Vienna humidity - Paris humidity"
+          },
+          "id": "bcdae5e2-31f3-472d-bccf-0987cd918600"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1965_healthy_33447_53124fcf",
+      "step": 2,
+      "timestamp": 1791431168.625064,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "tool_call_id": "ca6bedc5-fb63-41d6-b59d-7a4493bf26bc"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1965_healthy_33447_53124fcf",
+      "step": 3,
+      "timestamp": 1791431168.6250832,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "466ac313-a6db-4f17-84a1-8522c897dba3"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1965_healthy_33447_53124fcf",
+      "step": 4,
+      "timestamp": 1791431168.6250951,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = Vienna temperature - Paris temperature; humidity = Vienna humidity - Paris humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "bcdae5e2-31f3-472d-bccf-0987cd918600"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1965_healthy_33447_53124fcf",
+      "step": 5,
+      "timestamp": 1791431168.6251051,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Vienna is 31\u00b0C with a cloudy condition and 81% humidity. The weather in Paris is 33\u00b0C with partly cloudy condition and 83% humidity. The temperature difference is 2\u00b0C and the humidity difference is 2% in Vienna compared to Paris.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791431154.2028608,
+      "node": "agent",
+      "llm_latency": 9.5145,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 75
+    },
+    {
+      "step": 1,
+      "timestamp": 1791431154.5086696,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "tool_success": true,
+      "tool_latency": 0.303,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791431154.8103838,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791431154.9118946,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Vienna temperature - Paris temperature; humidity = Vienna humidity - Paris humidity"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791431168.6226509,
+      "node": "agent",
+      "llm_latency": 13.71,
+      "has_tool_calls": false,
+      "response_length": 244,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 752,
+      "output_tokens": 62
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "error": null,
+      "latency": 0.30298566818237305,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.30163025856018066,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Vienna temperature - Paris temperature; humidity = Vienna humidity - Paris humidity"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = Vienna temperature - Paris temperature; humidity = Vienna humidity - Paris humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.1014413833618164,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

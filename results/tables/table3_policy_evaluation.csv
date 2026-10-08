@@ -1,0 +1,5 @@
+Intervention Policy,Interventions,False Alarms,Success Rate,Regret
+Policy 0 (Passive),0,0,80.3%,0.98
+Policy 1 (Static Threshold),269,28,96.5%,0.18
+Policy 2 (Calibrated),313,55,97.3%,0.14
+Policy 3 (Adaptive Regret),324,66,97.1%,0.14

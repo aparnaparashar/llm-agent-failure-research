@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1385_healthy_23587_2bf224f9",
+  "task_id": "tb_geo_1385",
+  "task_description": "What is the weather in Sydney and Vienna? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 23587,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Vienna, the temperature is 31\u00b0C with a condition of cloudy and humidity at 81%. The temperature difference is 2\u00b0C and the humidity difference is 23%.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 14.8602,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T23:51:05.721341",
+  "end_time": "2026-10-07T23:51:20.581526",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1385_healthy_23587_2bf224f9",
+      "step": 0,
+      "timestamp": 1791417080.5815349,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Sydney and Vienna? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Sydney and Vienna? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1385_healthy_23587_2bf224f9",
+      "step": 1,
+      "timestamp": 1791417080.5815442,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Sydney"
+          },
+          "id": "8aea8797-05b9-4218-8b06-18ebda1aa9a6"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Vienna"
+          },
+          "id": "723fb50f-daf1-46e2-b286-7654f31c60da"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_vienna - temp_sydney; humidity_difference = humidity_vienna - humidity_sydney"
+          },
+          "id": "36f55c6f-1442-4621-871b-d11c9d2ac912"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1385_healthy_23587_2bf224f9",
+      "step": 2,
+      "timestamp": 1791417080.5815527,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "8aea8797-05b9-4218-8b06-18ebda1aa9a6"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1385_healthy_23587_2bf224f9",
+      "step": 3,
+      "timestamp": 1791417080.58156,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "tool_call_id": "723fb50f-daf1-46e2-b286-7654f31c60da"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1385_healthy_23587_2bf224f9",
+      "step": 4,
+      "timestamp": 1791417080.5815637,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_vienna - temp_sydney; humidity_difference = humidity_vienna - humidity_sydney\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "36f55c6f-1442-4621-871b-d11c9d2ac912"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1385_healthy_23587_2bf224f9",
+      "step": 5,
+      "timestamp": 1791417080.5815675,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Vienna, the temperature is 31\u00b0C with a condition of cloudy and humidity at 81%. The temperature difference is 2\u00b0C and the humidity difference is 23%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791417072.0722852,
+      "node": "agent",
+      "llm_latency": 6.349,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 83
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417072.3756504,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3023,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417072.6770203,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3013,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417072.7805092,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_vienna - temp_sydney; humidity_difference = humidity_vienna - humidity_sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1034,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791417080.5805242,
+      "node": "agent",
+      "llm_latency": 7.7988,
+      "has_tool_calls": false,
+      "response_length": 239,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 765,
+      "output_tokens": 61
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3023068904876709,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "error": null,
+      "latency": 0.3012874126434326,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_vienna - temp_sydney; humidity_difference = humidity_vienna - humidity_sydney"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_vienna - temp_sydney; humidity_difference = humidity_vienna - humidity_sydney\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10340166091918945,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

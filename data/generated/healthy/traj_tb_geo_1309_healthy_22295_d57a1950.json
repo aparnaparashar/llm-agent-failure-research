@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1309_healthy_22295_d57a1950",
+  "task_id": "tb_geo_1309",
+  "task_description": "What is the weather in Cairo and Seattle? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 22295,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Cairo is 16\u00b0C with a cloudy condition and humidity at 66%. In Seattle, the temperature is 19\u00b0C with a windy condition and humidity at 44%. The temperature difference is 3\u00b0C and the humidity difference is 22%.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 26.8807,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T23:26:04.246993",
+  "end_time": "2026-10-07T23:26:31.127727",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1309_healthy_22295_d57a1950",
+      "step": 0,
+      "timestamp": 1791415591.1277502,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Cairo and Seattle? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Cairo and Seattle? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1309_healthy_22295_d57a1950",
+      "step": 1,
+      "timestamp": 1791415591.1277707,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "3ce85f63-3337-4e04-aee2-f6df74161459"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seattle"
+          },
+          "id": "35a02f54-059c-4dc9-8cb7-b6b380161dd4"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_cairo - temp_seattle; humidity_difference = humidity_cairo - humidity_seattle"
+          },
+          "id": "7dba0704-d9bd-499f-a85a-c224f2e59852"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1309_healthy_22295_d57a1950",
+      "step": 2,
+      "timestamp": 1791415591.1277912,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "3ce85f63-3337-4e04-aee2-f6df74161459"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1309_healthy_22295_d57a1950",
+      "step": 3,
+      "timestamp": 1791415591.1278098,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "tool_call_id": "35a02f54-059c-4dc9-8cb7-b6b380161dd4"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1309_healthy_22295_d57a1950",
+      "step": 4,
+      "timestamp": 1791415591.1278203,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_cairo - temp_seattle; humidity_difference = humidity_cairo - humidity_seattle\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "7dba0704-d9bd-499f-a85a-c224f2e59852"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1309_healthy_22295_d57a1950",
+      "step": 5,
+      "timestamp": 1791415591.1278298,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Cairo is 16\u00b0C with a cloudy condition and humidity at 66%. In Seattle, the temperature is 19\u00b0C with a windy condition and humidity at 44%. The temperature difference is 3\u00b0C and the humidity difference is 22%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791415578.8782492,
+      "node": "agent",
+      "llm_latency": 14.6276,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 80
+    },
+    {
+      "step": 1,
+      "timestamp": 1791415579.1833303,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3022,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791415579.4848042,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791415579.5864737,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_cairo - temp_seattle; humidity_difference = humidity_cairo - humidity_seattle"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791415591.1256292,
+      "node": "agent",
+      "llm_latency": 11.5382,
+      "has_tool_calls": false,
+      "response_length": 223,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 761,
+      "output_tokens": 58
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.30217671394348145,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "error": null,
+      "latency": 0.3013758659362793,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_cairo - temp_seattle; humidity_difference = humidity_cairo - humidity_seattle"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_cairo - temp_seattle; humidity_difference = humidity_cairo - humidity_seattle\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.1015920639038086,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

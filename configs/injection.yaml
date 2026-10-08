@@ -1,0 +1,50 @@
+# Failure Injection Configuration
+
+injection:
+  # Global injection settings
+  enabled: true
+  
+  # Failure onset positions (normalized by trajectory length T)
+  onset_positions:
+    early: 0.20
+    early_mid: 0.35
+    middle: 0.50
+    late_mid: 0.65
+    late: 0.80
+
+  # Severity levels
+  severity_levels:
+    - low
+    - medium
+    - high
+
+  # Onset ramp types
+  onset_ramps:
+    - abrupt
+    - moderate_ramp
+    - slow_ramp
+
+  # Default injection parameters
+  defaults:
+    severity: medium
+    onset_ramp: abrupt
+    onset_position: middle
+
+  # Minimum trajectory length for injection to be valid
+  min_trajectory_length: 5
+
+  # Priority injectors (implement first)
+  priority_injectors:
+    - tool_execution_error
+    - parameter_error
+    - format_error
+    - tool_cascade
+    - looping
+    - goal_drift
+    - grounding_loss
+    - context_corruption
+    - environment_error
+    - step_limit_exhaustion
+    - constraint_ignorance
+    - inefficient_planning
+    - planning_action_disconnect

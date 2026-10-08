@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0846_injected_14424_c68b0bea",
+  "task_id": "tb_geo_0846",
+  "task_description": "What is the weather in London and Vienna? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 14424,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in London is sunny with a temperature of 15\u00b0C and humidity at 40%. The weather in Vienna is cloudy with a temperature of 31\u00b0C and humidity at 81%. The temperature difference between the two cities is 16\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 2,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 18.651,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T20:20:33.731955",
+  "end_time": "2026-10-07T20:20:52.382957",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0846_injected_14424_c68b0bea",
+      "step": 0,
+      "timestamp": 1791404452.3829825,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in London and Vienna? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in London and Vienna? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0846_injected_14424_c68b0bea",
+      "step": 1,
+      "timestamp": 1791404452.3830059,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "London"
+          },
+          "id": "e43236b9-7cbd-4f3b-9b1b-4fb4740a2712"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Vienna"
+          },
+          "id": "bfd45304-a37b-4beb-be97-17de4cd6cc68"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0846_injected_14424_c68b0bea",
+      "step": 2,
+      "timestamp": 1791404452.3830264,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "e43236b9-7cbd-4f3b-9b1b-4fb4740a2712"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0846_injected_14424_c68b0bea",
+      "step": 3,
+      "timestamp": 1791404452.3830473,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "tool_call_id": "bfd45304-a37b-4beb-be97-17de4cd6cc68"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0846_injected_14424_c68b0bea",
+      "step": 4,
+      "timestamp": 1791404452.3830593,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in London is sunny with a temperature of 15\u00b0C and humidity at 40%. The weather in Vienna is cloudy with a temperature of 31\u00b0C and humidity at 81%. The temperature difference between the two cities is 16\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791404440.6311805,
+      "node": "agent",
+      "llm_latency": 6.8947,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404440.938745,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3047,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404441.2410984,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3022,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404452.3805175,
+      "node": "agent",
+      "llm_latency": 11.1382,
+      "has_tool_calls": false,
+      "response_length": 217,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.30471253395080566,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "error": null,
+      "latency": 0.3022327423095703,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

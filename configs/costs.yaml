@@ -1,0 +1,59 @@
+# Cost Model Configuration
+# Costs are empirically measured, not arbitrarily assigned.
+
+costs:
+  # Cost components
+  components:
+    failure:
+      description: "Cost of task failure"
+      unit: "normalized"
+    latency:
+      description: "Additional latency from intervention"
+      unit: "seconds"
+    tokens:
+      description: "Additional token usage"
+      unit: "tokens"
+    tool_calls:
+      description: "Additional tool/API calls"
+      unit: "calls"
+    action_overhead:
+      description: "Overhead of intervention action itself"
+      unit: "normalized"
+
+  # Cost regimes (predefined BEFORE seeing test results)
+  regimes:
+    failure_heavy:
+      description: "Prioritize avoiding failures"
+      weights:
+        w_failure: 10.0
+        w_latency: 0.5
+        w_tokens: 0.1
+        w_tool_calls: 0.5
+        w_action: 1.0
+
+    latency_heavy:
+      description: "Prioritize low latency"
+      weights:
+        w_failure: 2.0
+        w_latency: 5.0
+        w_tokens: 0.1
+        w_tool_calls: 1.0
+        w_action: 1.0
+
+    token_heavy:
+      description: "Prioritize token/API cost efficiency"
+      weights:
+        w_failure: 2.0
+        w_latency: 0.5
+        w_tokens: 5.0
+        w_tool_calls: 3.0
+        w_action: 1.0
+
+    balanced:
+      description: "Balanced cost regime"
+      weights:
+        w_failure: 5.0
+        w_latency: 1.0
+        w_tokens: 1.0
+        w_tool_calls: 1.0
+        w_action: 1.0

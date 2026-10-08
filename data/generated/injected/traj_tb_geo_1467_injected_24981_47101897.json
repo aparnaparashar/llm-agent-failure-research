@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1467_injected_24981_47101897",
+  "task_id": "tb_geo_1467",
+  "task_description": "What is the weather in Sydney and Miami? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 24981,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Miami, the temperature is 15\u00b0C and the condition is sunny with humidity at 65%. The temperature difference is 18\u00b0C and the humidity difference is 7 percentage points.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 15.618,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:12:45.152844",
+  "end_time": "2026-10-08T00:13:00.770798",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1467_injected_24981_47101897",
+      "step": 0,
+      "timestamp": 1791418380.7708085,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Sydney and Miami? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Sydney and Miami? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1467_injected_24981_47101897",
+      "step": 1,
+      "timestamp": 1791418380.7708256,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Sydney"
+          },
+          "id": "fc6659c3-a954-454b-98bc-af983bbaf70a"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "bc0dda8d-843d-48de-b49a-84edec5793b4"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_miami - temp_sydney; humidity_difference = humidity_miami - humidity_sydney"
+          },
+          "id": "5cd7a367-7855-4411-ac4c-52a272bfac8a"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1467_injected_24981_47101897",
+      "step": 2,
+      "timestamp": 1791418380.7708378,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "fc6659c3-a954-454b-98bc-af983bbaf70a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1467_injected_24981_47101897",
+      "step": 3,
+      "timestamp": 1791418380.7708504,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "bc0dda8d-843d-48de-b49a-84edec5793b4"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1467_injected_24981_47101897",
+      "step": 4,
+      "timestamp": 1791418380.770856,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_miami - temp_sydney; humidity_difference = humidity_miami - humidity_sydney\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "5cd7a367-7855-4411-ac4c-52a272bfac8a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1467_injected_24981_47101897",
+      "step": 5,
+      "timestamp": 1791418380.7708611,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Sydney is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. In Miami, the temperature is 15\u00b0C and the condition is sunny with humidity at 65%. The temperature difference is 18\u00b0C and the humidity difference is 7 percentage points.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791418371.4850829,
+      "node": "agent",
+      "llm_latency": 6.3292,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 80
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418371.78863,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3021,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418372.090213,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418372.1929102,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_miami - temp_sydney; humidity_difference = humidity_miami - humidity_sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1026,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418380.769636,
+      "node": "agent",
+      "llm_latency": 8.5757,
+      "has_tool_calls": false,
+      "response_length": 256,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 763,
+      "output_tokens": 63
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3021383285522461,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.30149292945861816,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_miami - temp_sydney; humidity_difference = humidity_miami - humidity_sydney"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_miami - temp_sydney; humidity_difference = humidity_miami - humidity_sydney\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10260987281799316,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

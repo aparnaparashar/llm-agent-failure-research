@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0789_injected_13455_984f1772",
+  "task_id": "tb_geo_0789",
+  "task_description": "What is the weather in Amsterdam and Rome? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 13455,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Amsterdam is partly cloudy with a temperature of 23\u00b0C and humidity at 48%. The weather in Rome is sunny with a temperature of 25\u00b0C and humidity at 75%. The temperature difference between the two cities is 2\u00b0C, and the wind speed in Rome is 20 km/h, while in Amsterdam it is 33 km/h.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 16.6044,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T19:51:51.053936",
+  "end_time": "2026-10-07T19:52:07.658289",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0789_injected_13455_984f1772",
+      "step": 0,
+      "timestamp": 1791402727.6583028,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Amsterdam and Rome? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Amsterdam and Rome? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0789_injected_13455_984f1772",
+      "step": 1,
+      "timestamp": 1791402727.6583164,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Amsterdam"
+          },
+          "id": "fd311ce5-9559-4029-8583-01e5eddb92b5"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Rome"
+          },
+          "id": "8919f675-d7a7-45f9-945a-69199f35433a"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0789_injected_13455_984f1772",
+      "step": 2,
+      "timestamp": 1791402727.6583304,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "fd311ce5-9559-4029-8583-01e5eddb92b5"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0789_injected_13455_984f1772",
+      "step": 3,
+      "timestamp": 1791402727.6583447,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "8919f675-d7a7-45f9-945a-69199f35433a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0789_injected_13455_984f1772",
+      "step": 4,
+      "timestamp": 1791402727.6583514,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Amsterdam is partly cloudy with a temperature of 23\u00b0C and humidity at 48%. The weather in Rome is sunny with a temperature of 25\u00b0C and humidity at 75%. The temperature difference between the two cities is 2\u00b0C, and the wind speed in Rome is 20 km/h, while in Amsterdam it is 33 km/h.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791402715.3099165,
+      "node": "agent",
+      "llm_latency": 4.2536,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791402715.6158013,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3029,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791402715.919853,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3039,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791402727.6567245,
+      "node": "agent",
+      "llm_latency": 11.7344,
+      "has_tool_calls": false,
+      "response_length": 297,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 672,
+      "output_tokens": 80
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.30289173126220703,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Rome"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Rome\", \"temperature_celsius\": 25, \"condition\": \"sunny\", \"humidity\": 75, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3038811683654785,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

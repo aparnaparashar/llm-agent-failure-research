@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0026_injected_484_7fd7382d",
+  "task_id": "tb_geo_0026",
+  "task_description": "What is the weather in Madrid and Toronto? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 484,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "I encountered an error while trying to get the weather in Madrid and Toronto. It seems there was an issue with the tool call. Let me try again with a different approach.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 26.4694,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T13:34:05.902155",
+  "end_time": "2026-10-07T13:34:32.371548",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0026_injected_484_7fd7382d",
+      "step": 0,
+      "timestamp": 1791380072.3715692,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Madrid and Toronto? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Madrid and Toronto? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0026_injected_484_7fd7382d",
+      "step": 1,
+      "timestamp": 1791380072.371591,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Madrid"
+          },
+          "id": "62bd9051-89e1-4a59-83d8-c180744e7ecb"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "f8cdd4fb-f8c6-4a54-ad91-5de5a56de8bb"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_Madrid - temperature_Toronto; humidity_difference = humidity_Madrid - humidity_Toronto"
+          },
+          "id": "20fb40f2-0554-45d6-bfd7-e78e7ed57bae"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0026_injected_484_7fd7382d",
+      "step": 2,
+      "timestamp": 1791380072.3716094,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "62bd9051-89e1-4a59-83d8-c180744e7ecb"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0026_injected_484_7fd7382d",
+      "step": 3,
+      "timestamp": 1791380072.3716238,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "f8cdd4fb-f8c6-4a54-ad91-5de5a56de8bb"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0026_injected_484_7fd7382d",
+      "step": 4,
+      "timestamp": 1791380072.371632,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "20fb40f2-0554-45d6-bfd7-e78e7ed57bae"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0026_injected_484_7fd7382d",
+      "step": 5,
+      "timestamp": 1791380072.3716407,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I encountered an error while trying to get the weather in Madrid and Toronto. It seems there was an issue with the tool call. Let me try again with a different approach.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791380057.6273108,
+      "node": "agent",
+      "llm_latency": 11.7231,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 84
+    },
+    {
+      "step": 1,
+      "timestamp": 1791380057.9335825,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3025,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791380058.2362897,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3022,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791380058.3388312,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_Madrid - temperature_Toronto; humidity_difference = humidity_Madrid - humidity_Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1019,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791380072.3692863,
+      "node": "agent",
+      "llm_latency": 14.0281,
+      "has_tool_calls": false,
+      "response_length": 169,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 704,
+      "output_tokens": 36
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.30251646041870117,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.3022439479827881,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_Madrid - temperature_Toronto; humidity_difference = humidity_Madrid - humidity_Toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.10194849967956543,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

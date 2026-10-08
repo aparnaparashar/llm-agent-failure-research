@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1008_injected_17178_dc13d32c",
+  "task_id": "tb_geo_1008",
+  "task_description": "What is the weather in Madrid and Chicago? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 17178,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Madrid is sunny with a temperature of 15\u00b0C and humidity at 65%. In Chicago, the temperature is 33\u00b0C and the condition is partly cloudy with humidity at 58%. The temperature difference between the two cities is 18\u00b0C. The wind speed in Madrid is 30 km/h and in Chicago is 33 km/h.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 14.211,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T21:28:51.328513",
+  "end_time": "2026-10-07T21:29:05.539574",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1008_injected_17178_dc13d32c",
+      "step": 0,
+      "timestamp": 1791408545.5395937,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Madrid and Chicago? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Madrid and Chicago? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1008_injected_17178_dc13d32c",
+      "step": 1,
+      "timestamp": 1791408545.5396109,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Madrid"
+          },
+          "id": "9989c7de-7396-4dc3-9994-d1d26c839b92"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Chicago"
+          },
+          "id": "76a2746f-1542-47ac-b439-f4473c6366be"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1008_injected_17178_dc13d32c",
+      "step": 2,
+      "timestamp": 1791408545.5396283,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "tool_call_id": "9989c7de-7396-4dc3-9994-d1d26c839b92"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1008_injected_17178_dc13d32c",
+      "step": 3,
+      "timestamp": 1791408545.539645,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Chicago\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "76a2746f-1542-47ac-b439-f4473c6366be"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1008_injected_17178_dc13d32c",
+      "step": 4,
+      "timestamp": 1791408545.5396554,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Madrid is sunny with a temperature of 15\u00b0C and humidity at 65%. In Chicago, the temperature is 33\u00b0C and the condition is partly cloudy with humidity at 58%. The temperature difference between the two cities is 18\u00b0C. The wind speed in Madrid is 30 km/h and in Chicago is 33 km/h.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791408535.4176571,
+      "node": "agent",
+      "llm_latency": 4.0879,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408535.7237153,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3035,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408536.0266361,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Chicago"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3028,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791408545.5376616,
+      "node": "agent",
+      "llm_latency": 9.5103,
+      "has_tool_calls": false,
+      "response_length": 293,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 670,
+      "output_tokens": 79
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "error": null,
+      "latency": 0.30352020263671875,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Chicago"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Chicago\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.30284547805786133,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

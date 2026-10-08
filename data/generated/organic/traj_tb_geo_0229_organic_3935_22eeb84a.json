@@ -1,0 +1,321 @@
+{
+  "trajectory_id": "traj_tb_geo_0229_organic_3935_22eeb84a",
+  "task_id": "tb_geo_0229",
+  "task_description": "What is the weather in Tokyo and Miami? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 3935,
+  "execution_mode": "organic",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Tokyo is 31\u00b0C with a cloudy condition and humidity at 56%. The weather in Miami is 15\u00b0C with a sunny condition and humidity at 65%. The temperature difference between the two cities is 20\u00b0C. The humidity difference between the two cities is 11 percentage points.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 8,
+  "total_latency": 43.6624,
+  "total_tool_calls": 5,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T15:12:27.230590",
+  "end_time": "2026-10-07T15:13:10.893061",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0229_organic_3935_22eeb84a",
+      "step": 0,
+      "timestamp": 1791385990.8930826,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Tokyo and Miami? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Tokyo and Miami? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0229_organic_3935_22eeb84a",
+      "step": 1,
+      "timestamp": 1791385990.893102,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "6f76a470-3271-4b17-8d0c-f7f03ef5c6bb"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "c3678ead-356a-4857-8c28-5184552d120e"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "10 + 20"
+          },
+          "id": "d1bd8aaf-d217-40ee-99ef-99bf8be2189c"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "50 - 30"
+          },
+          "id": "9bb948c1-8a6e-429c-8b0b-cb7ae07dfe81"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "70 * 80"
+          },
+          "id": "fce483e8-6731-449c-a723-9057fdf36600"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0229_organic_3935_22eeb84a",
+      "step": 2,
+      "timestamp": 1791385990.8931239,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "6f76a470-3271-4b17-8d0c-f7f03ef5c6bb"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0229_organic_3935_22eeb84a",
+      "step": 3,
+      "timestamp": 1791385990.893141,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "c3678ead-356a-4857-8c28-5184552d120e"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0229_organic_3935_22eeb84a",
+      "step": 4,
+      "timestamp": 1791385990.8931508,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"10 + 20\", \"result\": 30}",
+      "tool_call_id": "d1bd8aaf-d217-40ee-99ef-99bf8be2189c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0229_organic_3935_22eeb84a",
+      "step": 5,
+      "timestamp": 1791385990.8931594,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"50 - 30\", \"result\": 20}",
+      "tool_call_id": "9bb948c1-8a6e-429c-8b0b-cb7ae07dfe81"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0229_organic_3935_22eeb84a",
+      "step": 6,
+      "timestamp": 1791385990.8931677,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"70 * 80\", \"result\": 5600}",
+      "tool_call_id": "fce483e8-6731-449c-a723-9057fdf36600"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0229_organic_3935_22eeb84a",
+      "step": 7,
+      "timestamp": 1791385990.8931754,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Tokyo is 31\u00b0C with a cloudy condition and humidity at 56%. The weather in Miami is 15\u00b0C with a sunny condition and humidity at 65%. The temperature difference between the two cities is 20\u00b0C. The humidity difference between the two cities is 11 percentage points.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791385964.507938,
+      "node": "agent",
+      "llm_latency": 17.2745,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 113
+    },
+    {
+      "step": 1,
+      "timestamp": 1791385964.8130116,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3023,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791385965.115464,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791385965.2168114,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "10 + 20"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1013,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791385965.3181465,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "50 - 30"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1013,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791385965.421384,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "70 * 80"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1032,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791385990.890983,
+      "node": "agent",
+      "llm_latency": 25.4687,
+      "has_tool_calls": false,
+      "response_length": 277,
+      "state_hash": "eb1b50d5f7da",
+      "input_tokens": 839,
+      "output_tokens": 68
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.3022944927215576,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.30235862731933594,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "10 + 20"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"10 + 20\", \"result\": 30}",
+      "error": null,
+      "latency": 0.10128140449523926,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "50 - 30"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"50 - 30\", \"result\": 20}",
+      "error": null,
+      "latency": 0.10126805305480957,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "70 * 80"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"70 * 80\", \"result\": 5600}",
+      "error": null,
+      "latency": 0.10317015647888184,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

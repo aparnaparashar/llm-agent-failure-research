@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0708_injected_12078_f6d20332",
+  "task_id": "tb_geo_0708",
+  "task_description": "What is the weather in Stockholm and Madrid? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 12078,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Stockholm is sunny with a temperature of 20\u00b0C and humidity at 70%. The weather in Madrid is also sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference between the two cities is 5\u00b0C. The wind speed in Stockholm is 25 km/h and in Madrid is 30 km/h.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 18.051,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T19:10:54.532317",
+  "end_time": "2026-10-07T19:11:12.583333",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0708_injected_12078_f6d20332",
+      "step": 0,
+      "timestamp": 1791400272.5833595,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Stockholm and Madrid? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Stockholm and Madrid? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0708_injected_12078_f6d20332",
+      "step": 1,
+      "timestamp": 1791400272.5833848,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Stockholm"
+          },
+          "id": "03f5796b-cbda-41fa-9539-2724ccfc99ba"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Madrid"
+          },
+          "id": "29f3fe30-a183-47f4-9462-280d7de66040"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0708_injected_12078_f6d20332",
+      "step": 2,
+      "timestamp": 1791400272.5834055,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Stockholm\", \"temperature_celsius\": 20, \"condition\": \"sunny\", \"humidity\": 70, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "03f5796b-cbda-41fa-9539-2724ccfc99ba"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0708_injected_12078_f6d20332",
+      "step": 3,
+      "timestamp": 1791400272.5834255,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "tool_call_id": "29f3fe30-a183-47f4-9462-280d7de66040"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0708_injected_12078_f6d20332",
+      "step": 4,
+      "timestamp": 1791400272.5834363,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Stockholm is sunny with a temperature of 20\u00b0C and humidity at 70%. The weather in Madrid is also sunny with a temperature of 15\u00b0C and humidity at 65%. The temperature difference between the two cities is 5\u00b0C. The wind speed in Stockholm is 25 km/h and in Madrid is 30 km/h.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791400259.1992574,
+      "node": "agent",
+      "llm_latency": 4.6649,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791400259.5051415,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Stockholm"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3037,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791400259.8088315,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3036,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791400272.5809252,
+      "node": "agent",
+      "llm_latency": 12.7705,
+      "has_tool_calls": false,
+      "response_length": 288,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 671,
+      "output_tokens": 77
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Stockholm"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Stockholm\", \"temperature_celsius\": 20, \"condition\": \"sunny\", \"humidity\": 70, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.3036773204803467,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Madrid"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Madrid\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 30}",
+      "error": null,
+      "latency": 0.30356550216674805,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

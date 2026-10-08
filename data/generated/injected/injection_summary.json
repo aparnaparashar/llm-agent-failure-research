@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-10-07T11:43:29.739779",
+  "injection_config": {
+    "failure_type": "tool_execution_error",
+    "module": "system",
+    "temporal_mechanism": "abrupt",
+    "injection_step": 1,
+    "severity": "medium",
+    "onset_ramp": "abrupt",
+    "target_component": "tool_response",
+    "mutation": "Replace tool response with error response",
+    "expected_signature": "error_flag, tool_failure, latency_spike"
+  },
+  "results": [
+    {
+      "task_id": "inject_001",
+      "trajectory_id": "traj_inject_001_injected_42_d39171f8",
+      "status": "completed",
+      "num_steps": 6,
+      "total_latency": 17.7685,
+      "total_tool_calls": 3,
+      "task_success": false,
+      "fault_injected": true,
+      "fault_exposed": true,
+      "injection_log": [
+        {
+          "step": 1,
+          "failure_type": "tool_execution_error",
+          "tool_name": "get_weather",
+          "severity": "medium",
+          "ramp_progress": 1.0,
+          "injected": true
+        },
+        {
+          "step": 1,
+          "failure_type": "tool_execution_error",
+          "tool_name": "web_search",
+          "severity": "medium",
+          "ramp_progress": 1.0,
+          "injected": true
+        },
+        {
+          "step": 1,
+          "failure_type": "tool_execution_error",
+          "tool_name": "calculate",
+          "severity": "medium",
+          "ramp_progress": 1.0,
+          "injected": true
+        }
+      ]
+    }
+  ]
+}

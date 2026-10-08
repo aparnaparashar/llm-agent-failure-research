@@ -1,0 +1,202 @@
+{
+  "trajectory_id": "traj_tb_synth_0177_injected_3051_9eb7d3cf",
+  "task_id": "tb_synth_0177",
+  "task_description": "Query endpoint 'user_feedback' and perform text analysis to identify key topics. Calculate average length.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 3051,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": false,
+  "final_answer": "I encountered an error while trying to fetch data from the 'user_feedback' endpoint and perform text analysis. The request to the text_analysis service failed due to an internal server error. I will retry the text analysis with the key phrases analysis type to identify key topics in the feedback data.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": true,
+  "fault_exposed": true,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 36.2815,
+  "total_tool_calls": 2,
+  "error_count": 2,
+  "retry_count": 0,
+  "start_time": "2026-10-07T14:47:00.173732",
+  "end_time": "2026-10-07T14:47:36.455219",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_synth_0177_injected_3051_9eb7d3cf",
+      "step": 0,
+      "timestamp": 1791384456.455248,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Query endpoint 'user_feedback' and perform text analysis to identify key topics. Calculate average length.",
+      "task_text": "Query endpoint 'user_feedback' and perform text analysis to identify key topics. Calculate average length."
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0177_injected_3051_9eb7d3cf",
+      "step": 1,
+      "timestamp": 1791384456.4552734,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_data",
+          "args": {
+            "endpoint": "user_feedback",
+            "params": {}
+          },
+          "id": "2c455c4c-4360-4265-8645-a8020af51c5f"
+        },
+        {
+          "name": "text_analysis",
+          "args": {
+            "analysis_type": "key_phrases",
+            "text": "user_feedback data"
+          },
+          "id": "1c57d31e-3a1b-49c4-9697-09cb29256fb3"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0177_injected_3051_9eb7d3cf",
+      "step": 2,
+      "timestamp": 1791384456.455296,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_data",
+      "content": "{\"status\": \"error\", \"error\": \"1 validation error for get_data\\nparams\\n  Input should be a valid string [type=string_type, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type\"}",
+      "tool_call_id": "2c455c4c-4360-4265-8645-a8020af51c5f"
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0177_injected_3051_9eb7d3cf",
+      "step": 3,
+      "timestamp": 1791384456.4553168,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "text_analysis",
+      "content": "{\"status\": \"error\", \"error\": \"Internal Server Error\", \"error_code\": 500, \"tool\": \"text_analysis\", \"message\": \"The text_analysis service encountered an internal error. The request could not be processed. Error: Connection refused - the backend service is unavailable.\", \"retry_after\": null, \"data\": null}",
+      "tool_call_id": "1c57d31e-3a1b-49c4-9697-09cb29256fb3"
+    },
+    {
+      "trajectory_id": "traj_tb_synth_0177_injected_3051_9eb7d3cf",
+      "step": 4,
+      "timestamp": 1791384456.4553292,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I encountered an error while trying to fetch data from the 'user_feedback' endpoint and perform text analysis. The request to the text_analysis service failed due to an internal server error. I will retry the text analysis with the key phrases analysis type to identify key topics in the feedback data.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791384435.2648354,
+      "node": "agent",
+      "llm_latency": 15.0858,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 515,
+      "output_tokens": 58
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384435.2700105,
+      "node": "tool",
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "user_feedback",
+        "params": {}
+      },
+      "tool_success": false,
+      "tool_latency": 0.0009,
+      "tool_error": "1 validation error for get_data\nparams\n  Input should be a valid string [type=string_type, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384435.574308,
+      "node": "tool",
+      "tool_name": "text_analysis",
+      "tool_args": {
+        "analysis_type": "key_phrases",
+        "text": "user_feedback data"
+      },
+      "tool_success": false,
+      "tool_latency": 0.3033,
+      "tool_error": "Tool 'text_analysis' failed with Internal Server Error (500)",
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "complete_failure",
+        "severity": "high",
+        "http_status": 500,
+        "original_result_length": 130
+      }
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384456.4528797,
+      "node": "agent",
+      "llm_latency": 20.8762,
+      "has_tool_calls": false,
+      "response_length": 302,
+      "state_hash": "8d5f3c725c6b",
+      "input_tokens": 727,
+      "output_tokens": 58
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "user_feedback",
+        "params": {}
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"error\", \"error\": \"1 validation error for get_data\\nparams\\n  Input should be a valid string [type=string_type, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type\"}",
+      "error": "1 validation error for get_data\nparams\n  Input should be a valid string [type=string_type, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type",
+      "latency": 0.0008606910705566406,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "text_analysis",
+      "tool_args": {
+        "analysis_type": "key_phrases",
+        "text": "user_feedback data"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"error\", \"error\": \"Internal Server Error\", \"error_code\": 500, \"tool\": \"text_analysis\", \"message\": \"The text_analysis service encountered an internal error. The request could not be processed. Error: Connection refused - the backend service is unavailable.\", \"retry_after\": null, \"data\": null}",
+      "error": "Tool 'text_analysis' failed with Internal Server Error (500)",
+      "latency": 0.3033123016357422,
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "complete_failure",
+        "severity": "high",
+        "http_status": 500,
+        "original_result_length": 130
+      }
+    }
+  ]
+}

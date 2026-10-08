@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0106_injected_1844_20301458",
+  "task_id": "tb_geo_0106",
+  "task_description": "What is the weather in Vienna and London? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 1844,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Vienna is 31\u00b0C with a cloudy condition and humidity at 81%. In London, the temperature is 15\u00b0C with a sunny condition and humidity at 40%. The temperature difference is 16\u00b0C and the humidity difference is 41%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 14.7343,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T14:04:22.833448",
+  "end_time": "2026-10-07T14:04:37.567791",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0106_injected_1844_20301458",
+      "step": 0,
+      "timestamp": 1791381877.5677993,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Vienna and London? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Vienna and London? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0106_injected_1844_20301458",
+      "step": 1,
+      "timestamp": 1791381877.5678072,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Vienna"
+          },
+          "id": "969f091c-13a6-4cd1-81d9-7b1bcc4876ec"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "London"
+          },
+          "id": "ab84d04a-0f54-41bb-a461-ea417aa859bb"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = Vienna temperature - London temperature; humidity = Vienna humidity - London humidity"
+          },
+          "id": "72f907e4-7bf3-4a41-9c7b-d8657f1afbcc"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0106_injected_1844_20301458",
+      "step": 2,
+      "timestamp": 1791381877.5678155,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "tool_call_id": "969f091c-13a6-4cd1-81d9-7b1bcc4876ec"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0106_injected_1844_20301458",
+      "step": 3,
+      "timestamp": 1791381877.5678236,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "ab84d04a-0f54-41bb-a461-ea417aa859bb"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0106_injected_1844_20301458",
+      "step": 4,
+      "timestamp": 1791381877.5678282,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = Vienna temperature - London temperature; humidity = Vienna humidity - London humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "72f907e4-7bf3-4a41-9c7b-d8657f1afbcc"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0106_injected_1844_20301458",
+      "step": 5,
+      "timestamp": 1791381877.567833,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Vienna is 31\u00b0C with a cloudy condition and humidity at 81%. In London, the temperature is 15\u00b0C with a sunny condition and humidity at 40%. The temperature difference is 16\u00b0C and the humidity difference is 41%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791381868.5387566,
+      "node": "agent",
+      "llm_latency": 5.7042,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 75
+    },
+    {
+      "step": 1,
+      "timestamp": 1791381868.8437486,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3031,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791381869.1457691,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3019,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791381869.2491152,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Vienna temperature - London temperature; humidity = Vienna humidity - London humidity"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1032,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791381877.5669363,
+      "node": "agent",
+      "llm_latency": 8.3161,
+      "has_tool_calls": false,
+      "response_length": 224,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 752,
+      "output_tokens": 59
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "error": null,
+      "latency": 0.30308079719543457,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.3019123077392578,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Vienna temperature - London temperature; humidity = Vienna humidity - London humidity"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = Vienna temperature - London temperature; humidity = Vienna humidity - London humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10322761535644531,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

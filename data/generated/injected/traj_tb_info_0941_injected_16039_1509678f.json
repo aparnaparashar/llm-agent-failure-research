@@ -1,0 +1,141 @@
+{
+  "trajectory_id": "traj_tb_info_0941_injected_16039_1509678f",
+  "task_id": "tb_info_0941",
+  "task_description": "Search the web for 'clean fusion energy progress'. Summarize the key findings and evaluate numerical trends.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 16039,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The search for \"clean fusion energy progress\" yielded a single result. The snippet indicates that the search result contains relevant data about clean fusion energy progress. You can access this information by visiting the provided URL: [https://example.com/result/d50d5ddd](https://example.com/result/d50d5ddd).",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 4,
+  "total_latency": 12.145,
+  "total_tool_calls": 1,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T21:08:13.557169",
+  "end_time": "2026-10-07T21:08:25.702193",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_info_0941_injected_16039_1509678f",
+      "step": 0,
+      "timestamp": 1791407305.7022142,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Search the web for 'clean fusion energy progress'. Summarize the key findings and evaluate numerical trends.",
+      "task_text": "Search the web for 'clean fusion energy progress'. Summarize the key findings and evaluate numerical trends."
+    },
+    {
+      "trajectory_id": "traj_tb_info_0941_injected_16039_1509678f",
+      "step": 1,
+      "timestamp": 1791407305.702233,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "clean fusion energy progress"
+          },
+          "id": "ffb8b905-ff7c-4266-8645-c14033ec45a2"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_info_0941_injected_16039_1509678f",
+      "step": 2,
+      "timestamp": 1791407305.7022507,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "web_search",
+      "content": "{\"status\": \"success\", \"query\": \"clean fusion energy progress\", \"results\": [{\"title\": \"Result for: clean fusion energy progress\", \"snippet\": \"Information about clean fusion energy progress. This is a search result containing relevant data.\", \"url\": \"https://example.com/result/d50d5ddd\"}], \"total_results\": 1}",
+      "tool_call_id": "ffb8b905-ff7c-4266-8645-c14033ec45a2"
+    },
+    {
+      "trajectory_id": "traj_tb_info_0941_injected_16039_1509678f",
+      "step": 3,
+      "timestamp": 1791407305.7022703,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The search for \"clean fusion energy progress\" yielded a single result. The snippet indicates that the search result contains relevant data about clean fusion energy progress. You can access this information by visiting the provided URL: [https://example.com/result/d50d5ddd](https://example.com/result/d50d5ddd).",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791407296.7431116,
+      "node": "agent",
+      "llm_latency": 3.1846,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 517,
+      "output_tokens": 23
+    },
+    {
+      "step": 1,
+      "timestamp": 1791407297.2480922,
+      "node": "tool",
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "clean fusion energy progress"
+      },
+      "tool_success": true,
+      "tool_latency": 0.5023,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791407305.7000625,
+      "node": "agent",
+      "llm_latency": 8.4509,
+      "has_tool_calls": false,
+      "response_length": 312,
+      "state_hash": "3114b54fc978",
+      "input_tokens": 630,
+      "output_tokens": 67
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "clean fusion energy progress"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"query\": \"clean fusion energy progress\", \"results\": [{\"title\": \"Result for: clean fusion energy progress\", \"snippet\": \"Information about clean fusion energy progress. This is a search result containing relevant data.\", \"url\": \"https://example.com/result/d50d5ddd\"}], \"total_results\": 1}",
+      "error": null,
+      "latency": 0.5023422241210938,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

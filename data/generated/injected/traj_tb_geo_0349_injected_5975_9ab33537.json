@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0349_injected_5975_9ab33537",
+  "task_id": "tb_geo_0349",
+  "task_description": "What is the weather in Tokyo and Cairo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 5975,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "Tokyo's current temperature is 31\u00b0C with a cloudy condition and humidity at 56%. Cairo's current temperature is 16\u00b0C with a cloudy condition and humidity at 66%. The temperature difference between the two cities is 15\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.4269,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T16:39:26.449903",
+  "end_time": "2026-10-07T16:39:36.876821",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0349_injected_5975_9ab33537",
+      "step": 0,
+      "timestamp": 1791391176.8768291,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Tokyo and Cairo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Tokyo and Cairo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0349_injected_5975_9ab33537",
+      "step": 1,
+      "timestamp": 1791391176.8768365,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "518f3373-e580-48f7-b87f-b60196196005"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "357428ef-82c9-477e-a54e-8b615cdbbe26"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0349_injected_5975_9ab33537",
+      "step": 2,
+      "timestamp": 1791391176.876845,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "518f3373-e580-48f7-b87f-b60196196005"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0349_injected_5975_9ab33537",
+      "step": 3,
+      "timestamp": 1791391176.8768537,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "357428ef-82c9-477e-a54e-8b615cdbbe26"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0349_injected_5975_9ab33537",
+      "step": 4,
+      "timestamp": 1791391176.876859,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "Tokyo's current temperature is 31\u00b0C with a cloudy condition and humidity at 56%. Cairo's current temperature is 16\u00b0C with a cloudy condition and humidity at 66%. The temperature difference between the two cities is 15\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791391169.568519,
+      "node": "agent",
+      "llm_latency": 3.1169,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391169.870618,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3011,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391170.1723356,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791391176.8759205,
+      "node": "agent",
+      "llm_latency": 6.702,
+      "has_tool_calls": false,
+      "response_length": 220,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 671,
+      "output_tokens": 55
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.301100492477417,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.3015930652618408,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

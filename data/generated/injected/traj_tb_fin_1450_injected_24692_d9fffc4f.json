@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_fin_1450_injected_24692_d9fffc4f",
+  "task_id": "tb_fin_1450",
+  "task_description": "Retrieve data from endpoint 'products'. Calculate the growth return if initial balance was 30012 and final was 41274.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 24692,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "I encountered an error while trying to retrieve data from the 'products' endpoint. The error message indicates that the function call expects an argument named 'tool_result', but it was not provided. This suggests that the function call might be missing some required parameters or the function itself is not designed to accept 'tool_result' as an argument. \n\nTo proceed, I will try to calculate the growth return using the provided initial and final balances without calling the 'get_data' function. Let me calculate the growth return for you.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 13.9939,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:09:37.874000",
+  "end_time": "2026-10-08T00:09:51.867938",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_fin_1450_injected_24692_d9fffc4f",
+      "step": 0,
+      "timestamp": 1791418191.867947,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Retrieve data from endpoint 'products'. Calculate the growth return if initial balance was 30012 and final was 41274.",
+      "task_text": "Retrieve data from endpoint 'products'. Calculate the growth return if initial balance was 30012 and final was 41274."
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1450_injected_24692_d9fffc4f",
+      "step": 1,
+      "timestamp": 1791418191.867956,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_data",
+          "args": {
+            "endpoint": "products"
+          },
+          "id": "5aa06691-b41e-4818-a63f-39a0e3ea0d71"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "30012 + 41274"
+          },
+          "id": "0453f1eb-7903-4e0f-89fb-afad23091228"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1450_injected_24692_d9fffc4f",
+      "step": 2,
+      "timestamp": 1791418191.867965,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_data",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "5aa06691-b41e-4818-a63f-39a0e3ea0d71"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1450_injected_24692_d9fffc4f",
+      "step": 3,
+      "timestamp": 1791418191.867973,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "0453f1eb-7903-4e0f-89fb-afad23091228"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1450_injected_24692_d9fffc4f",
+      "step": 4,
+      "timestamp": 1791418191.867978,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I encountered an error while trying to retrieve data from the 'products' endpoint. The error message indicates that the function call expects an argument named 'tool_result', but it was not provided. This suggests that the function call might be missing some required parameters or the function itself is not designed to accept 'tool_result' as an argument. \n\nTo proceed, I will try to calculate the growth return using the provided initial and final balances without calling the 'get_data' function.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791418182.1080422,
+      "node": "agent",
+      "llm_latency": 4.232,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 527,
+      "output_tokens": 50
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418182.511449,
+      "node": "tool",
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "products"
+      },
+      "tool_success": true,
+      "tool_latency": 0.4017,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418182.6133559,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "30012 + 41274"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1016,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418191.8668835,
+      "node": "agent",
+      "llm_latency": 9.2527,
+      "has_tool_calls": false,
+      "response_length": 544,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 651,
+      "output_tokens": 105
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "products"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.40169215202331543,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "30012 + 41274"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.10162234306335449,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0445_injected_7607_9f7a7f7f",
+  "task_id": "tb_geo_0445",
+  "task_description": "What is the weather in Miami and Berlin? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 7607,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In Berlin, the weather is cloudy with a temperature of 26\u00b0C and humidity at 76%. The temperature difference is 11\u00b0C and the humidity difference is 11%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 14.2252,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T17:05:41.519217",
+  "end_time": "2026-10-07T17:05:55.744437",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0445_injected_7607_9f7a7f7f",
+      "step": 0,
+      "timestamp": 1791392755.7444496,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Miami and Berlin? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Miami and Berlin? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0445_injected_7607_9f7a7f7f",
+      "step": 1,
+      "timestamp": 1791392755.7444608,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "a0fb0def-7589-4d9d-b3d5-21e2307fe282"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Berlin"
+          },
+          "id": "1f2917da-e97d-4d41-a78b-761c08db5bf5"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_miami - temperature_berlin; humidity_difference = humidity_miami - humidity_berlin"
+          },
+          "id": "1120e8f9-0e82-4a74-be3d-b0b75e23d38d"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0445_injected_7607_9f7a7f7f",
+      "step": 2,
+      "timestamp": 1791392755.7444713,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "a0fb0def-7589-4d9d-b3d5-21e2307fe282"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0445_injected_7607_9f7a7f7f",
+      "step": 3,
+      "timestamp": 1791392755.7444818,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "tool_call_id": "1f2917da-e97d-4d41-a78b-761c08db5bf5"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0445_injected_7607_9f7a7f7f",
+      "step": 4,
+      "timestamp": 1791392755.7444878,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_miami - temperature_berlin; humidity_difference = humidity_miami - humidity_berlin\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "1120e8f9-0e82-4a74-be3d-b0b75e23d38d"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0445_injected_7607_9f7a7f7f",
+      "step": 5,
+      "timestamp": 1791392755.7444928,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In Berlin, the weather is cloudy with a temperature of 26\u00b0C and humidity at 76%. The temperature difference is 11\u00b0C and the humidity difference is 11%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791392747.3388124,
+      "node": "agent",
+      "llm_latency": 5.818,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 79
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392747.6419048,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3017,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392747.9440565,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3021,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392748.0477552,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_miami - temperature_berlin; humidity_difference = humidity_miami - humidity_berlin"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1036,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392755.7432454,
+      "node": "agent",
+      "llm_latency": 7.6944,
+      "has_tool_calls": false,
+      "response_length": 229,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 760,
+      "output_tokens": 61
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.30166149139404297,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "error": null,
+      "latency": 0.30205583572387695,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_miami - temperature_berlin; humidity_difference = humidity_miami - humidity_berlin"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_miami - temperature_berlin; humidity_difference = humidity_miami - humidity_berlin\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10361433029174805,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

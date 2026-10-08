@@ -1,0 +1,149 @@
+{
+  "trajectory_id": "traj_tb_info_1541_injected_26239_4fd108b4",
+  "task_id": "tb_info_1541",
+  "task_description": "Search the web for 'space exploration Mars rovers'. Summarize the key findings and evaluate numerical trends.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 26239,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": false,
+  "final_answer": "I encountered an issue while trying to search for 'space exploration Mars rovers'. The response data is incomplete. Let me try again with a different query to see if I can find more information.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": true,
+  "fault_exposed": true,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 4,
+  "total_latency": 6.6591,
+  "total_tool_calls": 1,
+  "error_count": 1,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:30:47.287289",
+  "end_time": "2026-10-08T00:30:53.946354",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_info_1541_injected_26239_4fd108b4",
+      "step": 0,
+      "timestamp": 1791419453.946364,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Search the web for 'space exploration Mars rovers'. Summarize the key findings and evaluate numerical trends.",
+      "task_text": "Search the web for 'space exploration Mars rovers'. Summarize the key findings and evaluate numerical trends."
+    },
+    {
+      "trajectory_id": "traj_tb_info_1541_injected_26239_4fd108b4",
+      "step": 1,
+      "timestamp": 1791419453.9463732,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "space exploration Mars rovers"
+          },
+          "id": "77e7bbe2-b21d-4bd2-9baa-871131c97fe6"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_info_1541_injected_26239_4fd108b4",
+      "step": 2,
+      "timestamp": 1791419453.9463816,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "web_search",
+      "content": "{\"status\": \"success\", \"query\": null, \"_warning\": \"Response data may be incomplete\", \"data\": {\"error\": \"malformed_response\", \"raw\": \"\"}}",
+      "tool_call_id": "77e7bbe2-b21d-4bd2-9baa-871131c97fe6"
+    },
+    {
+      "trajectory_id": "traj_tb_info_1541_injected_26239_4fd108b4",
+      "step": 3,
+      "timestamp": 1791419453.9463909,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "I encountered an issue while trying to search for 'space exploration Mars rovers'. The response data is incomplete. Let me try again with a different query to see if I can find more information.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791419449.485715,
+      "node": "agent",
+      "llm_latency": 2.1964,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 518,
+      "output_tokens": 24
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419449.9911067,
+      "node": "tool",
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "space exploration Mars rovers"
+      },
+      "tool_success": false,
+      "tool_latency": 0.5039,
+      "tool_error": "Tool 'web_search' returned malformed response",
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "malformed_response",
+        "severity": "medium",
+        "original_result_length": 311
+      }
+    },
+    {
+      "step": 1,
+      "timestamp": 1791419453.9453318,
+      "node": "agent",
+      "llm_latency": 3.9534,
+      "has_tool_calls": false,
+      "response_length": 194,
+      "state_hash": "84471cc81603",
+      "input_tokens": 595,
+      "output_tokens": 40
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "space exploration Mars rovers"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"success\", \"query\": null, \"_warning\": \"Response data may be incomplete\", \"data\": {\"error\": \"malformed_response\", \"raw\": \"\"}}",
+      "error": "Tool 'web_search' returned malformed response",
+      "latency": 0.5038988590240479,
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "malformed_response",
+        "severity": "medium",
+        "original_result_length": 311
+      }
+    }
+  ]
+}

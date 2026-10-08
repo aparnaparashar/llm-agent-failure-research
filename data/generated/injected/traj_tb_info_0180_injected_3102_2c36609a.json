@@ -1,0 +1,141 @@
+{
+  "trajectory_id": "traj_tb_info_0180_injected_3102_2c36609a",
+  "task_id": "tb_info_0180",
+  "task_description": "Search the web for 'clean fusion energy progress'. Summarize the key findings and evaluate numerical trends.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 3102,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "It seems there was an error in the tool call. Let me try again with a different approach.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 4,
+  "total_latency": 18.6584,
+  "total_tool_calls": 1,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T14:49:20.759828",
+  "end_time": "2026-10-07T14:49:39.418236",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_info_0180_injected_3102_2c36609a",
+      "step": 0,
+      "timestamp": 1791384579.4182684,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Search the web for 'clean fusion energy progress'. Summarize the key findings and evaluate numerical trends.",
+      "task_text": "Search the web for 'clean fusion energy progress'. Summarize the key findings and evaluate numerical trends."
+    },
+    {
+      "trajectory_id": "traj_tb_info_0180_injected_3102_2c36609a",
+      "step": 1,
+      "timestamp": 1791384579.4182968,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "clean fusion energy progress"
+          },
+          "id": "b626c36c-0f90-4970-8d7e-11983011d81b"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_info_0180_injected_3102_2c36609a",
+      "step": 2,
+      "timestamp": 1791384579.41832,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "web_search",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "b626c36c-0f90-4970-8d7e-11983011d81b"
+    },
+    {
+      "trajectory_id": "traj_tb_info_0180_injected_3102_2c36609a",
+      "step": 3,
+      "timestamp": 1791384579.4183447,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "It seems there was an error in the tool call. Let me try again with a different approach.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791384567.8653872,
+      "node": "agent",
+      "llm_latency": 7.0994,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 517,
+      "output_tokens": 23
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384568.3760169,
+      "node": "tool",
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "clean fusion energy progress"
+      },
+      "tool_success": true,
+      "tool_latency": 0.5053,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384579.4157588,
+      "node": "agent",
+      "llm_latency": 11.0363,
+      "has_tool_calls": false,
+      "response_length": 89,
+      "state_hash": "3114b54fc978",
+      "input_tokens": 581,
+      "output_tokens": 21
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "clean fusion energy progress"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.5052950382232666,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

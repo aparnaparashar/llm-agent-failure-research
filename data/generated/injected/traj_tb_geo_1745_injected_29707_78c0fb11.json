@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1745_injected_29707_78c0fb11",
+  "task_id": "tb_geo_1745",
+  "task_description": "What is the weather in Amsterdam and Seattle? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 29707,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Amsterdam is partly cloudy with a temperature of 23\u00b0C and humidity at 48%. The weather in Seattle is windy with a temperature of 19\u00b0C and humidity at 44%. The temperature difference between the two cities is 4\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 9.5576,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T02:21:19.515746",
+  "end_time": "2026-10-08T02:21:29.073367",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1745_injected_29707_78c0fb11",
+      "step": 0,
+      "timestamp": 1791426089.0733747,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Amsterdam and Seattle? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Amsterdam and Seattle? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1745_injected_29707_78c0fb11",
+      "step": 1,
+      "timestamp": 1791426089.073382,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Amsterdam"
+          },
+          "id": "032f6089-9a7c-4ede-a6ff-d3cbf2e96d76"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Seattle"
+          },
+          "id": "f48e6d0b-6135-4068-a9f3-6079c12b8efe"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1745_injected_29707_78c0fb11",
+      "step": 2,
+      "timestamp": 1791426089.0733895,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "032f6089-9a7c-4ede-a6ff-d3cbf2e96d76"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1745_injected_29707_78c0fb11",
+      "step": 3,
+      "timestamp": 1791426089.0733964,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "tool_call_id": "f48e6d0b-6135-4068-a9f3-6079c12b8efe"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1745_injected_29707_78c0fb11",
+      "step": 4,
+      "timestamp": 1791426089.0734005,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Amsterdam is partly cloudy with a temperature of 23\u00b0C and humidity at 48%. The weather in Seattle is windy with a temperature of 19\u00b0C and humidity at 44%. The temperature difference between the two cities is 4\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791426082.6824217,
+      "node": "agent",
+      "llm_latency": 3.1651,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791426082.9847715,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3012,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791426083.285938,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3011,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791426089.072556,
+      "node": "agent",
+      "llm_latency": 5.7858,
+      "has_tool_calls": false,
+      "response_length": 227,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 56
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.3011918067932129,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Seattle"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Seattle\", \"temperature_celsius\": 19, \"condition\": \"windy\", \"humidity\": 44, \"wind_speed_kmh\": 9}",
+      "error": null,
+      "latency": 0.3010861873626709,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

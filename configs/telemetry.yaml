@@ -1,0 +1,30 @@
+# Telemetry Configuration
+
+telemetry:
+  # Enable/disable telemetry collection
+  enabled: true
+  
+  # Output format
+  format: jsonl
+  
+  # Feature families to collect
+  families:
+    tool: true
+    error: true
+    retry: true
+    temporal: true
+    context: true
+    argument: true
+    semantic: true
+    uncertainty: true  # Only when actually available from LLM
+
+  # Semantic features settings
+  semantic:
+    # Embedding model for semantic similarity
+    embedding_model: "all-MiniLM-L6-v2"
+    # Window size for rolling semantic features
+    window_size: 5
+
+  # Logging
+  log_dir: "data/processed/telemetry"
+  trajectory_dir: "data/processed/trajectories"

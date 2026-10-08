@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0448_healthy_7658_bb6eafbe",
+  "task_id": "tb_geo_0448",
+  "task_description": "What is the weather in Cairo and San Francisco? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 7658,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Cairo is 16\u00b0C with a cloudy condition and humidity at 66%. In San Francisco, the temperature is 21\u00b0C with a cloudy condition and humidity at 46%. The temperature difference is 5\u00b0C and the humidity difference is 20%.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 16.2174,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T17:06:19.134013",
+  "end_time": "2026-10-07T17:06:35.351420",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0448_healthy_7658_bb6eafbe",
+      "step": 0,
+      "timestamp": 1791392795.35143,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Cairo and San Francisco? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Cairo and San Francisco? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0448_healthy_7658_bb6eafbe",
+      "step": 1,
+      "timestamp": 1791392795.351439,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Cairo"
+          },
+          "id": "2f5421a1-4556-48f9-8455-9215c7223bca"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "ce96fb98-dc30-42d0-b04a-6a0825a13506"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_cairo - temperature_san_fran; humidity_difference = humidity_cairo - humidity_san_fran"
+          },
+          "id": "dbffc60e-858c-42e1-8083-c0c6610b26e1"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0448_healthy_7658_bb6eafbe",
+      "step": 2,
+      "timestamp": 1791392795.351449,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "2f5421a1-4556-48f9-8455-9215c7223bca"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0448_healthy_7658_bb6eafbe",
+      "step": 3,
+      "timestamp": 1791392795.3514583,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "ce96fb98-dc30-42d0-b04a-6a0825a13506"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0448_healthy_7658_bb6eafbe",
+      "step": 4,
+      "timestamp": 1791392795.3514638,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_cairo - temperature_san_fran; humidity_difference = humidity_cairo - humidity_san_fran\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "dbffc60e-858c-42e1-8083-c0c6610b26e1"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0448_healthy_7658_bb6eafbe",
+      "step": 5,
+      "timestamp": 1791392795.3514693,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Cairo is 16\u00b0C with a cloudy condition and humidity at 66%. In San Francisco, the temperature is 21\u00b0C with a cloudy condition and humidity at 46%. The temperature difference is 5\u00b0C and the humidity difference is 20%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791392785.3332975,
+      "node": "agent",
+      "llm_latency": 6.1973,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 83
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392785.636773,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3018,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392785.9410722,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3042,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392786.0426745,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_cairo - temperature_san_fran; humidity_difference = humidity_cairo - humidity_san_fran"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392795.350346,
+      "node": "agent",
+      "llm_latency": 9.3067,
+      "has_tool_calls": false,
+      "response_length": 230,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 769,
+      "output_tokens": 59
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Cairo"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Cairo\", \"temperature_celsius\": 16, \"condition\": \"cloudy\", \"humidity\": 66, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.30177903175354004,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.30420494079589844,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_cairo - temperature_san_fran; humidity_difference = humidity_cairo - humidity_san_fran"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_cairo - temperature_san_fran; humidity_difference = humidity_cairo - humidity_san_fran\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10152769088745117,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

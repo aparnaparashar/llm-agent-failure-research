@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1187_injected_20221_ea5b470e",
+  "task_id": "tb_geo_1187",
+  "task_description": "What is the weather in Vienna and Tokyo? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 20221,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Vienna is 31\u00b0C with a cloudy condition and humidity at 81%. In Tokyo, the temperature is also 31\u00b0C with a cloudy condition and humidity at 56%. The temperature difference is 0\u00b0C and the humidity difference is 25%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 21.898,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T22:36:37.092285",
+  "end_time": "2026-10-07T22:36:58.990299",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1187_injected_20221_ea5b470e",
+      "step": 0,
+      "timestamp": 1791412618.9903219,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Vienna and Tokyo? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Vienna and Tokyo? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1187_injected_20221_ea5b470e",
+      "step": 1,
+      "timestamp": 1791412618.9903424,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Vienna"
+          },
+          "id": "bed4409b-59ae-4c9b-b4ba-1dd0dbc79b0a"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "d27030e4-6e2d-4c4c-be38-696795683fb4"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = Vienna temperature - Tokyo temperature; humidity_difference = Vienna humidity - Tokyo humidity"
+          },
+          "id": "79f6b23f-39ec-4724-ac13-ab34663301e1"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1187_injected_20221_ea5b470e",
+      "step": 2,
+      "timestamp": 1791412618.9903634,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "tool_call_id": "bed4409b-59ae-4c9b-b4ba-1dd0dbc79b0a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1187_injected_20221_ea5b470e",
+      "step": 3,
+      "timestamp": 1791412618.9903824,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "d27030e4-6e2d-4c4c-be38-696795683fb4"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1187_injected_20221_ea5b470e",
+      "step": 4,
+      "timestamp": 1791412618.9903932,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = Vienna temperature - Tokyo temperature; humidity_difference = Vienna humidity - Tokyo humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "79f6b23f-39ec-4724-ac13-ab34663301e1"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1187_injected_20221_ea5b470e",
+      "step": 5,
+      "timestamp": 1791412618.9904025,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Vienna is 31\u00b0C with a cloudy condition and humidity at 81%. In Tokyo, the temperature is also 31\u00b0C with a cloudy condition and humidity at 56%. The temperature difference is 0\u00b0C and the humidity difference is 25%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791412606.5189662,
+      "node": "agent",
+      "llm_latency": 9.4243,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 77
+    },
+    {
+      "step": 1,
+      "timestamp": 1791412606.8236406,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3023,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791412607.1258304,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3021,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791412607.2277663,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Vienna temperature - Tokyo temperature; humidity_difference = Vienna humidity - Tokyo humidity"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1018,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791412618.9879959,
+      "node": "agent",
+      "llm_latency": 11.7587,
+      "has_tool_calls": false,
+      "response_length": 228,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 756,
+      "output_tokens": 59
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "error": null,
+      "latency": 0.30228185653686523,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.30210065841674805,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Vienna temperature - Tokyo temperature; humidity_difference = Vienna humidity - Tokyo humidity"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = Vienna temperature - Tokyo temperature; humidity_difference = Vienna humidity - Tokyo humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.101806640625,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

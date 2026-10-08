@@ -1,0 +1,141 @@
+{
+  "trajectory_id": "traj_tb_info_0321_injected_5499_f0be78b5",
+  "task_id": "tb_info_0321",
+  "task_description": "Search the web for 'global logistics supply chain bottlenecks'. Summarize the key findings and evaluate numerical trends.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 5499,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The search for \"global logistics supply chain bottlenecks\" returned one result. The snippet indicates that the search result contains relevant data. The URL provided is \"https://example.com/result/ba36dfa3\".",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 4,
+  "total_latency": 13.987,
+  "total_tool_calls": 1,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T16:14:45.640210",
+  "end_time": "2026-10-07T16:14:59.627210",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_info_0321_injected_5499_f0be78b5",
+      "step": 0,
+      "timestamp": 1791389699.6272333,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Search the web for 'global logistics supply chain bottlenecks'. Summarize the key findings and evaluate numerical trends.",
+      "task_text": "Search the web for 'global logistics supply chain bottlenecks'. Summarize the key findings and evaluate numerical trends."
+    },
+    {
+      "trajectory_id": "traj_tb_info_0321_injected_5499_f0be78b5",
+      "step": 1,
+      "timestamp": 1791389699.6272542,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "global logistics supply chain bottlenecks"
+          },
+          "id": "518e9f08-51a3-4798-a61b-2f322bdebcc3"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_info_0321_injected_5499_f0be78b5",
+      "step": 2,
+      "timestamp": 1791389699.6272721,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "web_search",
+      "content": "{\"status\": \"success\", \"query\": \"global logistics supply chain bottlenecks\", \"results\": [{\"title\": \"Result for: global logistics supply chain bottlenecks\", \"snippet\": \"Information about global logistics supply chain bottlenecks. This is a search result containing relevant data.\", \"url\": \"https://example.com/result/ba36dfa3\"}], \"total_results\": 1}",
+      "tool_call_id": "518e9f08-51a3-4798-a61b-2f322bdebcc3"
+    },
+    {
+      "trajectory_id": "traj_tb_info_0321_injected_5499_f0be78b5",
+      "step": 3,
+      "timestamp": 1791389699.6272907,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The search for \"global logistics supply chain bottlenecks\" returned one result. The snippet indicates that the search result contains relevant data. The URL provided is \"https://example.com/result/ba36dfa3\".",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791389690.8691008,
+      "node": "agent",
+      "llm_latency": 5.2268,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 520,
+      "output_tokens": 26
+    },
+    {
+      "step": 1,
+      "timestamp": 1791389691.3756855,
+      "node": "tool",
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "global logistics supply chain bottlenecks"
+      },
+      "tool_success": true,
+      "tool_latency": 0.504,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791389699.6249661,
+      "node": "agent",
+      "llm_latency": 8.2479,
+      "has_tool_calls": false,
+      "response_length": 207,
+      "state_hash": "3114b54fc978",
+      "input_tokens": 645,
+      "output_tokens": 45
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "global logistics supply chain bottlenecks"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"query\": \"global logistics supply chain bottlenecks\", \"results\": [{\"title\": \"Result for: global logistics supply chain bottlenecks\", \"snippet\": \"Information about global logistics supply chain bottlenecks. This is a search result containing relevant data.\", \"url\": \"https://example.com/result/ba36dfa3\"}], \"total_results\": 1}",
+      "error": null,
+      "latency": 0.5039896965026855,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

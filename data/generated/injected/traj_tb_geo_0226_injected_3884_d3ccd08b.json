@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0226_injected_3884_d3ccd08b",
+  "task_id": "tb_geo_0226",
+  "task_description": "What is the weather in Toronto and Chicago? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 3884,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Toronto is 29\u00b0C with wind conditions and a humidity of 79%, while in Chicago it is 33\u00b0C with partly cloudy conditions and a humidity of 58%. The temperature difference is 4\u00b0C and the humidity difference is 21%.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 19.9141,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T15:11:33.605017",
+  "end_time": "2026-10-07T15:11:53.519173",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0226_injected_3884_d3ccd08b",
+      "step": 0,
+      "timestamp": 1791385913.519198,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Toronto and Chicago? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Toronto and Chicago? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0226_injected_3884_d3ccd08b",
+      "step": 1,
+      "timestamp": 1791385913.5192187,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "31dbe1d2-8ffc-4e02-8b0b-e6bba5d7b741"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Chicago"
+          },
+          "id": "8a7ee3e2-e374-48d6-bf08-0f45017d302c"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = Toronto temperature - Chicago temperature; humidity_difference = Toronto humidity - Chicago humidity"
+          },
+          "id": "1c63a1ca-7f8f-433c-82a3-5ee37a89b16e"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0226_injected_3884_d3ccd08b",
+      "step": 2,
+      "timestamp": 1791385913.5192394,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "tool_call_id": "31dbe1d2-8ffc-4e02-8b0b-e6bba5d7b741"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0226_injected_3884_d3ccd08b",
+      "step": 3,
+      "timestamp": 1791385913.5192575,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Chicago\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "8a7ee3e2-e374-48d6-bf08-0f45017d302c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0226_injected_3884_d3ccd08b",
+      "step": 4,
+      "timestamp": 1791385913.5192685,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = Toronto temperature - Chicago temperature; humidity_difference = Toronto humidity - Chicago humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "1c63a1ca-7f8f-433c-82a3-5ee37a89b16e"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0226_injected_3884_d3ccd08b",
+      "step": 5,
+      "timestamp": 1791385913.5192788,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Toronto is 29\u00b0C with wind conditions and a humidity of 79%, while in Chicago it is 33\u00b0C with partly cloudy conditions and a humidity of 58%. The temperature difference is 4\u00b0C and the humidity difference is 21%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791385901.7514775,
+      "node": "agent",
+      "llm_latency": 8.1447,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 75
+    },
+    {
+      "step": 1,
+      "timestamp": 1791385902.0560627,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3022,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791385902.3576539,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Chicago"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791385902.459491,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Toronto temperature - Chicago temperature; humidity_difference = Toronto humidity - Chicago humidity"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1018,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791385913.5169995,
+      "node": "agent",
+      "llm_latency": 11.0566,
+      "has_tool_calls": false,
+      "response_length": 225,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 753,
+      "output_tokens": 58
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "error": null,
+      "latency": 0.3022315502166748,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Chicago"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Chicago\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.30149030685424805,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Toronto temperature - Chicago temperature; humidity_difference = Toronto humidity - Chicago humidity"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = Toronto temperature - Chicago temperature; humidity_difference = Toronto humidity - Chicago humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10175347328186035,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

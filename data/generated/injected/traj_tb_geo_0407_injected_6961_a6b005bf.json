@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0407_injected_6961_a6b005bf",
+  "task_id": "tb_geo_0407",
+  "task_description": "What is the weather in Amsterdam and Sydney? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 6961,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Amsterdam is partly cloudy with a temperature of 23\u00b0C and humidity at 48%. The weather in Sydney is also partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The temperature difference between the two cities is 10\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.1861,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T16:54:49.856903",
+  "end_time": "2026-10-07T16:55:01.042968",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0407_injected_6961_a6b005bf",
+      "step": 0,
+      "timestamp": 1791392101.0429802,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Amsterdam and Sydney? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Amsterdam and Sydney? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0407_injected_6961_a6b005bf",
+      "step": 1,
+      "timestamp": 1791392101.042991,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Amsterdam"
+          },
+          "id": "32f05d2b-c334-41f9-8e72-259237f012c2"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Sydney"
+          },
+          "id": "3bebd744-dcea-44fc-80c2-d180fcf9ff1f"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0407_injected_6961_a6b005bf",
+      "step": 2,
+      "timestamp": 1791392101.0430026,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "32f05d2b-c334-41f9-8e72-259237f012c2"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0407_injected_6961_a6b005bf",
+      "step": 3,
+      "timestamp": 1791392101.0430143,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "3bebd744-dcea-44fc-80c2-d180fcf9ff1f"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0407_injected_6961_a6b005bf",
+      "step": 4,
+      "timestamp": 1791392101.0430205,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Amsterdam is partly cloudy with a temperature of 23\u00b0C and humidity at 48%. The weather in Sydney is also partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The temperature difference between the two cities is 10\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791392093.3832054,
+      "node": "agent",
+      "llm_latency": 3.5249,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392093.6875377,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3022,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392093.990296,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3026,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791392101.0417876,
+      "node": "agent",
+      "llm_latency": 7.0504,
+      "has_tool_calls": false,
+      "response_length": 240,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 673,
+      "output_tokens": 59
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.30223655700683594,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Sydney"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Sydney\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3026437759399414,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

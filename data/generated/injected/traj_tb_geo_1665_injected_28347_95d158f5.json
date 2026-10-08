@@ -1,0 +1,276 @@
+{
+  "trajectory_id": "traj_tb_geo_1665_injected_28347_95d158f5",
+  "task_id": "tb_geo_1665",
+  "task_description": "What is the weather in Dubai and Singapore? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 28347,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Dubai is 32\u00b0C with a condition of rain and humidity at 57%. The weather in Singapore is 33\u00b0C with a condition of partly cloudy and humidity at 58%. The temperature difference is 1\u00b0C and the humidity difference is 1% in Dubai compared to Singapore.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 7,
+  "total_latency": 16.8868,
+  "total_tool_calls": 4,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T01:03:13.655034",
+  "end_time": "2026-10-08T01:03:30.541818",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1665_injected_28347_95d158f5",
+      "step": 0,
+      "timestamp": 1791421410.541843,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Dubai and Singapore? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Dubai and Singapore? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1665_injected_28347_95d158f5",
+      "step": 1,
+      "timestamp": 1791421410.5418606,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Dubai"
+          },
+          "id": "0988540a-d465-4031-a4fb-82e42f698512"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Singapore"
+          },
+          "id": "a5939977-1c7a-49fe-8b8d-bcb11805fc7b"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temp_dubai - temp_singapore"
+          },
+          "id": "4860d4fe-9c25-4905-a68c-e537268380ec"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "humidity_dubai - humidity_singapore"
+          },
+          "id": "42653959-2f1f-4775-9fb1-61889add70f5"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1665_injected_28347_95d158f5",
+      "step": 2,
+      "timestamp": 1791421410.5418801,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Dubai\", \"temperature_celsius\": 32, \"condition\": \"rainy\", \"humidity\": 57, \"wind_speed_kmh\": 12}",
+      "tool_call_id": "0988540a-d465-4031-a4fb-82e42f698512"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1665_injected_28347_95d158f5",
+      "step": 3,
+      "timestamp": 1791421410.5418968,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "a5939977-1c7a-49fe-8b8d-bcb11805fc7b"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1665_injected_28347_95d158f5",
+      "step": 4,
+      "timestamp": 1791421410.541906,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temp_dubai - temp_singapore\", \"error\": \"name 'temp_dubai' is not defined\"}",
+      "tool_call_id": "4860d4fe-9c25-4905-a68c-e537268380ec"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1665_injected_28347_95d158f5",
+      "step": 5,
+      "timestamp": 1791421410.5419147,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"humidity_dubai - humidity_singapore\", \"error\": \"name 'humidity_dubai' is not defined\"}",
+      "tool_call_id": "42653959-2f1f-4775-9fb1-61889add70f5"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1665_injected_28347_95d158f5",
+      "step": 6,
+      "timestamp": 1791421410.5419233,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Dubai is 32\u00b0C with a condition of rain and humidity at 57%. The weather in Singapore is 33\u00b0C with a condition of partly cloudy and humidity at 58%. The temperature difference is 1\u00b0C and the humidity difference is 1% in Dubai compared to Singapore.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791421400.9235666,
+      "node": "agent",
+      "llm_latency": 7.2649,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 95
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421401.2273936,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Dubai"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3019,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421401.5290072,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421401.6341252,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temp_dubai - temp_singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.105,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421401.7394078,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "humidity_dubai - humidity_singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1052,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791421410.5399988,
+      "node": "agent",
+      "llm_latency": 8.7995,
+      "has_tool_calls": false,
+      "response_length": 262,
+      "state_hash": "4bc5fbae1d34",
+      "input_tokens": 810,
+      "output_tokens": 65
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Dubai"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Dubai\", \"temperature_celsius\": 32, \"condition\": \"rainy\", \"humidity\": 57, \"wind_speed_kmh\": 12}",
+      "error": null,
+      "latency": 0.3018631935119629,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3015120029449463,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temp_dubai - temp_singapore"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temp_dubai - temp_singapore\", \"error\": \"name 'temp_dubai' is not defined\"}",
+      "error": null,
+      "latency": 0.10504722595214844,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "humidity_dubai - humidity_singapore"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"humidity_dubai - humidity_singapore\", \"error\": \"name 'humidity_dubai' is not defined\"}",
+      "error": null,
+      "latency": 0.10521221160888672,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

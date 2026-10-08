@@ -1,0 +1,141 @@
+{
+  "trajectory_id": "traj_tb_info_1483_injected_25253_cbaf39ec",
+  "task_id": "tb_info_1483",
+  "task_description": "Search the web for 'global logistics supply chain bottlenecks'. Summarize the key findings and evaluate numerical trends.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 25253,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "It seems there was an issue with the tool call. Let me try again with a different approach.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 4,
+  "total_latency": 5.3144,
+  "total_tool_calls": 1,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:18:44.350502",
+  "end_time": "2026-10-08T00:18:49.664948",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_info_1483_injected_25253_cbaf39ec",
+      "step": 0,
+      "timestamp": 1791418729.66496,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Search the web for 'global logistics supply chain bottlenecks'. Summarize the key findings and evaluate numerical trends.",
+      "task_text": "Search the web for 'global logistics supply chain bottlenecks'. Summarize the key findings and evaluate numerical trends."
+    },
+    {
+      "trajectory_id": "traj_tb_info_1483_injected_25253_cbaf39ec",
+      "step": 1,
+      "timestamp": 1791418729.66497,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "global logistics supply chain bottlenecks"
+          },
+          "id": "769786c2-108c-43fe-a7fb-050ef4f7e601"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_info_1483_injected_25253_cbaf39ec",
+      "step": 2,
+      "timestamp": 1791418729.6649787,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "web_search",
+      "content": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "tool_call_id": "769786c2-108c-43fe-a7fb-050ef4f7e601"
+    },
+    {
+      "trajectory_id": "traj_tb_info_1483_injected_25253_cbaf39ec",
+      "step": 3,
+      "timestamp": 1791418729.6649876,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "It seems there was an issue with the tool call. Let me try again with a different approach.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791418726.7186244,
+      "node": "agent",
+      "llm_latency": 2.3663,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 520,
+      "output_tokens": 26
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418727.2222838,
+      "node": "tool",
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "global logistics supply chain bottlenecks"
+      },
+      "tool_success": true,
+      "tool_latency": 0.5019,
+      "tool_error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418729.663779,
+      "node": "agent",
+      "llm_latency": 2.4402,
+      "has_tool_calls": false,
+      "response_length": 91,
+      "state_hash": "3114b54fc978",
+      "input_tokens": 587,
+      "output_tokens": 21
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "global logistics supply chain bottlenecks"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"error\": \"ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'\"}",
+      "error": "ParameterErrorInjector.inject() got an unexpected keyword argument 'tool_result'",
+      "latency": 0.5019304752349854,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

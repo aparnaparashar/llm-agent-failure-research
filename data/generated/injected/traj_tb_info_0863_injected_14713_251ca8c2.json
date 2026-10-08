@@ -1,0 +1,141 @@
+{
+  "trajectory_id": "traj_tb_info_0863_injected_14713_251ca8c2",
+  "task_id": "tb_info_0863",
+  "task_description": "Search the web for 'biotech CRISPR therapeutics'. Summarize the key findings and evaluate numerical trends.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 14713,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The search for \"biotech CRISPR therapeutics\" yielded one result. The snippet indicates that this is a search result containing relevant data. The URL provided is \"https://example.com/result/4df4a80e\".",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 4,
+  "total_latency": 11.7656,
+  "total_tool_calls": 1,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T20:26:13.731899",
+  "end_time": "2026-10-07T20:26:25.497516",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_info_0863_injected_14713_251ca8c2",
+      "step": 0,
+      "timestamp": 1791404785.4975395,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Search the web for 'biotech CRISPR therapeutics'. Summarize the key findings and evaluate numerical trends.",
+      "task_text": "Search the web for 'biotech CRISPR therapeutics'. Summarize the key findings and evaluate numerical trends."
+    },
+    {
+      "trajectory_id": "traj_tb_info_0863_injected_14713_251ca8c2",
+      "step": 1,
+      "timestamp": 1791404785.4975605,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "biotech CRISPR therapeutics"
+          },
+          "id": "3c4afacb-a3e3-4e42-849e-134876f1fa2c"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_info_0863_injected_14713_251ca8c2",
+      "step": 2,
+      "timestamp": 1791404785.4975793,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "web_search",
+      "content": "{\"status\": \"success\", \"query\": \"biotech CRISPR therapeutics\", \"results\": [{\"title\": \"Result for: biotech CRISPR therapeutics\", \"snippet\": \"Information about biotech CRISPR therapeutics. This is a search result containing relevant data.\", \"url\": \"https://example.com/result/4df4a80e\"}], \"total_results\": 1}",
+      "tool_call_id": "3c4afacb-a3e3-4e42-849e-134876f1fa2c"
+    },
+    {
+      "trajectory_id": "traj_tb_info_0863_injected_14713_251ca8c2",
+      "step": 3,
+      "timestamp": 1791404785.4975982,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The search for \"biotech CRISPR therapeutics\" yielded one result. The snippet indicates that this is a search result containing relevant data. The URL provided is \"https://example.com/result/4df4a80e\".",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791404777.1236777,
+      "node": "agent",
+      "llm_latency": 3.3892,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 520,
+      "output_tokens": 26
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404777.6285515,
+      "node": "tool",
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "biotech CRISPR therapeutics"
+      },
+      "tool_success": true,
+      "tool_latency": 0.5023,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404785.4953344,
+      "node": "agent",
+      "llm_latency": 7.8658,
+      "has_tool_calls": false,
+      "response_length": 200,
+      "state_hash": "3114b54fc978",
+      "input_tokens": 647,
+      "output_tokens": 49
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "web_search",
+      "tool_args": {
+        "query": "biotech CRISPR therapeutics"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"query\": \"biotech CRISPR therapeutics\", \"results\": [{\"title\": \"Result for: biotech CRISPR therapeutics\", \"snippet\": \"Information about biotech CRISPR therapeutics. This is a search result containing relevant data.\", \"url\": \"https://example.com/result/4df4a80e\"}], \"total_results\": 1}",
+      "error": null,
+      "latency": 0.5023155212402344,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

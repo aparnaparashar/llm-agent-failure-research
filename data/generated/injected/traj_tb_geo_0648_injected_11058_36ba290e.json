@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0648_injected_11058_36ba290e",
+  "task_id": "tb_geo_0648",
+  "task_description": "What is the weather in London and Chicago? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 11058,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in London is sunny with a temperature of 15\u00b0C and humidity at 40%. The weather in Chicago is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The temperature difference between the two cities is 18\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 9.8799,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T18:40:47.350980",
+  "end_time": "2026-10-07T18:40:57.230917",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0648_injected_11058_36ba290e",
+      "step": 0,
+      "timestamp": 1791398457.2309263,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in London and Chicago? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in London and Chicago? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0648_injected_11058_36ba290e",
+      "step": 1,
+      "timestamp": 1791398457.230934,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "London"
+          },
+          "id": "97053288-b452-47a8-b09b-9316a13fb3e2"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Chicago"
+          },
+          "id": "6e32f7bb-ac0a-46be-aa3b-ef79b44199b8"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0648_injected_11058_36ba290e",
+      "step": 2,
+      "timestamp": 1791398457.230943,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "97053288-b452-47a8-b09b-9316a13fb3e2"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0648_injected_11058_36ba290e",
+      "step": 3,
+      "timestamp": 1791398457.2309513,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Chicago\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "6e32f7bb-ac0a-46be-aa3b-ef79b44199b8"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0648_injected_11058_36ba290e",
+      "step": 4,
+      "timestamp": 1791398457.2309563,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in London is sunny with a temperature of 15\u00b0C and humidity at 40%. The weather in Chicago is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The temperature difference between the two cities is 18\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791398450.5838945,
+      "node": "agent",
+      "llm_latency": 3.231,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398450.887452,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3022,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398451.1891458,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Chicago"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791398457.2298675,
+      "node": "agent",
+      "llm_latency": 6.0393,
+      "has_tool_calls": false,
+      "response_length": 225,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 668,
+      "output_tokens": 57
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "London"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"London\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 40, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.302166223526001,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Chicago"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Chicago\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.30159711837768555,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

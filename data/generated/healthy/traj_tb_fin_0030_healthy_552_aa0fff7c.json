@@ -1,0 +1,144 @@
+{
+  "trajectory_id": "traj_tb_fin_0030_healthy_552_aa0fff7c",
+  "task_id": "tb_fin_0030",
+  "task_description": "Retrieve data from endpoint 'transactions'. Calculate the growth return if initial balance was 37136 and final was 57598.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 552,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": false,
+  "final_answer": "It seems there was an issue with the input provided for the 'get_data' function. The input should be a valid string, but it appears to be a dictionary instead. Let me try again with the correct format.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 4,
+  "total_latency": 11.4172,
+  "total_tool_calls": 1,
+  "error_count": 1,
+  "retry_count": 0,
+  "start_time": "2026-10-07T13:35:35.304770",
+  "end_time": "2026-10-07T13:35:46.721986",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_fin_0030_healthy_552_aa0fff7c",
+      "step": 0,
+      "timestamp": 1791380146.7220128,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Retrieve data from endpoint 'transactions'. Calculate the growth return if initial balance was 37136 and final was 57598.",
+      "task_text": "Retrieve data from endpoint 'transactions'. Calculate the growth return if initial balance was 37136 and final was 57598."
+    },
+    {
+      "trajectory_id": "traj_tb_fin_0030_healthy_552_aa0fff7c",
+      "step": 1,
+      "timestamp": 1791380146.7220376,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_data",
+          "args": {
+            "params": {},
+            "endpoint": "transactions"
+          },
+          "id": "6063b746-10f3-4e62-ab5e-e0be5cfc2a40"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_fin_0030_healthy_552_aa0fff7c",
+      "step": 2,
+      "timestamp": 1791380146.722058,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_data",
+      "content": "{\"status\": \"error\", \"error\": \"1 validation error for get_data\\nparams\\n  Input should be a valid string [type=string_type, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type\"}",
+      "tool_call_id": "6063b746-10f3-4e62-ab5e-e0be5cfc2a40"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_0030_healthy_552_aa0fff7c",
+      "step": 3,
+      "timestamp": 1791380146.722077,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "It seems there was an issue with the input provided for the 'get_data' function. The input should be a valid string, but it appears to be a dictionary instead. Let me try again with the correct format.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791380138.254759,
+      "node": "agent",
+      "llm_latency": 2.9483,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 527,
+      "output_tokens": 26
+    },
+    {
+      "step": 1,
+      "timestamp": 1791380138.2576666,
+      "node": "tool",
+      "tool_name": "get_data",
+      "tool_args": {
+        "params": {},
+        "endpoint": "transactions"
+      },
+      "tool_success": false,
+      "tool_latency": 0.0005,
+      "tool_error": "1 validation error for get_data\nparams\n  Input should be a valid string [type=string_type, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type",
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791380146.7197077,
+      "node": "agent",
+      "llm_latency": 8.4606,
+      "has_tool_calls": false,
+      "response_length": 201,
+      "state_hash": "84471cc81603",
+      "input_tokens": 629,
+      "output_tokens": 45
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_data",
+      "tool_args": {
+        "params": {},
+        "endpoint": "transactions"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": false,
+      "result": "{\"status\": \"error\", \"error\": \"1 validation error for get_data\\nparams\\n  Input should be a valid string [type=string_type, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type\"}",
+      "error": "1 validation error for get_data\nparams\n  Input should be a valid string [type=string_type, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type",
+      "latency": 0.0005474090576171875,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

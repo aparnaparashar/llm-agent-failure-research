@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1205_injected_20527_5441116c",
+  "task_id": "tb_geo_1205",
+  "task_description": "What is the weather in San Francisco and Dubai? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 20527,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in San Francisco is currently 21\u00b0C with a cloudy condition and humidity at 46%. The wind speed is 21 km/h. In Dubai, the temperature is 32\u00b0C with a rainy condition and humidity at 57%. The wind speed is 12 km/h. The temperature difference between the two cities is 11\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 17.9054,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T22:41:27.896533",
+  "end_time": "2026-10-07T22:41:45.801915",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1205_injected_20527_5441116c",
+      "step": 0,
+      "timestamp": 1791412905.8019373,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in San Francisco and Dubai? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in San Francisco and Dubai? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1205_injected_20527_5441116c",
+      "step": 1,
+      "timestamp": 1791412905.801956,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "San Francisco"
+          },
+          "id": "4d5eb1c2-2d36-499c-b7b4-6a41d6b032fa"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Dubai"
+          },
+          "id": "8f84f649-01b9-484e-9519-a9174ca17148"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1205_injected_20527_5441116c",
+      "step": 2,
+      "timestamp": 1791412905.8019733,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "tool_call_id": "4d5eb1c2-2d36-499c-b7b4-6a41d6b032fa"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1205_injected_20527_5441116c",
+      "step": 3,
+      "timestamp": 1791412905.801991,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Dubai\", \"temperature_celsius\": 32, \"condition\": \"rainy\", \"humidity\": 57, \"wind_speed_kmh\": 12}",
+      "tool_call_id": "8f84f649-01b9-484e-9519-a9174ca17148"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1205_injected_20527_5441116c",
+      "step": 4,
+      "timestamp": 1791412905.8020022,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in San Francisco is currently 21\u00b0C with a cloudy condition and humidity at 46%. The wind speed is 21 km/h. In Dubai, the temperature is 32\u00b0C with a rainy condition and humidity at 57%. The wind speed is 12 km/h. The temperature difference between the two cities is 11\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791412893.3121698,
+      "node": "agent",
+      "llm_latency": 5.4133,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 514,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791412893.6181629,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3036,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791412893.9214106,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Dubai"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3031,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791412905.7998722,
+      "node": "agent",
+      "llm_latency": 11.8774,
+      "has_tool_calls": false,
+      "response_length": 282,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 672,
+      "output_tokens": 77
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "San Francisco"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"San Francisco\", \"temperature_celsius\": 21, \"condition\": \"cloudy\", \"humidity\": 46, \"wind_speed_kmh\": 21}",
+      "error": null,
+      "latency": 0.30359959602355957,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Dubai"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Dubai\", \"temperature_celsius\": 32, \"condition\": \"rainy\", \"humidity\": 57, \"wind_speed_kmh\": 12}",
+      "error": null,
+      "latency": 0.30313897132873535,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+# Experiment Configuration
+
+experiments:
+  # Experiment ID format: EXP-{PHASE}-{NUMBER}
+  # Examples: EXP-DATA-001, EXP-HEALTHY-001, EXP-INJECT-001
+  
+  # Every experiment records:
+  # experiment_id, timestamp, git_commit, dataset_revision,
+  # llm_model, model_version, seed, configuration, metrics, artifact_paths
+
+  # Data splitting
+  splits:
+    train: 0.70
+    validation: 0.15
+    test: 0.15
+    # Task-level splitting: no task overlap between splits
+    split_level: task
+
+  # Evaluation horizons
+  horizons:
+    - 1
+    - 2
+    - 3
+    - 5
+    - 10
+
+  # Risk buckets for analysis
+  risk_buckets:
+    - [0.0, 0.1]
+    - [0.1, 0.2]
+    - [0.2, 0.3]
+    - [0.3, 0.4]
+    - [0.4, 0.5]
+    - [0.5, 0.6]
+    - [0.6, 0.7]
+    - [0.7, 0.8]
+    - [0.8, 0.9]
+    - [0.9, 1.0]
+
+  # Statistical testing
+  statistics:
+    bootstrap_iterations: 10000
+    confidence_level: 0.95
+    paired_tests:
+      - bootstrap
+      - wilcoxon
+      - mcnemar
+      - permutation

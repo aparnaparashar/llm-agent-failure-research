@@ -1,0 +1,202 @@
+{
+  "trajectory_id": "traj_tb_fin_0571_injected_9749_4647d256",
+  "task_id": "tb_fin_0571",
+  "task_description": "Retrieve data from endpoint 'financials'. Calculate the growth return if initial balance was 24483 and final was 33763.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 9749,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": false,
+  "final_answer": "It seems there was an issue with the data retrieval from the 'financials' endpoint. The error message indicates a malformed response. This could be due to various reasons such as incorrect endpoint, parameters, or the data being incomplete. Please ensure that the endpoint and parameters are correct and that the data is available. If the problem persists, it might be necessary to contact the data provider for further assistance.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": true,
+  "fault_exposed": true,
+  "injection_step": 1,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 14.0933,
+  "total_tool_calls": 2,
+  "error_count": 2,
+  "retry_count": 0,
+  "start_time": "2026-10-07T18:14:36.380598",
+  "end_time": "2026-10-07T18:14:50.473918",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_fin_0571_injected_9749_4647d256",
+      "step": 0,
+      "timestamp": 1791396890.4739294,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Retrieve data from endpoint 'financials'. Calculate the growth return if initial balance was 24483 and final was 33763.",
+      "task_text": "Retrieve data from endpoint 'financials'. Calculate the growth return if initial balance was 24483 and final was 33763."
+    },
+    {
+      "trajectory_id": "traj_tb_fin_0571_injected_9749_4647d256",
+      "step": 1,
+      "timestamp": 1791396890.4739404,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_data",
+          "args": {
+            "endpoint": "financials"
+          },
+          "id": "fc4214f7-d122-4f31-b587-536355ac7b20"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "33763 - 24483"
+          },
+          "id": "d3cb781d-7e41-41f5-99dd-8c271ba7b556"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_fin_0571_injected_9749_4647d256",
+      "step": 2,
+      "timestamp": 1791396890.4739501,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_data",
+      "content": "{\"status\": \"success\", \"endpoint\": null, \"_warning\": \"Response data may be incomplete\", \"data\": {\"error\": \"malformed_response\", \"raw\": \"\"}}",
+      "tool_call_id": "fc4214f7-d122-4f31-b587-536355ac7b20"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_0571_injected_9749_4647d256",
+      "step": 3,
+      "timestamp": 1791396890.4739594,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": null, \"_warning\": \"Response data may be incomplete\", \"data\": {\"error\": \"malformed_response\", \"raw\": \"\"}}",
+      "tool_call_id": "d3cb781d-7e41-41f5-99dd-8c271ba7b556"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_0571_injected_9749_4647d256",
+      "step": 4,
+      "timestamp": 1791396890.4739647,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "It seems there was an issue with the data retrieval from the 'financials' endpoint. The error message indicates a malformed response. This could be due to various reasons such as incorrect endpoint, parameters, or the data being incomplete. Please ensure that the endpoint and parameters are correct and that the data is available. If the problem persists, it might be necessary to contact the data provider for further assistance.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791396880.96737,
+      "node": "agent",
+      "llm_latency": 4.585,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 528,
+      "output_tokens": 51
+    },
+    {
+      "step": 1,
+      "timestamp": 1791396881.3759098,
+      "node": "tool",
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "financials"
+      },
+      "tool_success": false,
+      "tool_latency": 0.4049,
+      "tool_error": "Tool 'get_data' returned malformed response",
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "malformed_response",
+        "severity": "medium",
+        "original_result_length": 206
+      }
+    },
+    {
+      "step": 1,
+      "timestamp": 1791396881.4780474,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "33763 - 24483"
+      },
+      "tool_success": false,
+      "tool_latency": 0.1018,
+      "tool_error": "Tool 'calculate' returned malformed response",
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "malformed_response",
+        "severity": "medium",
+        "original_result_length": 68
+      }
+    },
+    {
+      "step": 1,
+      "timestamp": 1791396890.4727192,
+      "node": "agent",
+      "llm_latency": 8.994,
+      "has_tool_calls": false,
+      "response_length": 431,
+      "state_hash": "8d5f3c725c6b",
+      "input_tokens": 677,
+      "output_tokens": 81
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "financials"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"success\", \"endpoint\": null, \"_warning\": \"Response data may be incomplete\", \"data\": {\"error\": \"malformed_response\", \"raw\": \"\"}}",
+      "error": "Tool 'get_data' returned malformed response",
+      "latency": 0.40490031242370605,
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "malformed_response",
+        "severity": "medium",
+        "original_result_length": 206
+      }
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "33763 - 24483"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": false,
+      "result": "{\"status\": \"success\", \"expression\": null, \"_warning\": \"Response data may be incomplete\", \"data\": {\"error\": \"malformed_response\", \"raw\": \"\"}}",
+      "error": "Tool 'calculate' returned malformed response",
+      "latency": 0.10180139541625977,
+      "injected": true,
+      "injection_details": {
+        "injection_subtype": "malformed_response",
+        "severity": "medium",
+        "original_result_length": 68
+      }
+    }
+  ]
+}

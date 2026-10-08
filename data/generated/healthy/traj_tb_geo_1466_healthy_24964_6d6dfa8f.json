@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1466_healthy_24964_6d6dfa8f",
+  "task_id": "tb_geo_1466",
+  "task_description": "What is the weather in Paris and Singapore? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 24964,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. The weather in Singapore is also partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The temperature difference between the two cities is 0\u00b0C, and the wind speed in Paris is 8 km/h, while in Singapore it is 13 km/h.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.8047,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:12:32.801569",
+  "end_time": "2026-10-08T00:12:44.606267",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1466_healthy_24964_6d6dfa8f",
+      "step": 0,
+      "timestamp": 1791418364.6062782,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Paris and Singapore? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Paris and Singapore? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1466_healthy_24964_6d6dfa8f",
+      "step": 1,
+      "timestamp": 1791418364.606288,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "d234ebd1-5f51-4925-b593-574afb6b4d18"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Singapore"
+          },
+          "id": "28039cff-c8d3-4f68-bb8c-1be4a1113e66"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1466_healthy_24964_6d6dfa8f",
+      "step": 2,
+      "timestamp": 1791418364.6062973,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "d234ebd1-5f51-4925-b593-574afb6b4d18"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1466_healthy_24964_6d6dfa8f",
+      "step": 3,
+      "timestamp": 1791418364.6063068,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "28039cff-c8d3-4f68-bb8c-1be4a1113e66"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1466_healthy_24964_6d6dfa8f",
+      "step": 4,
+      "timestamp": 1791418364.6063123,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. The weather in Singapore is also partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The temperature difference between the two cities is 0\u00b0C, and the wind speed in Paris is 8 km/h, while in Singapore it is 13 km/h.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791418356.111274,
+      "node": "agent",
+      "llm_latency": 3.3077,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418356.4139493,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418356.715619,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418364.6052175,
+      "node": "agent",
+      "llm_latency": 7.8888,
+      "has_tool_calls": false,
+      "response_length": 311,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 668,
+      "output_tokens": 81
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.3014180660247803,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3015937805175781,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

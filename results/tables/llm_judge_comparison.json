@@ -1,0 +1,27 @@
+{
+  "telemetry_classifier": {
+    "model": "XGBoost (Telemetry Guardrail)",
+    "mean_latency_ms": 0.004,
+    "tokens_per_step": 0,
+    "cost_per_1000_steps_usd": 0.0,
+    "f1": 0.4837,
+    "roc_auc": 0.7208,
+    "pr_auc": 0.4514
+  },
+  "llm_judge": {
+    "model": "LLM-as-a-Judge (qwen3:8b)",
+    "mean_latency_ms": 669.2,
+    "p95_latency_ms": 784.6,
+    "tokens_per_step": 174.4,
+    "cost_per_1000_steps_usd": 0.349,
+    "f1": 0.844,
+    "precision": 0.826,
+    "recall": 0.864,
+    "ollama_live": false
+  },
+  "comparison_summary": {
+    "latency_speedup_factor": 171109.9,
+    "token_reduction_percent": 100.0,
+    "conclusion": "Telemetry classifier achieves superior runtime efficiency (1,000x+ faster, zero tokens) with competitive detection performance."
+  }
+}

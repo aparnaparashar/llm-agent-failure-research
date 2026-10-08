@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1445_organic_24607_7be9b6c2",
+  "task_id": "tb_geo_1445",
+  "task_description": "What is the weather in Stockholm and Vienna? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 24607,
+  "execution_mode": "organic",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Stockholm is sunny with a temperature of 20\u00b0C and humidity at 70%. In Vienna, the weather is cloudy with a temperature of 31\u00b0C and humidity at 81%. The temperature difference between the two cities is 11\u00b0C.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.3279,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:08:36.803118",
+  "end_time": "2026-10-08T00:08:47.131052",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1445_organic_24607_7be9b6c2",
+      "step": 0,
+      "timestamp": 1791418127.131063,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Stockholm and Vienna? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Stockholm and Vienna? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1445_organic_24607_7be9b6c2",
+      "step": 1,
+      "timestamp": 1791418127.1310725,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Stockholm"
+          },
+          "id": "60151eba-7849-4bb6-84d2-a5b0eac23032"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Vienna"
+          },
+          "id": "cf400a6f-8046-4515-9fd8-e34670bb0737"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1445_organic_24607_7be9b6c2",
+      "step": 2,
+      "timestamp": 1791418127.1310816,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Stockholm\", \"temperature_celsius\": 20, \"condition\": \"sunny\", \"humidity\": 70, \"wind_speed_kmh\": 25}",
+      "tool_call_id": "60151eba-7849-4bb6-84d2-a5b0eac23032"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1445_organic_24607_7be9b6c2",
+      "step": 3,
+      "timestamp": 1791418127.1310902,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "tool_call_id": "cf400a6f-8046-4515-9fd8-e34670bb0737"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1445_organic_24607_7be9b6c2",
+      "step": 4,
+      "timestamp": 1791418127.1310956,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Stockholm is sunny with a temperature of 20\u00b0C and humidity at 70%. In Vienna, the weather is cloudy with a temperature of 31\u00b0C and humidity at 81%. The temperature difference between the two cities is 11\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791418120.3298602,
+      "node": "agent",
+      "llm_latency": 3.5251,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 42
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418120.6324356,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Stockholm"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3012,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418120.9359715,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3035,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791418127.1300101,
+      "node": "agent",
+      "llm_latency": 6.1932,
+      "has_tool_calls": false,
+      "response_length": 221,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 671,
+      "output_tokens": 57
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Stockholm"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Stockholm\", \"temperature_celsius\": 20, \"condition\": \"sunny\", \"humidity\": 70, \"wind_speed_kmh\": 25}",
+      "error": null,
+      "latency": 0.30124402046203613,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "error": null,
+      "latency": 0.30345988273620605,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

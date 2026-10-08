@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1366_injected_23264_fcb4635d",
+  "task_id": "tb_geo_1366",
+  "task_description": "What is the weather in Miami and Boston? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 23264,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In Boston, the weather is cloudy with a temperature of 26\u00b0C and humidity at 51%. The temperature difference between Miami and Boston is 11\u00b0C. The humidity in Boston is lower than in Miami.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.9372,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T23:47:29.816804",
+  "end_time": "2026-10-07T23:47:40.753984",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1366_injected_23264_fcb4635d",
+      "step": 0,
+      "timestamp": 1791416860.7539964,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Miami and Boston? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Miami and Boston? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1366_injected_23264_fcb4635d",
+      "step": 1,
+      "timestamp": 1791416860.7540066,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "4f7a9d73-b951-481f-b968-9edd1eeb1f57"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Boston"
+          },
+          "id": "2f93f271-0774-4f5c-95fe-0442a7e34d7a"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1366_injected_23264_fcb4635d",
+      "step": 2,
+      "timestamp": 1791416860.754017,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "4f7a9d73-b951-481f-b968-9edd1eeb1f57"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1366_injected_23264_fcb4635d",
+      "step": 3,
+      "timestamp": 1791416860.7540264,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Boston\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 51, \"wind_speed_kmh\": 6}",
+      "tool_call_id": "2f93f271-0774-4f5c-95fe-0442a7e34d7a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1366_injected_23264_fcb4635d",
+      "step": 4,
+      "timestamp": 1791416860.7540324,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Miami is sunny with a temperature of 15\u00b0C and humidity at 65%. In Boston, the weather is cloudy with a temperature of 26\u00b0C and humidity at 51%. The temperature difference between Miami and Boston is 11\u00b0C. The humidity in Boston is lower than in Miami.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791416853.2118673,
+      "node": "agent",
+      "llm_latency": 3.3933,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416853.5146391,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3015,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416853.8159816,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Boston"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3013,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416860.7528117,
+      "node": "agent",
+      "llm_latency": 6.936,
+      "has_tool_calls": false,
+      "response_length": 266,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 666,
+      "output_tokens": 67
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3014976978302002,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Boston"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Boston\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 51, \"wind_speed_kmh\": 6}",
+      "error": null,
+      "latency": 0.30126523971557617,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

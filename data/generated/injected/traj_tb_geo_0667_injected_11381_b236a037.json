@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0667_injected_11381_b236a037",
+  "task_id": "tb_geo_0667",
+  "task_description": "What is the weather in Singapore and Chicago? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 11381,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Singapore is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The weather in Chicago is also partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The wind speed in Singapore is 13 km/h and in Chicago is 33 km/h. The temperature difference between the two cities is 0\u00b0C.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.5479,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T18:55:16.321206",
+  "end_time": "2026-10-07T18:55:27.869150",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0667_injected_11381_b236a037",
+      "step": 0,
+      "timestamp": 1791399327.869161,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Singapore and Chicago? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Singapore and Chicago? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0667_injected_11381_b236a037",
+      "step": 1,
+      "timestamp": 1791399327.8691702,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Singapore"
+          },
+          "id": "bb766e6e-dfbb-4135-8ed4-4ca25b51f4d8"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Chicago"
+          },
+          "id": "adba7507-a888-42c9-9781-9d13c42d2c2c"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0667_injected_11381_b236a037",
+      "step": 2,
+      "timestamp": 1791399327.8691788,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "bb766e6e-dfbb-4135-8ed4-4ca25b51f4d8"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0667_injected_11381_b236a037",
+      "step": 3,
+      "timestamp": 1791399327.8691876,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Chicago\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "adba7507-a888-42c9-9781-9d13c42d2c2c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0667_injected_11381_b236a037",
+      "step": 4,
+      "timestamp": 1791399327.8691924,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Singapore is partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The weather in Chicago is also partly cloudy with a temperature of 33\u00b0C and humidity at 58%. The wind speed in Singapore is 13 km/h and in Chicago is 33 km/h. The temperature difference between the two cities is 0\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791399319.496962,
+      "node": "agent",
+      "llm_latency": 3.1735,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791399319.7997644,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3014,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791399320.1023343,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Chicago"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791399327.8681316,
+      "node": "agent",
+      "llm_latency": 7.7643,
+      "has_tool_calls": false,
+      "response_length": 306,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 79
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.30139970779418945,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Chicago"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Chicago\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.3024253845214844,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

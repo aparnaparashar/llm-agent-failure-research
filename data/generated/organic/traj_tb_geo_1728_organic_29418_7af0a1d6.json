@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1728_organic_29418_7af0a1d6",
+  "task_id": "tb_geo_1728",
+  "task_description": "What is the weather in Toronto and Miami? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 29418,
+  "execution_mode": "organic",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Toronto is windy with a temperature of 29\u00b0C and humidity at 79%. In Miami, the temperature is 15\u00b0C and the humidity is 65%. The temperature difference between Toronto and Miami is 14\u00b0C. The wind speed in Toronto is 14 km/h and in Miami it is 20 km/h.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 10.7058,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T02:18:08.975250",
+  "end_time": "2026-10-08T02:18:19.681054",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1728_organic_29418_7af0a1d6",
+      "step": 0,
+      "timestamp": 1791425899.6810682,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Toronto and Miami? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Toronto and Miami? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1728_organic_29418_7af0a1d6",
+      "step": 1,
+      "timestamp": 1791425899.6810827,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "dd0a08b1-b35e-41d2-a28b-f20b951f4ca0"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Miami"
+          },
+          "id": "cee3b37b-ff37-4c6e-812c-27ccca325fde"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1728_organic_29418_7af0a1d6",
+      "step": 2,
+      "timestamp": 1791425899.6810937,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "tool_call_id": "dd0a08b1-b35e-41d2-a28b-f20b951f4ca0"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1728_organic_29418_7af0a1d6",
+      "step": 3,
+      "timestamp": 1791425899.6811035,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "tool_call_id": "cee3b37b-ff37-4c6e-812c-27ccca325fde"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1728_organic_29418_7af0a1d6",
+      "step": 4,
+      "timestamp": 1791425899.6811085,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Toronto is windy with a temperature of 29\u00b0C and humidity at 79%. In Miami, the temperature is 15\u00b0C and the humidity is 65%. The temperature difference between Toronto and Miami is 14\u00b0C. The wind speed in Toronto is 14 km/h and in Miami it is 20 km/h.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791425892.021797,
+      "node": "agent",
+      "llm_latency": 3.0439,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791425892.3253303,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3026,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791425892.6275396,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3021,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791425899.6800685,
+      "node": "agent",
+      "llm_latency": 7.0516,
+      "has_tool_calls": false,
+      "response_length": 265,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 667,
+      "output_tokens": 75
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "error": null,
+      "latency": 0.3025858402252197,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Miami"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Miami\", \"temperature_celsius\": 15, \"condition\": \"sunny\", \"humidity\": 65, \"wind_speed_kmh\": 20}",
+      "error": null,
+      "latency": 0.3021395206451416,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_fin_1253_organic_21343_7200a329",
+  "task_id": "tb_fin_1253",
+  "task_description": "Retrieve data from endpoint 'financials'. Calculate the growth return if initial balance was 18353 and final was 25978.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 21343,
+  "execution_mode": "organic",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The growth return from the initial balance of 18,353 to the final balance of 25,978 is 7,625.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 22.7782,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T22:59:16.908417",
+  "end_time": "2026-10-07T22:59:39.686649",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_fin_1253_organic_21343_7200a329",
+      "step": 0,
+      "timestamp": 1791413979.686677,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "Retrieve data from endpoint 'financials'. Calculate the growth return if initial balance was 18353 and final was 25978.",
+      "task_text": "Retrieve data from endpoint 'financials'. Calculate the growth return if initial balance was 18353 and final was 25978."
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1253_organic_21343_7200a329",
+      "step": 1,
+      "timestamp": 1791413979.686702,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_data",
+          "args": {
+            "endpoint": "financials"
+          },
+          "id": "0684b6eb-b4e7-47c2-a942-48d98145bb13"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "25978 - 18353"
+          },
+          "id": "e43f7415-eda3-4e5f-8c0f-f2d4850320d2"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1253_organic_21343_7200a329",
+      "step": 2,
+      "timestamp": 1791413979.6867225,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_data",
+      "content": "{\"status\": \"success\", \"endpoint\": \"financials\", \"data\": {\"id\": \"6ce2bd92\", \"name\": \"Item from financials\", \"description\": \"Data retrieved from the financials endpoint\", \"timestamp\": \"2026-10-08T04:29:26Z\"}}",
+      "tool_call_id": "0684b6eb-b4e7-47c2-a942-48d98145bb13"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1253_organic_21343_7200a329",
+      "step": 3,
+      "timestamp": 1791413979.6867435,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"success\", \"expression\": \"25978 - 18353\", \"result\": 7625}",
+      "tool_call_id": "e43f7415-eda3-4e5f-8c0f-f2d4850320d2"
+    },
+    {
+      "trajectory_id": "traj_tb_fin_1253_organic_21343_7200a329",
+      "step": 4,
+      "timestamp": 1791413979.6867547,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The growth return from the initial balance of 18,353 to the final balance of 25,978 is 7,625.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791413966.0382464,
+      "node": "agent",
+      "llm_latency": 9.1262,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 528,
+      "output_tokens": 51
+    },
+    {
+      "step": 1,
+      "timestamp": 1791413966.4448755,
+      "node": "tool",
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "financials"
+      },
+      "tool_success": true,
+      "tool_latency": 0.404,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791413966.5469253,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "25978 - 18353"
+      },
+      "tool_success": true,
+      "tool_latency": 0.102,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791413979.6842265,
+      "node": "agent",
+      "llm_latency": 13.1361,
+      "has_tool_calls": false,
+      "response_length": 93,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 708,
+      "output_tokens": 36
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_data",
+      "tool_args": {
+        "endpoint": "financials"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"endpoint\": \"financials\", \"data\": {\"id\": \"6ce2bd92\", \"name\": \"Item from financials\", \"description\": \"Data retrieved from the financials endpoint\", \"timestamp\": \"2026-10-08T04:29:26Z\"}}",
+      "error": null,
+      "latency": 0.404033899307251,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "25978 - 18353"
+      },
+      "step": 1,
+      "execution_mode": "organic",
+      "success": true,
+      "result": "{\"status\": \"success\", \"expression\": \"25978 - 18353\", \"result\": 7625}",
+      "error": null,
+      "latency": 0.10195159912109375,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

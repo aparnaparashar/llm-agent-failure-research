@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0865_injected_14747_19d4b570",
+  "task_id": "tb_geo_0865",
+  "task_description": "What is the weather in Tokyo and Singapore? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 14747,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Tokyo is 31\u00b0C with a cloudy condition and humidity at 56%. In Singapore, the temperature is 33\u00b0C with partly cloudy conditions and humidity at 58%. The temperature difference is 2\u00b0C and the humidity difference is 2% between the two cities.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "medium",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 26.1863,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T20:26:39.113988",
+  "end_time": "2026-10-07T20:27:05.300333",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0865_injected_14747_19d4b570",
+      "step": 0,
+      "timestamp": 1791404825.3003576,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Tokyo and Singapore? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Tokyo and Singapore? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0865_injected_14747_19d4b570",
+      "step": 1,
+      "timestamp": 1791404825.3003805,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Tokyo"
+          },
+          "id": "8eb1ac3a-1feb-4cd3-8f98-e8655b25be16"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Singapore"
+          },
+          "id": "c47c81cd-df83-49a5-bf15-9cef25ca51d4"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = abs(Temperature in Tokyo - Temperature in Singapore); humidity_difference = abs(Humidity in Tokyo - Humidity in Singapore)"
+          },
+          "id": "145cdb94-a338-4c9e-91d4-c49da7532a88"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0865_injected_14747_19d4b570",
+      "step": 2,
+      "timestamp": 1791404825.3004026,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "tool_call_id": "8eb1ac3a-1feb-4cd3-8f98-e8655b25be16"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0865_injected_14747_19d4b570",
+      "step": 3,
+      "timestamp": 1791404825.3004215,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "c47c81cd-df83-49a5-bf15-9cef25ca51d4"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0865_injected_14747_19d4b570",
+      "step": 4,
+      "timestamp": 1791404825.3004336,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = abs(Temperature in Tokyo - Temperature in Singapore); humidity_difference = abs(Humidity in Tokyo - Humidity in Singapore)\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "145cdb94-a338-4c9e-91d4-c49da7532a88"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0865_injected_14747_19d4b570",
+      "step": 5,
+      "timestamp": 1791404825.300443,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Tokyo is 31\u00b0C with a cloudy condition and humidity at 56%. In Singapore, the temperature is 33\u00b0C with partly cloudy conditions and humidity at 58%. The temperature difference is 2\u00b0C and the humidity difference is 2% between the two cities.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791404809.4171965,
+      "node": "agent",
+      "llm_latency": 10.3007,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 86
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404809.7254252,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3044,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404810.0280328,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404810.1316638,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = abs(Temperature in Tokyo - Temperature in Singapore); humidity_difference = abs(Humidity in Tokyo - Humidity in Singapore)"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1035,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404825.2974157,
+      "node": "agent",
+      "llm_latency": 15.163,
+      "has_tool_calls": false,
+      "response_length": 254,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 774,
+      "output_tokens": 62
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Tokyo"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Tokyo\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 56, \"wind_speed_kmh\": 31}",
+      "error": null,
+      "latency": 0.3044002056121826,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.30243420600891113,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = abs(Temperature in Tokyo - Temperature in Singapore); humidity_difference = abs(Humidity in Tokyo - Humidity in Singapore)"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = abs(Temperature in Tokyo - Temperature in Singapore); humidity_difference = abs(Humidity in Tokyo - Humidity in Singapore)\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10348868370056152,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

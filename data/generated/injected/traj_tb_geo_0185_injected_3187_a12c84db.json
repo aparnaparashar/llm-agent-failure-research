@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_0185_injected_3187_a12c84db",
+  "task_id": "tb_geo_0185",
+  "task_description": "What is the weather in Toronto and Dubai? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 3187,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Toronto is currently 29\u00b0C with a wind speed of 14 km/h and a condition of \"windy\". The humidity is 79%.\n\nThe weather in Dubai is 32\u00b0C with a wind speed of 12 km/h and a condition of \"rainy\". The humidity is 57%.\n\nThe temperature difference between Toronto and Dubai is 3\u00b0C.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 3,
+  "actual_failure_step": null,
+  "severity": "low",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 20.1607,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T14:51:21.668831",
+  "end_time": "2026-10-07T14:51:41.829588",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0185_injected_3187_a12c84db",
+      "step": 0,
+      "timestamp": 1791384701.82962,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Toronto and Dubai? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Toronto and Dubai? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0185_injected_3187_a12c84db",
+      "step": 1,
+      "timestamp": 1791384701.82965,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "7c857126-afde-4af6-9df4-dab1862f5405"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Dubai"
+          },
+          "id": "9988edfa-5da7-4c13-8460-6497758f785a"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0185_injected_3187_a12c84db",
+      "step": 2,
+      "timestamp": 1791384701.8296735,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "tool_call_id": "7c857126-afde-4af6-9df4-dab1862f5405"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0185_injected_3187_a12c84db",
+      "step": 3,
+      "timestamp": 1791384701.8297071,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Dubai\", \"temperature_celsius\": 32, \"condition\": \"rainy\", \"humidity\": 57, \"wind_speed_kmh\": 12}",
+      "tool_call_id": "9988edfa-5da7-4c13-8460-6497758f785a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0185_injected_3187_a12c84db",
+      "step": 4,
+      "timestamp": 1791384701.82972,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Toronto is currently 29\u00b0C with a wind speed of 14 km/h and a condition of \"windy\". The humidity is 79%.\n\nThe weather in Dubai is 32\u00b0C with a wind speed of 12 km/h and a condition of \"rainy\". The humidity is 57%.\n\nThe temperature difference between Toronto and Dubai is 3\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791384687.4492307,
+      "node": "agent",
+      "llm_latency": 5.7763,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384687.756141,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3037,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384688.059371,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Dubai"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3031,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791384701.8259206,
+      "node": "agent",
+      "llm_latency": 13.7652,
+      "has_tool_calls": false,
+      "response_length": 288,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 82
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "error": null,
+      "latency": 0.30374860763549805,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Dubai"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Dubai\", \"temperature_celsius\": 32, \"condition\": \"rainy\", \"humidity\": 57, \"wind_speed_kmh\": 12}",
+      "error": null,
+      "latency": 0.3031148910522461,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

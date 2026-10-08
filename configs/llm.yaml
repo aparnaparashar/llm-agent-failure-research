@@ -1,0 +1,23 @@
+# LLM Configuration
+# All experiments must record these fields.
+
+llm:
+  provider: ollama
+  model: qwen2.5:1.5b
+  base_url: http://localhost:11434
+  temperature: 0
+  # Maximum tokens for generation
+  max_tokens: 2048
+  # Timeout in seconds for LLM calls
+  timeout: 60
+  # Number of retries on transient errors
+  max_retries: 2
+
+# Environment variable overrides:
+# LLM_PROVIDER=ollama
+# LLM_MODEL=qwen2.5:1.5b
+# OLLAMA_BASE_URL=http://localhost:11434
+# LLM_TEMPERATURE=0
+
+# Prompt versioning
+prompt_version: "v1.0"

@@ -1,0 +1,276 @@
+{
+  "trajectory_id": "traj_tb_geo_1628_healthy_27718_703c214d",
+  "task_id": "tb_geo_1628",
+  "task_description": "What is the weather in Berlin and Amsterdam? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 27718,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Berlin is 26\u00b0C with a cloudy condition and 76% humidity, while in Amsterdam it is 23\u00b0C with partly cloudy conditions and 48% humidity. There is a temperature difference of 3\u00b0C and a humidity difference of 18 percentage points between the two cities.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 7,
+  "total_latency": 16.6386,
+  "total_tool_calls": 4,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T00:52:47.682058",
+  "end_time": "2026-10-08T00:53:04.320653",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1628_healthy_27718_703c214d",
+      "step": 0,
+      "timestamp": 1791420784.3206735,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Berlin and Amsterdam? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Berlin and Amsterdam? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1628_healthy_27718_703c214d",
+      "step": 1,
+      "timestamp": 1791420784.3206923,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Berlin"
+          },
+          "id": "18db56ed-ab95-40c7-8319-968ce4454475"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Amsterdam"
+          },
+          "id": "89b3f621-b441-4803-9653-a7759449a754"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = Berlin temperature - Amsterdam temperature"
+          },
+          "id": "b2b7d5d1-3469-4fd0-a1be-321c6563312c"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "humidity_difference = Berlin humidity - Amsterdam humidity"
+          },
+          "id": "733df0ad-bffe-43c3-9fc2-7403fd06fe0f"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1628_healthy_27718_703c214d",
+      "step": 2,
+      "timestamp": 1791420784.3207107,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "tool_call_id": "18db56ed-ab95-40c7-8319-968ce4454475"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1628_healthy_27718_703c214d",
+      "step": 3,
+      "timestamp": 1791420784.3207269,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "tool_call_id": "89b3f621-b441-4803-9653-a7759449a754"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1628_healthy_27718_703c214d",
+      "step": 4,
+      "timestamp": 1791420784.3207374,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = Berlin temperature - Amsterdam temperature\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "b2b7d5d1-3469-4fd0-a1be-321c6563312c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1628_healthy_27718_703c214d",
+      "step": 5,
+      "timestamp": 1791420784.3207467,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"humidity_difference = Berlin humidity - Amsterdam humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "733df0ad-bffe-43c3-9fc2-7403fd06fe0f"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1628_healthy_27718_703c214d",
+      "step": 6,
+      "timestamp": 1791420784.320755,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Berlin is 26\u00b0C with a cloudy condition and 76% humidity, while in Amsterdam it is 23\u00b0C with partly cloudy conditions and 48% humidity. There is a temperature difference of 3\u00b0C and a humidity difference of 18 percentage points between the two cities.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791420774.752888,
+      "node": "agent",
+      "llm_latency": 7.0677,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 93
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420775.0559452,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3017,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420775.358358,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3023,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420775.460544,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Berlin temperature - Amsterdam temperature"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1021,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420775.5623257,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "humidity_difference = Berlin humidity - Amsterdam humidity"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1016,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791420784.3188195,
+      "node": "agent",
+      "llm_latency": 8.7554,
+      "has_tool_calls": false,
+      "response_length": 264,
+      "state_hash": "4bc5fbae1d34",
+      "input_tokens": 804,
+      "output_tokens": 65
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "error": null,
+      "latency": 0.30173635482788086,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Amsterdam"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Amsterdam\", \"temperature_celsius\": 23, \"condition\": \"partly cloudy\", \"humidity\": 48, \"wind_speed_kmh\": 33}",
+      "error": null,
+      "latency": 0.30229949951171875,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = Berlin temperature - Amsterdam temperature"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = Berlin temperature - Amsterdam temperature\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10209417343139648,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "humidity_difference = Berlin humidity - Amsterdam humidity"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"humidity_difference = Berlin humidity - Amsterdam humidity\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10162997245788574,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-10-07T11:41:56.947924",
+  "config": {
+    "seed": 42,
+    "max_steps": 20,
+    "limit": 1
+  },
+  "results": [
+    {
+      "task_id": "builtin_001",
+      "trajectory_id": "traj_builtin_001_healthy_42_81893231",
+      "status": "completed",
+      "num_steps": 6,
+      "total_latency": 65.7188,
+      "total_tool_calls": 3,
+      "task_success": true,
+      "final_answer": "The current weather in Tokyo is 31 degrees Celsius with a condition of cloudy and humidity at 56%. The population of Tokyo is approximately 15,000,000 people. 15% of that population would be 15,000,00"
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_1249_healthy_21275_be39d646",
+  "task_id": "tb_geo_1249",
+  "task_description": "What is the weather in Vienna and Singapore? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 21275,
+  "execution_mode": "healthy",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Vienna is 31\u00b0C with a cloudy condition and humidity at 81%. In Singapore, the temperature is 33\u00b0C with partly cloudy conditions and humidity at 58%. The temperature difference is 2\u00b0C and the humidity difference is 23%.",
+  "failure_module": null,
+  "failure_type": null,
+  "temporal_mechanism": null,
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": null,
+  "actual_failure_step": null,
+  "severity": null,
+  "onset_ramp": null,
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 29.9942,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T22:57:55.786996",
+  "end_time": "2026-10-07T22:58:25.781196",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1249_healthy_21275_be39d646",
+      "step": 0,
+      "timestamp": 1791413905.7812126,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Vienna and Singapore? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Vienna and Singapore? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1249_healthy_21275_be39d646",
+      "step": 1,
+      "timestamp": 1791413905.7812283,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Vienna"
+          },
+          "id": "c7261297-7cd4-4bc1-bfca-728c9cb2944f"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Singapore"
+          },
+          "id": "64a8e415-6b49-4c7b-b879-16bc4fdf3838"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temp_vienna - temp_singapore; humidity_difference = humidity_vienna - humidity_singapore"
+          },
+          "id": "d8abc602-055c-42ff-8d09-6670f08bd523"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1249_healthy_21275_be39d646",
+      "step": 2,
+      "timestamp": 1791413905.7812436,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "tool_call_id": "c7261297-7cd4-4bc1-bfca-728c9cb2944f"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1249_healthy_21275_be39d646",
+      "step": 3,
+      "timestamp": 1791413905.7812567,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "tool_call_id": "64a8e415-6b49-4c7b-b879-16bc4fdf3838"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1249_healthy_21275_be39d646",
+      "step": 4,
+      "timestamp": 1791413905.7812643,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_vienna - temp_singapore; humidity_difference = humidity_vienna - humidity_singapore\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "d8abc602-055c-42ff-8d09-6670f08bd523"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1249_healthy_21275_be39d646",
+      "step": 5,
+      "timestamp": 1791413905.7812717,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Vienna is 31\u00b0C with a cloudy condition and humidity at 81%. In Singapore, the temperature is 33\u00b0C with partly cloudy conditions and humidity at 58%. The temperature difference is 2\u00b0C and the humidity difference is 23%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791413889.2977598,
+      "node": "agent",
+      "llm_latency": 13.5083,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 84
+    },
+    {
+      "step": 1,
+      "timestamp": 1791413889.603722,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3026,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791413889.907039,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3032,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791413890.0108356,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_vienna - temp_singapore; humidity_difference = humidity_vienna - humidity_singapore"
+      },
+      "tool_success": true,
+      "tool_latency": 0.1037,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791413905.7795768,
+      "node": "agent",
+      "llm_latency": 15.7674,
+      "has_tool_calls": false,
+      "response_length": 233,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 767,
+      "output_tokens": 58
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "error": null,
+      "latency": 0.30264806747436523,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Singapore"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Singapore\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 58, \"wind_speed_kmh\": 13}",
+      "error": null,
+      "latency": 0.3031792640686035,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temp_vienna - temp_singapore; humidity_difference = humidity_vienna - humidity_singapore"
+      },
+      "step": 1,
+      "execution_mode": "healthy",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temp_vienna - temp_singapore; humidity_difference = humidity_vienna - humidity_singapore\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.10370302200317383,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1847_injected_31441_51f8f7a5",
+  "task_id": "tb_geo_1847",
+  "task_description": "What is the weather in Toronto and Vienna? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 31441,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Toronto is windy with a temperature of 29\u00b0C and humidity at 79%. In Vienna, the temperature is 31\u00b0C with a cloudy condition and humidity at 81%. The temperature difference between the two cities is 2\u00b0C.",
+  "failure_module": "action",
+  "failure_type": "parameter_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 16.3146,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-08T02:53:39.685916",
+  "end_time": "2026-10-08T02:53:56.000501",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1847_injected_31441_51f8f7a5",
+      "step": 0,
+      "timestamp": 1791428036.0005338,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Toronto and Vienna? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Toronto and Vienna? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1847_injected_31441_51f8f7a5",
+      "step": 1,
+      "timestamp": 1791428036.0005662,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Toronto"
+          },
+          "id": "d50516f3-3341-40df-b1c8-c829d5c42c7d"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Vienna"
+          },
+          "id": "5bfc7625-00f2-41a9-bbf1-e4b7b30c25fe"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1847_injected_31441_51f8f7a5",
+      "step": 2,
+      "timestamp": 1791428036.000593,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "tool_call_id": "d50516f3-3341-40df-b1c8-c829d5c42c7d"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1847_injected_31441_51f8f7a5",
+      "step": 3,
+      "timestamp": 1791428036.0006158,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "tool_call_id": "5bfc7625-00f2-41a9-bbf1-e4b7b30c25fe"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1847_injected_31441_51f8f7a5",
+      "step": 4,
+      "timestamp": 1791428036.0006294,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Toronto is windy with a temperature of 29\u00b0C and humidity at 79%. In Vienna, the temperature is 31\u00b0C with a cloudy condition and humidity at 81%. The temperature difference between the two cities is 2\u00b0C.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791428025.0064523,
+      "node": "agent",
+      "llm_latency": 5.318,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 41
+    },
+    {
+      "step": 1,
+      "timestamp": 1791428025.311943,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3028,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791428025.6144655,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791428035.9971058,
+      "node": "agent",
+      "llm_latency": 10.3818,
+      "has_tool_calls": false,
+      "response_length": 217,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 669,
+      "output_tokens": 55
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Toronto"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Toronto\", \"temperature_celsius\": 29, \"condition\": \"windy\", \"humidity\": 79, \"wind_speed_kmh\": 14}",
+      "error": null,
+      "latency": 0.30278754234313965,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Vienna"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Vienna\", \"temperature_celsius\": 31, \"condition\": \"cloudy\", \"humidity\": 81, \"wind_speed_kmh\": 16}",
+      "error": null,
+      "latency": 0.30242276191711426,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

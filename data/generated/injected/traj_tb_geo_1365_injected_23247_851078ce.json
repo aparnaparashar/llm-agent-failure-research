@@ -1,0 +1,186 @@
+{
+  "trajectory_id": "traj_tb_geo_1365_injected_23247_851078ce",
+  "task_id": "tb_geo_1365",
+  "task_description": "What is the weather in Paris and Berlin? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 23247,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In Berlin, the weather is cloudy with a temperature of 26\u00b0C and humidity at 76%. The temperature difference between the two cities is 7\u00b0C. The wind speed in Paris is 8 km/h, while in Berlin it is 11 km/h.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "ramp",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 4,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "moderate_ramp",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 5,
+  "total_latency": 11.6958,
+  "total_tool_calls": 2,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T23:47:17.531941",
+  "end_time": "2026-10-07T23:47:29.227787",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_1365_injected_23247_851078ce",
+      "step": 0,
+      "timestamp": 1791416849.2277966,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Paris and Berlin? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Paris and Berlin? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1365_injected_23247_851078ce",
+      "step": 1,
+      "timestamp": 1791416849.2278059,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "a6ef6223-4ab7-49e3-a6d7-21dc1cc45ddd"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Berlin"
+          },
+          "id": "40c7c3b7-0575-4ab3-ad85-bc1b76993c2c"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1365_injected_23247_851078ce",
+      "step": 2,
+      "timestamp": 1791416849.2278154,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "a6ef6223-4ab7-49e3-a6d7-21dc1cc45ddd"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1365_injected_23247_851078ce",
+      "step": 3,
+      "timestamp": 1791416849.227828,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "tool_call_id": "40c7c3b7-0575-4ab3-ad85-bc1b76993c2c"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_1365_injected_23247_851078ce",
+      "step": 4,
+      "timestamp": 1791416849.227833,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In Berlin, the weather is cloudy with a temperature of 26\u00b0C and humidity at 76%. The temperature difference between the two cities is 7\u00b0C. The wind speed in Paris is 8 km/h, while in Berlin it is 11 km/h.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791416840.833359,
+      "node": "agent",
+      "llm_latency": 3.2995,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 40
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416841.1360462,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3013,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416841.4373605,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3012,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791416849.2268422,
+      "node": "agent",
+      "llm_latency": 7.7882,
+      "has_tool_calls": false,
+      "response_length": 290,
+      "state_hash": "a4740f0dba31",
+      "input_tokens": 667,
+      "output_tokens": 79
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.3013429641723633,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "error": null,
+      "latency": 0.301220178604126,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "trajectory_id": "traj_tb_geo_0848_injected_14458_fc48d181",
+  "task_id": "tb_geo_0848",
+  "task_description": "What is the weather in Paris and Berlin? Calculate the temperature difference and evaluate humidity.",
+  "benchmark": "builtin",
+  "benchmark_version": "v1.0",
+  "source": "langgraph_ollama",
+  "source_version": "0.1.0",
+  "agent_name": "failure-research-agent",
+  "agent_version": "0.1.0",
+  "llm_provider": "ollama",
+  "llm_model": "qwen2.5:1.5b",
+  "model_version": null,
+  "temperature": 0.0,
+  "prompt_version": "v1.0",
+  "seed": 14458,
+  "execution_mode": "injected",
+  "agent_status": "completed",
+  "task_success": true,
+  "final_answer": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In Berlin, the weather is cloudy with a temperature of 26\u00b0C and humidity at 76%. The temperature difference between Paris and Berlin is 7\u00b0C, and the humidity difference is 7%.",
+  "failure_module": "system",
+  "failure_type": "tool_execution_error",
+  "temporal_mechanism": "abrupt",
+  "fault_injected": false,
+  "fault_exposed": false,
+  "injection_step": 2,
+  "actual_failure_step": null,
+  "severity": "high",
+  "onset_ramp": "abrupt",
+  "agent_recovered": null,
+  "agent_failed": false,
+  "num_steps": 6,
+  "total_latency": 29.0898,
+  "total_tool_calls": 3,
+  "error_count": 0,
+  "retry_count": 0,
+  "start_time": "2026-10-07T20:21:24.541527",
+  "end_time": "2026-10-07T20:21:53.631321",
+  "steps": [
+    {
+      "trajectory_id": "traj_tb_geo_0848_injected_14458_fc48d181",
+      "step": 0,
+      "timestamp": 1791404513.6313581,
+      "message_type": "HumanMessage",
+      "role": "human",
+      "content": "What is the weather in Paris and Berlin? Calculate the temperature difference and evaluate humidity.",
+      "task_text": "What is the weather in Paris and Berlin? Calculate the temperature difference and evaluate humidity."
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0848_injected_14458_fc48d181",
+      "step": 1,
+      "timestamp": 1791404513.6313975,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "",
+      "has_tool_calls": true,
+      "tool_calls": [
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Paris"
+          },
+          "id": "71419a4f-749e-4eca-b30e-3a0357ac6dcf"
+        },
+        {
+          "name": "get_weather",
+          "args": {
+            "city": "Berlin"
+          },
+          "id": "e6fadd8b-7ad7-4eae-a5ae-9dfa400058c8"
+        },
+        {
+          "name": "calculate",
+          "args": {
+            "expression": "temperature_difference = temperature_in_paris - temperature_in_berlin; humidity = calculate_humidity(temperature_in_paris, temperature_in_berlin)"
+          },
+          "id": "cd599231-01d4-442d-b7ef-caca7e53316a"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0848_injected_14458_fc48d181",
+      "step": 2,
+      "timestamp": 1791404513.6314278,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "tool_call_id": "71419a4f-749e-4eca-b30e-3a0357ac6dcf"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0848_injected_14458_fc48d181",
+      "step": 3,
+      "timestamp": 1791404513.6314557,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "get_weather",
+      "content": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "tool_call_id": "e6fadd8b-7ad7-4eae-a5ae-9dfa400058c8"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0848_injected_14458_fc48d181",
+      "step": 4,
+      "timestamp": 1791404513.6314695,
+      "message_type": "ToolMessage",
+      "role": "tool",
+      "tool_name": "calculate",
+      "content": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_in_paris - temperature_in_berlin; humidity = calculate_humidity(temperature_in_paris, temperature_in_berlin)\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "tool_call_id": "cd599231-01d4-442d-b7ef-caca7e53316a"
+    },
+    {
+      "trajectory_id": "traj_tb_geo_0848_injected_14458_fc48d181",
+      "step": 5,
+      "timestamp": 1791404513.6314821,
+      "message_type": "AIMessage",
+      "role": "assistant",
+      "content": "The weather in Paris is partly cloudy with a temperature of 33\u00b0C and humidity at 83%. In Berlin, the weather is cloudy with a temperature of 26\u00b0C and humidity at 76%. The temperature difference between Paris and Berlin is 7\u00b0C, and the humidity difference is 7%.",
+      "has_tool_calls": false
+    }
+  ],
+  "step_telemetry": [
+    {
+      "step": 0,
+      "timestamp": 1791404496.918313,
+      "node": "agent",
+      "llm_latency": 12.3718,
+      "has_tool_calls": true,
+      "response_length": 0,
+      "state_hash": "54052791d6a6",
+      "input_tokens": 513,
+      "output_tokens": 87
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404497.2259831,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3046,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404497.5284848,
+      "node": "tool",
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "tool_success": true,
+      "tool_latency": 0.3024,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404497.6306121,
+      "node": "tool",
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_in_paris - temperature_in_berlin; humidity = calculate_humidity(temperature_in_paris, temperature_in_berlin)"
+      },
+      "tool_success": true,
+      "tool_latency": 0.102,
+      "tool_error": null,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "step": 1,
+      "timestamp": 1791404513.6268935,
+      "node": "agent",
+      "llm_latency": 15.9952,
+      "has_tool_calls": false,
+      "response_length": 261,
+      "state_hash": "fc0286dc7cb5",
+      "input_tokens": 775,
+      "output_tokens": 65
+    }
+  ],
+  "tool_execution_log": [
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Paris"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Paris\", \"temperature_celsius\": 33, \"condition\": \"partly cloudy\", \"humidity\": 83, \"wind_speed_kmh\": 8}",
+      "error": null,
+      "latency": 0.30457353591918945,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "get_weather",
+      "tool_args": {
+        "city": "Berlin"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"success\", \"city\": \"Berlin\", \"temperature_celsius\": 26, \"condition\": \"cloudy\", \"humidity\": 76, \"wind_speed_kmh\": 11}",
+      "error": null,
+      "latency": 0.3023855686187744,
+      "injected": false,
+      "injection_details": null
+    },
+    {
+      "tool_name": "calculate",
+      "tool_args": {
+        "expression": "temperature_difference = temperature_in_paris - temperature_in_berlin; humidity = calculate_humidity(temperature_in_paris, temperature_in_berlin)"
+      },
+      "step": 1,
+      "execution_mode": "injected",
+      "success": true,
+      "result": "{\"status\": \"error\", \"expression\": \"temperature_difference = temperature_in_paris - temperature_in_berlin; humidity = calculate_humidity(temperature_in_paris, temperature_in_berlin)\", \"error\": \"invalid syntax (<string>, line 1)\"}",
+      "error": null,
+      "latency": 0.1020364761352539,
+      "injected": false,
+      "injection_details": null
+    }
+  ]
+}
