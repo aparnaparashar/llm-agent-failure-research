@@ -1,17 +1,72 @@
-# Byte-compiled / optimized / DLL files
+# ============================================================
+# LLM Agent Failure Research - .gitignore
+# ============================================================
+
+# ---------- Python bytecode & caches ----------
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyo
 
-# Testing and virtual environments
+# ---------- Testing ----------
 .pytest_cache/
+.coverage
+htmlcov/
+tests/
+
+# ---------- Virtual environments ----------
 .venv/
 venv/
 env/
-.coverage
-htmlcov/
+.env
 
+# ---------- IDE / Editor ----------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
 
-# OS metadata
+# ---------- OS metadata ----------
 .DS_Store
 Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# ---------- Logs ----------
+results/logs/
+*.log
+
+# ---------- Large generated data (4000 trajectory JSONs = 27 MB) ----------
+data/generated/healthy/
+data/generated/injected/
+data/generated/organic/
+data/generated/counterfactual/
+
+# ---------- Raw downloaded benchmarks ----------
+data/raw/
+
+# ---------- Processed intermediate files (reproducible from scripts) ----------
+data/processed/features.npz
+data/processed/features/
+
+# ---------- Trained model binaries (reproducible from training scripts) ----------
+models/saved/*.joblib
+
+# ---------- Batch progress checkpoint ----------
+data/batch_progress.json
+
+# ---------- Experiment manifests (auto-generated, reproducible) ----------
+experiments/
+
+# ---------- Reproducibility report (auto-generated) ----------
+results/tables/reproducibility_report.json
+
+# ---------- Misc ----------
+*.egg-info/
+dist/
+build/
+*.egg
+pip-log.txt
