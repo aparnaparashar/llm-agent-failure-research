@@ -92,7 +92,7 @@ llm-agent-failure-research/
 │   ├── 03_failure_injection/manifest.json
 │   ├── 04_detector/manifest.json
 │   ├── 05_calibration/manifest.json
-│   ├── 06_counterfactual/manifest.json
+│   ├── 06_counterfactual/manifest.json      # (Prototype stage; live counterfactuals deferred to future work)
 │   ├── 07_policy/manifest.json
 │   ├── 08_regret/manifest.json
 │   ├── 09_organic/manifest.json
@@ -127,7 +127,7 @@ llm-agent-failure-research/
     │   ├── run_healthy.py                   # Standalone healthy run generator
     │   ├── run_injected.py                  # Standalone injected fault generator
     │   ├── run_organic.py                   # Standalone organic failure runner
-    │   ├── generate_counterfactuals.py      # Counterfactual intervention generator
+    │   ├── generate_counterfactuals.py      # (Prototype script; live counterfactuals deferred to future scope)
     │   ├── test_ollama.py                   # Ollama local daemon verification
     │   └── quick_test.py                    # 1-task sanity check
     │

@@ -1,4 +1,4 @@
-# Online Telemetry-Based Failure Detection in LLM Agents: A Causal Guardrail Framework with Counterfactual Policy Optimization
+# Online Telemetry-Based Failure Detection in LLM Tool-Using Agents: An Empirical Study of Causal Runtime Signals
 
 **Authors:** [Your Name], [Institution]
 
@@ -8,7 +8,9 @@
 
 ## Abstract
 
-Large Language Model (LLM) agents that invoke external tools represent a powerful paradigm for autonomous task completion, yet they remain brittle: hallucinations, tool cascades, and planning failures cause trajectories to fail silently, wasting compute, producing harmful outputs, and eroding user trust. Existing approaches to failure detection rely on post-hoc evaluation or costly per-step LLM calls, making them unsuitable for real-time deployment. We present a **causal guardrail framework** that detects imminent failure in LLM agents using only lightweight telemetry features observable at runtime—without any lookahead into future trajectory steps. Operating on 4,000 real LangGraph + Ollama (qwen3:8b) trajectories executing ToolBench tasks (19,233 step instances), we extract 14 strictly causal features spanning temporal, tool-error, context, and semantic signals, and train five classifier families to predict whether a trajectory will fail within the next two steps. Our best model—a calibrated XGBoost classifier—achieves ROC-AUC 0.912 [0.905, 0.919] and PR-AUC 0.860 [0.848, 0.872] with an Expected Calibration Error (ECE) of 0.023. We demonstrate a **94.75% overall detection rate** and a **28.2% early detection rate** with a mean lead time of 2.66 steps. A counterfactual adaptive intervention policy driven by real-time risk scores achieves **83.4% regret reduction** relative to a passive baseline, outperforming static-threshold and calibrated-only policies. Critically, the model generalizes zero-shot from injected failures to natural organic LLM failures (ROC-AUC 0.915 on organic vs. 0.899 on injected), and achieves inference at **0.004 ms per step**—156,219× faster than an LLM-as-a-judge baseline—at zero token cost. These results establish that lightweight causal telemetry is sufficient for reliable, deployable, real-time failure interception in production LLM agent systems.
+Large Language Model (LLM) agents that invoke external tools represent a powerful paradigm for autonomous task completion, yet they remain brittle: hallucinations, tool execution cascades, and planning loops cause trajectories to fail silently, wasting compute, producing corrupted outputs, and degrading reliability. Existing failure analysis methods predominantly rely on post-hoc evaluation or computationally expensive per-step LLM-as-a-judge calls, making continuous real-time monitoring impractical. In this paper, we conduct an **empirical study investigating whether imminent failures in tool-using LLM agents can be predicted online using only lightweight, causal telemetry features** observable at runtime—without any lookahead into future trajectory steps. 
+
+Operating on a benchmark dataset of 4,000 real LangGraph + Ollama (`qwen3:8b`) trajectories executing diverse ToolBench tasks (comprising 19,233 step instances across healthy, injected, and organic execution modes), we extract 14 strictly causal telemetry signals spanning temporal progression, tool error accumulation, context dynamics, and semantic lexical diversity. We evaluate five classifier families (XGBoost, Gradient Boosting, Random Forest, Logistic Regression, and Multi-Layer Perceptrons) to predict failure within a 2-step horizon ($H=2$). Our primary model—an XGBoost classifier—achieves an ROC-AUC of 0.912 [95% CI: 0.905, 0.919], PR-AUC of 0.860 [0.848, 0.872], and an Expected Calibration Error (ECE) of 0.023 without post-hoc correction. The model achieves an overall failure detection rate of 94.75% with a 28.2% early detection rate and a mean lead time of 2.66 steps prior to failure. Through offline decision-theoretic regret simulation, we observe that risk-calibrated intervention policies can reduce decision regret by up to 83.4% relative to passive execution. Crucially, models trained on synthetic injected failures transfer zero-shot to natural organic LLM failures (ROC-AUC 0.915 organic vs. 0.899 injected). Feature inference requires just **0.004 ms per step** at zero token overhead—over 156,000× faster than an LLM judge. While deploying an active, closed-loop runtime guardrail with live corrective actions remains future work, our empirical findings demonstrate that lightweight causal telemetry provides a reliable, cost-effective foundation for predictive agent monitoring.
 
 ---
 
@@ -21,31 +23,34 @@ The deployment of LLM-powered agents in production settings—autonomous systems
 The consequences of undetected failure are significant. In high-stakes domains—legal research, medical information retrieval, financial analysis—a failed trajectory that proceeds to completion may produce confidently wrong outputs. In resource-constrained settings, every additional inference step consumed by a doomed trajectory represents wasted compute. And in systems where agents interact with external APIs, a looping agent may trigger rate limits, incur costs, or produce irreversible side effects.
 
 > [!IMPORTANT]
-> The central challenge is *online* failure detection: identifying that a trajectory is heading toward failure **before** it completes, using only information available at step $t$, without lookahead into future steps.
+> **Core Empirical Research Question:** Can imminent trajectory failures in tool-using LLM agents be reliably predicted *online* using lightweight telemetry signals strictly observable up to step $t$, without future trajectory lookahead or heavy per-step LLM evaluation?
 
-### 1.2 Problem Statement
+### 1.2 Problem Scope and Focus
 
-Given an LLM agent trajectory $\tau = (s_0, a_0, o_0, s_1, a_1, o_1, \ldots, s_T)$ executing on a task from a benchmark environment, we seek to learn a **causal risk function** $\hat{r}: \mathcal{F}_t \to [0, 1]$ that maps a feature vector $\mathbf{f}_t$ derived from observable telemetry up to step $t$ to the probability that the trajectory will fail within the next $H$ steps. This risk score is then consumed by a **runtime intervention policy** $\pi: [0,1] \to \mathcal{A}_{\text{intervene}}$ that decides whether to halt, restart, or modify the agent.
+Given an LLM agent trajectory $\tau = (s_0, a_0, o_0, s_1, a_1, o_1, \ldots, s_T)$ executing on a task from an interactive benchmark environment, this study focuses on learning and characterizing a **causal risk function** $\hat{r}: \mathcal{F}_t \to [0, 1]$ that maps a feature vector $\mathbf{f}_t$ derived from observable telemetry up to step $t$ to the probability that the trajectory will fail within the next $H$ steps. 
 
-The key constraint is **causal validity**: no feature in $\mathbf{f}_t$ may depend on any observation or action after step $t$. This ensures the framework is deployable in real-time without violating the temporal ordering of agent execution.
+To quantify the practical utility of these risk predictions, we perform an offline simulated decision analysis evaluating hypothetical intervention policies $\pi: [0,1] \to \mathcal{A}_{\text{intervene}}$ under varying risk thresholds and regret penalties. 
 
-### 1.3 Contributions
+> [!NOTE]
+> **Study Scope vs. Future Scope:** This work is structured as a **rigorous empirical study** establishing the statistical properties, predictive accuracy, feature drivers, and computational efficiency of online telemetry. Designing, implementing, and deploying an *in-situ* active runtime guardrail—complete with live, closed-loop corrective actions and live counterfactual recovery branching—is positioned as high-impact future scope directly enabled by the empirical foundations established herein.
 
-This paper makes the following contributions:
+### 1.3 Key Contributions
 
-- **C1 — Causal Feature Engineering:** We define 14 strictly causal telemetry features for LLM agent trajectories, spanning temporal progression, tool-error accumulation, message-context dynamics, and semantic diversity, with formal proofs of causal validity.
+This study provides the following empirical contributions:
 
-- **C2 — Comprehensive Classifier Evaluation:** We train and compare five classifier families (XGBoost, Gradient Boosting, Random Forest, Logistic Regression, MLP) on 4,000 real agent trajectories with bootstrap confidence intervals and multiple statistical significance tests.
+- **C1 — Causal Telemetry Signal Formulation:** We define 14 strictly causal telemetry features for LLM agent trajectories, spanning temporal progression, tool-error accumulation, message-context dynamics, and semantic diversity, with formal guarantees against lookahead data leakage.
 
-- **C3 — Early Detection Analysis:** We demonstrate that imminent failure can be detected a mean of 2.66 steps in advance with a 94.75% detection rate, establishing Hypothesis H1.
+- **C2 — Comprehensive Multi-Model Benchmark:** We train and evaluate five classifier architectures (XGBoost, Gradient Boosting, Random Forest, Logistic Regression, MLP) on 4,000 real agent trajectories (19,233 step instances), supported by 1,000-iteration bootstrap confidence intervals and rigorous statistical significance tests (McNemar, permutation tests, Wilcoxon).
 
-- **C4 — Adaptive Counterfactual Policy:** We formalize four runtime intervention policies and show that an adaptive regret-minimizing policy achieves 83.4% regret reduction, far exceeding static and calibrated baselines.
+- **C3 — Early Failure Detection & Lead Time Profiling:** We systematically analyze the temporal dynamics of detection, demonstrating that imminent failure can be flagged a mean of 2.66 steps in advance with a 94.75% overall detection rate.
 
-- **C5 — Zero-Shot Organic Transfer:** We show the model trained on injected failures generalizes to natural organic LLM failures with no performance degradation (ROC-AUC 0.915 organic vs. 0.899 injected).
+- **C4 — Decision-Theoretic Regret Simulation:** We formalize an offline decision-regret framework benchmarking four hypothetical intervention policies, showing that calibrated risk scoring achieves an 83.4% reduction in simulated decision regret over passive execution.
 
-- **C6 — Failure Taxonomy:** We introduce a taxonomy of 21 failure modes across 16 cognitive and 5 temporal categories and demonstrate category-specific detection performance.
+- **C5 — Zero-Shot Injected-to-Organic Generalization:** We confirm Hypothesis H6: models trained on synthetically injected tool/system faults transfer zero-shot to natural organic LLM reasoning failures without performance degradation (ROC-AUC 0.915 organic vs. 0.899 injected).
 
-- **C7 — Efficiency Baseline:** We compare our 0.004 ms telemetry guardrail against an LLM-as-a-judge baseline, demonstrating a 156,219× speed advantage at zero token cost.
+- **C6 — Granular Failure Taxonomy Breakdown:** We evaluate predictive performance across 21 fine-grained failure modes (16 cognitive and 5 temporal dynamics), identifying that semantic lexical diversity and consecutive tool errors serve as the strongest universal failure precursors.
+
+- **C7 — Computational Efficiency & Feasibility Benchmark:** We benchmark inference latency and cost against an LLM-as-a-judge baseline, demonstrating that scalar telemetry evaluation requires only **0.004 ms per step** (a 156,219× speedup) at zero token cost, proving practical feasibility for real-time monitoring.
 
 ### 1.4 Paper Organization
 
@@ -389,7 +394,7 @@ $$\Delta_{\text{adaptive}} = \frac{1.6891 - 0.2801}{1.6891} = 83.4\%$$
 The adaptive policy achieves the lowest mean regret (0.2801) and highest task success rate (94.4%), at the cost of a higher intervention rate (56.6%) and more false alarms (651). The calibrated policy represents a better operating point for cost-sensitive deployments: it achieves 75.2% regret reduction with only 42.6% intervention rate.
 
 > [!IMPORTANT]
-> The 83.4% regret reduction of the adaptive policy demonstrates that **counterfactual regret minimization based on calibrated LLM agent telemetry is a viable and highly effective runtime guardrail strategy**—reducing task failure from 33.8% to 5.6% at steady state.
+> The 83.4% regret reduction demonstrated by the adaptive policy highlights that **calibrated risk scoring provides an effective theoretical decision boundary for future runtime guardrails**—reducing hypothetical task failure in offline simulation from 33.8% to 5.6%. In Section 12, we detail how this simulated decision framework lays the direct groundwork for active, closed-loop guardrail implementations in production environments.
 
 **Figure 4:** Regret distribution across policies (`results/figures/regret_distribution.png`). Box plots show the per-trajectory regret distribution for each policy, with the adaptive policy exhibiting the tightest distribution and lowest median.
 
@@ -555,9 +560,9 @@ The LLM judge achieves higher F1 (0.792 vs. 0.628 on this evaluation slice), ref
 - **\$0.342 per 1,000 steps** scales to \$342 per million steps—economically infeasible for high-volume production deployments.
 
 > [!IMPORTANT]
-> The XGBoost telemetry guardrail achieves **0.004 ms inference at zero token cost**, making it deployable as an inline middleware component in any LangGraph pipeline without imposing measurable overhead on agent execution latency.
+> The XGBoost telemetry classifier achieves **0.004 ms inference at zero token cost**, demonstrating that lightweight telemetry scoring is computationally feasible for future inline middleware without imposing latency bottlenecks on agent execution.
 
-A practical hybrid architecture could combine the telemetry guardrail for continuous real-time screening with an LLM judge triggered only when the guardrail risk score exceeds a high-confidence threshold (e.g., 0.85), reducing LLM judge invocations by an estimated 80–90% while preserving its accuracy for borderline cases.
+A promising hybrid architecture for future guardrails could combine continuous lightweight telemetry screening with an LLM judge invoked selectively only when telemetry risk scores exceed an uncertain or critical threshold (e.g., 0.85), eliminating up to 90% of redundant LLM judge calls while retaining high precision on ambiguous trajectories.
 
 ---
 
@@ -585,31 +590,37 @@ Our finding that XGBoost is already well-calibrated (ECE 0.023) and that post-ho
 
 **L5 — False Alarm Rate:** At threshold 0.5, the false alarm rate of 32.54% is non-trivial. In production, this translates to unnecessary interventions that interrupt healthy trajectories. The adaptive policy mitigates this somewhat (by being more aggressive but also more targeted), but threshold calibration for specific deployment contexts is necessary.
 
-### 12.4 Future Work
+### 12.4 Future Scope & Roadmap
 
-**F1 — Trajectory Embedding Models:** Training sequence models (e.g., Transformers, LSTMs) on raw trajectory state representations may capture temporal dependencies beyond what scalar summary statistics can encode.
+The empirical findings of this study establish the core predictive mechanics of agent failure. We identify five critical directions for future system design and engineering:
 
-**F2 — Multi-Horizon Prediction:** Extending the prediction horizon to produce a full failure probability curve $\hat{r}_t^{(H)}$ over $H \in \{1, 2, 5, 10\}$ simultaneously would enable richer intervention timing decisions.
+**F1 — Active Closed-Loop Runtime Guardrail:** Building an operational, inline middleware guardrail that dynamically halts, reroutes, or repairs agents in production environments. Rather than passive logging, this system will integrate calibrated telemetry scores into runtime execution loops.
 
-**F3 — Online Learning:** Implementing online model updates from observed intervention outcomes would enable the guardrail to adapt to model updates, new tool sets, or distributional shifts without full retraining.
+**F2 — Empirical Counterfactual Recovery & Branch Execution:** While our current work modeled intervention benefits through offline decision-theoretic regret simulation, a natural next step is executing real-time counterfactual branches—forking live agent memory states at step $t$ and executing candidate recovery actions (e.g., prompt reflection, tool argument repair, parameter regeneration) to empirically measure ground-truth recovery success.
 
-**F4 — Multi-Agent Settings:** In settings where multiple LLM agents collaborate, failure in one agent may precipitate failures in others. Extending the causal telemetry framework to multi-agent interaction graphs is a natural generalization.
+**F3 — Multi-Horizon Risk Estimation:** Extending the prediction horizon to produce a full continuous risk curve $\hat{r}_t^{(H)}$ across $H \in \{1, 2, 5, 10\}$ simultaneously, providing nuanced early-warning horizons for complex, long-horizon tasks.
 
-**F5 — Human-in-the-Loop Integration:** Designing intervention actions beyond simple halting—such as inserting clarifying prompts, invoking fallback models, or escalating to human review—would increase the practical utility of the framework.
+**F4 — Online Continuous Adaptation:** Implementing streaming online updates from observed intervention outcomes, enabling telemetry classifiers to adapt dynamically to newly added tools, prompt modifications, or API version shifts without offline retraining.
 
-### 12.5 Deployment Considerations
+**F5 — Multi-Agent Interaction Telemetry:** Extending causal feature extraction to collaborative multi-agent settings, where error propagation and cascading failure cross agent boundaries.
 
-The proposed framework is deployable as an **inline LangGraph middleware** that instruments each graph node transition. At 0.004 ms per step, it adds negligible latency to any agent pipeline. The required instrumentation is: (1) a step counter, (2) a latency logger, (3) a tool call tracker with error detection, and (4) a message logger with character counting and type-token ratio computation. All four can be implemented as thin wrappers around standard LangGraph hooks without modifying the agent's core reasoning logic.
+### 12.5 Practical Deployment Feasibility
+
+Although active guardrail implementation is future work, our benchmarks confirm that the prerequisite infrastructure is remarkably lightweight. A telemetry collector requires only: (1) an execution step counter, (2) per-step and cumulative latency tracking, (3) tool invocation and error flags, and (4) basic token/lexical type-token ratio calculation. Operating at **0.004 ms per step**, such instrumentation introduces zero tangible overhead to standard orchestration graphs (such as LangGraph or CrewAI).
 
 ---
 
 ## 13. Conclusion
 
-We have presented a **causal guardrail framework** for real-time failure detection in LLM-powered tool-using agents. By extracting 14 strictly causal telemetry features from 4,000 LangGraph + qwen3:8b trajectories on ToolBench tasks, we train classifiers that achieve ROC-AUC 0.912 with ECE 0.023, detect imminent failure 2.66 steps in advance on average, and enable an adaptive intervention policy that reduces task failure from 33.8% to 5.6%—an 83.4% regret reduction. The framework operates at 0.004 ms per step, 156,219× faster than an LLM-as-a-judge baseline, at zero token cost.
+We have presented a comprehensive **empirical study of online causal telemetry for failure detection in LLM tool-using agents**. By analyzing 4,000 LangGraph + `qwen3:8b` trajectories across ToolBench tasks (comprising 19,233 step instances), we demonstrate that imminent failure can be reliably predicted up to 2 steps in advance ($H=2$) without future lookahead or heavy LLM-as-a-judge calls. 
 
-Three findings stand out as particularly significant. First, **lexical diversity is the most predictive single feature** (importance 0.307), indicating that semantic degradation in agent outputs precedes observable behavioral failure. Second, **zero-shot transfer from injected to organic failures succeeds** (ROC-AUC 0.915 on organic, exceeding 0.899 on in-distribution injected failures), validating the use of controlled fault injection as a data generation strategy for training production-ready failure detectors. Third, **post-hoc probability calibration is unnecessary** for XGBoost on this task, and may even be harmful—a finding with practical implications for calibration workflows in ML deployment pipelines.
+Key empirical insights include:
+1. **Lightweight Telemetry Sufficiency:** A standard gradient-boosted classifier (XGBoost) achieves an ROC-AUC of 0.912, PR-AUC of 0.860, and an ECE of 0.023, detecting 94.75% of failures with a mean lead time of 2.66 steps.
+2. **Semantic Divergence as Early Indicator:** Lexical diversity is the single most predictive feature (importance 0.307), demonstrating that cognitive degeneration precedes observable tool crashes.
+3. **Zero-Shot Organic Transfer:** Detectors trained on synthetic fault injections transfer effectively to natural LLM reasoning failures (ROC-AUC 0.915 organic vs. 0.899 injected), proving that fault injection is an effective training methodology for real-world monitoring.
+4. **Extreme Computational Efficiency:** Telemetry classification runs in 0.004 ms per step with zero token overhead, outperforming LLM-as-a-judge latency by over 156,000×.
 
-This work establishes a principled, efficient, and deployable methodology for runtime LLM agent monitoring. As LLM agents are deployed in increasingly high-stakes settings, online failure detection of the kind we demonstrate here represents an essential component of responsible AI system design.
+While deploying live closed-loop guardrails and executing real-time counterfactual interventions remain high-impact directions for future work, this study establishes the empirical foundation and statistical validity needed to make runtime agent monitoring practical, reliable, and scalable.
 
 ---
 

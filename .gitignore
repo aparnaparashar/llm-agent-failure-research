@@ -64,6 +64,13 @@ experiments/
 # ---------- Reproducibility report (auto-generated) ----------
 results/tables/reproducibility_report.json
 
+# ---------- Counterfactual module (scaffolding, not used in final study) ----------
+counterfactual/
+models/intervention_policy/
+scripts/01_dataset_curation/generate_counterfactuals.py
+results/tables/counterfactual_branches.json
+data/generated/counterfactual/
+
 # ---------- Misc ----------
 *.egg-info/
 dist/
