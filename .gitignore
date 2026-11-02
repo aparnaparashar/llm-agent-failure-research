@@ -58,8 +58,6 @@ models/saved/*.joblib
 # ---------- Batch progress checkpoint ----------
 data/batch_progress.json
 
-# ---------- Experiment manifests (auto-generated, reproducible) ----------
-experiments/
 
 # ---------- Reproducibility report (auto-generated) ----------
 results/tables/reproducibility_report.json
@@ -77,3 +75,4 @@ dist/
 build/
 *.egg
 pip-log.txt
+demo_llm_answers_and_telemetry.py
