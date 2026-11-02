@@ -3,27 +3,27 @@
     "baseline": "Gradient Boosting",
     "mcnemar": {
       "contingency_table": {
-        "both_correct": 2761,
-        "a_only": 6,
-        "b_only": 2,
-        "both_wrong": 153
+        "both_correct": 4588,
+        "a_only": 88,
+        "b_only": 100,
+        "both_wrong": 912
       },
-      "chi2_stat": 1.125,
-      "p_value": 0.2888443663464818,
+      "chi2_stat": 0.6436,
+      "p_value": 0.42240404833424894,
       "significant_at_05": false,
       "bonferroni_p": 1.0,
       "bonferroni_sig": false,
-      "fdr_bh_p": 0.288844,
+      "fdr_bh_p": 0.422404,
       "fdr_bh_sig": false
     },
     "permutation_auc": {
-      "observed_diff": 0.001,
-      "p_value": 0.219,
-      "significant_at_05": false
+      "observed_diff": -0.002,
+      "p_value": 0.046,
+      "significant_at_05": true
     },
     "wilcoxon_bootstrap_auc": {
-      "stat": 723.0,
-      "p_value": 9.511157402357572e-82,
+      "stat": 195.0,
+      "p_value": 4.075378129716464e-83,
       "significant_at_05": true
     }
   },
@@ -31,21 +31,21 @@
     "baseline": "Random Forest",
     "mcnemar": {
       "contingency_table": {
-        "both_correct": 2589,
-        "a_only": 178,
-        "b_only": 28,
-        "both_wrong": 127
+        "both_correct": 4476,
+        "a_only": 200,
+        "b_only": 122,
+        "both_wrong": 890
       },
-      "chi2_stat": 107.7718,
-      "p_value": 3.0157017402832425e-25,
+      "chi2_stat": 18.413,
+      "p_value": 1.778364827042749e-05,
       "significant_at_05": true,
-      "bonferroni_p": 0.0,
+      "bonferroni_p": 7.1e-05,
       "bonferroni_sig": true,
-      "fdr_bh_p": 0.0,
+      "fdr_bh_p": 3.6e-05,
       "fdr_bh_sig": true
     },
     "permutation_auc": {
-      "observed_diff": 0.011,
+      "observed_diff": 0.0186,
       "p_value": 0.0,
       "significant_at_05": true
     },
@@ -59,13 +59,13 @@
     "baseline": "Logistic Regression",
     "mcnemar": {
       "contingency_table": {
-        "both_correct": 2215,
-        "a_only": 552,
-        "b_only": 65,
-        "both_wrong": 90
+        "both_correct": 4277,
+        "a_only": 399,
+        "b_only": 156,
+        "both_wrong": 856
       },
-      "chi2_stat": 382.8136,
-      "p_value": 3.036680308463372e-85,
+      "chi2_stat": 105.5207,
+      "p_value": 9.391075412376647e-25,
       "significant_at_05": true,
       "bonferroni_p": 0.0,
       "bonferroni_sig": true,
@@ -73,7 +73,7 @@
       "fdr_bh_sig": true
     },
     "permutation_auc": {
-      "observed_diff": 0.1498,
+      "observed_diff": 0.0476,
       "p_value": 0.0,
       "significant_at_05": true
     },
@@ -87,27 +87,27 @@
     "baseline": "MLP Classifier",
     "mcnemar": {
       "contingency_table": {
-        "both_correct": 2539,
-        "a_only": 228,
-        "b_only": 65,
-        "both_wrong": 90
+        "both_correct": 4505,
+        "a_only": 171,
+        "b_only": 138,
+        "both_wrong": 874
       },
-      "chi2_stat": 89.57,
-      "p_value": 2.9598360329068804e-21,
-      "significant_at_05": true,
-      "bonferroni_p": 0.0,
-      "bonferroni_sig": true,
-      "fdr_bh_p": 0.0,
-      "fdr_bh_sig": true
+      "chi2_stat": 3.3139,
+      "p_value": 0.06869561729009338,
+      "significant_at_05": false,
+      "bonferroni_p": 0.274782,
+      "bonferroni_sig": false,
+      "fdr_bh_p": 0.091594,
+      "fdr_bh_sig": false
     },
     "permutation_auc": {
-      "observed_diff": 0.0325,
-      "p_value": 0.0,
+      "observed_diff": 0.0051,
+      "p_value": 0.009,
       "significant_at_05": true
     },
     "wilcoxon_bootstrap_auc": {
-      "stat": 0.0,
-      "p_value": 1.2647189486921486e-83,
+      "stat": 2.0,
+      "p_value": 1.2800120754180319e-83,
       "significant_at_05": true
     }
   }

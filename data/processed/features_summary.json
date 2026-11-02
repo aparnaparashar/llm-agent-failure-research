@@ -1,6 +1,6 @@
 {
-  "total_step_samples": 9736,
-  "total_trajectories": 2003,
+  "total_step_samples": 19233,
+  "total_trajectories": 4000,
   "num_features": 14,
   "feature_names": [
     "step_ratio",
@@ -18,9 +18,9 @@
     "lexical_diversity",
     "repetition_ngram_score"
   ],
-  "positive_rate_H2": 0.20152013147082992,
-  "train_samples": 6814,
-  "val_samples": 1462,
-  "test_samples": 1460,
+  "positive_rate_H2": 0.3572505589351635,
+  "train_samples": 13545,
+  "val_samples": 2935,
+  "test_samples": 2753,
   "csv_path": "C:\\Users\\aparn\\Desktop\\Minor\\llm-agent-failure-research\\data\\processed\\telemetry_dataset.csv"
 }

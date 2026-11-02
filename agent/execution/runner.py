@@ -25,6 +25,8 @@ from agent.tools.executor import ToolExecutor
 
 logger = logging.getLogger(__name__)
 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 
 class TrajectoryRunner:
     """
@@ -37,12 +39,12 @@ class TrajectoryRunner:
         ollama_llm: Optional[OllamaLLM] = None,
         tool_registry: Optional[ToolRegistry] = None,
         config_path: Optional[str] = None,
-        output_dir: str = "data/generated",
+        output_dir: Optional[str] = None,
         max_steps: int = 30,
     ):
         # Load LLM
         if ollama_llm is None:
-            llm_config_path = config_path or os.path.join("configs", "llm.yaml")
+            llm_config_path = config_path or os.path.join(PROJECT_ROOT, "configs", "llm.yaml")
             self.ollama_llm = OllamaLLM(OllamaConfig.from_yaml(llm_config_path))
         else:
             self.ollama_llm = ollama_llm
@@ -53,7 +55,7 @@ class TrajectoryRunner:
             tools=self.tool_registry.get_tools(),
         )
 
-        self.output_dir = output_dir
+        self.output_dir = output_dir or os.path.join(PROJECT_ROOT, "data", "generated")
         self.max_steps = max_steps
 
         # Build the graph
@@ -72,6 +74,7 @@ class TrajectoryRunner:
         seed: int = 42,
         injection_config: Optional[dict] = None,
         injection_hook: Optional[Any] = None,
+        dynamic_tools: Optional[list] = None,
     ) -> dict:
         """
         Execute a single task and return the complete trajectory.
@@ -93,6 +96,19 @@ class TrajectoryRunner:
             f"Starting {execution_mode} run: task={task_id}, "
             f"trajectory={trajectory_id}, seed={seed}"
         )
+
+        # Register dynamic tools if provided (fresh registry per task to avoid tool schema bloating)
+        if dynamic_tools:
+            self.tool_registry = ToolRegistry()
+            for t in dynamic_tools:
+                self.tool_registry.register(t)
+            self.tool_executor = ToolExecutor(tools=self.tool_registry.get_tools())
+            self.graph = build_agent_graph(
+                ollama_llm=self.ollama_llm,
+                tool_registry=self.tool_registry,
+                tool_executor=self.tool_executor,
+                max_steps=self.max_steps,
+            )
 
         # Set up injection if in injected mode
         if execution_mode == "injected" and injection_hook is not None:

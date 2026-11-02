@@ -59,6 +59,9 @@ models/saved/*.joblib
 data/batch_progress.json
 
 
+# ---------- Experiment manifests (auto-generated) ----------
+experiments/
+
 # ---------- Reproducibility report (auto-generated) ----------
 results/tables/reproducibility_report.json
 

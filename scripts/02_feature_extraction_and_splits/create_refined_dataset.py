@@ -30,7 +30,9 @@ logger = logging.getLogger("create_refined_dataset")
 def main():
     logger.info("Building refined 15-column training dataset...")
 
-    csv_path = os.path.join(PROJECT_ROOT, "data", "processed", "features", "telemetry_features.csv")
+    csv_path = os.path.join(PROJECT_ROOT, "data", "processed", "telemetry_dataset.csv")
+    if not os.path.exists(csv_path):
+        csv_path = os.path.join(PROJECT_ROOT, "data", "processed", "features", "telemetry_features.csv")
     if not os.path.exists(csv_path):
         csv_path = os.path.join(PROJECT_ROOT, "data", "processed", "telemetry_dataset.csv")
 

@@ -105,7 +105,9 @@ def run_command_logged(cmd, description):
 
 def build_refined_dataset():
     logger.info("Building refined 15-column dataset (data/processed/refined_training_dataset.csv)...")
-    csv_path = os.path.join(PROJECT_ROOT, "data", "processed", "features", "telemetry_features.csv")
+    csv_path = os.path.join(PROJECT_ROOT, "data", "processed", "telemetry_dataset.csv")
+    if not os.path.exists(csv_path):
+        csv_path = os.path.join(PROJECT_ROOT, "data", "processed", "features", "telemetry_features.csv")
     if not os.path.exists(csv_path):
         csv_path = os.path.join(PROJECT_ROOT, "data", "processed", "telemetry_dataset.csv")
 

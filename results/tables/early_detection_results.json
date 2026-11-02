@@ -1,279 +1,277 @@
 {
   "primary_threshold": 0.5,
   "primary_results": {
-    "total_trajectories": 301,
-    "failure_trajectories": 135,
-    "healthy_trajectories": 166,
-    "detection_rate": 0.9407407407407408,
-    "early_detection_rate": 0.9185185185185185,
-    "false_alarm_rate": 0.23493975903614459,
+    "total_trajectories": 600,
+    "failure_trajectories": 305,
+    "healthy_trajectories": 295,
+    "detection_rate": 0.9475409836065574,
+    "early_detection_rate": 0.2819672131147541,
+    "false_alarm_rate": 0.3254237288135593,
     "lead_time": {
-      "mean": 0.07258064516129033,
+      "mean": 2.6627906976744184,
       "median": 0.0,
-      "std": 0.3630823930480783,
-      "iqr": 0.0,
+      "std": 10.635187827160516,
+      "iqr": 1.0,
       "min": 0.0,
-      "max": 2.0
+      "max": 56.0
     },
     "case_distribution": {
-      "true_negative": 127,
-      "true_positive": 124,
-      "false_alarm": 39,
-      "false_negative": 8,
-      "late_detection": 3
+      "late_detection": 203,
+      "true_negative": 199,
+      "false_alarm": 96,
+      "true_positive": 86,
+      "false_negative": 16
     },
     "mode_breakdown": {
-      "organic": {
-        "total_trajectories": 44,
-        "failure_trajectories": 18,
-        "early_detection_rate": 1.0,
-        "mean_lead_time": 0.16666666666666666,
-        "false_alarm_rate": 0.2692307692307692
-      },
       "injected": {
-        "total_trajectories": 160,
-        "failure_trajectories": 79,
-        "early_detection_rate": 0.9240506329113924,
-        "mean_lead_time": 0.0,
-        "false_alarm_rate": 0.19753086419753085
+        "total_trajectories": 297,
+        "failure_trajectories": 150,
+        "early_detection_rate": 0.26666666666666666,
+        "mean_lead_time": 1.3,
+        "false_alarm_rate": 0.36054421768707484
       },
       "healthy": {
-        "total_trajectories": 97,
-        "failure_trajectories": 38,
-        "early_detection_rate": 0.868421052631579,
-        "mean_lead_time": 0.18181818181818182,
-        "false_alarm_rate": 0.2711864406779661
+        "total_trajectories": 204,
+        "failure_trajectories": 112,
+        "early_detection_rate": 0.33035714285714285,
+        "mean_lead_time": 3.2432432432432434,
+        "false_alarm_rate": 0.31521739130434784
+      },
+      "organic": {
+        "total_trajectories": 99,
+        "failure_trajectories": 43,
+        "early_detection_rate": 0.20930232558139536,
+        "mean_lead_time": 6.333333333333333,
+        "false_alarm_rate": 0.25
       }
     }
   },
   "threshold_sensitivity": {
     "0.3": {
-      "total_trajectories": 301,
-      "failure_trajectories": 135,
-      "healthy_trajectories": 166,
-      "detection_rate": 0.9407407407407408,
-      "early_detection_rate": 0.9185185185185185,
-      "false_alarm_rate": 0.26506024096385544,
+      "total_trajectories": 600,
+      "failure_trajectories": 305,
+      "healthy_trajectories": 295,
+      "detection_rate": 1.0,
+      "early_detection_rate": 0.9967213114754099,
+      "false_alarm_rate": 0.9966101694915255,
       "lead_time": {
-        "mean": 0.07258064516129033,
+        "mean": 0.9539473684210527,
         "median": 0.0,
-        "std": 0.3630823930480783,
+        "std": 5.898080436831561,
         "iqr": 0.0,
         "min": 0.0,
-        "max": 2.0
+        "max": 57.0
       },
       "case_distribution": {
-        "true_positive": 124,
-        "true_negative": 122,
-        "false_alarm": 44,
-        "false_negative": 8,
-        "late_detection": 3
+        "true_positive": 304,
+        "false_alarm": 294,
+        "true_negative": 1,
+        "late_detection": 1
       },
       "mode_breakdown": {
-        "organic": {
-          "total_trajectories": 44,
-          "failure_trajectories": 18,
-          "early_detection_rate": 1.0,
-          "mean_lead_time": 0.16666666666666666,
-          "false_alarm_rate": 0.38461538461538464
-        },
         "injected": {
-          "total_trajectories": 160,
-          "failure_trajectories": 79,
-          "early_detection_rate": 0.9240506329113924,
-          "mean_lead_time": 0.0,
-          "false_alarm_rate": 0.2222222222222222
+          "total_trajectories": 297,
+          "failure_trajectories": 150,
+          "early_detection_rate": 1.0,
+          "mean_lead_time": 0.54,
+          "false_alarm_rate": 1.0
         },
         "healthy": {
-          "total_trajectories": 97,
-          "failure_trajectories": 38,
-          "early_detection_rate": 0.868421052631579,
-          "mean_lead_time": 0.18181818181818182,
-          "false_alarm_rate": 0.2711864406779661
+          "total_trajectories": 204,
+          "failure_trajectories": 112,
+          "early_detection_rate": 1.0,
+          "mean_lead_time": 1.3125,
+          "false_alarm_rate": 0.9891304347826086
+        },
+        "organic": {
+          "total_trajectories": 99,
+          "failure_trajectories": 43,
+          "early_detection_rate": 0.9767441860465116,
+          "mean_lead_time": 1.4761904761904763,
+          "false_alarm_rate": 1.0
         }
       }
     },
     "0.4": {
-      "total_trajectories": 301,
-      "failure_trajectories": 135,
-      "healthy_trajectories": 166,
-      "detection_rate": 0.9407407407407408,
-      "early_detection_rate": 0.9185185185185185,
-      "false_alarm_rate": 0.26506024096385544,
+      "total_trajectories": 600,
+      "failure_trajectories": 305,
+      "healthy_trajectories": 295,
+      "detection_rate": 1.0,
+      "early_detection_rate": 0.9967213114754099,
+      "false_alarm_rate": 0.9932203389830508,
       "lead_time": {
-        "mean": 0.07258064516129033,
+        "mean": 0.9539473684210527,
         "median": 0.0,
-        "std": 0.3630823930480783,
+        "std": 5.898080436831561,
         "iqr": 0.0,
         "min": 0.0,
-        "max": 2.0
+        "max": 57.0
       },
       "case_distribution": {
-        "true_positive": 124,
-        "true_negative": 122,
-        "false_alarm": 44,
-        "false_negative": 8,
-        "late_detection": 3
+        "true_positive": 304,
+        "false_alarm": 293,
+        "true_negative": 2,
+        "late_detection": 1
       },
       "mode_breakdown": {
-        "organic": {
-          "total_trajectories": 44,
-          "failure_trajectories": 18,
-          "early_detection_rate": 1.0,
-          "mean_lead_time": 0.16666666666666666,
-          "false_alarm_rate": 0.38461538461538464
-        },
         "injected": {
-          "total_trajectories": 160,
-          "failure_trajectories": 79,
-          "early_detection_rate": 0.9240506329113924,
-          "mean_lead_time": 0.0,
-          "false_alarm_rate": 0.2222222222222222
+          "total_trajectories": 297,
+          "failure_trajectories": 150,
+          "early_detection_rate": 1.0,
+          "mean_lead_time": 0.54,
+          "false_alarm_rate": 0.9931972789115646
         },
         "healthy": {
-          "total_trajectories": 97,
-          "failure_trajectories": 38,
-          "early_detection_rate": 0.868421052631579,
-          "mean_lead_time": 0.18181818181818182,
-          "false_alarm_rate": 0.2711864406779661
+          "total_trajectories": 204,
+          "failure_trajectories": 112,
+          "early_detection_rate": 1.0,
+          "mean_lead_time": 1.3125,
+          "false_alarm_rate": 0.9891304347826086
+        },
+        "organic": {
+          "total_trajectories": 99,
+          "failure_trajectories": 43,
+          "early_detection_rate": 0.9767441860465116,
+          "mean_lead_time": 1.4761904761904763,
+          "false_alarm_rate": 1.0
         }
       }
     },
     "0.5": {
-      "total_trajectories": 301,
-      "failure_trajectories": 135,
-      "healthy_trajectories": 166,
-      "detection_rate": 0.9407407407407408,
-      "early_detection_rate": 0.9185185185185185,
-      "false_alarm_rate": 0.23493975903614459,
+      "total_trajectories": 600,
+      "failure_trajectories": 305,
+      "healthy_trajectories": 295,
+      "detection_rate": 0.9475409836065574,
+      "early_detection_rate": 0.2819672131147541,
+      "false_alarm_rate": 0.3254237288135593,
       "lead_time": {
-        "mean": 0.07258064516129033,
+        "mean": 2.6627906976744184,
         "median": 0.0,
-        "std": 0.3630823930480783,
-        "iqr": 0.0,
+        "std": 10.635187827160516,
+        "iqr": 1.0,
         "min": 0.0,
-        "max": 2.0
+        "max": 56.0
       },
       "case_distribution": {
-        "true_negative": 127,
-        "true_positive": 124,
-        "false_alarm": 39,
-        "false_negative": 8,
-        "late_detection": 3
+        "late_detection": 203,
+        "true_negative": 199,
+        "false_alarm": 96,
+        "true_positive": 86,
+        "false_negative": 16
       },
       "mode_breakdown": {
-        "organic": {
-          "total_trajectories": 44,
-          "failure_trajectories": 18,
-          "early_detection_rate": 1.0,
-          "mean_lead_time": 0.16666666666666666,
-          "false_alarm_rate": 0.2692307692307692
-        },
         "injected": {
-          "total_trajectories": 160,
-          "failure_trajectories": 79,
-          "early_detection_rate": 0.9240506329113924,
-          "mean_lead_time": 0.0,
-          "false_alarm_rate": 0.19753086419753085
+          "total_trajectories": 297,
+          "failure_trajectories": 150,
+          "early_detection_rate": 0.26666666666666666,
+          "mean_lead_time": 1.3,
+          "false_alarm_rate": 0.36054421768707484
         },
         "healthy": {
-          "total_trajectories": 97,
-          "failure_trajectories": 38,
-          "early_detection_rate": 0.868421052631579,
-          "mean_lead_time": 0.18181818181818182,
-          "false_alarm_rate": 0.2711864406779661
+          "total_trajectories": 204,
+          "failure_trajectories": 112,
+          "early_detection_rate": 0.33035714285714285,
+          "mean_lead_time": 3.2432432432432434,
+          "false_alarm_rate": 0.31521739130434784
+        },
+        "organic": {
+          "total_trajectories": 99,
+          "failure_trajectories": 43,
+          "early_detection_rate": 0.20930232558139536,
+          "mean_lead_time": 6.333333333333333,
+          "false_alarm_rate": 0.25
         }
       }
     },
     "0.6": {
-      "total_trajectories": 301,
-      "failure_trajectories": 135,
-      "healthy_trajectories": 166,
-      "detection_rate": 0.9407407407407408,
-      "early_detection_rate": 0.837037037037037,
-      "false_alarm_rate": 0.15060240963855423,
+      "total_trajectories": 600,
+      "failure_trajectories": 305,
+      "healthy_trajectories": 295,
+      "detection_rate": 0.940983606557377,
+      "early_detection_rate": 0.2721311475409836,
+      "false_alarm_rate": 0.3152542372881356,
       "lead_time": {
-        "mean": 0.035398230088495575,
+        "mean": 2.7590361445783134,
         "median": 0.0,
-        "std": 0.2637108747920591,
-        "iqr": 0.0,
+        "std": 10.813412422894505,
+        "iqr": 1.0,
         "min": 0.0,
-        "max": 2.0
+        "max": 56.0
       },
       "case_distribution": {
-        "true_negative": 141,
-        "true_positive": 113,
-        "false_alarm": 25,
-        "late_detection": 14,
-        "false_negative": 8
+        "late_detection": 204,
+        "true_negative": 202,
+        "false_alarm": 93,
+        "true_positive": 83,
+        "false_negative": 18
       },
       "mode_breakdown": {
-        "organic": {
-          "total_trajectories": 44,
-          "failure_trajectories": 18,
-          "early_detection_rate": 0.9444444444444444,
-          "mean_lead_time": 0.0,
-          "false_alarm_rate": 0.15384615384615385
-        },
         "injected": {
-          "total_trajectories": 160,
-          "failure_trajectories": 79,
-          "early_detection_rate": 0.810126582278481,
-          "mean_lead_time": 0.0,
-          "false_alarm_rate": 0.12345679012345678
+          "total_trajectories": 297,
+          "failure_trajectories": 150,
+          "early_detection_rate": 0.25333333333333335,
+          "mean_lead_time": 1.368421052631579,
+          "false_alarm_rate": 0.35374149659863946
         },
         "healthy": {
-          "total_trajectories": 97,
-          "failure_trajectories": 38,
-          "early_detection_rate": 0.8421052631578947,
-          "mean_lead_time": 0.125,
-          "false_alarm_rate": 0.1864406779661017
+          "total_trajectories": 204,
+          "failure_trajectories": 112,
+          "early_detection_rate": 0.32142857142857145,
+          "mean_lead_time": 3.3333333333333335,
+          "false_alarm_rate": 0.30434782608695654
+        },
+        "organic": {
+          "total_trajectories": 99,
+          "failure_trajectories": 43,
+          "early_detection_rate": 0.20930232558139536,
+          "mean_lead_time": 6.333333333333333,
+          "false_alarm_rate": 0.23214285714285715
         }
       }
     },
     "0.7": {
-      "total_trajectories": 301,
-      "failure_trajectories": 135,
-      "healthy_trajectories": 166,
-      "detection_rate": 0.9259259259259259,
-      "early_detection_rate": 0.4962962962962963,
-      "false_alarm_rate": 0.006024096385542169,
+      "total_trajectories": 600,
+      "failure_trajectories": 305,
+      "healthy_trajectories": 295,
+      "detection_rate": 0.7836065573770492,
+      "early_detection_rate": 0.2,
+      "false_alarm_rate": 0.19322033898305085,
       "lead_time": {
-        "mean": 0.0,
+        "mean": 1.721311475409836,
         "median": 0.0,
-        "std": 0.0,
+        "std": 7.94681325456834,
         "iqr": 0.0,
         "min": 0.0,
-        "max": 0.0
+        "max": 56.0
       },
       "case_distribution": {
-        "true_negative": 165,
-        "true_positive": 67,
-        "late_detection": 58,
-        "false_negative": 10,
-        "false_alarm": 1
+        "true_negative": 238,
+        "late_detection": 178,
+        "false_negative": 66,
+        "true_positive": 61,
+        "false_alarm": 57
       },
       "mode_breakdown": {
-        "organic": {
-          "total_trajectories": 44,
-          "failure_trajectories": 18,
-          "early_detection_rate": 0.6111111111111112,
-          "mean_lead_time": 0.0,
-          "false_alarm_rate": 0.0
-        },
         "injected": {
-          "total_trajectories": 160,
-          "failure_trajectories": 79,
-          "early_detection_rate": 0.5063291139240507,
-          "mean_lead_time": 0.0,
-          "false_alarm_rate": 0.012345679012345678
+          "total_trajectories": 297,
+          "failure_trajectories": 150,
+          "early_detection_rate": 0.17333333333333334,
+          "mean_lead_time": 1.7307692307692308,
+          "false_alarm_rate": 0.22448979591836735
         },
         "healthy": {
-          "total_trajectories": 97,
-          "failure_trajectories": 38,
-          "early_detection_rate": 0.42105263157894735,
+          "total_trajectories": 204,
+          "failure_trajectories": 112,
+          "early_detection_rate": 0.25892857142857145,
+          "mean_lead_time": 2.0689655172413794,
+          "false_alarm_rate": 0.1956521739130435
+        },
+        "organic": {
+          "total_trajectories": 99,
+          "failure_trajectories": 43,
+          "early_detection_rate": 0.13953488372093023,
           "mean_lead_time": 0.0,
-          "false_alarm_rate": 0.0
+          "false_alarm_rate": 0.10714285714285714
         }
       }
     }

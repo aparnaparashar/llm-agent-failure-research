@@ -17,9 +17,9 @@
       "observation_error_flag",
       "lexical_diversity"
     ],
-    "roc_auc": 0.980102539425102,
-    "pr_auc": 0.9413554069346004,
-    "f1": 0.8669064748201439
+    "roc_auc": 0.9075245223812811,
+    "pr_auc": 0.8322568570862323,
+    "f1": 0.729608938547486
   },
   "without_temporal": {
     "n_features": 10,
@@ -35,9 +35,9 @@
       "observation_error_flag",
       "lexical_diversity"
     ],
-    "roc_auc": 0.9792604210294935,
-    "pr_auc": 0.9399615009595331,
-    "f1": 0.8607594936708861,
+    "roc_auc": 0.8959212924459858,
+    "pr_auc": 0.8123256251155352,
+    "f1": 0.7006444053895724,
     "removed_group": "temporal",
     "removed_features": [
       "step",
@@ -45,9 +45,9 @@
       "step_latency",
       "cum_latency"
     ],
-    "roc_auc_delta": 0.0008421183956084377,
-    "pr_auc_delta": 0.0013939059750672778,
-    "f1_delta": 0.006146981149257824
+    "roc_auc_delta": 0.011603229935295278,
+    "pr_auc_delta": 0.019931231970697127,
+    "f1_delta": 0.028964533157913586
   },
   "without_tool": {
     "n_features": 12,
@@ -65,17 +65,17 @@
       "observation_error_flag",
       "lexical_diversity"
     ],
-    "roc_auc": 0.9408096218338873,
-    "pr_auc": 0.7993723123961292,
-    "f1": 0.7153024911032029,
+    "roc_auc": 0.8981859631117323,
+    "pr_auc": 0.8135217940106104,
+    "f1": 0.718785151856018,
     "removed_group": "tool",
     "removed_features": [
       "tool_calls_count",
       "repeat_tool_ratio"
     ],
-    "roc_auc_delta": 0.03929291759121467,
-    "pr_auc_delta": 0.14198309453847124,
-    "f1_delta": 0.15160398371694106
+    "roc_auc_delta": 0.009338559269548852,
+    "pr_auc_delta": 0.018735063075621894,
+    "f1_delta": 0.010823786691467996
   },
   "without_error": {
     "n_features": 10,
@@ -91,9 +91,9 @@
       "token_expansion_ratio",
       "lexical_diversity"
     ],
-    "roc_auc": 0.9786499965839994,
-    "pr_auc": 0.9387735546719086,
-    "f1": 0.8633093525179856,
+    "roc_auc": 0.8789142911070609,
+    "pr_auc": 0.743964672463955,
+    "f1": 0.6926503340757239,
     "removed_group": "error",
     "removed_features": [
       "tool_error_count",
@@ -101,9 +101,9 @@
       "consecutive_tool_errors",
       "observation_error_flag"
     ],
-    "roc_auc_delta": 0.001452542841102522,
-    "pr_auc_delta": 0.0025818522626918083,
-    "f1_delta": 0.003597122302158362
+    "roc_auc_delta": 0.028610231274220244,
+    "pr_auc_delta": 0.08829218462227728,
+    "f1_delta": 0.036958604471762135
   },
   "without_context": {
     "n_features": 11,
@@ -120,18 +120,18 @@
       "observation_error_flag",
       "lexical_diversity"
     ],
-    "roc_auc": 0.93136957858435,
-    "pr_auc": 0.7558525459067846,
-    "f1": 0.6653543307086615,
+    "roc_auc": 0.891012982263668,
+    "pr_auc": 0.7889416627588987,
+    "f1": 0.6951364175563464,
     "removed_group": "context",
     "removed_features": [
       "latest_message_len",
       "avg_message_len",
       "token_expansion_ratio"
     ],
-    "roc_auc_delta": 0.04873296084075196,
-    "pr_auc_delta": 0.18550286102781577,
-    "f1_delta": 0.20155214411148248
+    "roc_auc_delta": 0.016511540117613133,
+    "pr_auc_delta": 0.04331519432733366,
+    "f1_delta": 0.03447252099113962
   },
   "without_semantic": {
     "n_features": 13,
@@ -150,16 +150,16 @@
       "token_expansion_ratio",
       "observation_error_flag"
     ],
-    "roc_auc": 0.9790331827322658,
-    "pr_auc": 0.9403391315484654,
-    "f1": 0.8653500897666068,
+    "roc_auc": 0.9071720960958836,
+    "pr_auc": 0.8319588434842443,
+    "f1": 0.7322834645669292,
     "removed_group": "semantic",
     "removed_features": [
       "lexical_diversity"
     ],
-    "roc_auc_delta": 0.001069356692836143,
-    "pr_auc_delta": 0.0010162753861350238,
-    "f1_delta": 0.0015563850535371682
+    "roc_auc_delta": 0.0003524262853975557,
+    "pr_auc_delta": 0.00029801360198800086,
+    "f1_delta": -0.0026745260194431797
   },
   "only_temporal": {
     "n_features": 4,
@@ -169,9 +169,9 @@
       "step_latency",
       "cum_latency"
     ],
-    "roc_auc": 0.7082839498471711,
-    "pr_auc": 0.3125779942908432,
-    "f1": 0.006825938566552901,
+    "roc_auc": 0.7145444411020473,
+    "pr_auc": 0.5337821207718002,
+    "f1": 0.4381948986265533,
     "used_group": "temporal"
   },
   "only_tool": {
@@ -180,9 +180,9 @@
       "tool_calls_count",
       "repeat_tool_ratio"
     ],
-    "roc_auc": 0.711437066873409,
-    "pr_auc": 0.321106910362962,
-    "f1": 0.0,
+    "roc_auc": 0.6612711529500588,
+    "pr_auc": 0.523328975417804,
+    "f1": 0.26235399820305483,
     "used_group": "tool"
   },
   "only_error": {
@@ -193,9 +193,9 @@
       "consecutive_tool_errors",
       "observation_error_flag"
     ],
-    "roc_auc": 0.6494396273886013,
-    "pr_auc": 0.2816006801455183,
-    "f1": 0.08,
+    "roc_auc": 0.7226237031007616,
+    "pr_auc": 0.5659179833877992,
+    "f1": 0.4468247895944912,
     "used_group": "error"
   },
   "only_context": {
@@ -205,9 +205,9 @@
       "avg_message_len",
       "token_expansion_ratio"
     ],
-    "roc_auc": 0.9365886333324422,
-    "pr_auc": 0.7946159843217983,
-    "f1": 0.7094474153297683,
+    "roc_auc": 0.7758946319136009,
+    "pr_auc": 0.631326549546142,
+    "f1": 0.49654218533886585,
     "used_group": "context"
   },
   "only_semantic": {
@@ -215,8 +215,8 @@
     "features": [
       "lexical_diversity"
     ],
-    "roc_auc": 0.6257459505541347,
-    "pr_auc": 0.2463519313304721,
+    "roc_auc": 0.6596494022024431,
+    "pr_auc": 0.42844594824353305,
     "f1": 0.0,
     "used_group": "semantic"
   }

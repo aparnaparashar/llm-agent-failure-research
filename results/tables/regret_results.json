@@ -1,71 +1,83 @@
 {
-  "total_trajectories": 301,
-  "mean_regret": 0.5382059800664452,
+  "total_trajectories": 600,
+  "mean_regret": 0.92,
   "median_regret": 1.0,
-  "std_regret": 0.4985381661288956,
-  "total_regret": 162.0,
-  "normalized_regret": 0.5382059800664452,
+  "std_regret": 0.2712931993250107,
+  "total_regret": 552.0,
+  "normalized_regret": 0.92,
   "ci_95_lower": 0.0,
   "ci_95_upper": 1.0,
-  "zero_regret_pct": 0.46179401993355484,
-  "intervened_pct": 0.5780730897009967,
+  "zero_regret_pct": 0.08,
+  "intervened_pct": 0.9983333333333333,
   "decision_cases": {
-    "false_positive_intervention": 162,
-    "true_negative_no_intervention": 127,
-    "attempted_prevention": 12
+    "false_positive_intervention": 552,
+    "attempted_prevention": 47,
+    "true_negative_no_intervention": 1
   },
   "by_mode": {
-    "organic": {
-      "mean_regret": 0.6136363636363636,
-      "median_regret": 1.0,
-      "count": 44
-    },
     "injected": {
-      "mean_regret": 0.56875,
+      "mean_regret": 0.8821548821548821,
       "median_regret": 1.0,
-      "count": 160
+      "count": 297
     },
     "healthy": {
-      "mean_regret": 0.4536082474226804,
-      "median_regret": 0.0,
-      "count": 97
+      "mean_regret": 0.9509803921568627,
+      "median_regret": 1.0,
+      "count": 204
+    },
+    "organic": {
+      "mean_regret": 0.9696969696969697,
+      "median_regret": 1.0,
+      "count": 99
     }
   },
   "by_risk_band": {
     "very_low": {
       "mean_regret": 0.0,
-      "count": 127,
+      "count": 1,
       "intervened_pct": 0.0
     },
     "low": {
       "mean_regret": 1.0,
-      "count": 3,
+      "count": 1,
       "intervened_pct": 1.0
     },
     "medium": {
-      "mean_regret": 1.0,
-      "count": 19,
+      "mean_regret": 0.963302752293578,
+      "count": 218,
       "intervened_pct": 1.0
     },
     "high": {
-      "mean_regret": 1.0,
-      "count": 26,
+      "mean_regret": 0.9397163120567376,
+      "count": 282,
       "intervened_pct": 1.0
     },
     "very_high": {
-      "mean_regret": 0.9047619047619048,
-      "count": 126,
+      "mean_regret": 0.7755102040816326,
+      "count": 98,
       "intervened_pct": 1.0
     }
   },
   "by_failure_type": {
+    "format_error": {
+      "mean_regret": 0.8518518518518519,
+      "count": 54
+    },
     "tool_execution_error": {
-      "mean_regret": 0.6296296296296297,
-      "count": 81
+      "mean_regret": 0.8428571428571429,
+      "count": 70
     },
     "parameter_error": {
-      "mean_regret": 0.5063291139240507,
-      "count": 79
+      "mean_regret": 0.9137931034482759,
+      "count": 58
+    },
+    "looping": {
+      "mean_regret": 0.8620689655172413,
+      "count": 58
+    },
+    "goal_drift": {
+      "mean_regret": 0.9473684210526315,
+      "count": 57
     }
   }
 }
