@@ -118,3 +118,4 @@ This document details the exact input, mathematical logic, code execution flow, 
   1. Runs telemetry feature extraction and XGBoost `predict_proba()` timed with `time.perf_counter()`.
   2. In parallel, formats the agent step into an evaluation prompt and queries `qwen3:8b` via Ollama API, measuring round-trip latency and token consumption.
 - **Results:** Telemetry requires **0.004 ms per step** at **0 tokens ($0 cost)**, operating **156,219× faster** than the LLM judge (643.9 ms, 171 tokens, $342/1M steps).
+
