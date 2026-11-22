@@ -53,7 +53,7 @@ data/processed/features.npz
 data/processed/features/
 
 # ---------- Trained model binaries (reproducible from training scripts) ----------
-models/saved/*.joblib
+
 
 # ---------- Batch progress checkpoint ----------
 data/batch_progress.json
