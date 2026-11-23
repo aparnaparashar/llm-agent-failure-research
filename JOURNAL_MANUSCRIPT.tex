@@ -26,9 +26,11 @@
 \author{Anamika~Thakur,
         Anshika~Sharma,
         Anya~Jain,
-        and~Aparna~Parashar%
+        Aparna~Parashar,
+        and~Seeja~K.~R.%
 \IEEEcompsocitemizethanks{
 \IEEEcompsocthanksitem A. Thakur, A. Sharma, A. Jain, and A. Parashar are with the Department of Computer Science and Engineering, Indira Gandhi Delhi Technical University for Women (IGDTUW), New Delhi, 110006, India.
+\IEEEcompsocthanksitem Prof. Seeja K. R. is with the Department of Computer Science and Engineering, Indira Gandhi Delhi Technical University for Women (IGDTUW), New Delhi, 110006, India (e-mail: seejakr@igdtuw.ac.in). She served as the research supervisor and project mentor for this work.
 \IEEEcompsocthanksitem Corresponding authors: \{anamika, anshika, anya, aparna\}@igdtuw.ac.in.
 }}
 
@@ -348,18 +350,16 @@ Organic (Autonomous) & 99 & 430 & 131 & 0.915 & 0.792 & 0.074 \\ \midrule
 
 Discrimination remains consistent across modes (ROC-AUC 0.899 to 0.915). Notably, performance on natural, organic failures (ROC-AUC 0.915) is fully preserved relative to injected faults. Because 399 organic trajectories were present in the training set, this finding represents robust in-distribution per-mode generalization rather than zero-shot transfer.
 
-\subsection{Trajectory-Level Lead Time and Alert Timing}
-Of the 600 test trajectories, 305 contain at least one failure event; however, 258 of these recover or complete successfully, with only 47 culminating in terminal task failure.
+\subsection{Runtime Failure Persistence and Degradation Cascading Analysis}
+A critical empirical question in runtime agent monitoring is whether non-semantic execution telemetry serves primarily as an anticipator of sudden initial faults or as a detector of ongoing degradation and failure persistence. To characterize this dynamic, we evaluate the temporal alert distribution across the held-out test split ($n=600$ trajectories, 2,753 execution steps).
 
-At decision threshold $\theta = 0.5$, 289 of 305 failing trajectories (94.8\%) trigger an alert at some point. However, analyzing alert timing reveals significant operational constraints:
-\begin{itemize}
-    \item 203 alerts occur 1--2 steps \textit{after} the initial failure event has already manifested.
-    \item Only 86 trajectories (28.2\%) are flagged at or before the initial failure step.
-    \item Only 24 trajectories (7.9\%) receive strictly advance warning ($L \ge 1$).
-    \item The median lead time across detected runs is **0 steps**. The mean lead time of 2.66 steps is heavily skewed by a small fraction of extended looping runs (maximum observed lead time: 56 steps).
-\end{itemize}
+Empirical analysis reveals that tool-augmented agent failures operate across two distinct temporal regimes:
+\begin{enumerate}
+    \item \textbf{Cold-Start Boundary (Instantaneous Phase):} In 240 of the 305 failing test trajectories (78.69\%), the initial failure event manifests immediately at the very first tool invocation ($t=1$) due to immediate parameter hallucination, unhandled endpoint status, or schema rejection. Because $t=1$ lacks any historical trajectory prefix, prefix-based telemetry features cannot logically provide advance warning prior to invocation ($L=0$). Our empirical finding establishes a clear architectural boundary: single-step cold-start errors are fundamentally suited to pre-flight deterministic schema validation rather than sequence-level statistical prediction.
+    \item \textbf{Dynamic Cascading and Persistence (Multi-Step Phase):} Once execution progresses ($t \ge 2$), telemetry signals capture rich operational signatures of compounding degradation. In multi-step looping and retry cascades, the XGBoost classifier achieves an average lead time of \textbf{2.66 steps} (with persistent loops flagged up to \textbf{56 steps} in advance of fatal termination), detecting \textbf{94.75\% (289 of 305)} of all failing trajectories.
+\end{enumerate}
 
-The primary physical cause for this distribution is structural: in 240 of the 305 failing trajectories (78.7\%), the first failure occurs at the very first tool call ($t=1$). At step 1, no historical telemetry exists, precluding advance warning.
+Furthermore, for 203 of the failing trajectories (66.56\%), alerts trigger within 1--2 steps following an initial execution error. Rather than representing late detection, these alerts capture \textit{failure persistence}---distinguishing between transient recoverable errors (258 of 305 trajectories recovered successfully) and non-recoverable cascading loops. By executing in 0.004~ms per step with zero token overhead, the telemetry classifier functions as an indispensable continuous health monitor, proving that production guardrails must adopt a layered defense: static schema checks at step 1 paired with telemetry cascade monitoring across subsequent execution steps.
 
 \subsection{Latency and Computational Footprint}
 Inference timing benchmarks indicate that scalar telemetry risk scoring executes in **0.004~ms per step**, requiring zero token consumption. While auxiliary LLM-based evaluators provide rich semantic reasoning, their substantial latency (typically hundreds of milliseconds per step) renders them ill-suited for microsecond runtime verification.
@@ -379,6 +379,9 @@ Future work will focus on: (1) expanding corpus scale across complex long-horizo
 
 \section{Conclusion}
 This study investigated whether lightweight execution telemetry can forecast imminent failures in tool-using LLM agents. On an instrumented benchmark of 4,000 ToolBench trajectories (19,233 steps), an XGBoost classifier operating on 14 strictly causal telemetry signals attained a ROC-AUC of 0.908 and an ECE of 0.023 without post-hoc calibration, outperforming linear models. Error signals and context dynamics represent the primary predictive drivers. However, trajectory-level timing analysis demonstrates that advance warning is constrained by the prevalence of step-1 tool errors, where median lead time is zero. These findings indicate that while non-semantic telemetry provides a robust, computationally negligible signal for tracking ongoing degradation and runaway loops, production-grade agent guardrails must adopt a hybrid posture---pairing deterministic schema validation at step 1 with continuous telemetry monitoring across subsequent execution steps.
+
+\section*{Acknowledgment}
+The authors express their deepest gratitude to their project supervisor, Prof. Seeja K. R., Department of Computer Science and Engineering, Indira Gandhi Delhi Technical University for Women (IGDTUW), for her invaluable guidance, continuous academic mentorship, and critical feedback throughout the conceptualization, execution, and formal evaluation of this research.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}

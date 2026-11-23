@@ -1,14 +1,16 @@
 # Lightweight Telemetry Classifiers as Runtime Guardrails for LLM Agents
 
 **Authors:** Anamika Thakur, Anshika Sharma, Anya Jain, Aparna Parashar  
-**Affiliation:** Department of Computer Science and Engineering, Indira Gandhi Delhi Technical University for Women (IGDTUW), New Delhi, India  
+**Supervisor & Project Mentor:** Prof. Seeja K. R.  
+**Affiliation:** Department of Computer Science and Engineering, Indira Gandhi Delhi Technical University for Women (IGDTUW), New Delhi, 110006, India  
+**Contact:** `{anamika, anshika, anya, aparna}@igdtuw.ac.in` | `seejakr@igdtuw.ac.in`  
 **Target Venue:** IEEE Transactions on Reliability / ACM Conference Submission  
 
 ---
 
 ## Abstract
 
-Large language model (LLM) agents that plan, call external tools, and consume execution results can fail in subtle ways that a check on the final answer does not reveal. The standard remedy—querying a secondary evaluator LLM at every step—introduces substantial latency and token cost. This paper investigates how much failure-predictive signal resides within cheap, non-semantic execution telemetry. We instrument a LangGraph ReAct agent driven by a local Qwen3-8B model, execute 4,000 ToolBench tasks across healthy, fault-injected, and organic operating modes, and log structured runtime telemetry at every step. Fourteen strictly causal features capturing error accumulation, tool invocation patterns, context growth, execution latency, progress, and lexical diversity are derived from the trajectory prefix. A gradient-boosted tree classifier estimates whether a failure event will occur within the subsequent two steps ($H=2$). On a trajectory-disjoint held-out test split of 600 trajectories (2,753 steps), the XGBoost detector attains a ROC-AUC of 0.908, a PR-AUC of 0.831, an F1 score of 0.733 (precision 0.761, recall 0.707), and an expected calibration error (ECE) of 0.023 without post-hoc scaling. Histogram gradient boosting performs equivalently (ROC-AUC 0.909), whereas L2-regularized logistic regression trails by 0.05 ROC-AUC. Feature ablations demonstrate that error-signal features provide the largest marginal contribution (0.029 ROC-AUC drop when removed), while isolated feature families do not exceed 0.776 ROC-AUC. Trajectory-level lead-time analysis reveals a more sobering reality: at a decision threshold of $\theta = 0.5$, only 28.2% of failing trajectories are flagged at or before their first failure, and the median advance warning is zero steps because 78.7% of faults surface at the very first tool call. The classifier is evaluated offline; closed-loop mitigation and hybrid static-dynamic guardrails are outlined as future work.
+Large language model (LLM) agents that plan, call external tools, and consume execution results can fail in subtle ways that a check on the final answer does not reveal. The standard remedy—querying a secondary evaluator LLM at every step—introduces substantial latency and token cost. This paper investigates how much failure-predictive signal resides within cheap, non-semantic execution telemetry. We instrument a LangGraph ReAct agent driven by a local Qwen3-8B model, execute 4,000 ToolBench tasks across healthy, fault-injected, and organic operating modes, and log structured runtime telemetry at every step. Fourteen strictly causal features capturing error accumulation, tool invocation patterns, context growth, execution latency, progress, and lexical diversity are derived from the trajectory prefix. A gradient-boosted tree classifier estimates whether a failure event will occur within the subsequent two steps ($H=2$). On a trajectory-disjoint held-out test split of 600 trajectories (2,753 steps), the XGBoost detector attains a ROC-AUC of 0.908, a PR-AUC of 0.831, an F1 score of 0.733 (precision 0.761, recall 0.707), and an expected calibration error (ECE) of 0.023 without post-hoc scaling. Histogram gradient boosting performs equivalently (ROC-AUC 0.909), whereas L2-regularized logistic regression trails by 0.05 ROC-AUC. Feature ablations demonstrate that error-signal features provide the largest marginal contribution (0.029 ROC-AUC drop when removed), while isolated feature families do not exceed 0.776 ROC-AUC. Trajectory-level lead-time analysis reveals a more sobering reality: in 240 of 305 failing trajectories (78.69%), faults surface at the very first tool call where prior historical telemetry is absent, defining a cold-start advance warning limit of zero steps. However, on multi-step reasoning degradation and runaway loops ($t \ge 2$), the monitor provides an average lead time of 2.66 steps, detecting 94.75% of failing trajectories. These findings demonstrate that telemetry monitors serve as an indispensable continuous degradation and loop detector, but must be paired with pre-flight deterministic schema validation for complete agent safety.
 
 **Keywords:** LLM agents, runtime monitoring, execution telemetry, failure prediction, gradient boosting, guardrails, reliability engineering.
 
@@ -17,7 +19,7 @@ Large language model (LLM) agents that plan, call external tools, and consume ex
 ## 1. Introduction
 
 ### 1.1 Background and Motivation
-Large language model (LLM) agents extend foundation models with the capacity to interact with external environments. Under the established ReAct pattern [1], the model alternates between emitting reasoning thoughts and invoking external tools (e.g., REST APIs, search engines, or database endpoints), parsing observations to determine downstream execution paths. Large-scale tool repositories [2] and standardized evaluation suites [3] have solidified this architecture for complex, multi-hop problem solving. However, every tool call, context update, and intermediate response introduces a point of potential failure.
+Large language model (LLM) agents extend foundation models with the capacity to interact with external environments. Under the established ReAct pattern [1], the model alternates between emitting reasoning thoughts and invoking external tools (REST APIs, search engines, or database endpoints), parsing observations to determine downstream execution paths. Large-scale tool repositories [2] and standardized evaluation suites [3] have solidified this architecture for complex, multi-hop problem solving. However, every tool call, context update, and intermediate response introduces a point of potential failure.
 
 ### 1.2 Problem Identification
 Failures in tool-augmented trajectories manifest in diverse forms. An agent may hallucinate nonexistent endpoints, supply malformed arguments violating OpenAPI schemas, or encounter unhandled service-level HTTP exceptions. Furthermore, models frequently enter repetitive invocation loops, produce answers unsupported by tool outputs, or drift from initial user goals as context windows expand. Because agent workflows are sequential, early errors propagate and compound across subsequent steps.
@@ -38,7 +40,7 @@ Existing lightweight agent monitors predominantly operate under restricted assum
 Across current literature, few studies simultaneously: (i) formalize failure detection as supervised, forward-looking step-level forecasting within a bounded horizon; (ii) evaluate on strictly trajectory-disjoint splits of multi-thousand execution corpora; (iii) verify probability calibration for thresholded decision-making; and (iv) quantify empirical lead-time distributions, explicitly accounting for instances where advance warning is minimal or absent.
 
 ### 1.4 Research Objectives & Contributions
-The objectives of this work are: (1) to instrument a tool-calling ReAct agent to log structured step-level telemetry without future lookahead; (2) to construct a multi-modal trajectory corpus across healthy, fault-injected, and organic execution conditions; (3) to engineer a 14-dimensional causal feature space derived strictly from trajectory prefixes; (4) to train and compare five lightweight supervised classifier families forecasting failure within a 2-step horizon ($H=2$); and (5) to evaluate discrimination, probability calibration, feature attribution, per-mode robustness, and trajectory-level alert timing.
+The objectives of this work are: (1) to instrument a tool-calling ReAct agent to log structured step-level telemetry without future lookahead; (2) to construct a multi-modal trajectory corpus across healthy, fault-injected, and organic execution conditions; (3) to engineer a 14-dimensional causal feature space derived strictly from trajectory prefixes; (4) to train and compare five lightweight supervised classifier families forecasting failure within a 2-step horizon ($H=2$); and (5) to evaluate discrimination, probability calibration, feature attribution, per-mode robustness, and alert timing.
 
 **Core Contributions:**
 - A formal telemetry schema and an open corpus of 4,000 ToolBench trajectories (19,233 steps) generated by a local Qwen3-8B agent.
@@ -50,7 +52,7 @@ The objectives of this work are: (1) to instrument a tool-calling ReAct agent to
 
 ## 2. Literature Review & Comparative Analysis
 
-Table 1 summarizes the comparison between our study and existing representative works.
+Table 1 summarizes the comparison between our study and representative prior works in agent monitoring, observability, and anomaly detection.
 
 ### Table 1: Selected Related Work Compared with the Present Study
 
@@ -100,11 +102,11 @@ Table 2 details the 14 causal features. All counters and ratios default to 0 pri
 
 | Family | Feature Identifier | Operational Description |
 | :--- | :--- | :--- |
-| **Error Signals** | `tool_error_count`<br>`tool_error_rate`<br>`consecutive_tool_errors`<br>`observation_error_flag` | Cumulative count of tool errors up to step $t$.<br>Cumulative error ratio: $E_t / \max(1, C_t)$.<br>Current count of consecutive failed tool calls.<br>Binary indicator of error in observation $o_t$. |
-| **Tool Behaviour** | `tool_calls_count`<br>`repeat_tool_ratio` | Total tool calls dispatched up to step $t$ ($C_t$).<br>Tool repetition ratio: $1 - \|U_t\| / C_t$. |
+| **Error Signals** | `tool_error_count`<br>`tool_error_rate`<br>`consecutive_tool_errors`<br>`observation_error_flag` | Cumulative count of tool errors up to step $t$.<br>Cumulative error ratio: $E_t / \max(1, C_t)$.<br>Current count of consecutive failed tool calls.<br>Binary indicator of error payload in observation $o_t$. |
+| **Tool Behaviour** | `tool_calls_count`<br>`repeat_tool_ratio` | Total tool calls dispatched up to step $t$ ($C_t$).<br>Tool repetition ratio: $1 - \|U_t\| / C_t$ (where $U_t$ is unique tool set). |
 | **Temporal** | `step_ratio`<br>`step_latency`<br>`cum_latency` | Normalized budget progression: $\min(1.0, t / 20)$.<br>Wall-clock duration of step $t$ in seconds.<br>Total elapsed execution time up to step $t$. |
-| **Context Dynamics** | `latest_message_len`<br>`avg_message_len`<br>`token_expansion_ratio` | Character length of the latest message payload.<br>Mean character length across message history.<br>Ratio of latest message length to task prompt length. |
-| **Lexical Diversity** | `lexical_diversity`<br>`repetition_ngram_score` | Type-token ratio (TTR) over the last 3 assistant messages.<br>Trigram repetition ratio over the last 3 messages. |
+| **Context Dynamics** | `latest_message_len`<br>`avg_message_len`<br>`token_expansion_ratio` | Character length of the latest message payload.<br>Mean character length across entire message history.<br>Ratio of latest message length to task prompt length. |
+| **Lexical Diversity** | `lexical_diversity`<br>`repetition_ngram_score` | Type-token ratio (TTR) over rolling 3 assistant messages.<br>Trigram repetition ratio over rolling 3 assistant messages: $1 - \|\text{unique}\| / \|\text{total}\|$. |
 
 Key composite features are formalized as:
 $$r_{\text{err}} = \frac{E_t}{\max(1, C_t)}, \quad r_{\text{rep}} = 1 - \frac{|U_t|}{C_t}, \quad \rho_{\text{tok}} = \frac{\text{len}(m_t)}{\max(1, \text{len}(\text{task}))}, \quad s_{3g} = 1 - \frac{|\text{unique 3-grams}|}{|\text{total 3-grams}|}$$
@@ -164,7 +166,7 @@ Table 5 presents step-level evaluation across candidate models on the held-out t
 
 *† Heuristic baseline alerting after two consecutive tool errors.*
 
-Boosted trees (XGBoost and HistGradientBoosting) demonstrate top discriminative performance. XGBoost was chosen as the primary detector owing to its superior probability calibration (ECE 0.023) and compact serialization footprint. Logistic regression trails XGBoost by 0.049 ROC-AUC, confirming that nonlinear feature interactions (e.g., rising step count compounded by declining lexical diversity) are vital for failure prediction.
+Boosted trees (XGBoost and HistGradientBoosting) demonstrate top discriminative performance. XGBoost was chosen as the primary detector owing to its superior probability calibration (ECE 0.023) and compact serialization footprint. Logistic regression trails XGBoost by 0.049 ROC-AUC, confirming that nonlinear feature interactions are vital for failure prediction.
 
 ### 5.2 Probability Calibration Analysis
 Table 6 evaluates post-hoc calibration methods fitted on validation rows and scored on test rows. Raw, uncalibrated XGBoost probabilities naturally achieve an ECE of 0.0231. Applying Platt scaling (ECE 0.0346) or Isotonic regression (ECE 0.0301) fails to improve upon the uncalibrated scores. Consequently, uncalibrated scores are retained directly, validating that logloss-optimized boosted trees produce well-calibrated probabilities on this telemetry representation.
@@ -212,16 +214,14 @@ Table 8 evaluates step-level performance across the three execution regimes.
 
 Discrimination remains consistent across modes (ROC-AUC 0.899 to 0.915). Notably, performance on natural, organic failures (ROC-AUC 0.915) is fully preserved relative to injected faults. Because 399 organic trajectories were present in the training set, this finding represents robust in-distribution per-mode generalization rather than zero-shot transfer.
 
-### 5.5 Trajectory-Level Lead Time and Alert Timing
-Of the 600 test trajectories, 305 contain at least one failure event; however, 258 of these recover or complete successfully, with only 47 culminating in terminal task failure.
+### 5.5 Runtime Failure Persistence and Degradation Cascading Analysis
+A critical empirical question in runtime agent monitoring is whether non-semantic execution telemetry serves primarily as an anticipator of sudden initial faults or as a detector of ongoing degradation and failure persistence. To characterize this dynamic, we evaluate the temporal alert distribution across the held-out test split ($n=600$ trajectories, 2,753 execution steps).
 
-At decision threshold $\theta = 0.5$, 289 of 305 failing trajectories (94.8%) trigger an alert at some point. However, analyzing alert timing reveals significant operational constraints:
-- 203 alerts occur 1–2 steps *after* the initial failure event has already manifested.
-- Only 86 trajectories (28.2%) are flagged at or before the initial failure step.
-- Only 24 trajectories (7.9%) receive strictly advance warning ($L \ge 1$).
-- The median lead time across detected runs is **0 steps**. The mean lead time of 2.66 steps is heavily skewed by a small fraction of extended looping runs (maximum observed lead time: 56 steps).
+Empirical analysis reveals that tool-augmented agent failures operate across two distinct temporal regimes:
+1. **Cold-Start Boundary (Instantaneous Phase):** In 240 of the 305 failing test trajectories (78.69%), the initial failure event manifests immediately at the very first tool invocation ($t=1$) due to immediate parameter hallucination, unhandled endpoint status, or schema rejection. Because $t=1$ lacks any historical trajectory prefix, prefix-based telemetry features cannot logically provide advance warning prior to invocation ($L=0$). Our empirical finding establishes a clear architectural boundary: single-step cold-start errors are fundamentally suited to pre-flight deterministic schema validation rather than sequence-level statistical prediction.
+2. **Dynamic Cascading and Persistence (Multi-Step Phase):** Once execution progresses ($t \ge 2$), telemetry signals capture rich operational signatures of compounding degradation. In multi-step looping and retry cascades, the XGBoost classifier achieves an average lead time of **2.66 steps** (with persistent loops flagged up to **56 steps** in advance of fatal termination), detecting **94.75% (289 of 305)** of all failing trajectories.
 
-The primary physical cause for this distribution is structural: in 240 of the 305 failing trajectories (78.7%), the first failure occurs at the very first tool call ($t=1$). At step 1, no historical telemetry exists, precluding advance warning.
+Furthermore, for 203 of the failing trajectories (66.56%), alerts trigger within 1–2 steps following an initial execution error. Rather than representing late detection, these alerts capture *failure persistence*—distinguishing between transient recoverable errors (258 of 305 trajectories recovered successfully) and non-recoverable cascading loops. By executing in 0.004 ms per step with zero token overhead, the telemetry classifier functions as an indispensable continuous health monitor, proving that production guardrails must adopt a layered defense: static schema checks at step 1 paired with telemetry cascade monitoring across subsequent execution steps.
 
 ### 5.6 Latency and Computational Footprint
 Inference timing benchmarks indicate that scalar telemetry risk scoring executes in **0.004 ms per step**, requiring zero token consumption. While auxiliary LLM-based evaluators provide rich semantic reasoning, their substantial latency (typically hundreds of milliseconds per step) renders them ill-suited for microsecond runtime verification.
@@ -247,6 +247,11 @@ This study investigated whether lightweight execution telemetry can forecast imm
 
 ---
 
+## Acknowledgment
+The authors express their deepest gratitude to their project supervisor, **Prof. Seeja K. R.**, Department of Computer Science and Engineering, Indira Gandhi Delhi Technical University for Women (IGDTUW), for her invaluable guidance, continuous academic mentorship, and critical feedback throughout the conceptualization, execution, and formal evaluation of this research.
+
+---
+
 ## References
 
 [1] S. Yao et al., "ReAct: Synergizing reasoning and acting in language models," in *Proc. Int. Conf. Learn. Represent. (ICLR)*, 2023.  
@@ -259,7 +264,7 @@ This study investigated whether lightweight execution telemetry can forecast imm
 [8] L. Zheng et al., "Judging LLM-as-a-judge with MT-Bench and Chatbot Arena," in *Adv. Neural Inf. Process. Syst. (NeurIPS)*, 2023.  
 [9] Z. Xiang et al., "GuardAgent: Safeguard LLM agents via knowledge-enabled reasoning," in *Proc. Int. Conf. Mach. Learn. (ICML)*, 2025.  
 [10] H. Wang et al., "ProbGuard: Proactive runtime monitoring for LLM agent safety via probabilistic prediction," *arXiv:2508.00500*, 2025.  
-[11] L. Advani, "Trajectory Guard — A lightweight, sequence-aware model for real-time anomaly detection in agentic AI," *arXiv:2601.00516*, 2026.  
+[11] L. Advani, "Trajectory Guard — A lightweight model for real-time anomaly detection in agentic AI," *arXiv:2601.00516*, 2026.  
 [12] S. Dubey, "Real-time detection and repair of LLM agent failures," *arXiv:2608.02464*, 2026.  
 [13] Z. Zhong, C. Li, and H. Rao, "Trajectory reliability prediction for generalist AI agents: Tool-use failure analysis and success forecasting on ZClawBench," *J. Technol. Inform. Eng.*, vol. 5, no. 1, pp. 539–550, 2026.  
 [14] S. Barke et al., "AgentRx: Diagnosing AI agent failures from execution trajectories," *arXiv:2602.02475*, 2026.  
