@@ -79,3 +79,6 @@ build/
 *.egg
 pip-log.txt
 demo_llm_answers_and_telemetry.py
+
+minor_project_report/
+report_references/
